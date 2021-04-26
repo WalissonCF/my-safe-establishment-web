@@ -1,0 +1,187 @@
+p {
+    font-family: 'Poppins', sans-serif;
+}
+
+#name {
+    position: absolute;
+    width: 673px;
+    height: 69px;
+    left: 614px;
+    top: 287px;
+
+    background: #F6F6F6;
+    border-radius: 20px;
+}
+
+#cpf {
+    position: absolute;
+    width: 673px;
+    height: 69px;
+    left: 614px;
+    top: 400px;
+
+    background: #F6F6F6;
+    border-radius: 20px;
+}
+
+#date {
+    position: absolute;
+    width: 673px;
+    height: 69px;
+    left: 614px;
+    top: 513px;
+
+    background: #F7F7F7;
+    border-radius: 20px;
+    border-color: none;
+}
+
+.name {
+    position: absolute;
+    width: 62px;
+    height: 30px;
+    left: 637px;
+    top: 257px;
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 200;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.cpf {
+    position: absolute;
+    width: 39px;
+    height: 30px;
+    left: 637px;
+    top: 362px;
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 200;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.date {
+    position: absolute;
+    width: 206px;
+    height: 30px;
+    left: 637px;
+    top: 483px;
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 200;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.apagar {
+    position: absolute;
+    width: 666px;
+    height: 100%;
+    left: -125px;
+    top: 0px;
+
+    background: #2DB3FF;
+}
+
+.titulo {
+    position: absolute;
+    width: 295px;
+    height: 60px;
+    left: 200px;
+    top: 40px;
+
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 60px;
+
+    color: #FFFFFF;
+}
+
+.titulo2 {
+    position: absolute;
+    width: 352px;
+    height: 38px;
+    left: 200px;
+    top: 98px;
+
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 37px;
+
+    color: #FFFFFF;
+}
+
+.sobretitulo {
+    position: absolute;
+    width: 336px;
+    height: 46px;
+    left: 200px;
+    top: 145px;
+
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 22px;
+
+    color: #FFFFFF;
+}
+
+.sobretitulo2 {
+    position: absolute;
+    width: 349px;
+    height: 90px;
+    left: 200px;
+    top: 259px;
+
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 30px;
+
+    color: #FFFFFF;
+}
+
+.sobretitulo3 {
+    position: absolute;
+    width: 354px;
+    height: 60px;
+    left: 200px;
+    top: 60%;
+
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 30px;
+
+    color: #FFFFFF;
+}
+
+#sign-up {
+    position: absolute;
+    width: 680px;
+    height: 69px;
+    left: 614px;
+    top: 604px;
+    color: white;
+    background: #2DB3FF;
+    border-radius: 20px;
+}
+
+#login {
+    position: absolute;
+    width: 219px;
+    height: 52px;
+    left: 280px;
+    top: 80%;
+    background-color: #2DB3FF;
+    border: 3px solid #FFFFFF;
+    border-radius: 120px;
+    color: white;
+}
