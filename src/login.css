@@ -1,0 +1,142 @@
+#cpf {
+    position: absolute;
+    width: 682px;
+    height: 69px;
+    left: 609px;
+    top: 333px;
+
+    background: #F6F6F6;
+    border-radius: 20px;
+}
+
+.cpf {
+    position: absolute;
+    width: 39px;
+    height: 30px;
+    left: 637px;
+    top: 293px;
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 200;
+    font-size: 20px;
+    line-height: 30px;
+    color: #000000;
+}
+
+#date {
+    position: absolute;
+    width: 682px;
+    height: 69px;
+    left: 609px;
+    top: 461px;
+
+    background: #F6F6F6;
+    border-radius: 20px;
+}
+
+.date {
+    position: absolute;
+    width: 240px;
+    height: 70px;
+    left: 637px;
+    top: 426px;
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 200;
+    font-size: 20px;
+    line-height: 30px;
+    color: #000000;
+}
+
+.t1 {
+    position: absolute;
+    width: 295px;
+    height: 60px;
+    left: 200px;
+    top: 10px;
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 60px;
+    color: #FFFFFF;
+}
+
+.t2 {
+    position: absolute;
+    width: 352px;
+    height: 38px;
+    left: 200px;
+    top: 75px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 37px;
+    color: #FFFFFF;
+}
+
+.qrCode {
+    position: absolute;
+    width: 366px;
+    height: 345px;
+    left: 213px;
+    top: 149px;
+    background: #F6F6F6;
+    border-radius: 20px;
+}
+
+.s1 {
+    position: absolute;
+    width: 189px;
+    height: 30px;
+    left: 294px;
+    top: 485px;
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 30px;
+    color: #FFFFFF;
+}
+
+.s2 {
+    position: absolute;
+    width: 391px;
+    height: 30px;
+    left: 200px;
+    top: 554px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 30px;
+    color: #FFFFFF;
+}
+
+#cadastro {
+    position: absolute;
+    width: 219px;
+    height: 52px;
+    left: 290px;
+    top: 618px;
+    background-color: #2DB3FF;
+    color: white;
+    border: 3px solid #FFFFFF;
+    border-radius: 120px;
+}
+
+#entrar {
+    position: absolute;
+    width: 690px;
+    height: 69px;
+    left: 609px;
+    top: 549px;
+    color: white;
+    background: #2DB3FF;
+    border-radius: 20px;
+}

@@ -3,8 +3,10 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import Register from './components/Register'
+import Login from './components/Login'
 
 ReactDOM.render(
-    <Register></Register>,
+    <Login></Login>,
+    // <Register></Register>,
     document.getElementById('root')
 )
