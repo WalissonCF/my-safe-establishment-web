@@ -6,7 +6,7 @@ import Register from './components/Register'
 import Login from './components/Login'
 
 ReactDOM.render(
-    <Login></Login>,
-    // <Register></Register>,
+    // <Login></Login>,
+    <Register></Register>,
     document.getElementById('root')
 )

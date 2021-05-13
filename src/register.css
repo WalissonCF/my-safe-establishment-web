@@ -24,7 +24,7 @@ p {
     border-radius: 20px;
 }
 
-#date {
+#phoneNumber {
     position: absolute;
     width: 673px;
     height: 69px;
@@ -64,7 +64,7 @@ p {
     line-height: 30px;
 }
 
-.date {
+.phoneNumber {
     position: absolute;
     width: 206px;
     height: 30px;
