@@ -2,83 +2,61 @@ p {
     font-family: 'Poppins', sans-serif;
 }
 
-#name {
-    position: absolute;
-    width: 673px;
+form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 45vh;
+    justify-items: center;
+}
+
+.form-control {
+    width: 80%;
     height: 69px;
-    left: 614px;
-    top: 287px;
-
-    background: #F6F6F6;
-    border-radius: 20px;
+    border-radius: 30px;
 }
 
-#cpf {
-    position: absolute;
-    width: 673px;
-    height: 69px;
-    left: 614px;
-    top: 400px;
-
-    background: #F6F6F6;
-    border-radius: 20px;
+label {
+    padding: 10px;
 }
 
-#phoneNumber {
-    position: absolute;
-    width: 673px;
-    height: 69px;
-    left: 614px;
-    top: 513px;
-
-    background: #F7F7F7;
-    border-radius: 20px;
-    border-color: none;
+.form-group {
+    width: 100%;
 }
 
-.name {
-    position: absolute;
-    width: 62px;
-    height: 30px;
-    left: 637px;
-    top: 257px;
-
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: 200;
-    font-size: 20px;
-    line-height: 30px;
+label, input {
+    margin-left: 10%;
 }
 
-.cpf {
-    position: absolute;
-    width: 39px;
-    height: 30px;
-    left: 637px;
-    top: 362px;
+.btn-outline-danger {
+    margin-top: 3vh;
+    width: 80%;
+    height: 50px;
 
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: 200;
-    font-size: 20px;
-    line-height: 30px;
+    color: var(--main-color);
+    border-color: var(--main-color);
+    border-radius: 30px;
 }
 
-.phoneNumber {
-    position: absolute;
-    width: 206px;
-    height: 30px;
-    left: 637px;
-    top: 483px;
-
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: 200;
-    font-size: 20px;
-    line-height: 30px;
+.btn-outline-danger:hover {
+    background-color: var(--main-color);
 }
 
-.apagar {
+.content-menu-register {
+    margin-top: 1vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.content-menu-register h1, p {
+    position: relative;
+
+    font-family: var(--main-font-family);
+    color: #FFFFFF;
+}
+
+/* .apagar {
     position: absolute;
     width: 666px;
     height: 100%;
@@ -184,4 +162,4 @@ p {
     border: 3px solid #FFFFFF;
     border-radius: 120px;
     color: white;
-}
+} */
