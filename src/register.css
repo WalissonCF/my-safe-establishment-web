@@ -5,7 +5,7 @@ p {
 form {
     display: flex;
     flex-direction: column;
-    margin-top: 45vh;
+    margin-top: 9vh;
     justify-items: center;
 }
 
@@ -49,117 +49,31 @@ label, input {
     flex-direction: column;
 }
 
-.content-menu-register h1, p {
+.content-menu-register h1, h2, p {
     position: relative;
 
     font-family: var(--main-font-family);
     color: #FFFFFF;
 }
 
-/* .apagar {
-    position: absolute;
-    width: 666px;
-    height: 100%;
-    left: -125px;
-    top: 0px;
-
-    background: #2DB3FF;
+.content-menu-register h1 {
+    font-weight: bolder;
 }
 
-.titulo {
-    position: absolute;
-    width: 295px;
-    height: 60px;
-    left: 200px;
-    top: 40px;
-
-    font-style: normal;
-    font-weight: bold;
-    font-size: 40px;
-    line-height: 60px;
-
-    color: #FFFFFF;
-}
-
-.titulo2 {
-    position: absolute;
-    width: 352px;
-    height: 38px;
-    left: 200px;
-    top: 98px;
-
-    font-style: normal;
-    font-weight: bold;
-    font-size: 25px;
-    line-height: 37px;
-
-    color: #FFFFFF;
-}
-
-.sobretitulo {
-    position: absolute;
-    width: 336px;
-    height: 46px;
-    left: 200px;
-    top: 145px;
-
-    font-style: normal;
+.content-menu-register h2 {
     font-weight: 300;
-    font-size: 15px;
-    line-height: 22px;
-
-    color: #FFFFFF;
 }
 
-.sobretitulo2 {
-    position: absolute;
-    width: 349px;
-    height: 90px;
-    left: 200px;
-    top: 259px;
-
-    font-style: normal;
-    font-weight: bold;
-    font-size: 20px;
-    line-height: 30px;
-
-    color: #FFFFFF;
+.content-menu-register p {
+    text-align: center;
 }
 
-.sobretitulo3 {
-    position: absolute;
-    width: 354px;
-    height: 60px;
-    left: 200px;
-    top: 60%;
+.btn-login {
+    margin-top: 1vh;
+    position: relative;
+    width: 200px;
+    height: 40px;
 
-    font-style: normal;
-    font-weight: bold;
-    font-size: 20px;
-    line-height: 30px;
-
-    color: #FFFFFF;
-}
-
-#sign-up {
-    position: absolute;
-    width: 680px;
-    height: 69px;
-    left: 614px;
-    top: 604px;
     color: white;
-    background: #2DB3FF;
-    border-radius: 20px;
+    border-color: white;
 }
-
-#login {
-    position: absolute;
-    width: 219px;
-    height: 52px;
-    left: 280px;
-    top: 80%;
-    background-color: #2DB3FF;
-    border: 3px solid #FFFFFF;
-    border-radius: 120px;
-    color: white;
-} */
