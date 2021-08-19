@@ -2,11 +2,16 @@ p {
     font-family: 'Poppins', sans-serif;
 }
 
+.row>* {
+    padding: 0;
+}
+
 form {
     display: flex;
     flex-direction: column;
-    margin-top: 9vh;
+    margin-top: 3%;
     justify-items: center;
+    margin-block-end: 10%;
 }
 
 .form-control {
@@ -42,29 +47,41 @@ label, input {
 }
 
 .content-menu-register {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    background-color: var(--main-color);
+}
+
+.content-in-text {
     margin-top: 1vh;
+    margin-block-end: 3%;
+
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-.content-menu-register h1, h2, p {
+.content-in-text h1, h2, p {
     position: relative;
 
     font-family: var(--main-font-family);
     color: #FFFFFF;
 }
 
-.content-menu-register h1 {
+.content-in-text h1 {
     font-weight: bolder;
 }
 
-.content-menu-register h2 {
+.content-in-text h2 {
     font-weight: 300;
 }
 
-.content-menu-register p {
+.content-in-text p {
     text-align: center;
 }
 

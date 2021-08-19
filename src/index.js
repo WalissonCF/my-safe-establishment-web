@@ -8,5 +8,6 @@ import AmountOfPeopleUser from './components/AmountOfPeopleUser'
 
 ReactDOM.render(
     <Register></Register>,
+    // <Login></Login>,
     document.getElementById('root')
 )
