@@ -38,23 +38,25 @@ export default class RegisterUser extends React.Component {
 
         return (
             <React.Fragment>
-                <div class="container">
+                <div class="container-fluid">
                     <div class="welcome"></div>
                     <div class="row">
-                        <div class="col">
+                        <div class="col-12">
                             <div class="content-menu-register">
-                                <h1>Bem-vindo ao</h1>
-                                <h2>My safe establishment web</h2>
-                                <p>
-                                Cadastre-se agora para conseguir seu acento seguro <br />
-                                Essa aplicação é destinada a segurança <br />
-                                do ambiente, também para que possa <br />
-                                realizar seus pedidos sem a necessidade <br />
-                                de um atendente. <br /> <br />
-                                Já possuí conta? Acesse ela agora <br />
-                                clicando no botão abaixo
-                                </p>
-                                <button class="btn btn-outline-danger btn-login">ENTRAR</button>
+                                <div class="content-in-text">
+                                    <h1>Bem-vindo ao</h1>
+                                    <h2>My safe establishment web</h2>
+                                    <p>
+                                    Cadastre-se agora para conseguir seu acento seguro <br />
+                                    Essa aplicação é destinada a segurança <br />
+                                    do ambiente, também para que possa <br />
+                                    realizar seus pedidos sem a necessidade <br />
+                                    de um atendente. <br /> <br />
+                                    Já possuí conta? Acesse ela agora <br />
+                                    clicando no botão abaixo
+                                    </p>
+                                    <button class="btn btn-outline-danger btn-login">ENTRAR</button>
+                                </div>
                             </div>
                         </div>
                     </div>
