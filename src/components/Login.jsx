@@ -1,7 +1,8 @@
-import React from 'react'
+import React from 'react';
 
-import '../login.css'
+import '../login.css';
 import axios from 'axios';
+import { Route, Link } from 'react-router-dom';
 
 const USER_LOGIN_URL = 'http://localhost:8080/public/customer/register';
 export default class LoginUser extends React.Component {
@@ -28,42 +29,52 @@ export default class LoginUser extends React.Component {
                 console.log(res.data);
             });
     }
+    
+      handleClick() {
+        this.context.router.push('/register');
+      }
+    
 
     render() {
         const { cpf, phoneNumber } = this.state;
-    
+
         return (
             <React.Fragment>
-                <div class="container">
-                    <div class="welcome"></div>
+                <div class="container-fluid">
                     <div class="row">
-                        <div class="col">
-                            <div class="content-menu">
-                                <h1 class="title-1">Bem-vindo ao</h1>
-                                <h1 class="title-2">My safe establishment web</h1>
-                                <p class="sub-title-1">Cadastre-se agora para conseguir seu acento seguro</p>
-                                <p class="sub-title-2">Essa aplicação é destinada a segurança <br />
-                                do ambiente, também para que possa <br />
-                                realizar seus pedidos sem a necessidade <br />
-                                de um garço.</p>
-                                <p class="register-title">Já possuí conta? Acesse ela agora <br />
-                                clicando no botão abaixo</p>
-                                <button class="button-register" id="register">CADASTRE-SE</button>
+                        <div class="col-12">
+                            <div class="content-menu-register">
+                                <div class="content-in-text">
+                                    <h1>Bem-vindo ao</h1>
+                                    <h2>My safe establishment web</h2>
+                                    <p>
+                                    Cadastre-se agora para conseguir seu acento seguro <br />
+                                    Essa aplicação é destinada a segurança <br />
+                                    do ambiente, também para que possa <br />
+                                    realizar seus pedidos sem a necessidade <br />
+                                    de um atendente. <br /> <br />
+                                    Não possuí uma conta? Cadastre-se agora <br />
+                                    clicando no botão abaixo
+                                    </p>
+                                    <Link to="/register">
+                                        <button class="btn btn-outline-danger btn-login">CADASTRAR-SE</button>
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <form action="#">
+                    <form onSubmit={this.onSubmit}>
                         <div class="form-group">
-                            <label for="cpf-login" class="cpf-login">CPF:</label>
-                            <input id="cpfLogin" class="form-control" type="text" placeholder="000.000.000-00"
-                            name="cpf" value={cpf} onChange={this.onChange} required></input>
+                            <label for="name">CPF:</label>
+                            <input type="text" class="form-control" id="cpf-login" placeholder="000.000.000-00"
+                            name="cpf" value={cpf} onChange={this.onChange} required/>
                         </div>
                         <div class="form-group">
-                            <label for="phone-number" class="phone-number">Digite seu celular:</label>
-                            <input id="phoneNumber" class="form-control" type="text" placeholder="(00) 0 0000-0000"
-                            name="phoneNumber" value={phoneNumber} onChange={this.onChange} required></input>
+                            <label for="phone-number-login">Digite seu celular:</label>
+                            <input type="text" class="form-control" id="phone-number-login" placeholder="(00) 0000-0000" 
+                            name="phoneNumber" value={phoneNumber} onChange={this.onChange} required />
                         </div>
-                        <button type="submit" id="entrar">ENTRAR</button>
+                        <button type="submit" class="btn btn-outline-danger">ENTRAR</button>
                     </form>
                 </div>
             </React.Fragment>
