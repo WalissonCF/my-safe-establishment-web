@@ -1,8 +1,9 @@
 import React from 'react'
 
-import '../register.css'
+import '../register.css';
 //import UserService from '../services/UserService'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const USER_REGISTER_URL = 'https://my-safe-establishment.herokuapp.com/public/customer/register';
 export default class RegisterUser extends React.Component {
@@ -39,7 +40,7 @@ export default class RegisterUser extends React.Component {
         return (
             <React.Fragment>
                 <div class="container-fluid">
-                    <div class="welcome"></div>
+                    {/* <div class="welcome"></div> */}
                     <div class="row">
                         <div class="col-12">
                             <div class="content-menu-register">
@@ -55,7 +56,9 @@ export default class RegisterUser extends React.Component {
                                     Já possuí conta? Acesse ela agora <br />
                                     clicando no botão abaixo
                                     </p>
-                                    <button class="btn btn-outline-danger btn-login">ENTRAR</button>
+                                    <Link to="/">
+                                        <button class="btn btn-outline-danger btn-login">ENTRAR</button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
