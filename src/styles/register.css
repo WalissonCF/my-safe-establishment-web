@@ -11,7 +11,11 @@ form {
     flex-direction: column;
     margin-top: 3%;
     justify-items: center;
-    margin-block-end: 10%;
+    margin-block-end: 3%;
+}
+
+form h6 {
+    margin-top: 3%;
 }
 
 .form-control {
@@ -93,4 +97,13 @@ label, input {
 
     color: white;
     border-color: white;
+}
+
+hr {
+    margin-block-end: 2%;
+}
+
+.responsible {
+    text-align: center;
+    margin-block-end: 2%;
 }
