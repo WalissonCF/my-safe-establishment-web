@@ -11,7 +11,7 @@ form {
     flex-direction: column;
     margin-top: 3%;
     justify-items: center;
-    margin-block-end: 3%;
+    margin-block-end: 6%;
 }
 
 form h6 {
@@ -100,10 +100,10 @@ label, input {
 }
 
 hr {
-    margin-block-end: 2%;
+    margin-block-end: 4%;
 }
 
 .responsible {
     text-align: center;
-    margin-block-end: 2%;
+    margin-block-end: 4%;
 }

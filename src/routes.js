@@ -12,6 +12,7 @@ export default function MainRoutes() {
             <Route path="/" element={ <LoginUser /> } />
             <Route path="/register" element={ <RegisterUser /> } />
 
+            <Route path="/login-establishment" element= { <h1>VAI EXPLOOOOODIR!!!</h1> } />
             <Route path="/register-establishment" element={ <RegisterEstablishment />} />
         </Routes>
     );
