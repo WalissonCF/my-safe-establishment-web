@@ -1,7 +1,8 @@
 import React from 'react';
 
-import LoginUser from './components/Login';
-import RegisterUser from './components/RegisterUser';
+import LoginUser from './components/user/Login';
+import RegisterUser from './components/user/RegisterUser';
+import RegisterEstablishment from './components/establishment/RegisterEstablishment';
 
 import { Route, Routes } from 'react-router-dom';
 
@@ -10,6 +11,8 @@ export default function MainRoutes() {
         <Routes>
             <Route path="/" element={ <LoginUser /> } />
             <Route path="/register" element={ <RegisterUser /> } />
+
+            <Route path="/register-establishment" element={ <RegisterEstablishment />} />
         </Routes>
     );
 }

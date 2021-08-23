@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../login.css';
+import '../../styles/login.css';
 import axios from 'axios';
 import { Route, Link } from 'react-router-dom';
 
@@ -29,14 +29,10 @@ export default class LoginUser extends React.Component {
                 console.log(res.data);
             });
     }
-    
-      handleClick() {
-        this.context.router.push('/register');
-      }
-    
-
+     
     render() {
         const { cpf, phoneNumber } = this.state;
+        const linkRegisterEstablishment = "/register-establishment";
 
         return (
             <React.Fragment>
@@ -65,7 +61,7 @@ export default class LoginUser extends React.Component {
                     </div>
                     <form onSubmit={this.onSubmit}>
                         <div class="form-group">
-                            <label for="name">CPF:</label>
+                            <label for="cpf">CPF:</label>
                             <input type="text" class="form-control" id="cpf-login" placeholder="000.000.000-00"
                             name="cpf" value={cpf} onChange={this.onChange} required/>
                         </div>
@@ -75,7 +71,10 @@ export default class LoginUser extends React.Component {
                             name="phoneNumber" value={phoneNumber} onChange={this.onChange} required />
                         </div>
                         <button type="submit" class="btn btn-outline-danger">ENTRAR</button>
+                        <h6>Cadastre-se sua <Link to={linkRegisterEstablishment}>empresa</Link>!</h6>
                     </form>
+                    <hr />
+                    <h6 class="responsible">Desenvolvido por alunos da Universidade Paulista(UNIP) - 2021</h6>
                 </div>
             </React.Fragment>
         )
