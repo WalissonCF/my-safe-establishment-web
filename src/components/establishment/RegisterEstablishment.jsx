@@ -3,33 +3,57 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-const USER_LOGIN_URL = 'http://localhost:8080/public/customer/register';
+const USER_LOGIN_URL = 'http://localhost:8080/public/owner/register';
 export default class LoginEstablishment extends React.Component {
     constructor() {
         super();
 
         this.state = {
-            cpf: '',
+            companyName: '',
+            tradingName: '',
+            cnpj: '',
+            typeEstablishment: '',
             phoneNumber: '',
+            publicPlace: '',
+            number: '',
+            district: '',
+            city: '',
+            name: '',
+            cpf: '',
+            email: '',
+            password: '',
         };
     }
 
     onChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
+        console.log({ [e.target.name]: e.target.value });
     }
 
     onSubmit = (e) => {
         e.preventDefault();
-        const { cpf, phoneNumber} = this.state;
+        const { companyName, tradingName, cnpj, typeEstablishment, phoneNumber, 
+            publicPlace, number, district, city, name, cpf, email, password } = this.state;
 
-        axios.post(USER_LOGIN_URL, { cpf, phoneNumber })
+        axios.post(USER_LOGIN_URL, { companyName, tradingName, cnpj, typeEstablishment, 
+            phoneNumber, publicPlace, number, district, city, name, cpf, email, password })
             .then((res) => {
                 console.log(res);
                 console.log(res.data);
             });
     }
 
+    onBlurCEP(e) {
+
+    }
+
+    onClickNextOne = (e) => {
+        
+    }
+
     render() {
+        const { companyName, tradingName, cnpj, typeEstablishment, phoneNumber, 
+            publicPlace, number, district, city, name, cpf, email, password } = this.state;
         const linkLoginEstablishment = "/login-establishment";
 
         return (
@@ -59,25 +83,76 @@ export default class LoginEstablishment extends React.Component {
                     <form onSubmit={this.onSubmit}>
                         <div class="form-group">
                             <label for="corporate-name">Razão social:</label>
-                            <input type="text" class="form-control" id="corporate-name" required />
+                            <input type="text" class="form-control" id="corporate-name" 
+                            name="companyName" value={companyName} onChange={this.onChange} required />
                         </div>
                         <div class="form-group">
                             <label for="fantasy-name">Nome fantasia:</label>
-                            <input type="text" class="form-control" id="fantasy-name" required />
+                            <input type="text" class="form-control" id="fantasy-name"
+                            name="tradingName" value={tradingName} onChange={this.onChange} required />
                         </div>
                         <div class="form-group">
                             <label for="cpnj">CNPJ:</label>
-                            <input type="text" class="form-control" id="cpnj" placeholder="00.000.000/0000-00" required />
+                            <input type="text" class="form-control" id="cpnj" placeholder="00.000.000/0000-00"
+                            name="cnpj" value={cnpj} onChange={this.onChange} required />
                         </div>
                         <div class="form-group">
                             <label for="type-of-establishment">Tipo de estabelecimento:</label>
-                            <input type="text" class="form-control" id="type-of-establishment" required />
+                            <input type="text" class="form-control" id="type-of-establishment"
+                            name="typeEstablishment" value={typeEstablishment} onChange={this.onChange} required />
                         </div>
                         <div class="form-group">
                             <label for="phone-number-register-establishment">Número de telefone:</label>
-                            <input type="text" class="form-control" id="phone-number-register-establishment" placeholder="(00) 00000-0000" required />
+                            <input type="text" class="form-control" id="phone-number-register-establishment" placeholder="(00) 00000-0000"
+                            name="phoneNumber" value={phoneNumber} onChange={this.onChange} required />
                         </div>
-                        <button type="submit" class="btn btn-outline-danger">PROXIMO</button>
+                        <div class="form-group">
+                            <label for="cep">CEP:</label>
+                            <input type="text" class="form-control" id="cep" placeholder="00000-000"
+                            onBlur={this.onBlurCEP} required />
+                        </div>
+                        <div class="form-group">
+                            <label for="number">Número:</label>
+                            <input type="text" class="form-control" id="number"
+                            name="number" value={number} onChange={this.onChange} required />
+                        </div>
+                        <div class="form-group">
+                            <label for="public-place">Logradouro:</label>
+                            <input type="text" class="form-control" id="public-place"
+                            name="publicPlace" value={publicPlace} onChange={this.onChange} required disabled />
+                        </div>
+                        <div class="form-group">
+                            <label for="district">Bairro:</label>
+                            <input type="text" class="form-control" id="district"
+                            name="district" value={district} onChange={this.onChange} required disabled />
+                        </div>
+                        <div class="form-group">
+                            <label for="city">Cidade:</label>
+                            <input type="text" class="form-control" id="city"
+                            name="city" value={city} onChange={this.onChange} required disabled />
+                        </div>
+                        <div class="form-group">
+                            <label for="name-register-establishment">Nome:</label>
+                            <input type="text" class="form-control" id="name-register-establishment"
+                            name="name" value={name} onChange={this.onChange} required />
+                        </div>
+                        <div class="form-group">
+                            <label for="cpf-register-establishment">CPF:</label>
+                            <input type="text" class="form-control" id="cpf-register-establishment"
+                            name="cpf" value={cpf} onChange={this.onChange} required />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail:</label>
+                            <input type="email" class="form-control" id="email"
+                            name="email" value={email} onChange={this.onChange} required />
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Senha:</label>
+                            <input type="password" class="form-control" id="password"
+                            name="password" value={password} onChange={this.onChange} required />
+                        </div>
+
+                        <button type="submit" class="btn btn-outline-danger" onClick={this.onClickNextOne}>PROXIMO</button>
                     </form>
                     <hr />
                     <h6 class="responsible">Desenvolvido por alunos da Universidade Paulista(UNIP) - 2021</h6>
