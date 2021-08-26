@@ -46,7 +46,7 @@ export default class LoginEstablishment extends React.Component {
     onBlurCEP(e) {
         const { value } = e.target;
         const cep = value?.replace(/[^0-9]/g, '');
-        if(cep?.length !== 8) {
+        if (cep?.length !== 8) {
             return;
         }
 
@@ -56,6 +56,17 @@ export default class LoginEstablishment extends React.Component {
                 document.getElementById('district').value = res.data.bairro;
                 document.getElementById('city').value = res.data.uf;
             });
+    }
+
+    onInputCNPJ(e) {
+        // if (e.target.value.length <= 11) {
+        //     document.getElementById('cpnj').value = this.maskCNPJ(e.target.value);
+        // }
+
+        console.log(e.target.value);
+
+        
+        // return e.target.value.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/g,"\$1.\$2.\$3\/\$4\-\$5");
     }
 
     onClickNextOne = (e) => {
@@ -105,7 +116,8 @@ export default class LoginEstablishment extends React.Component {
                         <div class="form-group">
                             <label for="cpnj">CNPJ:</label>
                             <input type="text" class="form-control" id="cpnj" placeholder="00.000.000/0000-00"
-                            name="cnpj" value={cnpj} onChange={this.onChange} required />
+                            name="cnpj" value={cnpj} onChange={this.onChange} onInput={this.onInputCNPJ} 
+                            maxlength="14" required />
                         </div>
                         <div class="form-group">
                             <label for="type-of-establishment">Tipo de estabelecimento:</label>
@@ -115,12 +127,13 @@ export default class LoginEstablishment extends React.Component {
                         <div class="form-group">
                             <label for="phone-number-register-establishment">Número de telefone:</label>
                             <input type="text" class="form-control" id="phone-number-register-establishment" placeholder="(00) 00000-0000"
-                            name="phoneNumber" value={phoneNumber} onChange={this.onChange} required />
+                            name="phoneNumber" value={phoneNumber} onChange={this.onChange}
+                            maxlength="11" required />
                         </div>
                         <div class="form-group">
                             <label for="cep">CEP:</label>
                             <input type="text" class="form-control" id="cep" placeholder="00000-000"
-                            onBlur={this.onBlurCEP} required />
+                            onBlur={this.onBlurCEP} maxlength="8" required />
                         </div>
                         <div class="form-group">
                             <label for="number">Número:</label>
@@ -150,7 +163,8 @@ export default class LoginEstablishment extends React.Component {
                         <div class="form-group">
                             <label for="cpf-register-establishment">CPF:</label>
                             <input type="text" class="form-control" id="cpf-register-establishment"
-                            name="cpf" value={cpf} onChange={this.onChange} required />
+                            name="cpf" value={cpf} onChange={this.onChange} maxlength="11"
+                            placeholder="000.000.000-00" required />
                         </div>
                         <div class="form-group">
                             <label for="email">E-mail:</label>

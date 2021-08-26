@@ -4,7 +4,7 @@ import '../../styles/login.css';
 import axios from 'axios';
 import { Route, Link } from 'react-router-dom';
 
-const USER_LOGIN_URL = 'http://localhost:8080/public/customer/register';
+const USER_LOGIN_URL = 'https://my-safe-establishment.herokuapp.com/public/customer/login';
 export default class LoginUser extends React.Component {
     constructor() {
         super();
@@ -63,12 +63,13 @@ export default class LoginUser extends React.Component {
                         <div class="form-group">
                             <label for="cpf">CPF:</label>
                             <input type="text" class="form-control" id="cpf-login" placeholder="000.000.000-00"
-                            name="cpf" value={cpf} onChange={this.onChange} required/>
+                            name="cpf" value={cpf} onChange={this.onChange} maxlength="11" required/>
                         </div>
                         <div class="form-group">
                             <label for="phone-number-login">Digite seu celular:</label>
                             <input type="text" class="form-control" id="phone-number-login" placeholder="(00) 0000-0000" 
-                            name="phoneNumber" value={phoneNumber} onChange={this.onChange} required />
+                            name="phoneNumber" value={phoneNumber} onChange={this.onChange} 
+                            maxlength="11"required />
                         </div>
                         <button type="submit" class="btn btn-outline-danger">ENTRAR</button>
                         <h6>Cadastre-se sua <Link to={linkRegisterEstablishment}>empresa</Link>!</h6>
