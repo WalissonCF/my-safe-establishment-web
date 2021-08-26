@@ -45,22 +45,17 @@ export default class LoginEstablishment extends React.Component {
 
     onBlurCEP(e) {
         const { value } = e.target;
-        if(value?.length !== 8) {
+        const cep = value?.replace(/[^0-9]/g, '');
+        if(cep?.length !== 8) {
             return;
         }
 
-        axios.post(`http://viacep.com.br/ws/${value}/json/`)
-            .then((res) => res.json())
-            .then((data) => console.log(data));
-
-        // axios({
-        //     method: 'POST',
-        //     url: `http://viacep.com.br/ws/${value}/json/`,
-        //     headers: {
-        //     'Access-Control-Allow-Origin': 'http://localhost:3000',
-        //     'Content-type': 'application/json',
-        //     }
-        // })
+        axios.get(`http://viacep.com.br/ws/${cep}/json/`)
+            .then((res) => {
+                document.getElementById('public-place').value = res.data.logradouro;
+                document.getElementById('district').value = res.data.bairro;
+                document.getElementById('city').value = res.data.uf;
+            });
     }
 
     onClickNextOne = (e) => {
