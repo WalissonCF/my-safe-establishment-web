@@ -36,7 +36,7 @@ export default class LoginEstablishment extends React.Component {
             publicPlace, number, district, city, name, cpf, email, password } = this.state;
 
         axios.post(USER_LOGIN_URL, { companyName, tradingName, cnpj, typeEstablishment, 
-            phoneNumber, publicPlace, number, district, city, name, cpf, email, password })
+            phoneNumber, publicPlace, number, district, city, name, cpf, email, password, })
             .then((res) => {
                 console.log(res);
                 console.log(res.data);
@@ -44,7 +44,23 @@ export default class LoginEstablishment extends React.Component {
     }
 
     onBlurCEP(e) {
+        const { value } = e.target;
+        if(value?.length !== 8) {
+            return;
+        }
 
+        axios.post(`http://viacep.com.br/ws/${value}/json/`)
+            .then((res) => res.json())
+            .then((data) => console.log(data));
+
+        // axios({
+        //     method: 'POST',
+        //     url: `http://viacep.com.br/ws/${value}/json/`,
+        //     headers: {
+        //     'Access-Control-Allow-Origin': 'http://localhost:3000',
+        //     'Content-type': 'application/json',
+        //     }
+        // })
     }
 
     onClickNextOne = (e) => {
