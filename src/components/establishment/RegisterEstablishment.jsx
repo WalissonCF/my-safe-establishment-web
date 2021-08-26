@@ -50,7 +50,7 @@ export default class LoginEstablishment extends React.Component {
             return;
         }
 
-        axios.get(`http://viacep.com.br/ws/${cep}/json/`)
+        axios.get(`https://viacep.com.br/ws/${cep}/json/`)
             .then((res) => {
                 document.getElementById('public-place').value = res.data.logradouro;
                 document.getElementById('district').value = res.data.bairro;
