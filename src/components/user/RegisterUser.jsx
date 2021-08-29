@@ -26,6 +26,9 @@ export default class RegisterUser extends React.Component {
         e.preventDefault();
         const { name, phoneNumber, cpf } = this.state;
 
+        console.log(name);
+        console.log(cpf);
+
         axios.post(USER_REGISTER_URL, { name, phoneNumber, cpf })
             .then((res) => {
                 console.log(res);
@@ -68,17 +71,17 @@ export default class RegisterUser extends React.Component {
                         <div class="form-group">
                             <label for="name">Nome:</label>
                             <input type="text" class="form-control" id="name-register" placeholder="Seu nome"
-                            name="name" value={name} onChange={this.onChange} required />
+                            name="name" value={name} value={this.state.value} onChange={this.onChange} required />
                         </div>
                         <div class="form-group">
                             <label for="cpf-register">CPF:</label>
                             <input type="text" class="form-control cpf-mask" id="cpf-register" placeholder="000.000.000-00"
-                            name="cpf" value={cpf} onChange={this.onChange} maxlength="11" required pattern="\d*" />
+                            name="cpf" value={cpf} value={this.state.value} onChange={this.onChange} maxlength="11" required pattern="\d*" />
                         </div>
                         <div class="form-group">
                             <label for="phone-number-register">Digite seu celular:</label>
                             <input type="text" class="form-control" id="phone-number-register" placeholder="(00) 0000-0000"
-                            name="phoneNumber" value={phoneNumber} onChange={this.onChange} maxlength="11" 
+                            name="phoneNumber" value={phoneNumber} value={this.state.value} onChange={this.onChange} maxlength="11" 
                             required pattern="\d*" />
                         </div>
                         <button type="submit" class="btn btn-outline-danger">CADASTRAR</button>
