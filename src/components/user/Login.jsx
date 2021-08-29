@@ -27,6 +27,8 @@ export default class LoginUser extends React.Component {
             .then((res) => {
                 console.log(res);
                 console.log(res.data);
+                console.log(res.status);
+
             });
     }
      
@@ -63,13 +65,13 @@ export default class LoginUser extends React.Component {
                         <div class="form-group">
                             <label for="cpf">CPF:</label>
                             <input type="text" class="form-control" id="cpf-login" placeholder="000.000.000-00"
-                            name="cpf" value={cpf} onChange={this.onChange} maxlength="11" required/>
+                            name="cpf" value={cpf} onChange={this.onChange} maxlength="11" required pattern="\d*" />
                         </div>
                         <div class="form-group">
                             <label for="phone-number-login">Digite seu celular:</label>
                             <input type="text" class="form-control" id="phone-number-login" placeholder="(00) 0000-0000" 
                             name="phoneNumber" value={phoneNumber} onChange={this.onChange} 
-                            maxlength="11"required />
+                            maxlength="11"required pattern="\d*" />
                         </div>
                         <button type="submit" class="btn btn-outline-danger">ENTRAR</button>
                         <h6>Cadastre-se sua <Link to={linkRegisterEstablishment}>empresa</Link>!</h6>

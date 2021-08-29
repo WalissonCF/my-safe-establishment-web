@@ -73,12 +73,13 @@ export default class RegisterUser extends React.Component {
                         <div class="form-group">
                             <label for="cpf-register">CPF:</label>
                             <input type="text" class="form-control cpf-mask" id="cpf-register" placeholder="000.000.000-00"
-                            name="cpf" value={cpf} onChange={this.onChange} maxlength="11" required />
+                            name="cpf" value={cpf} onChange={this.onChange} maxlength="11" required pattern="\d*" />
                         </div>
                         <div class="form-group">
                             <label for="phone-number-register">Digite seu celular:</label>
                             <input type="text" class="form-control" id="phone-number-register" placeholder="(00) 0000-0000"
-                            name="phoneNumber" value={phoneNumber} onChange={this.onChange} maxlength="11" required />
+                            name="phoneNumber" value={phoneNumber} onChange={this.onChange} maxlength="11" 
+                            required pattern="\d*" />
                         </div>
                         <button type="submit" class="btn btn-outline-danger">CADASTRAR</button>
                     </form>
