@@ -35,12 +35,10 @@ export default class LoginEstablishment extends React.Component {
         const { companyName, tradingName, cnpj, typeEstablishment, phoneNumber, 
             publicPlace, number, district, city, name, cpf, email, password } = this.state;
 
-        console.log(companyName, tradingName, cnpj, typeEstablishment, phoneNumber, 
-            publicPlace, number, district, city, name, cpf, email, password);
-
         axios.post(USER_LOGIN_URL, { companyName, tradingName, cnpj, typeEstablishment, 
             phoneNumber, publicPlace, number, district, city, name, cpf, email, password, })
             .then((res) => {
+                console.log(res);
             });
     }
 
@@ -69,9 +67,11 @@ export default class LoginEstablishment extends React.Component {
         if (document.getElementById('next-register').offsetParent === null) {
             document.getElementById('first-register').hidden="true";
             document.getElementById('next-register').removeAttribute('hidden');
+            document.getElementById('register-establishment').removeAttribute('hidden');
         } else {
             document.getElementById('first-register').removeAttribute('hidden');
             document.getElementById('next-register').hidden="true";
+            document.getElementById('register-establishment').hidden="true";
         }
     }
 
@@ -182,9 +182,9 @@ export default class LoginEstablishment extends React.Component {
                                 <input type="password" class="form-control" id="password"
                                 name="password" value={password} value={this.state.value} onChange={this.onChange} required />
                             </div>
-                            <button class="btn btn-outline-danger" id="register-establishment" onClick={this.onClickHidden}>VOLTAR</button>
+                            <button class="btn btn-outline-danger" id="back" onClick={this.onClickHidden}>VOLTAR</button>
                         </div>
-                        <button type="submit" class="btn btn-outline-danger" onClick={this.onClickNextOne}>CADASTRAR</button>
+                        <button type="submit" class="btn btn-outline-danger" id="register-establishment" onClick={this.onClickNextOne} hidden >CADASTRAR</button>
                     </form>
                     <hr />
                     <h6 class="responsible">Desenvolvido por alunos da Universidade Paulista(UNIP) - 2021</h6>
