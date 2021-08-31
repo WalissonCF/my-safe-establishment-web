@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-const USER_LOGIN_URL = 'http://localhost:8080/public/owner/register';
+const ESTABLISHMENT_REGISTER_URL = 'https://my-safe-establishment.herokuapp.com/public/owner/register';
 export default class LoginEstablishment extends React.Component {
     constructor() {
         super();
@@ -19,6 +19,7 @@ export default class LoginEstablishment extends React.Component {
             district: '',
             city: '',
             name: '',
+            phoneNumber: '',
             cpf: '',
             email: '',
             password: '',
@@ -35,8 +36,8 @@ export default class LoginEstablishment extends React.Component {
         const { companyName, tradingName, cnpj, typeEstablishment, phoneNumber, 
             publicPlace, number, district, city, name, cpf, email, password } = this.state;
 
-        axios.post(USER_LOGIN_URL, { companyName, tradingName, cnpj, typeEstablishment, 
-            phoneNumber, publicPlace, number, district, city, name, cpf, email, password, })
+        axios.post(ESTABLISHMENT_REGISTER_URL, { companyName, tradingName, cnpj, typeEstablishment,
+            phoneNumber, publicPlace, number, district, city, name, cpf, email, password })
             .then((res) => {
                 console.log(res);
             });
@@ -171,6 +172,12 @@ export default class LoginEstablishment extends React.Component {
                                 <input type="text" class="form-control" id="cpf-register-establishment"
                                 name="cpf" value={cpf} value={this.state.value} onChange={this.onChange} maxlength="11"
                                 placeholder="000.000.000-00" required pattern="\d*" />
+                            </div>
+                            <div class="form-group">
+                                <label for="phone-number-register-establishment-2">Número de telefone:</label>
+                                <input type="text" class="form-control" id="phone-number-register-establishment-2" placeholder="(00) 00000-0000"
+                                name="phoneNumber" value={phoneNumber} value={this.state.value} onChange={this.onChange}
+                                maxlength="11" required pattern="\d*" />
                             </div>
                             <div class="form-group">
                                 <label for="email">E-mail:</label>
