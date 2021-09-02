@@ -5,6 +5,8 @@ import RegisterUser from './components/user/RegisterUser';
 import LoginEstablishment from './components/establishment/LoginEstablishment';
 import RegisterEstablishment from './components/establishment/RegisterEstablishment';
 
+import StoreProvider from './components/Store/Provider';
+
 import { Route, Routes } from 'react-router-dom';
 
 export default function MainRoutes() {
