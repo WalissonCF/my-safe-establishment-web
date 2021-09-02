@@ -1,7 +1,8 @@
 import React from 'react';
 
 import axios from 'axios';
-import { Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import authService from '../../auth';
 
 const ESTABLISHMENT_LOGIN_URL = 'https://my-safe-establishment.herokuapp.com/public/owner/login'
 export default class LoginEstablishment extends React.Component {
@@ -27,6 +28,12 @@ export default class LoginEstablishment extends React.Component {
                 console.log(res);
                 console.log(res.data);
                 console.log(res.status);
+                if (res.status === 200) {
+                    authService.setLoggedUser(res.data);
+                    window.location = "/";
+                } else {
+                    window.location = "/";
+                }
             });
     }
 

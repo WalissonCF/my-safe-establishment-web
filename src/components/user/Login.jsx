@@ -2,7 +2,8 @@ import React from 'react';
 
 import '../../styles/login.css';
 import axios from 'axios';
-import { Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import authService from '../../auth';
 
 const USER_LOGIN_URL = 'https://my-safe-establishment.herokuapp.com/public/customer/login';
 export default class LoginUser extends React.Component {
@@ -17,18 +18,25 @@ export default class LoginUser extends React.Component {
 
     onChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
+        console.log({ [e.target.name]: e.target.value });
     }
 
     onSubmit = (e) => {
         e.preventDefault();
         const { cpf, phoneNumber} = this.state;
 
+        console.log("Batendo na api")
+
         axios.post(USER_LOGIN_URL, { cpf, phoneNumber })
             .then((res) => {
                 console.log(res);
-                console.log(res.data);
                 console.log(res.status);
-
+                if (res.status === 200) {
+                    authService.setLoggedUser(res.data);
+                    window.location = "/";
+                } else {
+                    window.location = "/";
+                }
             });
     }
      
