@@ -58,12 +58,10 @@ export default class ProductRegistration extends React.Component {
                                 class="form-control-file"
                                 onChange={this.imageHandler}
                                 accept="image/*" />
-                                <label htmlFor="upload-image" >
-                                    <i className="material-icons">add_box</i>
+                                <label class="label-help">Clique no botão abaixo para <br /> adicionar uma imagem</label>
+                                <label class="upload-image" htmlFor="upload-image" >
+                                    <i id="image" className="material-icons">add_box</i>
                                 </label>
-                                {/* <canvas id="image-register"></canvas>
-                                <span>Teste</span>
-                                <input type="file" class="form-control-file" id="file-image-product" accept="image/png, image/jpeg" /> */}
                             </div>
                         </div>
                     </form>
