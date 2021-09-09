@@ -63,6 +63,19 @@ export default class ProductRegistration extends React.Component {
                                     <i id="image" className="material-icons">add_box</i>
                                 </label>
                             </div>
+                            <div class="form-group"> 
+                                <label for="corporate-name">Nome do produto:</label>
+                                <input type="text" class="form-control" id="corporate-name" />
+                            </div>
+                            <div class="form-group"> 
+                                <label for="corporate-name">Valor:</label>
+                                <input type="text" class="form-control" id="corporate-name" 
+                                placeholder="R$" />
+                            </div>
+                            <div class="form-group"> 
+                                <label for="corporate-name">Ingredientes:</label>
+                                <input type="text" class="form-control" id="ingredients" />
+                            </div>
                         </div>
                     </form>
                 </div>
