@@ -18,18 +18,23 @@ export default class AmountOfPeopleUser extends React.Component {
 
     render() {
         const { quantityCustomer } = this.state;
+        const nameUser = localStorage.getItem('cpf');
 
         return (
             <React.Fragment>
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
+                            <div class="content-in-text">
+                                <h3>My safe establishment web</h3>
+                            </div>
                         </div>
                     </div>
                     <form onSubmit={this.onSubmit}>
                         <div class="form-group" id="registration-of-the-number-of-people">
                             <div class="form-group">
-                                <label for="quantity-customer" class="quantity-customer">Mesa para quando? <br />Não esqueça de incluir você!</label>
+                                <h3>Bem vindo, <br /> {nameUser}</h3>
+                                <label for="quantity-customer" class="quantity-customer">Mesa para quantos? <br />Não esqueça de incluir você!</label>
                                 <input type="text" 
                                 class="form-control"
                                 id="quantity-customer"

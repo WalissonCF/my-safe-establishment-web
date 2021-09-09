@@ -6,6 +6,7 @@ import AmountOfPeopleUser from './components/user/AmountOfPeopleUser';
 
 import LoginEstablishment from './components/establishment/LoginEstablishment';
 import RegisterEstablishment from './components/establishment/RegisterEstablishment';
+import ProductRegistration from './components/establishment/ProductRegistration';
 
 import Auth from './auth';
 
@@ -22,6 +23,7 @@ export default function MainRoutes() {
 
             <Route path="/login-establishment" element= { <LoginEstablishment /> } />
             <Route path="/register-establishment" element={ <RegisterEstablishment />} />
+            <Route path="/product-registration" element={ <ProductRegistration /> } />
         </Routes>
     );
 }

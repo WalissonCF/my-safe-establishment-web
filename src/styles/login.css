@@ -1,6 +1,7 @@
 :root {
     --main-color: #FF686B;
     --main-font-family: Poppins;
+    --main-color-canvas: #ced4da;
 }
 
 .welcome {
