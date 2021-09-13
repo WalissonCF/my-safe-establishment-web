@@ -4,6 +4,7 @@ import '../../styles/register.css';
 //import UserService from '../services/UserService'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import userService from '../../services/UserService';
 
 const USER_REGISTER_URL = 'https://my-safe-establishment.herokuapp.com/public/customer/register';
 export default class RegisterUser extends React.Component {
@@ -25,16 +26,7 @@ export default class RegisterUser extends React.Component {
     onSubmit = (e) => {
         e.preventDefault();
         const { name, phoneNumber, cpf } = this.state;
-
-        console.log(name);
-        console.log(cpf);
-
-        axios.post(USER_REGISTER_URL, { name, phoneNumber, cpf })
-            .then((res) => {
-                console.log(res);
-                console.log(res.data);
-            });
-        console.log("to aqui véi");
+        userService.requestRegister(USER_REGISTER_URL, name, phoneNumber, cpf);
     }
 
     render() {
