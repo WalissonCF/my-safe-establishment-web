@@ -21,7 +21,9 @@ export default function MainRoutes() {
             {/* <Route path="/amount-of-people-user" element= { <AmountOfPeopleUser /> } /> */}
 
             {Auth.privateRoutes("/amount-of-people-user", <AmountOfPeopleUser />)}
-            <Route path="/product-list" element={ <ProductList /> } />
+            {Auth.privateRoutes("/product-list", <ProductList />)}
+
+            {/* <Route path="/product-list" element={ <ProductList /> } /> */}
 
             <Route path="/login-establishment" element={ <LoginEstablishment /> } />
             <Route path="/register-establishment" element={ <RegisterEstablishment />} />

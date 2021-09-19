@@ -1,6 +1,7 @@
 import React from 'react';
 
 import '../../styles/amountOfPeopleUser.css';
+import { Link } from 'react-router-dom';
 
 export default class AmountOfPeopleUser extends React.Component {
     constructor() {
@@ -18,7 +19,8 @@ export default class AmountOfPeopleUser extends React.Component {
 
     render() {
         const { quantityCustomer } = this.state;
-        const nameUser = localStorage.getItem('cpf');
+        const user = localStorage.getItem('cpf');
+        const productList = "/product-list";
 
         return (
             <React.Fragment>
@@ -33,18 +35,21 @@ export default class AmountOfPeopleUser extends React.Component {
                     <form onSubmit={this.onSubmit}>
                         <div class="form-group" id="registration-of-the-number-of-people">
                             <div class="form-group">
-                                <h3>Bem vindo, <br /> {nameUser}</h3>
+                                <h3>Bem vindo, <br /> {user}</h3>
                                 <label for="quantity-customer" class="quantity-customer">Mesa para quantos? <br />Não esqueça de incluir você!</label>
                                 <input type="text" 
                                 class="form-control"
                                 id="quantity-customer"
+                                name="quantityCustomer"
                                 value={quantityCustomer}
                                 value={this.state.value}
                                 onChange={this.onChange}
                                 required
                                 pattern="\d*" />
                             </div>
-                            <button class="btn btn-outline-danger btn-quantity-customer">CONTINUAR</button>                     
+                            <Link to={productList}>
+                                <button class="btn btn-outline-danger btn-quantity-customer">CONTINUAR</button>                     
+                            </Link>
                         </div>
 
                     </form>

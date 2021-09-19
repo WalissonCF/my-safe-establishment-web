@@ -1,7 +1,5 @@
-// Importanto biblioteca responsável por requisições HTTP
 import { Route } from 'react-router-dom';
 
-// Definindo o bjeto do serviço
 const authService = {
 
     // Função para salvar o usuário logado no local storage
@@ -10,19 +8,6 @@ const authService = {
         localStorage.setItem('cpf', cpf);
         localStorage.setItem("user", parsedData)
     },
-
-    // Função responsável por recuperar o usuário logado do local storage
-    // isAuthenticated(){
-    //     let data = localStorage.getItem("cpf");  
-    //     if(!data) return null;
-    //     try {
-    //         let parsedData = JSON.parse(data)
-    //         return parsedData
-    //     } catch (error) {
-    //         console.log(error)
-    //         return null
-    //     }
-    // },
 
     isAuthenticated(){
         let token = localStorage.getItem("cpf");
@@ -42,7 +27,7 @@ const authService = {
     privateRoutes(path, elementTest) {
         const isLoggedIn = this.isAuthenticated();
         console.log("logado?", isLoggedIn);
-        if (isLoggedIn == true) {
+        if (isLoggedIn === true) {
             console.log("to aqui", isLoggedIn);
            return <Route path={path} element={elementTest} />;
         } else {
@@ -54,7 +39,7 @@ const authService = {
                }} alt="Deu-RUIM" src="https://c.tenor.com/MLj6KHoL_MQAAAAC/food-wars.gif"></img>
                <h1 style={{
                    textAlign: 'center'
-               }}>Faz o login ai</h1>
+               }}>Faz o login ai cara!</h1>
            </div>
             } />;
         }

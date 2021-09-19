@@ -30,6 +30,7 @@ export default class ProductList extends React.Component {
 
     render() {
         const lista = this.menu();
+        const userName = localStorage.getItem('cpf');
         
         return (
             <React.Fragment>
@@ -39,7 +40,7 @@ export default class ProductList extends React.Component {
                             <div class="content-menu-register">
                                 <div class="content-in-text">
                                     <h1>Bem vindo,</h1>
-                                    <h2>nomeUser</h2>
+                                    <h2>{userName}</h2>
                                 </div>
                             </div>
                         </div>
