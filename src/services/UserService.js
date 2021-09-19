@@ -14,8 +14,16 @@ const userService = {
             });
     },
 
-    requestRegister(url) {
-
+    requestRegister(url, name, phoneNumber, cpf) {
+        axios.post(url, { name, phoneNumber, cpf })
+            .then((res) => {
+                if (res.status === 200) {
+                    authService.setLoggedUser(res.data, cpf);
+                    window.location = "/amount-of-people-user";
+                } else {
+                    window.location = "/register";
+                }
+            });
     },
 }
 
