@@ -1,7 +1,7 @@
 
 #product-img {
     display: grid;
-    grid-template-columns: 0fr 0fr 0fr;
+    grid-template-columns: 0fr 0fr 0fr 0fr 0fr;
 } 
 
 #img {
@@ -27,4 +27,22 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+}
+
+@media screen and (max-width: 800px) {
+    #product-img {
+        grid-template-columns: 0fr 0fr 0fr;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #product-img {
+        grid-template-columns: 0fr 0fr;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    #product-img {
+        grid-template-columns: 0fr;
+    }
 }

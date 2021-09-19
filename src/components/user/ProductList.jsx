@@ -28,12 +28,6 @@ export default class ProductList extends React.Component {
         return list;
     }
 
-    names() {
-        const lista = this.menu();
-
-        
-    }
-
     render() {
         const lista = this.menu();
         
@@ -60,12 +54,10 @@ export default class ProductList extends React.Component {
                                     <div id="product-img">{
                                         itens.src.map((srcs, index) => {
                                             return (
-                                                
-                                                    <div class="form-group" id="products">
-                                                        <a href=""><img id="img" key={index} src={srcs} alt="" /></a>
-                                                        <label id="product-name" key={index}>{[names[index]]}</label>
-                                                    </div>
-                                                
+                                                <div class="form-group" id="products">
+                                                    <a href=""><img id="img" key={index} src={srcs} alt="" /></a>
+                                                    <label id="product-name" key={index}>{[names[index]]}</label>
+                                                </div>
                                             )
                                         })            
                                     }</div>
