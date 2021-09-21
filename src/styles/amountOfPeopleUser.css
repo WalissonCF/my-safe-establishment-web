@@ -42,6 +42,12 @@
     height: 80px;
     border-radius: 15px;
     text-align: center;
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tables:hover {
+    background: #4ad66d;
+    transform: scale(1.1);
 }
 
 .tables-1 {
@@ -62,59 +68,84 @@
     }
 }
 
-@media screen and (max-width: 1740px) {
+@media screen and (max-width: 1600px) {
     .background-color {
         grid-template-columns: 150px 150px 150px 150px 150px 150px 150px 150px;
     }
 }
 
-@media screen and (max-width: 1540px) {
+@media screen and (max-width: 1360px) {
     .background-color {
         grid-template-columns: 150px 150px 150px 150px 150px 150px 150px;
     }
 }
 
-@media screen and (max-width: 1360px) {
+@media screen and (max-width: 1380px) {
     .background-color {
         grid-template-columns: 150px 150px 150px 150px 150px 150px;
     }
 }
 
-@media screen and (max-width: 1180px) {
+@media screen and (max-width: 1070px) {
     .background-color {
         grid-template-columns: 150px 150px 150px 150px 150px;
+        margin-left: 9%;
     }
 }
 
-@media screen and (max-width: 980px) {
+@media screen and (max-width: 930px) {
     .background-color {
         grid-template-columns: 150px 150px 150px 150px;
+        margin-left: 8%;
     }
 }
 
-@media screen and (max-width: 790px) {
+@media screen and (max-width: 750px) {
     .background-color {
         grid-template-columns: 150px 150px 150px;
+        margin-left: 7%;
     }
 }
 
-@media screen and (max-width: 605px) {
+@media screen and (max-width: 510px) {
     .background-color {
         grid-template-columns: 150px 150px;
-        padding: 10px;
+        margin-left: 16%;
     }
+}
 
-    .tables {
-        width: 100px;
+@media screen and (max-width: 430px) {
+    .background-color {
+        margin-left: 12%;
     }
+}
 
-    .tables-1 {
-        width: 100px;
+@media screen and (max-width: 430px) {
+    .background-color {
+        margin-left: 9%;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .background-color {
+        margin-left: 5%;
     }
 }
 
 @media screen and (max-width: 340px) {
     .background-color {
-        grid-template-columns: 150px;
+        margin-left: 2%;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .background-color {
+        margin-left: -2%;
+    }
+}
+
+@media screen and (max-width: 285px) {
+    .background-color {
+        margin-left: -10%;
     }
 }
