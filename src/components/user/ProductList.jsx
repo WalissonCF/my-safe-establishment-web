@@ -31,7 +31,7 @@ export default class ProductList extends React.Component {
     render() {
         const lista = this.menu();
         const userName = localStorage.getItem('cpf');
-        const quantityCustomer = localStorage.getItem('quantityCustomer');
+        const table = localStorage.getItem('table');
         
         return (
             <React.Fragment>
@@ -48,7 +48,7 @@ export default class ProductList extends React.Component {
                     </div>
                     <form>
                         <h1 className="menu">Faça seu pedido:</h1>
-                        <h2 className="menu-1">Mesa: {quantityCustomer}</h2>
+                        <h2 className="menu-1">Mesa: {table}</h2>
                         <h2 className="menu-2">Carpadio:</h2>
                         {
                             lista.map((itens) => {

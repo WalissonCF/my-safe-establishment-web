@@ -29,6 +29,13 @@ export default class AmountOfPeopleUser extends React.Component {
         }
     }
 
+    onClickCheckTable(e) {
+        e.preventDefault();
+        const value = e.target.innerText;
+        const table = value?.replace(/[^0-9]/g, '');
+        localStorage.setItem('table', table);
+    }
+
     table() {
         const types = ["N", "S", "N", "N", "N", "S", "N", "N", "S", "S"];
         const table = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -87,11 +94,18 @@ export default class AmountOfPeopleUser extends React.Component {
                                             }
                                         })
                                         return item.board.map((t, index) => {
-                                            return <div key={index} class={[occupy[index]]}><p className="number-table">Mesa {t}</p></div>
+                                            if ([occupy[index]].toString() === 'tables') {
+                                                return <div key={index} class={[occupy[index]]} onClick={this.onClickCheckTable}><p className="number-table">Mesa {t}</p></div>
+                                            } else {
+                                                return <div key={index} class={[occupy[index]]}><p className="number-table">Mesa {t}</p></div>
+                                            }
                                         })
                                     })
                                 }
                             </div>
+                            <Link to={productList}>
+                                <button class="btn btn-outline-danger btn-quantity-customer">CONTINUAR</button>
+                            </Link>
                         </div>
                     </form>
                 </div>
