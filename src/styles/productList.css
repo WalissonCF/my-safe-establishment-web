@@ -29,6 +29,26 @@
     align-items: center;
 }
 
+.menu, .menu-1, .menu-2 {
+    margin-left: 3%;
+    margin-right: auto;
+    color: black;
+}
+
+.menu {
+    font-weight: 500;
+}
+
+.menu-1 {
+    font-size: 30px;
+    font-weight: lighter;
+}
+
+.menu-2 {
+    font-size: 25px;
+    font-weight: lighter;
+}
+
 @media screen and (max-width: 800px) {
     #product-img {
         grid-template-columns: 0fr 0fr 0fr;

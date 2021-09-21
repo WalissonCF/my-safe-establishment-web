@@ -9,7 +9,7 @@ export default class AmountOfPeopleUser extends React.Component {
 
         this.state = {
             quantityCustomer: '',
-        }
+        };
     }
 
     onChange = (e) => {
@@ -17,10 +17,36 @@ export default class AmountOfPeopleUser extends React.Component {
         console.log({ [e.target.name]: e.target.value });
     }
 
+    onSubmit = (e) => {
+        e.preventDefault();
+        const { quantityCustomer } = this.state;
+    }
+
+    onClickHidden() {
+        if (document.getElementById('select-table').offsetParent === null) {
+            document.getElementById('registration-of-the-number-of-people').hidden="true";
+            document.getElementById('select-table').removeAttribute('hidden');
+        }
+    }
+
+    table() {
+        const types = ["N", "S", "N", "N", "N", "S", "N", "N", "S", "S"];
+        const table = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+        let tables = [
+            {
+                busy: types,
+                board: table,
+            }
+        ]
+        return tables;
+    }
+
     render() {
         const { quantityCustomer } = this.state;
         const user = localStorage.getItem('cpf');
         const productList = "/product-list";
+        const tables = this.table();
 
         return (
             <React.Fragment>
@@ -42,16 +68,31 @@ export default class AmountOfPeopleUser extends React.Component {
                                 id="quantity-customer"
                                 name="quantityCustomer"
                                 value={quantityCustomer}
-                                value={this.state.value}
                                 onChange={this.onChange}
                                 required
                                 pattern="\d*" />
                             </div>
-                            <Link to={productList}>
-                                <button class="btn btn-outline-danger btn-quantity-customer">CONTINUAR</button>                     
-                            </Link>
+                            <button class="btn btn-outline-danger btn-quantity-customer" onClick={this.onClickHidden}>CONTINUAR</button>                     
                         </div>
-
+                        <div class="form-group" id="select-table" hidden>
+                            <h2>Por favor selecione <br /> uma mesa</h2>
+                            <div className="background-color">
+                                {
+                                    tables.map((item) => {
+                                        const occupy = item.busy.map((itens) => {
+                                            if (itens === 'N') {
+                                                return "tables";
+                                            } else {
+                                                return "tables-1";
+                                            }
+                                        })
+                                        return item.board.map((t, index) => {
+                                            return <div key={index} class={[occupy[index]]}><p className="number-table">Mesa {t}</p></div>
+                                        })
+                                    })
+                                }
+                            </div>
+                        </div>
                     </form>
                 </div>
             </React.Fragment>
