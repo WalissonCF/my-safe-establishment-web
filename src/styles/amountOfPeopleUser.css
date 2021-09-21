@@ -6,10 +6,115 @@
     margin-left: 0;
 }
 
-#registration-of-the-number-of-people {
+#registration-of-the-number-of-people{
     margin-top: 10%;
 }
 
 #registration-of-the-number-of-people h3 {
     text-align: center;
+}
+
+#select-table select {
+    margin-top: 10%;
+    width: 30%;
+    margin-left: 35%;
+}
+
+#select-table h2 {
+    text-align: center;
+    color: black;
+}
+
+.background-color {
+    display: grid;
+    grid-template-columns: 150px 150px 150px 150px 150px 150px 150px 150px 150px 150px;
+    width: 80%;
+    margin-left: 10%;
+    height: 500px;
+    
+    border-radius: 30px;
+    padding: 20px;
+}
+
+.tables {
+    width: 120px;
+    background: #adb5bd;
+    height: 80px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.tables-1 {
+    width: 120px;
+    background: #ff4d6d;
+    height: 80px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.number-table {
+    padding-top: 27px;
+}
+
+@media screen and (max-width: 1880px) {
+    .background-color {
+        grid-template-columns: 150px 150px 150px 150px 150px 150px 150px 150px 150px;
+    }
+}
+
+@media screen and (max-width: 1740px) {
+    .background-color {
+        grid-template-columns: 150px 150px 150px 150px 150px 150px 150px 150px;
+    }
+}
+
+@media screen and (max-width: 1540px) {
+    .background-color {
+        grid-template-columns: 150px 150px 150px 150px 150px 150px 150px;
+    }
+}
+
+@media screen and (max-width: 1360px) {
+    .background-color {
+        grid-template-columns: 150px 150px 150px 150px 150px 150px;
+    }
+}
+
+@media screen and (max-width: 1180px) {
+    .background-color {
+        grid-template-columns: 150px 150px 150px 150px 150px;
+    }
+}
+
+@media screen and (max-width: 980px) {
+    .background-color {
+        grid-template-columns: 150px 150px 150px 150px;
+    }
+}
+
+@media screen and (max-width: 790px) {
+    .background-color {
+        grid-template-columns: 150px 150px 150px;
+    }
+}
+
+@media screen and (max-width: 605px) {
+    .background-color {
+        grid-template-columns: 150px 150px;
+        padding: 10px;
+    }
+
+    .tables {
+        width: 100px;
+    }
+
+    .tables-1 {
+        width: 100px;
+    }
+}
+
+@media screen and (max-width: 340px) {
+    .background-color {
+        grid-template-columns: 150px;
+    }
 }
