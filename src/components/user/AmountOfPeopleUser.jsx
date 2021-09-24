@@ -2,6 +2,7 @@ import React from 'react';
 
 import '../../styles/amountOfPeopleUser.css';
 import { Link } from 'react-router-dom';
+import userServiceService from '../../services/UserServiceService';
 
 export default class AmountOfPeopleUser extends React.Component {
     constructor() {
@@ -36,24 +37,11 @@ export default class AmountOfPeopleUser extends React.Component {
         localStorage.setItem('table', table);
     }
 
-    table() {
-        const types = ["N", "S", "N", "N", "N", "S", "N", "N", "S", "S"];
-        const table = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
-        let tables = [
-            {
-                busy: types,
-                board: table,
-            }
-        ]
-        return tables;
-    }
-
     render() {
         const { quantityCustomer } = this.state;
-        const user = localStorage.getItem('cpf');
+        const user = localStorage.getItem('userName');
         const productList = "/product-list";
-        const tables = this.table();
+        const tables = userServiceService.table();
 
         return (
             <React.Fragment>
