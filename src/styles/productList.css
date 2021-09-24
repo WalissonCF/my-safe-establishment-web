@@ -49,10 +49,6 @@
     font-weight: lighter;
 }
 
-#product-img-selected {
-    border-radius: 30px;
-}
-
 @media screen and (max-width: 800px) {
     #product-img {
         grid-template-columns: 0fr 0fr 0fr;
