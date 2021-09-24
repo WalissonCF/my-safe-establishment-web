@@ -60,6 +60,7 @@ export default class ProductRegistration extends React.Component {
                                 accept="image/*" />
                                 <label class="label-help">Clique no botão abaixo para <br /> adicionar uma imagem</label>
                                 <label class="upload-image" htmlFor="upload-image" >
+                                    {/* https://materializecss.com/icons.html */}
                                     <i id="image" className="material-icons">add_box</i>
                                 </label>
                             </div>
@@ -79,7 +80,6 @@ export default class ProductRegistration extends React.Component {
                         </div>
                     </form>
                 </div>
-
             </React.Fragment>
         )
     }
