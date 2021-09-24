@@ -4,6 +4,7 @@ import LoginUser from './components/user/Login';
 import RegisterUser from './components/user/RegisterUser';
 import AmountOfPeopleUser from './components/user/AmountOfPeopleUser';
 import ProductList from './components/user/ProductList';
+import Product from './components/user/Product';
 
 import LoginEstablishment from './components/establishment/LoginEstablishment';
 import RegisterEstablishment from './components/establishment/RegisterEstablishment';
@@ -22,6 +23,7 @@ export default function MainRoutes() {
 
             {Auth.privateRoutes("/amount-of-people-user", <AmountOfPeopleUser />)}
             {Auth.privateRoutes("/product-list", <ProductList />)}
+            {Auth.privateRoutes("/product", <Product />)}
 
             {/* <Route path="/product-list" element={ <ProductList /> } /> */}
 

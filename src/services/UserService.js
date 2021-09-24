@@ -6,7 +6,8 @@ const userService = {
         axios.post(url, { cpf, phoneNumber })
             .then((res) => {
                 if (res.status === 200) {
-                    authService.setLoggedUser(res.data, cpf);
+                    authService.setLoggedUser(res.data, res.data.name,
+                        res.data.token, res.data.customerId);
                     window.location = "/amount-of-people-user";
                 } else {
                     window.location = "/";
