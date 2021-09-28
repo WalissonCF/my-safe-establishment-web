@@ -9,6 +9,7 @@ const userService = {
                     authService.setLoggedUser(res.data, res.data.name,
                         res.data.token, res.data.customerId);
                     window.location = "/amount-of-people-user";
+                    console.log(res);
                 } else {
                     window.location = "/";
                 }

@@ -9,7 +9,7 @@ const userServiceService = {
         "https://shokugekinosoumafoodwars.files.wordpress.com/2018/09/oja-style_pacific_saury_takikomi_gohan_anime.png?w=778"];
         const names = ["Bacon assado", "Sumire Karaage Roll", "Furikake Gohan", "Terrine Arco-íris", "Chou Farci",
         "Ovos Benedict", "Sahi Pacífico"];
-        const amounts = [20.00, 30.00, 40.00, 50.00, 100.00, 150.00, 80.00, 75.00];
+        const amounts = [20.20, 30.32, 40.50, 50.05, 100.05, 150.99, 80.05, 75.50];
 
         let list = [
             {
