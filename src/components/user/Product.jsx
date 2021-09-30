@@ -1,4 +1,5 @@
 import React from 'react';
+import userService from '../../services/UserService';
 import userServiceService from '../../services/UserServiceService';
 
 import '../../styles/product.css';
@@ -38,6 +39,25 @@ export default class Product extends React.Component {
         document.getElementById('qtde-product').innerText = `${qtdeTotalProduct.toString()}`
     }
 
+    onClickQuantityProduct() {
+        const quantityProduct = parseInt(document.getElementById('qtde-product').innerText);
+        const indexProduct = parseInt(localStorage.getItem('index'));
+        const valueProduct = document.getElementById('product').innerText;
+        const srcProduct = localStorage.getItem('src');
+        const product = [
+            {
+                src: srcProduct,
+                quantityProductSelected: quantityProduct,
+                index: indexProduct,
+                valueProductSelected: parseFloat(valueProduct?.replace(/[^0-9.,]+/, '')),
+            }
+        ];
+        console.log(product);
+        localStorage.setItem(`product${indexProduct}`, JSON.stringify(product));
+        console.log(quantityProduct);
+        console.log(indexProduct);
+    }
+
     render() {
         const lista = userServiceService.menu();
         const src = localStorage.getItem('src');
@@ -74,7 +94,8 @@ export default class Product extends React.Component {
                                         )
                                     })
                                 }
-                             </div>
+                                <button onClick={this.onClickQuantityProduct} class="btn btn-outline-danger">CONFIRMAR</button>
+                            </div>
                         </div>
                     </div>
                 </div>

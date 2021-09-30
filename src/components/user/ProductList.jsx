@@ -2,6 +2,7 @@ import React from 'react';
 import userServiceService from '../../services/UserServiceService';
 
 import '../../styles/productList.css';
+import { Link } from 'react-router-dom';
 
 export default class ProductList extends React.Component {
     constructor() {
@@ -62,6 +63,9 @@ export default class ProductList extends React.Component {
                                     )
                                 })
                             }
+                            <Link to="/ordered">
+                                <button class="btn btn-outline-danger ordered">MEUS PEDIDOS</button>
+                            </Link>
                         </div>           
                     </form>
                 </div>

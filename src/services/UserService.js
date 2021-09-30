@@ -27,6 +27,20 @@ const userService = {
                 }
             });
     },
+
+    requestTable(url, qtdePessoas, table) {
+        axios.post(url, { qtdePessoas, table })
+            .then((res) => {
+                console.log(res);
+            });
+    },
+
+    requestPedido(url, customerId, product, qtdeProduct) {
+        axios.post(url, { customerId, product, qtdeProduct })
+            .then((res) => {
+                console.log(res);
+            });
+    },
 }
 
 export default userService;
