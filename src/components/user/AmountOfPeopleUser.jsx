@@ -3,7 +3,9 @@ import React from 'react';
 import '../../styles/amountOfPeopleUser.css';
 import { Link } from 'react-router-dom';
 import userServiceService from '../../services/UserServiceService';
+import userService from '../../services/UserService';
 
+const USER_TABLE = 'https://my-safe-establishment.herokuapp.com/public/customer/login';
 export default class AmountOfPeopleUser extends React.Component {
     constructor() {
         super();
@@ -21,6 +23,8 @@ export default class AmountOfPeopleUser extends React.Component {
     onSubmit = (e) => {
         e.preventDefault();
         const { quantityCustomer } = this.state;
+        console.log("Batendo na API");
+        userService.requestTable(USER_TABLE, quantityCustomer);
     }
 
     onClickHidden() {

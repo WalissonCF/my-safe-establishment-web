@@ -49,6 +49,10 @@
     font-weight: lighter;
 }
 
+.ordered {
+    width: 100%;
+}
+
 @media screen and (max-width: 800px) {
     #product-img {
         grid-template-columns: 0fr 0fr 0fr;
