@@ -1,4 +1,5 @@
 import React from 'react';
+import userServiceService from '../../services/UserServiceService';
 
 export default class Ordered extends React.Component {
     constructor() {
@@ -6,6 +7,7 @@ export default class Ordered extends React.Component {
     };
 
     render() {
+        const list = userServiceService.ordered();
         const userName = localStorage.getItem('userName');
 
         return (
@@ -22,7 +24,36 @@ export default class Ordered extends React.Component {
                         </div>
                     </div>
                     <div>
-                        
+                        {
+                            list.map((item) => {
+                                const names = item.name.map((name) => {
+                                    return name;
+                                });
+                                const quatityProducts = item.quatityProduct.map((quatityProduct) => {
+                                    return quatityProduct;
+                                });
+                                const amounts = item.amount.map((amount) => {
+                                    return amount;
+                                });
+                                console.log("names", names);
+                                console.log("quatityProducts", quatityProducts);
+                                console.log("amounts", amounts);
+                                return (
+                                    <div>{
+                                        item.src.map((src, i) => {
+                                            return (
+                                                <div>
+                                                    <img src={src} alt="" />
+                                                    <label>{[names[i]]}</label>
+                                                    <label htmlFor="">Quantidade:{[quatityProducts[i]]}</label>
+                                                    <label htmlFor="">R${[amounts[i]]}</label>
+                                                </div>
+                                            )
+                                        })    
+                                    }</div>
+                                )
+                            })
+                        }
                     </div>
                 </div>
             </React.Fragment>

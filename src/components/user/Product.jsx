@@ -56,6 +56,7 @@ export default class Product extends React.Component {
         localStorage.setItem(`product${indexProduct}`, JSON.stringify(product));
         console.log(quantityProduct);
         console.log(indexProduct);
+        window.location = "/product-list";
     }
 
     render() {
