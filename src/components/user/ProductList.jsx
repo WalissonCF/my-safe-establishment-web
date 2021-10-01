@@ -46,7 +46,7 @@ export default class ProductList extends React.Component {
                         <div id="products">
                             {
                                 lista.map((itens) => {
-                                    const names =  itens.name.map((name) => {
+                                    const names = itens.name.map((name) => {
                                         return name;
                                     })
                                     return (
