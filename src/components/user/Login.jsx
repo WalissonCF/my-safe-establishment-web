@@ -27,14 +27,18 @@ export default class LoginUser extends React.Component {
         userService.requestLogin(USER_LOGIN_URL, cpf, phoneNumber);
     }
 
-    onKeyUpCPF() {
-        var cpf = document.getElementById('cpf-login')
-        var valueCpf = cpf.value.length
+    onKeyPressCPF() {
+        var cpf = document.getElementById('cpf-login');
+        var valueCpf = cpf.value?.length;
         if (valueCpf === 3 || valueCpf === 7) {
             cpf.value += ".";
         } else if (valueCpf === 11) {
             cpf.value += "-";
         }
+    }
+
+    onKeyPressPhone() {
+        
     }
 
     render() {
@@ -76,7 +80,7 @@ export default class LoginUser extends React.Component {
                             name="cpf"
                             value={cpf}
                             onChange={this.onChange}
-                            onKeyUp={this.onKeyUpCPF}
+                            onKeyPress={this.onKeyPressCPF}
                             maxlength="14"
                             required
                             pattern="\d*" />
