@@ -26,7 +26,21 @@ export default class LoginUser extends React.Component {
         console.log("Batendo na api")
         userService.requestLogin(USER_LOGIN_URL, cpf, phoneNumber);
     }
-     
+
+    onKeyPressCPF() {
+        var cpf = document.getElementById('cpf-login');
+        var valueCpf = cpf.value?.length;
+        if (valueCpf === 3 || valueCpf === 7) {
+            cpf.value += ".";
+        } else if (valueCpf === 11) {
+            cpf.value += "-";
+        }
+    }
+
+    onKeyPressPhone() {
+        
+    }
+
     render() {
         const { cpf, phoneNumber } = this.state;
         const linkRegisterEstablishment = "/register-establishment";
@@ -66,7 +80,8 @@ export default class LoginUser extends React.Component {
                             name="cpf"
                             value={cpf}
                             onChange={this.onChange}
-                            maxlength="11"
+                            onKeyPress={this.onKeyPressCPF}
+                            maxlength="14"
                             required
                             pattern="\d*" />
                         </div>
