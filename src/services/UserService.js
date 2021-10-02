@@ -3,7 +3,8 @@ import authService from '../auth';
 
 const userService = {
     requestLogin(url, cpf, phoneNumber) {
-        axios.post(url, { cpf, phoneNumber })
+        const document = cpf?.replace(/[^0-9]/g, '');
+        axios.post(url, { document, phoneNumber })
             .then((res) => {
                 if (res.status === 200) {
                     authService.setLoggedUser(res.data, res.data.name,

@@ -83,7 +83,8 @@ export default class LoginUser extends React.Component {
                             onKeyPress={this.onKeyPressCPF}
                             maxlength="14"
                             required
-                            pattern="\d*" />
+                            // pattern="\d*"
+                             />
                         </div>
                         <div class="form-group">
                             <label for="phone-number-login">Digite seu celular:</label>
