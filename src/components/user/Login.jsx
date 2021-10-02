@@ -38,7 +38,15 @@ export default class LoginUser extends React.Component {
     }
 
     onKeyPressPhone() {
-        
+        var phoneNumber = document.getElementById('phone-number-login');
+        var valuePhoneNumber = phoneNumber.value?.length;
+        if (valuePhoneNumber === 0) {
+            phoneNumber.value += "(";
+        } else if (valuePhoneNumber === 3) {
+            phoneNumber.value += ")";
+        } else if (valuePhoneNumber === 9) {
+            phoneNumber.value += "-";
+        }
     }
 
     render() {
@@ -83,6 +91,7 @@ export default class LoginUser extends React.Component {
                             onKeyPress={this.onKeyPressCPF}
                             maxlength="14"
                             required
+                            autoComplete="off"
                             // pattern="\d*"
                              />
                         </div>
@@ -95,9 +104,10 @@ export default class LoginUser extends React.Component {
                             name="phoneNumber" 
                             value={phoneNumber} 
                             onChange={this.onChange} 
-                            maxlength="11" 
+                            onKeyPress={this.onKeyPressPhone}
+                            maxlength="14" 
                             required 
-                            pattern="\d*" />
+                            />
                         </div>
                         <button type="submit" class="btn btn-outline-danger">ENTRAR</button>
                         <h6>Cadastre-se sua <Link to={linkRegisterEstablishment}>empresa</Link>!</h6>

@@ -4,7 +4,8 @@ import authService from '../auth';
 const userService = {
     requestLogin(url, cpf, phoneNumber) {
         const document = cpf?.replace(/[^0-9]/g, '');
-        axios.post(url, { document, phoneNumber })
+        const phone = phoneNumber?.replace(/[^0-9]/g, '');
+        axios.post(url, { document, phone })
             .then((res) => {
                 if (res.status === 200) {
                     authService.setLoggedUser(res.data, res.data.name,
@@ -18,7 +19,9 @@ const userService = {
     },
 
     requestRegister(url, name, phoneNumber, cpf) {
-        axios.post(url, { name, phoneNumber, cpf })
+        const document = cpf?.replace(/[^0-9]/g, '');
+        const phone = phoneNumber?.replace(/[^0-9]/g, '');
+        axios.post(url, { name, phone, document })
             .then((res) => {
                 if (res.status === 200) {
                     authService.setLoggedUser(res.data, cpf);

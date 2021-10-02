@@ -76,6 +76,40 @@ export default class LoginEstablishment extends React.Component {
         }
     }
 
+    onKeyPressCPF() {
+        var cpf = document.getElementById('cpf-register-establishment');
+        var valueCpf = cpf.value?.length;
+        if (valueCpf === 3 || valueCpf === 7) {
+            cpf.value += ".";
+        } else if (valueCpf === 11) {
+            cpf.value += "-";
+        }
+    }
+
+    onKeyPressCNPJ() {
+        var cnpj = document.getElementById('cpnj');
+        var valueCnpj = cnpj.value?.length;
+        if (valueCnpj === 2 || valueCnpj === 6) {
+            cnpj.value += ".";
+        } else if (valueCnpj === 10) {
+            cnpj.value += "/";
+        } else if (valueCnpj === 15) {
+            cnpj.value += "-";
+        }
+    }
+
+    onKeyPressPhone() {
+        var phoneNumber = document.getElementById('phone-number-register-establishment-2');
+        var valuePhoneNumber = phoneNumber.value?.length;
+        if (valuePhoneNumber === 0) {
+            phoneNumber.value += "(";
+        } else if (valuePhoneNumber === 3) {
+            phoneNumber.value += ")";
+        } else if (valuePhoneNumber === 9) {
+            phoneNumber.value += "-";
+        }
+    }
+
     render() {
         const { companyName, tradingName, cnpj, typeEstablishment, phoneNumber, 
             publicPlace, number, district, city, name, cpf, email, password } = this.state;
@@ -111,7 +145,7 @@ export default class LoginEstablishment extends React.Component {
                                 <label for="cpnj">CNPJ:</label>
                                 <input type="text" class="form-control" id="cpnj" placeholder="00.000.000/0000-00"
                                 name="cnpj" value={cnpj} onBlur={this.onBlurCNPJ} onChange={this.onChange} onInput={this.onInputCNPJ} 
-                                maxlength="20" required pattern="\d*" />
+                                onKeyPress={this.onKeyPressCNPJ} maxlength="18" required pattern="\d*" />
                             </div>
                             <div class="form-group">
                                 <label for="corporate-name">Razão social:</label>
@@ -171,13 +205,13 @@ export default class LoginEstablishment extends React.Component {
                                 <label for="cpf-register-establishment">CPF:</label>
                                 <input type="text" class="form-control" id="cpf-register-establishment"
                                 name="cpf" value={cpf} value={this.state.value} onChange={this.onChange} maxlength="11"
-                                placeholder="000.000.000-00" required pattern="\d*" />
+                                placeholder="000.000.000-00" onKeyPress={this.onKeyPressCPF} maxLength="14" required />
                             </div>
                             <div class="form-group">
                                 <label for="phone-number-register-establishment-2">Número de telefone:</label>
                                 <input type="text" class="form-control" id="phone-number-register-establishment-2" placeholder="(00) 00000-0000"
                                 name="phoneNumber" value={phoneNumber} value={this.state.value} onChange={this.onChange}
-                                maxlength="11" required pattern="\d*" />
+                                onKeyPress={this.onKeyPressPhone} maxlength="14" required />
                             </div>
                             <div class="form-group">
                                 <label for="email">E-mail:</label>
