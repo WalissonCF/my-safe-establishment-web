@@ -1,11 +1,38 @@
 #product-selected {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
 
+    margin-top: -50px;
+}
+
+#qtde-product {
+    margin-left: 0;
+}
+
+#product {
+    margin-top: 50%;
+    margin-left: -50%
 }
 
 #product-img-selected {
     margin-top: 5%;
-    margin-left: 5%;
+    margin-left: 0;
     width: 90%;
     height: 50vw;
     border-radius: 20px;
+}
+
+.name-product {
+    margin-left: 0;
+}
+
+#product-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

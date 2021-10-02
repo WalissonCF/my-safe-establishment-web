@@ -67,14 +67,14 @@ export default class Product extends React.Component {
 
         return (
             <React.Fragment>
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12">
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-12">
                             <div id="product-selected">
                                 <img id="product-img-selected" src={src} alt="" />
                             </div>
-                            <div>
-                                <label htmlFor="">{name}</label>
+                            <div id="product-item">
+                                <label className="name-product">{name}</label>
                                 {
                                     lista.map((item) => {
                                         return (
@@ -83,11 +83,11 @@ export default class Product extends React.Component {
                                                 if (i === j) {
                                                     localStorage.setItem('valueProduct', amounts);
                                                     return (
-                                                        <div>
+                                                        <div id="product-selected">
                                                             <i className="material-icons" onClick={this.onClickSubtraction}>remove_circle_outline </i>
                                                             <label id="qtde-product">1</label>
                                                             <i className="material-icons" onClick={this.onClickSum}>add_circle_outline</i>
-                                                            <label key={i} id="product" htmlFor="">R${amounts}</label>
+                                                            <label key={i} id="product">R${amounts}</label>
                                                         </div>
                                                     )
                                                 }
