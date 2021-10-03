@@ -1,5 +1,6 @@
 import axios from 'axios';
 import authService from '../auth';
+import userServiceService from './UserServiceService';
 
 const userService = {
     requestLogin(url, cpf, phoneNumber) {
@@ -11,6 +12,7 @@ const userService = {
                     authService.setLoggedUser(res.data, res.data.name,
                         res.data.token, res.data.customerId);
                     window.location = "/amount-of-people-user";
+                    userServiceService.table();
                     console.log(res);
                 } else {
                     window.location = "/";
@@ -36,6 +38,7 @@ const userService = {
         axios.post(url, { qtdePessoas, table })
             .then((res) => {
                 console.log(res);
+                userServiceService.menu();
             });
     },
 
