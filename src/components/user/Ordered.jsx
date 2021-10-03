@@ -1,6 +1,8 @@
 import React from 'react';
 import userServiceService from '../../services/UserServiceService';
 
+import '../../styles/ordered.css';
+
 export default class Ordered extends React.Component {
     constructor() {
         super();
@@ -39,7 +41,7 @@ export default class Ordered extends React.Component {
                                 console.log("quatityProducts", quatityProducts);
                                 console.log("amounts", amounts);
                                 return (
-                                    <div>{
+                                    <div id="products-selecteds">{
                                         item.src.map((src, i) => {
                                             return (
                                                 <div>
