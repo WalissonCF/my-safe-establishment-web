@@ -8,15 +8,16 @@ const userService = {
         const phone = phoneNumber?.replace(/[^0-9]/g, '');
         axios.post(url, { document, phone })
             .then((res) => {
-                if (res.status === 200) {
-                    authService.setLoggedUser(res.data, res.data.name,
-                        res.data.token, res.data.customerId);
-                    window.location = "/amount-of-people-user";
-                    userServiceService.table();
-                    console.log(res);
-                } else {
-                    window.location = "/";
-                }
+                // if (res.status === 200) {
+                //     authService.setLoggedUser(res.data, res.data.name,
+                //         res.data.token, res.data.customerId);
+                //     window.location = "/amount-of-people-user";
+                //     userServiceService.table();
+                //     console.log(res);
+                // } else {
+                //     window.location = "/";
+                // }
+                window.location = "/amount-of-people-user";
             });
     },
 
@@ -25,12 +26,13 @@ const userService = {
         const phone = phoneNumber?.replace(/[^0-9]/g, '');
         axios.post(url, { name, phone, document })
             .then((res) => {
-                if (res.status === 200) {
-                    authService.setLoggedUser(res.data, cpf);
-                    window.location = "/amount-of-people-user";
-                } else {
-                    window.location = "/register";
-                }
+                // if (res.status === 200) {
+                //     authService.setLoggedUser(res.data, cpf);
+                //     window.location = "/amount-of-people-user";
+                // } else {
+                //     window.location = "/register";
+                // }
+                window.location = "/amount-of-people-user";
             });
     },
 

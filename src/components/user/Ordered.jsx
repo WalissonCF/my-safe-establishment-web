@@ -25,7 +25,7 @@ export default class Ordered extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div>
+                    <div className="row">
                         {
                             list.map((item) => {
                                 const names = item.name.map((name) => {
@@ -44,11 +44,11 @@ export default class Ordered extends React.Component {
                                     <div id="products-selecteds">{
                                         item.src.map((src, i) => {
                                             return (
-                                                <div>
-                                                    <img src={src} alt="" />
-                                                    <label>{[names[i]]}</label>
-                                                    <label htmlFor="">Quantidade:{[quatityProducts[i]]}</label>
-                                                    <label htmlFor="">R${[amounts[i]]}</label>
+                                                <div id="products-confirmed">
+                                                    <img id="img-selected" src={src} alt="" />
+                                                    <label className="product-selected">{[names[i]]}</label>
+                                                    <label className="product-selected">Quantidade: {[quatityProducts[i]]}</label>
+                                                    <label className="product-selected">R${[amounts[i]]}</label>
                                                 </div>
                                             )
                                         })    
