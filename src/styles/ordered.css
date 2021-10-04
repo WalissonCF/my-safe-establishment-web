@@ -1,3 +1,28 @@
 #products-selecteds {
-    
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 0fr 0fr;
+    justify-content: center;
+}
+
+#img-selected {
+    width: 300px;
+    padding: 10px;
+    height: 180px;
+    border-radius: 25px;
+}
+
+.product-selected {
+    margin-left: 0;
+    padding: 0;
+}
+
+@media screen and (max-width: 610px) {
+    #products-selecteds {
+        grid-template-columns: 0fr;
+    }
+
+    #img-selected {
+        width: 230px;
+    }
 }
