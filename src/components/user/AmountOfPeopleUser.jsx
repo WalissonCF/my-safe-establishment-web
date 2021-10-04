@@ -39,6 +39,8 @@ export default class AmountOfPeopleUser extends React.Component {
         const value = e.target.innerText;
         const table = value?.replace(/[^0-9]/g, '');
         localStorage.setItem('table', table);
+        const tableSelected = localStorage.getItem('table');
+        document.getElementById('table-selected').innerHTML = `Mesa: ${tableSelected}`;
     }
 
     render() {
@@ -95,6 +97,7 @@ export default class AmountOfPeopleUser extends React.Component {
                                     })
                                 }
                             </div>
+                            <h2 id="table-selected"></h2>
                             <Link to={productList}>
                                 <button class="btn btn-outline-danger btn-quantity-customer">CONTINUAR</button>
                             </Link>

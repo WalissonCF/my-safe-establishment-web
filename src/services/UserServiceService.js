@@ -10,12 +10,16 @@ const userServiceService = {
         const names = ["Bacon assado", "Sumire Karaage Roll", "Furikake Gohan", "Terrine Arco-íris", "Chou Farci",
         "Ovos Benedict", "Sahi Pacífico"];
         const amounts = [20.20, 30.32, 40.50, 50.05, 100.05, 150.99, 80.05, 75.50];
+        const ingredients = [];
+        const descriptions = [];
 
         let list = [
             {
                 src: srcs,
                 name: names,
                 amont: amounts, 
+                ingredient: ingredients,
+                description: descriptions,
             }
         ]
         return list;
