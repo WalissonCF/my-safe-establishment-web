@@ -1,5 +1,3 @@
-import src from "*.avif";
-
 const establishmentServiceService = {
     products() {
         const srcs = [];
@@ -21,3 +19,5 @@ const establishmentServiceService = {
     },
 
 }
+
+export default establishmentServiceService;
