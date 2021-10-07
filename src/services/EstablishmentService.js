@@ -18,10 +18,16 @@ const establishmentService = {
     requestRegisterEstablishment(url) {
         axios.post(url, {})
             .then((res) => {
-
+                window.location = "/product-registration";
             });
     },
 
+    requestRegisterProduct(url) {
+        axios.post()
+            .then((res) => {
+                
+            });
+    },
 }
 
 export default establishmentService;
