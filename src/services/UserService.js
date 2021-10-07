@@ -4,10 +4,10 @@ import userServiceService from './UserServiceService';
 
 const userService = {
     requestLogin(url, cpf, phoneNumber) {
-        const document = cpf?.replace(/[^0-9]/g, '');
-        const phone = phoneNumber?.replace(/[^0-9]/g, '');
-        axios.post(url, { document, phone })
-            .then((res) => {
+        // const document = cpf?.replace(/[^0-9]/g, '');
+        // const phone = phoneNumber?.replace(/[^0-9]/g, '');
+        // axios.post(url, { document, phone })
+        //     .then((res) => {
                 // if (res.status === 200) {
                 //     authService.setLoggedUser(res.data, res.data.name,
                 //         res.data.token, res.data.customerId);
@@ -18,7 +18,7 @@ const userService = {
                 //     window.location = "/";
                 // }
                 window.location = "/amount-of-people-user";
-            });
+            // });
     },
 
     requestRegister(url, name, phoneNumber, cpf) {

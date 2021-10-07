@@ -53,7 +53,7 @@
     width: 100%;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1030px) {
     #product-img {
         grid-template-columns: 0fr 0fr 0fr;
     }
