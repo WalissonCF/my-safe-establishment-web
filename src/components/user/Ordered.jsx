@@ -2,6 +2,7 @@ import React from 'react';
 import userServiceService from '../../services/UserServiceService';
 
 import '../../styles/ordered.css';
+import { Link } from 'react-router-dom';
 
 export default class Ordered extends React.Component {
     constructor() {
@@ -51,11 +52,16 @@ export default class Ordered extends React.Component {
                                                     <label className="product-selected">R${[amounts[i]]}</label>
                                                 </div>
                                             )
-                                        })    
+                                        })   
                                     }</div>
                                 )
                             })
                         }
+                        <div className="product-list">
+                            <Link to="/product-list">
+                                <button className="btn btn-outline-danger">VOLTAR</button>
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </React.Fragment>
