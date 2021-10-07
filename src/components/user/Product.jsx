@@ -74,9 +74,15 @@ export default class Product extends React.Component {
                                 <img id="product-img-selected" src={src} alt="" />
                             </div>
                             <div id="product-item">
-                                <label className="name-product">{name}</label>
+                                <h2 className="name-product">{name}</h2>
                                 {
                                     lista.map((item) => {
+                                        const ingredients = item.ingredient.map((ingredient) => {
+                                            return ingredient;
+                                        });
+                                        const descriptions = item.description.map((description) => {
+                                            return description;
+                                        });
                                         return (
                                             item.amont.map((amounts, i) => {
                                                 const j = parseInt(index)
@@ -84,10 +90,21 @@ export default class Product extends React.Component {
                                                     localStorage.setItem('valueProduct', amounts);
                                                     return (
                                                         <div id="product-selected">
-                                                            <i className="material-icons" onClick={this.onClickSubtraction}>remove_circle_outline </i>
-                                                            <label id="qtde-product">1</label>
-                                                            <i className="material-icons" onClick={this.onClickSum}>add_circle_outline</i>
-                                                            <label key={i} id="product">R${amounts}</label>
+                                                            <div className="info-product">
+                                                                <i className="material-icons" onClick={this.onClickSubtraction}>remove_circle_outline </i>
+                                                                <label id="qtde-product">1</label>
+                                                                <i className="material-icons" onClick={this.onClickSum}>add_circle_outline</i>
+                                                            </div>
+                                                            <div className="value-product">
+                                                                <h2 id="product">R${amounts}</h2>
+                                                            </div>
+                                                            <div className="descriptions">
+                                                                <h2 className="sobre">Ingredientes:</h2>
+                                                                <p id="ingredient">{[ingredients[i]]}</p>
+                                                                <br />
+                                                                <h2 className="sobre">Descrição:</h2>
+                                                                <p id="description">{[descriptions[i]]}</p>
+                                                            </div>
                                                         </div>
                                                     )
                                                 }

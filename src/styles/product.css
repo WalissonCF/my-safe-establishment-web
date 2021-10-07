@@ -1,11 +1,7 @@
 #product-selected {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-
-    margin-top: 0px;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr;
 }
 
 #qtde-product {
@@ -13,8 +9,9 @@
 }
 
 #product {
-    margin-top: 50%;
-    margin-left: -50%
+    font-size: 25px;
+    margin-left: 0;
+    color: black;
 }
 
 #product-img-selected {
@@ -26,7 +23,10 @@
 }
 
 .name-product {
+    padding-top: 10px;
+    font-size: 20px;
     margin-left: 0;
+    color: black;
 }
 
 #product-item {
@@ -35,4 +35,32 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-block-end: 6%;
+}
+
+#ingredient, #description {
+    color: black;
+}
+
+.descriptions {
+    padding-top: 50px;
+    text-align: initial;
+    width: 85%;
+}
+
+.info-product {
+    margin-top: -10px;
+    display: flex;
+    align-items: center;
+}
+
+.value-product {
+    display: flex;
+    align-items: center;
+}
+
+.sobre {
+    font-size: 25px;
+    margin-left: 0;
+    color: black;
 }

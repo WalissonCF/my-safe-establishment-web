@@ -10,8 +10,8 @@ const userServiceService = {
         const names = ["Bacon assado", "Sumire Karaage Roll", "Furikake Gohan", "Terrine Arco-íris", "Chou Farci",
         "Ovos Benedict", "Sahi Pacífico"];
         const amounts = [20.20, 30.32, 40.50, 50.05, 100.05, 150.99, 80.05, 75.50];
-        const ingredients = [];
-        const descriptions = [];
+        const ingredients = ["Aprox. 11 fatias grossas do bacon, 7 batatas, 2 Cogumelos King Oyster ( Eringi ), Gordura de batata, 1 1/2 cebola, Múltiplos Raminhos de Alecrim, Molho, Vinho tinto, Amor doce, Molho de soja, 1 Colher de Sopa. manteiga, Agrião ( opcional / decorar)"];
+        const descriptions = ["Este é o prato inovador de Sōma que é servido para repelir o planejador residencial urbano vicioso, Yaeko Minegasaki de destruir o Restaurante Yukihira . Mesmo depois de todos os materiais de carne terem sido sabotados em sua cozinha, Sōma conseguiu virar as marés usando alguns dos mantimentos como ingredientes para criar carne artificial."];
 
         let list = [
             {
