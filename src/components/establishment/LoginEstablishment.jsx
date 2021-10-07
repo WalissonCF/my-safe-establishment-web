@@ -23,18 +23,20 @@ export default class LoginEstablishment extends React.Component {
         e.preventDefault();
         const { email, password} = this.state;
 
-        axios.post(ESTABLISHMENT_LOGIN_URL, { email, password })
-            .then((res) => {
-                console.log(res);
-                console.log(res.data);
-                console.log(res.status);
-                if (res.status === 200) {
-                    authService.setLoggedUser(res.data);
-                    window.location = "/";
-                } else {
-                    window.location = "/";
-                }
-            });
+        // axios.post(ESTABLISHMENT_LOGIN_URL, { email, password })
+        //     .then((res) => {
+        //         console.log(res);
+        //         console.log(res.data);
+        //         console.log(res.status);
+        //         if (res.status === 200) {
+        //             authService.setLoggedUser(res.data);
+        //             window.location = "/";
+        //         } else {
+        //             window.location = "/";
+        //         }
+        //     });
+        window.location = "/product-registration";
+
     }
 
     render() {
