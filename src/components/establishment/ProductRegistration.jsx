@@ -76,12 +76,10 @@ export default class ProductRegistration extends React.Component {
                             <div class="form-group"> 
                                 <label for="corporate-name">Ingredientes:</label>
                                 <textarea className="form-control" id="ingredients"></textarea>
-                                {/* <input type="text" class="form-control" id="ingredients" /> */}
                             </div>
                             <div class="form-group"> 
                                 <label for="corporate-name">Descrição:</label>
                                 <textarea className="form-control" id="ingredients"></textarea>
-                                {/* <input type="text" class="form-control" id="ingredients" /> */}
                             </div>
                         </div>
                     </form>
