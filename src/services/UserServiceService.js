@@ -1,5 +1,6 @@
 const userServiceService = {
     menu() {
+        const ids = [];
         const srcs = ["https://skdesu.com/wp-content/uploads/2017/10/shokugeki.jpg",
         "https://shokugekinosoumafoodwars.files.wordpress.com/2018/09/974c191f7974357d204fc1cd38157e744f17c169_hq.gif?w=778",
         "https://shokugekinosoumafoodwars.files.wordpress.com/2018/09/transforming_furikake_shining.gif?w=778",
@@ -15,6 +16,7 @@ const userServiceService = {
 
         let list = [
             {
+                id: ids,
                 src: srcs,
                 name: names,
                 amont: amounts, 
@@ -25,14 +27,13 @@ const userServiceService = {
         return list;
     },
 
-    table() {
-        const types = ["N", "S", "N", "N", "N", "S", "N", "N", "S", "S"];
-        const table = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
+    tables(posts) {
+        const ids = [posts.map((item) => { return item.id })]
+        const statusTables = [posts.map((item) => { return item.statusTable })]
         let tables = [
             {
-                busy: types,
-                board: table,
+                id: ids,
+                statusTable: statusTables,
             }
         ]
         return tables;

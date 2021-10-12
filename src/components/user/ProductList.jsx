@@ -23,6 +23,7 @@ export default class ProductList extends React.Component {
 
     render() {
         const lista = userServiceService.menu();
+        console.log(lista);
         const userName = localStorage.getItem('userName');
         const table = localStorage.getItem('table');
          
