@@ -8,12 +8,13 @@ function Table() {
     const productList = "/product-list";
 
     async function fetchPosts () {
+        console.log("Batendo na API...");
         await userService.getTables().then(setPosts);
     }
 
     useEffect(() => {
+        console.log("chamando API");
         fetchPosts()
-        console.log("useEffect")
     }, [])
 
     function onClickCheckTable(e) {
@@ -24,7 +25,7 @@ function Table() {
         const tableSelected = localStorage.getItem('table');
         document.getElementById('table-selected').innerHTML = `Mesa: ${tableSelected}`;
     }
-    
+
     return (
         <div className="container-fluid">
             <form action="">
@@ -58,12 +59,14 @@ function Table() {
                                         })
                                     })
                                 })
-                            }     
+                            }
+                            <div>
+                                <h2 id="table-selected"></h2>
+                                <Link to={productList}>
+                                    <button type="submit" class="btn btn-outline-danger btn-quantity-customer">CONTINUAR</button>
+                                </Link>
+                            </div>  
                         </div>
-                    <h2 id="table-selected"></h2>
-                    <Link to={productList}>
-                        <button type="submit" class="btn btn-outline-danger btn-quantity-customer">CONTINUAR</button>
-                    </Link>
                 </div>
             </form>
         </div>
