@@ -3,6 +3,7 @@ import React from 'react';
 import LoginUser from './components/user/Login';
 import RegisterUser from './components/user/RegisterUser';
 import AmountOfPeopleUser from './components/user/AmountOfPeopleUser';
+import Tables from './components/user/Tables';
 import ProductList from './components/user/ProductList';
 import Product from './components/user/Product';
 import Ordered from './components/user/Ordered';
@@ -21,6 +22,7 @@ export default function MainRoutes() {
             <Route path="/" element={ <LoginUser /> } />
             <Route path="/register" element={ <RegisterUser /> } />
             <Route path="/amount-of-people-user" element= { <AmountOfPeopleUser /> } />
+            <Route path="/tables" element= { <Tables /> } />
             <Route path="/product-list" element= { <ProductList /> } />
             <Route path="/product" element= { <Product /> } />
             <Route path="/ordered" element= { <Ordered /> } />

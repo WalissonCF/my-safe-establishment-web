@@ -2,16 +2,17 @@ import React from 'react';
 
 import '../../styles/amountOfPeopleUser.css';
 import { Link } from 'react-router-dom';
-import userServiceService from '../../services/UserServiceService';
-import userService from '../../services/UserService';
 
-const USER_TABLE = 'https://my-safe-establishment.herokuapp.com/public/customer/login';
+// const TABLE = 'https://my-safe-establishment-company.herokuapp.com/private/owner/tables';
+
+const USER_PRODUCTS = 'https://my-safe-establishment-company.herokuapp.com/private/owner/products';
 export default class AmountOfPeopleUser extends React.Component {
     constructor() {
         super();
 
         this.state = {
             quantityCustomer: '',
+            tables: null,
         };
     }
 
@@ -23,8 +24,6 @@ export default class AmountOfPeopleUser extends React.Component {
     onSubmit = (e) => {
         e.preventDefault();
         const { quantityCustomer } = this.state;
-        console.log("Batendo na API");
-        userService.requestTable(USER_TABLE, quantityCustomer);
     }
 
     onClickHidden() {
@@ -47,7 +46,6 @@ export default class AmountOfPeopleUser extends React.Component {
         const { quantityCustomer } = this.state;
         const user = localStorage.getItem('userName');
         const productList = "/product-list";
-        const tables = userServiceService.table();
 
         return (
             <React.Fragment>
@@ -75,10 +73,10 @@ export default class AmountOfPeopleUser extends React.Component {
                             </div>
                             <button class="btn btn-outline-danger btn-quantity-customer" onClick={this.onClickHidden}>CONTINUAR</button>                     
                         </div>
-                        <div class="form-group" id="select-table" hidden>
+                        <div class="form-group" id="select-table">
                             <h2>Por favor selecione <br /> uma mesa</h2>
                             <div className="background-color">
-                                {
+                                {/* {
                                     tables.map((item) => {
                                         const occupy = item.busy.map((itens) => {
                                             if (itens === 'N') {
@@ -95,11 +93,11 @@ export default class AmountOfPeopleUser extends React.Component {
                                             }
                                         })
                                     })
-                                }
+                                } */}
                             </div>
                             <h2 id="table-selected"></h2>
                             <Link to={productList}>
-                                <button class="btn btn-outline-danger btn-quantity-customer">CONTINUAR</button>
+                                {/* <button type="submit" class="btn btn-outline-danger btn-quantity-customer">CONTINUAR</button> */}
                             </Link>
                         </div>
                     </form>
