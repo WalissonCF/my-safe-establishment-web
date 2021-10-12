@@ -1,9 +1,8 @@
 import axios from 'axios';
 import authService from '../auth';
-import userServiceService from './UserServiceService';
-import React, { UseState, UseEffect } from 'react';
 
 const TABLE = 'https://my-safe-establishment-company.herokuapp.com/private/owner/tables';
+const PRODUCTS = 'https://my-safe-establishment-company.herokuapp.com/private/owner/products'
 
 const userService = {
     requestLogin(url, cpf, phoneNumber) {
@@ -41,15 +40,16 @@ const userService = {
 
     async getTables() {
         return axios.get(TABLE)
-        .then((res) => 
-            res.data
-        );
+            .then((res) =>
+                res.data
+            );
     },
 
-    getProducts(url) {
-        axios.get(url).then((res) => {
-            console.log(res);
-        });
+    async getProducts() {
+        return axios.get(PRODUCTS)
+            .then((res) =>
+                res.data
+            )
     },
 }
 
