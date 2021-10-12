@@ -26,10 +26,10 @@ export default class AmountOfPeopleUser extends React.Component {
         const { quantityCustomer } = this.state;
     }
 
-    onClickHidden() {
-        if (document.getElementById('select-table').offsetParent === null) {
-            document.getElementById('registration-of-the-number-of-people').hidden="true";
-            document.getElementById('select-table').removeAttribute('hidden');
+    onClickProceed() {
+        const quantityCustomer = document.getElementById('quantity-customer');
+        if (quantityCustomer.value) {
+            window.location = '/tables';   
         }
     }
 
@@ -45,7 +45,6 @@ export default class AmountOfPeopleUser extends React.Component {
     render() {
         const { quantityCustomer } = this.state;
         const user = localStorage.getItem('userName');
-        const productList = "/product-list";
 
         return (
             <React.Fragment>
@@ -71,34 +70,7 @@ export default class AmountOfPeopleUser extends React.Component {
                                 required
                                 pattern="\d*" />
                             </div>
-                            <button class="btn btn-outline-danger btn-quantity-customer" onClick={this.onClickHidden}>CONTINUAR</button>                     
-                        </div>
-                        <div class="form-group" id="select-table">
-                            <h2>Por favor selecione <br /> uma mesa</h2>
-                            <div className="background-color">
-                                {/* {
-                                    tables.map((item) => {
-                                        const occupy = item.busy.map((itens) => {
-                                            if (itens === 'N') {
-                                                return "tables";
-                                            } else {
-                                                return "tables-1";
-                                            }
-                                        })
-                                        return item.board.map((t, index) => {
-                                            if ([occupy[index]].toString() === 'tables') {
-                                                return <div key={index} class={[occupy[index]]} onClick={this.onClickCheckTable}><p className="number-table">Mesa {t}</p></div>
-                                            } else {
-                                                return <div key={index} class={[occupy[index]]}><p className="number-table">Mesa {t}</p></div>
-                                            }
-                                        })
-                                    })
-                                } */}
-                            </div>
-                            <h2 id="table-selected"></h2>
-                            <Link to={productList}>
-                                {/* <button type="submit" class="btn btn-outline-danger btn-quantity-customer">CONTINUAR</button> */}
-                            </Link>
+                            <button class="btn btn-outline-danger btn-quantity-customer" onClick={this.onClickProceed}>CONTINUAR</button>                     
                         </div>
                     </form>
                 </div>
