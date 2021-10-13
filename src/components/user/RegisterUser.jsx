@@ -6,7 +6,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import userService from '../../services/UserService';
 
-const USER_REGISTER_URL = 'https://my-safe-establishment.herokuapp.com/public/customer/register';
+const USER_REGISTER_URL = 'https://my-safe-establishment-company.herokuapp.com/public/customer/register';
 export default class RegisterUser extends React.Component {
     constructor() {
         super();

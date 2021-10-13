@@ -6,33 +6,36 @@ const PRODUCTS = 'https://my-safe-establishment-company.herokuapp.com/private/ow
 const ORDER = 'https://my-safe-establishment-company.herokuapp.com/private/order/register';
 const CREATE_ORDER_PAD = 'https://my-safe-establishment-company.herokuapp.com/private/orderpad/create';
 
-const customerId = localStorage.getItem("customerId");
-const customer = parseInt(customerId);
+const customerId = parseInt(localStorage.getItem("customerId"));
 
 const userService = {
-    requestLogin(url, cpf, phoneNumber) {
-        const document = cpf?.replace(/[^0-9]/g, '');
-        const phone = phoneNumber?.replace(/[^0-9]/g, '');
-        // axios.post(url, { document, phone })
-        //     .then((res) => {
-        //         if (res.status === 200) {
-        //             authService.setLoggedUser(res.data, res.data.name,
-        //                 res.data.token, res.data.customerId);
-        //             window.location = "/amount-of-people-user";
-        //             // userServiceService.table();
-        //             console.log(res);
-        //         } else {
-        //             window.location = "/";
-        //         }
-        //     });
-        window.location = "/amount-of-people-user";
+    requestLogin(url, document, phone) {
+        debugger;
+        const cpf = document?.replace(/[^0-9]/g, '');
+        const phoneNumber = phone?.replace(/[^0-9]/g, '');
+        console.log(cpf, phoneNumber);
+
+        axios.post(url, { cpf, phoneNumber }).then((res) => {
+            console.log(res)
+            if (res.status === 200) {
+                authService.setLoggedUser(res.data, res.data.name,
+                    res.data.token, res.data.customerId);
+                localStorage.setItem("customerId", res.data.customerId);
+                window.location = "/amount-of-people-user";
+                console.log(res);
+                debugger;
+            } else {
+                window.location = "/";
+            }
+        });
+        // window.location = "/amount-of-people-user";
     },
 
-    requestRegister(url, name, phoneNumber, cpf) {
-        const document = cpf?.replace(/[^0-9]/g, '');
-        const phone = phoneNumber?.replace(/[^0-9]/g, '');
-        console.log(document, phone);
-        axios.post(url, { name, phone, document })
+    requestRegister(url, name, phone, document) {
+        const cpf = document?.replace(/[^0-9]/g, '');
+        const phoneNumber = phone?.replace(/[^0-9]/g, '');
+        console.log(cpf, phoneNumber);
+        axios.post(url, { name, phoneNumber, cpf })
             .then((res) => {
                 if (res.status === 200) {
                     authService.setLoggedUser(res.data, cpf);
@@ -44,11 +47,9 @@ const userService = {
     },
 
     postCreateOrderPad() {
-        const tableId = localStorage.getItem("table");
-        const table = parseInt(tableId);
-        const quantityCustomers = localStorage.getItem("quantityCustomer");
-        const quantityCustomer = parseInt(quantityCustomers);
-        axios.post(CREATE_ORDER_PAD, { customer, quantityCustomer, table })
+        const tableId = parseInt(localStorage.getItem("table"));
+        const quantityCustomer = parseInt(localStorage.getItem("quantityCustomer"));
+        axios.post(CREATE_ORDER_PAD, { customerId, quantityCustomer, tableId })
             .then((res) => {
                 console.log(res)
                 localStorage.setItem("postCreateOrderPad", JSON.stringify(res))
@@ -66,7 +67,9 @@ const userService = {
                 quantity: quantitys,
             }
         ];
-        axios.post(ORDER, { customer, orders })
+        console.log(orders);
+        debugger;
+        axios.post(ORDER, { customerId, orders })
             .then((res) => {
                 console.log(res);
             });
