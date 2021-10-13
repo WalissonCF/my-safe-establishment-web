@@ -36,11 +36,11 @@ export default class ProductRegistration extends React.Component {
 
         return (
             <React.Fragment>
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="content-menu-register">
-                                <div class="content-in-text">
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-12">
+                            <div className="content-menu-register">
+                                <div className="content-in-text">
                                     <h1>Bem vindo,</h1>
                                     <h2>nomeUser</h2>
                                     <h1>CNPJ:</h1>
@@ -50,16 +50,16 @@ export default class ProductRegistration extends React.Component {
                         </div>
                     </div>
                     <form onSubmit={this.onSubmit}>
-                        <div class="form-group">
-                            <div class="canvas">
+                        <div className="form-group">
+                            <div className="canvas">
                                 <h4>Cadastre seu produto:</h4>
-                                <img src={profileImg} alt="" class="preview-image" />
+                                <img src={profileImg} alt="" className="preview-image" />
                                 <input type="file" id="upload-image"
-                                class="form-control-file"
+                                className="form-control-file"
                                 onChange={this.imageHandler}
                                 accept="image/*" />
-                                <label class="label-help">Clique no botão abaixo para <br /> adicionar uma imagem</label>
-                                <label class="upload-image" htmlFor="upload-image" >
+                                <label className="label-help">Clique no botão abaixo para <br /> adicionar uma imagem</label>
+                                <label className="upload-image" htmlFor="upload-image" >
                                     {/* https://materializecss.com/icons.html */}
                                     <i id="image" className="material-icons">add_box</i>
                                 </label>
@@ -77,7 +77,7 @@ export default class ProductRegistration extends React.Component {
                                 <label for="corporate-name">Ingredientes:</label>
                                 <textarea className="form-control" id="ingredients"></textarea>
                             </div>
-                            <div class="form-group"> 
+                            <div className="form-group"> 
                                 <label for="corporate-name">Descrição:</label>
                                 <textarea className="form-control" id="ingredients"></textarea>
                             </div>
