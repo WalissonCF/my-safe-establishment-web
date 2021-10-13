@@ -29,6 +29,7 @@ export default class AmountOfPeopleUser extends React.Component {
     onClickProceed() {
         const quantityCustomer = document.getElementById('quantity-customer');
         if (quantityCustomer.value) {
+            localStorage.setItem("quantityCustomer", quantityCustomer.value);
             window.location = '/tables';   
         }
     }
