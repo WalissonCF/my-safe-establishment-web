@@ -67,12 +67,15 @@ function ProductList() {
                                 const names = itens.name.map((name) => {
                                     return name;
                                 });
+                                const ids = itens.id.map((id) => {
+                                    return id;
+                                });
                                 return (
                                     <div id="products">{
                                         itens.src.map((srcs, index) => {
                                             return (
                                                 <div class="form-group" id="products">
-                                                    <img class={[index]} name={[names[index]]} id="img" key={index} src={srcs} alt="" onClick={onClickCheckImg} />
+                                                    <img class={ids} name={[names[index]]} id="img" key={index} src={srcs} alt="" onClick={onClickCheckImg} />
                                                     <label id="product-name" key={index}>{[names[index]]}</label>
                                                 </div>
                                             )

@@ -26,6 +26,10 @@ function Table() {
         document.getElementById('table-selected').innerHTML = `Mesa: ${tableSelected}`;
     }
 
+    function onClickPostOrderPad() {
+        userService.postCreateOrderPad();
+    }
+
     return (
         <div className="container-fluid">
             <form action="">
@@ -63,7 +67,7 @@ function Table() {
                         <div>
                             <h2 id="table-selected"></h2>
                             <Link to={productList}>
-                                <button type="submit" class="btn btn-outline-danger btn-quantity-customer">CONTINUAR</button>
+                                <button onClick={onClickPostOrderPad} class="btn btn-outline-danger btn-quantity-customer">CONTINUAR</button>
                             </Link>
                         </div>
                     </div>
