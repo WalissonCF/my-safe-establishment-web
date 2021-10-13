@@ -61,8 +61,9 @@ function Product() {
         ];
         localStorage.setItem(`product${indexProduct}`, JSON.stringify(product));
         localStorage.setItem('quantityProduct', quantityProduct)
+        debugger;
         userService.postOrder();
-        window.location = "/product-list";
+        // window.location = "/product-list";
     }
 
     return (
