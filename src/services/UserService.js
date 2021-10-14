@@ -23,12 +23,10 @@ const userService = {
                 localStorage.setItem("customerId", res.data.customerId);
                 window.location = "/amount-of-people-user";
                 console.log(res);
-                debugger;
             } else {
                 window.location = "/";
             }
         });
-        // window.location = "/amount-of-people-user";
     },
 
     requestRegister(url, name, phone, document) {
