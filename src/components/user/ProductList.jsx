@@ -63,7 +63,7 @@ function ProductList() {
                                     description: descriptions,
                                 }
                             ];
-                            return product.map((itens, index) => {
+                            return product.map((itens, i) => {
                                 const names = itens.name.map((name) => {
                                     return name;
                                 });

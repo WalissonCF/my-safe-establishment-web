@@ -1,16 +1,17 @@
 import axios from 'axios';
 import authService from '../auth';
 
+const customerId = parseInt(localStorage.getItem("customerId"));
+
 const TABLE = 'https://my-safe-establishment-company.herokuapp.com/private/owner/tables';
 const PRODUCTS = 'https://my-safe-establishment-company.herokuapp.com/private/owner/products'
 const ORDER = 'https://my-safe-establishment-company.herokuapp.com/private/order/register';
 const CREATE_ORDER_PAD = 'https://my-safe-establishment-company.herokuapp.com/private/orderpad/create';
-
-const customerId = parseInt(localStorage.getItem("customerId"));
+const LIST_ORDER = `https://my-safe-establishment-company.herokuapp.com/private/order/${customerId}`;
+const CLOSE_ORDER = 'https://my-safe-establishment-company.herokuapp.com/private/orderpad/close';
 
 const userService = {
     requestLogin(url, document, phone) {
-        debugger;
         const cpf = document?.replace(/[^0-9]/g, '');
         const phoneNumber = phone?.replace(/[^0-9]/g, '');
         console.log(cpf, phoneNumber);
@@ -66,11 +67,26 @@ const userService = {
             }
         ];
         console.log(orders);
-        debugger;
         axios.post(ORDER, { customerId, orders })
             .then((res) => {
-                console.log(res);
+                console.log(res.status);
+                if (res.status === 200) {
+                    window.location = "/product-list";
+                } else {
+                    window.alert("Não foi possivel realizar seu pedido:", res.data.status);
+                }
             });
+    },
+
+    postCloserOrder() {
+        const tip = parseInt('200');
+        const paymentMethod = "Cartao de Credito"
+        console.log(customerId, paymentMethod, tip);
+        axios.post(CLOSE_ORDER, { customerId, paymentMethod, tip })
+            .then((res) => {
+                console.log(res);
+            })
+        debugger;
     },
 
     async getTables() {
@@ -84,7 +100,14 @@ const userService = {
         return axios.get(PRODUCTS)
             .then((res) =>
                 res.data
-            )
+            );
+    },
+
+    async getListOrder() {
+        return axios.get(LIST_ORDER)
+            .then((res) =>
+                res.data
+            );
     },
 }
 
