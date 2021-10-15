@@ -1,4 +1,5 @@
 import React from 'react';
+import InputMask from 'react-input-mask';
 
 import '../../styles/login.css';
 import { Link } from 'react-router-dom';
@@ -22,28 +23,6 @@ export default class LoginUser extends React.Component {
         e.preventDefault();
         const { cpf, phoneNumber } = this.state;
         userService.requestLogin(cpf, phoneNumber);
-    }
-
-    onKeyPressCPF() {
-        var cpf = document.getElementById('cpf-login');
-        var valueCpf = cpf.value?.length;
-        if (valueCpf === 3 || valueCpf === 7) {
-            cpf.value += ".";
-        } else if (valueCpf === 11) {
-            cpf.value += "-";
-        }
-    }
-
-    onKeyPressPhone() {
-        var phoneNumber = document.getElementById('phone-number-login');
-        var valuePhoneNumber = phoneNumber.value?.length;
-        if (valuePhoneNumber === 0) {
-            phoneNumber.value += "(";
-        } else if (valuePhoneNumber === 3) {
-            phoneNumber.value += ")";
-        } else if (valuePhoneNumber === 9) {
-            phoneNumber.value += "-";
-        }
     }
 
     render() {
@@ -76,35 +55,31 @@ export default class LoginUser extends React.Component {
                         </div>
                     </div>
                     <form onSubmit={this.onSubmit}>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label for="cpf">CPF:</label>
-                            <input type="text"
-                            class="form-control"
+                            <InputMask mask="999.999.999-99" 
+                            className="form-control"
                             id="cpf-login"
                             placeholder="000.000.000-00"
                             name="cpf"
                             value={cpf}
                             onChange={this.onChange}
-                            onKeyPress={this.onKeyPressCPF}
-                            maxlength="14"
                             required
                             autoComplete="off"
-                            // pattern="\d*"
-                             />
+                            ></InputMask>
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label for="phone-number-login">Digite seu celular:</label>
-                            <input type="text" 
-                            class="form-control" 
+                            <InputMask mask="(99) 99999-9999"
+                            type="text" 
+                            className="form-control" 
                             id="phone-number-login" 
                             placeholder="(00) 0000-0000" 
                             name="phoneNumber" 
                             value={phoneNumber} 
-                            onChange={this.onChange} 
-                            onKeyPress={this.onKeyPressPhone}
-                            maxlength="14" 
-                            required 
-                            />
+                            onChange={this.onChange}
+                            required
+                            ></InputMask>
                         </div>
                         <button type="submit" class="btn btn-outline-danger">ENTRAR</button>
                         <h6>Cadastre-se sua <Link to={linkRegisterEstablishment}>empresa</Link>!</h6>
