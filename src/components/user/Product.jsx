@@ -2,20 +2,18 @@ import React, { useEffect, useState } from 'react';
 import userService from '../../services/UserService';
 
 import '../../styles/product.css';
+import customerUtils from '../../utils/customerUtils';
 
 function Product() {
     const [posts, setPosts] = useState([]);
     const src = localStorage.getItem('src');
-    const name = localStorage.getItem('name');
     const index = localStorage.getItem('index');
 
     async function fetchPosts() {
-        console.log("Batendo na API...");
         await userService.getProducts().then(setPosts);
     }
 
     useEffect(() => {
-        console.log("chamando API");
         fetchPosts()
     }, [])
 
@@ -71,7 +69,7 @@ function Product() {
                         <img id="product-img-selected" src={src} alt="" />
                     </div>
                     <div id="product-item">
-                        <h2 className="name-product">{name}</h2>
+                        <h2 className="name-product">{customerUtils.getCustomerName()}</h2>
                         {
                             posts.map((item) => {
                                 const ids = [item.id];

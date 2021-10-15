@@ -3,10 +3,10 @@ import userService from '../../services/UserService';
 
 import '../../styles/ordered.css';
 import { Link } from 'react-router-dom';
+import customerUtils from '../../utils/customerUtils';
 
 function Ordered() {
     const [posts, setPosts] = useState([]);
-    const userName = localStorage.getItem('userName');
 
     async function fetchPosts() {
         console.log("Batendo na API...");
@@ -29,7 +29,7 @@ function Ordered() {
                     <div className="content-menu-register">
                         <div className="content-in-text">
                             <h1>Bem vindo,</h1>
-                            <h2>{userName}</h2>
+                            <h2>{customerUtils.getCustomerName()}</h2>
                         </div>
                     </div>
                 </div>
