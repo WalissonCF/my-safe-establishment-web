@@ -3,9 +3,13 @@ const userParse = JSON.parse(user);
 
 const customerUtils = {
     getCustomerId() {
-        return userParse.map((id) => {
-            return id.customerId;
-        });
+        if (userParse === null) {
+            return "";
+        } else {
+            return userParse.map((id) => {
+                return id.customerId;
+            });
+        }
     },
 
     getCustomerName() {
