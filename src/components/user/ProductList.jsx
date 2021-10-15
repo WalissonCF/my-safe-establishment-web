@@ -3,11 +3,10 @@ import React, { useEffect, useState } from 'react';
 import '../../styles/productList.css';
 import { Link } from 'react-router-dom';
 import userService from '../../services/UserService';
+import customerUtils from '../../utils/customerUtils';
 
 function ProductList() {
     const [posts, setPosts] = useState([]);
-    const userName = localStorage.getItem('userName');
-    const table = localStorage.getItem('table');
 
     async function fetchPosts() {
         await userService.getProducts().then(setPosts);
@@ -32,14 +31,14 @@ function ProductList() {
                     <div class="content-menu-register">
                         <div class="content-in-text">
                             <h1>Bem vindo,</h1>
-                            <h2>{userName}</h2>
+                            <h2>{customerUtils.getCustomerName()}</h2>
                         </div>
                     </div>
                 </div>
             </div>
             <form>
                 <h1 className="menu">Faça seu pedido</h1>
-                <h2 className="menu-1">Mesa: {table}</h2>
+                <h2 className="menu-1">Mesa: {customerUtils.getTable()}</h2>
                 <h2 className="menu-2">Carpadio:</h2>
                 <div id="product-img">
                     {

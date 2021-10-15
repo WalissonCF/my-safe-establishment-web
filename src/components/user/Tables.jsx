@@ -8,12 +8,10 @@ function Table() {
     const productList = "/product-list";
 
     async function fetchPosts() {
-        console.log("Batendo na API...");
         await userService.getTables().then(setPosts);
     }
 
     useEffect(() => {
-        console.log("chamando API");
         fetchPosts()
     }, [])
 

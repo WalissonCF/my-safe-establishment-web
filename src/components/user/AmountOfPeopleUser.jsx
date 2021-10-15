@@ -1,6 +1,7 @@
 import React from 'react';
 
 import '../../styles/amountOfPeopleUser.css';
+import customerUtils from '../../utils/customerUtils';
 
 export default class AmountOfPeopleUser extends React.Component {
     constructor() {
@@ -41,15 +42,6 @@ export default class AmountOfPeopleUser extends React.Component {
 
     render() {
         const { quantityCustomer } = this.state;
-        const user = localStorage.getItem('userName');
-
-        const userr = localStorage.getItem('user');
-        console.log('user', JSON.parse(userr));
-        const teste = JSON.parse(userr);
-        const t = teste.map((u) => {
-            return u.name;
-        })
-        console.log('t', t)
 
         return (
             <React.Fragment>
@@ -64,7 +56,7 @@ export default class AmountOfPeopleUser extends React.Component {
                     <form onSubmit={this.onSubmit}>
                         <div class="form-group" id="registration-of-the-number-of-people">
                             <div class="form-group">
-                                <h3>Bem vindo, <br /> {user}</h3>
+                                <h3>Bem vindo, <br /> {customerUtils.getCustomerName()}</h3>
                                 <label for="quantity-customer" class="quantity-customer">Mesa para quantos? <br />Não esqueça de incluir você!</label>
                                 <input type="text" 
                                 class="form-control"

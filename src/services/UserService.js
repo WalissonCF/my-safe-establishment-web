@@ -1,7 +1,8 @@
 import axios from 'axios';
 import authService from '../auth';
+import customerUtils from '../utils/customerUtils';
 
-const customerId = parseInt(localStorage.getItem("customerId"));
+const customerId = parseInt(customerUtils.getCustomerId());
 
 const USER_LOGIN_URL = 'https://my-safe-establishment-company.herokuapp.com/public/customer/login';
 const TABLE = 'https://my-safe-establishment-company.herokuapp.com/private/owner/tables';
@@ -25,7 +26,6 @@ const userService = {
                 localStorage.setItem("customerId", res.data.customerId);
                 window.location = "/amount-of-people-user";
                 console.log(res);
-                // debugger;
             } else {
                 window.alert("Erro", res);
                 window.location = "/";
@@ -41,7 +41,6 @@ const userService = {
             .then((res) => {
                 if (res.status === 200) {
                     authService.setLoggedUser(res.data, cpf);
-                    // debugger
                     window.location = "/amount-of-people-user";
                 } else {
                     window.alert("Erro", res);
@@ -53,11 +52,12 @@ const userService = {
     postCreateOrderPad() {
         const tableId = parseInt(localStorage.getItem("table"));
         const quantityCustomer = parseInt(localStorage.getItem("quantityCustomer"));
+        console.log(customerId, quantityCustomer, tableId)
         axios.post(CREATE_ORDER_PAD, { customerId, quantityCustomer, tableId })
             .then((res) => {
-                console.log(res)
-                localStorage.setItem("postCreateOrderPad", JSON.stringify(res))
+                console.log(res);
             });
+        customerUtils.removeItem(['quantityCustomer'])
     },
 
     postOrder() {
@@ -91,7 +91,6 @@ const userService = {
             .then((res) => {
                 console.log(res);
             })
-        debugger;
     },
 
     async getTables() {
