@@ -26,6 +26,10 @@ const customerUtils = {
         return localStorage.getItem('table');
     },
 
+    unFormatCpf() {
+
+    },
+
     removeItem(item) {
         item.map((itens) => {
             localStorage.removeItem(itens);
