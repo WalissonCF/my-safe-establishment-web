@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import userService from '../../services/UserService';
-import userServiceService from '../../services/UserServiceService';
 
 import '../../styles/product.css';
 

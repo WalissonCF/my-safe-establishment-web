@@ -3,6 +3,7 @@ import authService from '../auth';
 
 const customerId = parseInt(localStorage.getItem("customerId"));
 
+const USER_LOGIN_URL = 'https://my-safe-establishment-company.herokuapp.com/public/customer/login';
 const TABLE = 'https://my-safe-establishment-company.herokuapp.com/private/owner/tables';
 const PRODUCTS = 'https://my-safe-establishment-company.herokuapp.com/private/owner/products'
 const ORDER = 'https://my-safe-establishment-company.herokuapp.com/private/order/register';
@@ -11,12 +12,12 @@ const LIST_ORDER = `https://my-safe-establishment-company.herokuapp.com/private/
 const CLOSE_ORDER = 'https://my-safe-establishment-company.herokuapp.com/private/orderpad/close';
 
 const userService = {
-    requestLogin(url, document, phone) {
+    requestLogin(document, phone) {
         const cpf = document?.replace(/[^0-9]/g, '');
         const phoneNumber = phone?.replace(/[^0-9]/g, '');
         console.log(cpf, phoneNumber);
 
-        axios.post(url, { cpf, phoneNumber }).then((res) => {
+        axios.post(USER_LOGIN_URL, { cpf, phoneNumber }).then((res) => {
             console.log(res)
             if (res.status === 200) {
                 authService.setLoggedUser(res.data, res.data.name,
@@ -24,7 +25,9 @@ const userService = {
                 localStorage.setItem("customerId", res.data.customerId);
                 window.location = "/amount-of-people-user";
                 console.log(res);
+                // debugger;
             } else {
+                window.alert("Erro", res);
                 window.location = "/";
             }
         });
@@ -38,8 +41,10 @@ const userService = {
             .then((res) => {
                 if (res.status === 200) {
                     authService.setLoggedUser(res.data, cpf);
+                    // debugger
                     window.location = "/amount-of-people-user";
                 } else {
+                    window.alert("Erro", res);
                     window.location = "/register";
                 }
             });

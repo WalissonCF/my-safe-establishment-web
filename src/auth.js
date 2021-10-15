@@ -4,11 +4,22 @@ const authService = {
 
     // Função para salvar o usuário logado no local storage
     setLoggedUser(data, name, token, customerId) {
-        let parsedData = JSON.stringify(data)
+        console.log("teste", data.name)
+        let user = [
+            {
+                name: data.name,
+                customerId: data.customerId,
+            }
+        ];
+        localStorage.setItem('user', JSON.stringify(user));
         localStorage.setItem('userName', name);
         localStorage.setItem("token", token);
         localStorage.setItem("customerId", customerId);
-        localStorage.setItem("data", parsedData);
+
+        const userr = localStorage.getItem('user');
+        console.log('user', JSON.parse(userr));
+        // localStorage.removeItem('user');
+        // console.log(userr);
     },
 
     isAuthenticated(){

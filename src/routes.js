@@ -21,17 +21,18 @@ export default function MainRoutes() {
         <Routes>
             <Route path="/" element={ <LoginUser /> } />
             <Route path="/register" element={ <RegisterUser /> } />
-            <Route path="/amount-of-people-user" element= { <AmountOfPeopleUser /> } />
-            <Route path="/tables" element= { <Tables /> } />
-            <Route path="/product-list" element= { <ProductList /> } />
-            <Route path="/product" element= { <Product /> } />
-            <Route path="/ordered" element= { <Ordered /> } />
+            {/* <Route path="/amount-of-people-user" element= { <AmountOfPeopleUser /> } /> */}
+            {/* <Route path="/tables" element= { <Tables /> } /> */}
+            {/* <Route path="/product-list" element= { <ProductList /> } /> */}
+            {/* <Route path="/product" element= { <Product /> } /> */}
+            {/* <Route path="/ordered" element= { <Ordered /> } /> */}
             
 
-            {/* {Auth.privateRoutes("/amount-of-people-user", <AmountOfPeopleUser />)} */}
-            {/* {Auth.privateRoutes("/product-list", <ProductList />)} */}
-            {/* {Auth.privateRoutes("/product", <Product />)} */}
-            {/* {Auth.privateRoutes("/ordered", <Ordered />)} */}
+            {Auth.privateRoutes("/amount-of-people-user", <AmountOfPeopleUser />)}
+            {Auth.privateRoutes("/tables", <Tables />)}
+            {Auth.privateRoutes("/product-list", <ProductList />)}
+            {Auth.privateRoutes("/product", <Product />)}
+            {Auth.privateRoutes("/ordered", <Ordered />)}
 
             {/* <Route path="/product-list" element={ <ProductList /> } /> */}
 
