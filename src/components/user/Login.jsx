@@ -28,6 +28,7 @@ export default class LoginUser extends React.Component {
     render() {
         const { cpf, phoneNumber } = this.state;
         const linkRegisterEstablishment = "/register-establishment";
+        localStorage.clear();
 
         return (
             <React.Fragment>
