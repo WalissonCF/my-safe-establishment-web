@@ -5,6 +5,7 @@ import customerUtils from '../utils/customerUtils';
 const customerId = parseInt(customerUtils.getCustomerId());
 
 const USER_LOGIN_URL = 'https://my-safe-establishment-company.herokuapp.com/public/customer/login';
+const USER_REGISTER_URL = 'https://my-safe-establishment-company.herokuapp.com/public/customer/register';
 const TABLE = 'https://my-safe-establishment-company.herokuapp.com/private/owner/tables';
 const PRODUCTS = 'https://my-safe-establishment-company.herokuapp.com/private/owner/products'
 const ORDER = 'https://my-safe-establishment-company.herokuapp.com/private/order/register';
@@ -17,34 +18,25 @@ const userService = {
         const cpf = document?.replace(/[^0-9]/g, '');
         const phoneNumber = phone?.replace(/[^0-9]/g, '');
         console.log(cpf, phoneNumber);
-
         axios.post(USER_LOGIN_URL, { cpf, phoneNumber }).then((res) => {
             console.log(res)
             if (res.status === 200) {
-                authService.setLoggedUser(res.data, res.data.name,
-                    res.data.token, res.data.customerId);
-                localStorage.setItem("customerId", res.data.customerId);
+                authService.setLoggedUser(res.data);
                 window.location = "/amount-of-people-user";
                 console.log(res);
-            } else {
-                window.alert("Erro", res);
-                window.location = "/";
             }
         });
     },
 
-    requestRegister(url, name, phone, document) {
+    requestRegister(name, phone, document) {
         const cpf = document?.replace(/[^0-9]/g, '');
         const phoneNumber = phone?.replace(/[^0-9]/g, '');
         console.log(cpf, phoneNumber);
-        axios.post(url, { name, phoneNumber, cpf })
+        axios.post(USER_REGISTER_URL, { name, phoneNumber, cpf })
             .then((res) => {
                 if (res.status === 200) {
-                    authService.setLoggedUser(res.data, cpf);
-                    window.location = "/amount-of-people-user";
-                } else {
-                    window.alert("Erro", res);
-                    window.location = "/register";
+                    authService.setLoggedUser(res.data);
+                    window.location = "/";
                 }
             });
     },
