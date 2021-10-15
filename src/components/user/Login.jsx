@@ -4,7 +4,6 @@ import '../../styles/login.css';
 import { Link } from 'react-router-dom';
 import userService from '../../services/UserService';
 
-const USER_LOGIN_URL = 'https://my-safe-establishment-company.herokuapp.com/public/customer/login';
 export default class LoginUser extends React.Component {
     constructor() {
         super();
@@ -17,14 +16,12 @@ export default class LoginUser extends React.Component {
 
     onChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
-        console.log({ [e.target.name]: e.target.value });
     }
 
     onSubmit = (e) => {
         e.preventDefault();
-        const { cpf, phoneNumber} = this.state;
-        console.log("Batendo na api");
-        userService.requestLogin(USER_LOGIN_URL, cpf, phoneNumber);
+        const { cpf, phoneNumber } = this.state;
+        userService.requestLogin(cpf, phoneNumber);
     }
 
     onKeyPressCPF() {

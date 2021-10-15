@@ -6,17 +6,14 @@ import userService from '../../services/UserService';
 
 function ProductList() {
     const [posts, setPosts] = useState([]);
-    const productList = "/product-list";
     const userName = localStorage.getItem('userName');
     const table = localStorage.getItem('table');
 
     async function fetchPosts() {
-        console.log("Batendo na API...");
         await userService.getProducts().then(setPosts);
     }
 
     useEffect(() => {
-        console.log("chamando API");
         fetchPosts()
     }, [])
 

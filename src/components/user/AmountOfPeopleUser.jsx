@@ -1,11 +1,7 @@
 import React from 'react';
 
 import '../../styles/amountOfPeopleUser.css';
-import { Link } from 'react-router-dom';
 
-// const TABLE = 'https://my-safe-establishment-company.herokuapp.com/private/owner/tables';
-
-const USER_PRODUCTS = 'https://my-safe-establishment-company.herokuapp.com/private/owner/products';
 export default class AmountOfPeopleUser extends React.Component {
     constructor() {
         super();
@@ -46,6 +42,14 @@ export default class AmountOfPeopleUser extends React.Component {
     render() {
         const { quantityCustomer } = this.state;
         const user = localStorage.getItem('userName');
+
+        const userr = localStorage.getItem('user');
+        console.log('user', JSON.parse(userr));
+        const teste = JSON.parse(userr);
+        const t = teste.map((u) => {
+            return u.name;
+        })
+        console.log('t', t)
 
         return (
             <React.Fragment>
