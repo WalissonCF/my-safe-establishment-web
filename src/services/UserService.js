@@ -28,8 +28,8 @@ const userService = {
     },
 
     requestRegister(name, phone, document) {
-        const cpf = document?.replace(/[^0-9]/g, '');
-        const phoneNumber = phone?.replace(/[^0-9]/g, '');
+        const cpf = customerUtils.unFormatCpf(document);
+        const phoneNumber = customerUtils.unFormatPhoneNumber(phone);
         console.log(cpf, phoneNumber);
         axios.post(USER_REGISTER_URL, { name, phoneNumber, cpf })
             .then((res) => {
@@ -43,10 +43,14 @@ const userService = {
     postCreateOrderPad() {
         const tableId = parseInt(localStorage.getItem("table"));
         const quantityCustomer = parseInt(localStorage.getItem("quantityCustomer"));
-        console.log(customerId, quantityCustomer, tableId)
+        console.log(customerId, quantityCustomer, tableId);
+        console.log(CREATE_ORDER_PAD);
         axios.post(CREATE_ORDER_PAD, { customerId, quantityCustomer, tableId })
             .then((res) => {
-                customerUtils.removeItem(['quantityCustomer']);
+                if (res.status === 200) {
+                    console.log(res);
+                    customerUtils.removeItem(['quantityCustomer']);
+                }
             });
     },
 

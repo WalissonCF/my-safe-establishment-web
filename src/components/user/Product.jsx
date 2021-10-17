@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import userService from '../../services/UserService';
 
 import '../../styles/product.css';
+import { Link } from 'react-router-dom';
 import customerUtils from '../../utils/customerUtils';
 
 function Product() {
@@ -117,7 +118,10 @@ function Product() {
                                 })
                             })
                         }
-                        <button onClick={onClickQuantityProduct} class="btn btn-outline-danger">CONFIRMAR</button>
+                        <button onClick={onClickQuantityProduct} className="btn btn-outline-danger">CONFIRMAR</button>
+                        <Link to="/product-list">
+                            <button className="btn btn-outline-danger">VOLTAR</button>
+                        </Link>
                     </div>
                 </div>
             </div>
