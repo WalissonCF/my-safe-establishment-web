@@ -3,34 +3,33 @@ import authService from '../auth';
 import customerUtils from '../utils/customerUtils';
 
 const customerId = parseInt(customerUtils.getCustomerId());
+const URL = 'https://my-safe-establishment-company.herokuapp.com/';
 
-const USER_LOGIN_URL = 'https://my-safe-establishment-company.herokuapp.com/public/customer/login';
-const USER_REGISTER_URL = 'https://my-safe-establishment-company.herokuapp.com/public/customer/register';
-const TABLE = 'https://my-safe-establishment-company.herokuapp.com/private/owner/tables';
-const PRODUCTS = 'https://my-safe-establishment-company.herokuapp.com/private/owner/products'
-const ORDER = 'https://my-safe-establishment-company.herokuapp.com/private/order/register';
-const CREATE_ORDER_PAD = 'https://my-safe-establishment-company.herokuapp.com/private/orderpad/create';
-const LIST_ORDER = `https://my-safe-establishment-company.herokuapp.com/private/order/${customerId}`;
-const CLOSE_ORDER = 'https://my-safe-establishment-company.herokuapp.com/private/orderpad/close';
+const USER_LOGIN_URL = `${URL}public/customer/login`;
+const USER_REGISTER_URL = `${URL}public/customer/register`;
+const TABLE = `${URL}private/owner/tables`;
+const PRODUCTS = `${URL}private/owner/products`;
+const ORDER = `${URL}private/order/register`;
+const CREATE_ORDER_PAD = `${URL}private/orderpad/create`;
+const LIST_ORDER = `${URL}private/order/${customerId}`;
+const CLOSE_ORDER = `${URL}private/orderpad/close`;
 
 const userService = {
     requestLogin(document, phone) {
-        const cpf = document?.replace(/[^0-9]/g, '');
-        const phoneNumber = phone?.replace(/[^0-9]/g, '');
-        console.log(cpf, phoneNumber);
+        const cpf = customerUtils.unFormatCpf(document);
+        const phoneNumber = customerUtils.unFormatPhoneNumber(phone);
         axios.post(USER_LOGIN_URL, { cpf, phoneNumber }).then((res) => {
             console.log(res)
             if (res.status === 200) {
                 authService.setLoggedUser(res.data);
                 window.location = "/amount-of-people-user";
-                console.log(res);
             }
         });
     },
 
     requestRegister(name, phone, document) {
-        const cpf = document?.replace(/[^0-9]/g, '');
-        const phoneNumber = phone?.replace(/[^0-9]/g, '');
+        const cpf = customerUtils.unFormatCpf(document);
+        const phoneNumber = customerUtils.unFormatPhoneNumber(phone);
         console.log(cpf, phoneNumber);
         axios.post(USER_REGISTER_URL, { name, phoneNumber, cpf })
             .then((res) => {
@@ -44,12 +43,15 @@ const userService = {
     postCreateOrderPad() {
         const tableId = parseInt(localStorage.getItem("table"));
         const quantityCustomer = parseInt(localStorage.getItem("quantityCustomer"));
-        console.log(customerId, quantityCustomer, tableId)
+        console.log(customerId, quantityCustomer, tableId);
+        console.log(CREATE_ORDER_PAD);
         axios.post(CREATE_ORDER_PAD, { customerId, quantityCustomer, tableId })
             .then((res) => {
-                console.log(res);
+                if (res.status === 200) {
+                    console.log(res);
+                    customerUtils.removeItem(['quantityCustomer']);
+                }
             });
-        customerUtils.removeItem(['quantityCustomer'])
     },
 
     postOrder() {
@@ -63,14 +65,12 @@ const userService = {
                 quantity: quantitys,
             }
         ];
-        console.log(orders);
         axios.post(ORDER, { customerId, orders })
             .then((res) => {
                 console.log(res.status);
                 if (res.status === 200) {
+                    customerUtils.removeItem(['index', 'src', 'quantityProduct', 'valueProduct', 'name'])
                     window.location = "/product-list";
-                } else {
-                    window.alert("Não foi possivel realizar seu pedido:", res.data.status);
                 }
             });
     },
