@@ -26,8 +26,8 @@ const customerUtils = {
         return localStorage.getItem('table');
     },
 
-    unFormatCpf() {
-
+    unFormatCpf(cpf) {
+        return cpf?.replace(/[^0-9]/g, '');
     },
 
     removeItem(item) {
