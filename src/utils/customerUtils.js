@@ -30,6 +30,10 @@ const customerUtils = {
         return cpf?.replace(/[^0-9]/g, '');
     },
 
+    unFormatPhoneNumber(phoneNumber) {
+        return phoneNumber?.replace(/[^0-9]/g, '');
+    },
+
     removeItem(item) {
         item.map((itens) => {
             localStorage.removeItem(itens);

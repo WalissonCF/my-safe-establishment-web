@@ -45,18 +45,6 @@ function Product() {
 
     function onClickQuantityProduct() {
         const quantityProduct = parseInt(document.getElementById('qtde-product').innerText);
-        const indexProduct = parseInt(localStorage.getItem('index'));
-        const valueProduct = document.getElementById('product').innerText;
-        const srcProduct = localStorage.getItem('src');
-        const product = [
-            {
-                src: srcProduct,
-                quantityProductSelected: quantityProduct,
-                index: indexProduct,
-                valueProductSelected: parseFloat(valueProduct?.replace(/[^0-9.,]+/, '')),
-            }
-        ];
-        localStorage.setItem(`product${indexProduct}`, JSON.stringify(product));
         localStorage.setItem('quantityProduct', quantityProduct);
         userService.postOrder();
     }
@@ -103,6 +91,7 @@ function Product() {
                                             const j = parseInt(index)
                                             const k = parseInt(ids)
                                             if (j === k) {
+                                                localStorage.setItem('valueProduct', amounts);
                                                 return (
                                                     <div id="product-selected">
                                                         <div className="info-product">
