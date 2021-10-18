@@ -59,6 +59,7 @@ export default class LoginUser extends React.Component {
                         <div className="form-group">
                             <label for="cpf">CPF:</label>
                             <InputMask mask="999.999.999-99" 
+                            type="tel"
                             className="form-control"
                             id="cpf-login"
                             placeholder="000.000.000-00"
@@ -72,7 +73,7 @@ export default class LoginUser extends React.Component {
                         <div className="form-group">
                             <label for="phone-number-login">Digite seu celular:</label>
                             <InputMask mask="(99) 99999-9999"
-                            type="text" 
+                            type="tel" 
                             className="form-control" 
                             id="phone-number-login" 
                             placeholder="(00) 0000-0000" 
