@@ -82,6 +82,7 @@ const userService = {
         axios.post(CLOSE_ORDER, { customerId, paymentMethod, tip })
             .then((res) => {
                 console.log(res);
+                window.location = "/payment"
             })
     },
 
