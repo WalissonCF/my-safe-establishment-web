@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Cards from 'react-credit-cards';
 import 'react-credit-cards/es/styles-compiled.css';
 import InputMask from 'react-input-mask';
+import userService from '../../services/UserService';
 
 import '../../styles/payment.css'
 import customerUtils from '../../utils/customerUtils';
@@ -28,6 +29,10 @@ export default class PaymentMethod extends React.Component {
         const { name, value } = e.target;
 
         this.setState({ [name]: value });
+    }
+
+    onClickPaymentOrderPad() {
+        userService.postPaymentOrdenPad();
     }
 
     render() {
@@ -89,6 +94,10 @@ export default class PaymentMethod extends React.Component {
                             <div className="form-group">
                                 <h3 className="total-products">Total: R${customerUtils.getTotalValueProduct()}</h3>
                             </div>
+                            <div>
+                                <p id="alert">*Em caso de dúvida procurar um atendente</p>
+                            </div>
+                            <button className="btn btn-outline-danger" onClick={this.onClickPaymentOrderPad}>PAGAR</button>
                         </form>
                     </div>
                 </div>

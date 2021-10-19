@@ -35,7 +35,16 @@
     padding: 10px;
 }
 
-#alert {
+#alert, #alert-login {
     color: var(--main-color);
     font-size: 12px;
+}
+
+#alert-login {
+    margin-top: 10px;
+}
+
+.total-products {
+    text-align: center;
+    font-weight: 200;
 }

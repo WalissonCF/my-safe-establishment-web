@@ -13,18 +13,23 @@ const ORDER = `${URL}private/order/register`;
 const CREATE_ORDER_PAD = `${URL}private/orderpad/create`;
 const LIST_ORDER = `${URL}private/order/${customerId}`;
 const CLOSE_ORDER = `${URL}private/orderpad/close`;
+const PAYMENT_ORDER_PAD = `${URL}private/orderpad/payment`;
 
 const userService = {
     requestLogin(document, phone) {
         const cpf = customerUtils.unFormatCpf(document);
         const phoneNumber = customerUtils.unFormatPhoneNumber(phone);
-        axios.post(USER_LOGIN_URL, { cpf, phoneNumber }).then((res) => {
-            console.log(res)
-            if (res.status === 200) {
-                authService.setLoggedUser(res.data);
-                window.location = "/amount-of-people-user";
-            }
-        });
+        axios.post(USER_LOGIN_URL, { cpf, phoneNumber })
+            .then((res) => {
+                console.log(res)
+                if (res.status === 200) {
+                    authService.setLoggedUser(res.data);
+                    window.location = "/amount-of-people-user";
+                }
+            })
+            .catch((res) => {
+                customerUtils.removeHidden('alert-login');
+            });
     },
 
     requestRegister(name, phone, document) {
@@ -75,13 +80,27 @@ const userService = {
             });
     },
 
-    postCloserOrder(paymentMethod, tip) {
+    postCloserOrder(paymentMethod, tips) {
+        const tip = customerUtils.unFormatNumber(tips);
         console.log(customerId, paymentMethod, tip);
         axios.post(CLOSE_ORDER, { customerId, paymentMethod, tip })
             .then((res) => {
                 console.log(res);
-                localStorage.setItem('totalProduct', res.data.value);
+                if (res.status === 200) {
+                    localStorage.setItem('totalProduct', res.data.value);
+                    window.location = "/payment-method";
+                }
             })
+    },
+
+    postPaymentOrdenPad() {
+        debugger
+        const valuePayment = customerUtils.getTotalValueProduct();
+        axios.post(PAYMENT_ORDER_PAD, { customerId, valuePayment })
+            .then((res) => {
+                console.log(res);
+                debugger
+            });
     },
 
     async getTables() {

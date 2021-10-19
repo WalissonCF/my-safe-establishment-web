@@ -66,7 +66,7 @@ export default class PaymentForm extends React.Component {
                         <form onSubmit={this.formSubmit}>
                             <div className="form-group">
                                 <label htmlFor="">Gorjeta:</label>
-                                <InputMask type="tel" name="tip" maskChar={null} mask="R$999.999.999.999" className="form-control"
+                                <InputMask type="tel" name="tip" maskChar={null} mask="R$999.99" className="form-control"
                                     onChange={this.onChange} />
                             </div>
                             <div className="form-check">
