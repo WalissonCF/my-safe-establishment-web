@@ -8,6 +8,7 @@ import ProductList from './components/user/ProductList';
 import Product from './components/user/Product';
 import Ordered from './components/user/Ordered';
 import Payment from './components/user/Payment';
+import PaymentMethod from './components/user/PaymentMethod'; 
 
 import LoginEstablishment from './components/establishment/LoginEstablishment';
 import RegisterEstablishment from './components/establishment/RegisterEstablishment';
@@ -35,6 +36,8 @@ export default function MainRoutes() {
             {Auth.privateRoutes("/product", <Product />)}
             {Auth.privateRoutes("/ordered", <Ordered />)}
             {Auth.privateRoutes("/payment", <Payment />)}
+            {Auth.privateRoutes("/payment-method", <PaymentMethod />)}
+
 
 
             {/* <Route path="/product-list" element={ <ProductList /> } /> */}

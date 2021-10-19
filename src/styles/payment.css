@@ -1,3 +1,7 @@
+#select-type-payment {
+    margin-top: 150px;
+}
+
 .form-check {
     width: 80%;
     display: flex;
@@ -12,7 +16,8 @@
 }
 
 .form-check label {
-    margin-left: 0;
+    margin-left: -25px;
+    margin-top: 10px;
 }
 
 .title-payment {
@@ -28,4 +33,9 @@
 
 #form-credit-card .form-group {
     padding: 10px;
+}
+
+#alert {
+    color: var(--main-color);
+    font-size: 12px;
 }

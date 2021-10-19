@@ -50,6 +50,10 @@ function Product() {
         userService.postOrder();
     }
 
+    function onClickBack() {
+        customerUtils.removeItem(['index', 'src', 'quantityProduct', 'valueProduct', 'name']);
+    }
+
     return (
         <div className="container-fluid">
             <div className="row">
@@ -58,7 +62,7 @@ function Product() {
                         <img id="product-img-selected" src={src} alt="" />
                     </div>
                     <div id="product-item">
-                        <h2 className="name-product">{customerUtils.getCustomerName()}</h2>
+                        <h2 className="name-product">{customerUtils.getProductName()}</h2>
                         {
                             posts.map((item) => {
                                 const ids = [item.id];
@@ -120,7 +124,7 @@ function Product() {
                         }
                         <button onClick={onClickQuantityProduct} className="btn btn-outline-danger">CONFIRMAR</button>
                         <Link to="/product-list">
-                            <button className="btn btn-outline-danger">VOLTAR</button>
+                            <button onClick={onClickBack} className="btn btn-outline-danger">VOLTAR</button>
                         </Link>
                     </div>
                 </div>

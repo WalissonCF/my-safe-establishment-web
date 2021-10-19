@@ -75,14 +75,12 @@ const userService = {
             });
     },
 
-    postCloserOrder() {
-        const tip = parseInt('200');
-        const paymentMethod = "Cartao de Credito"
+    postCloserOrder(paymentMethod, tip) {
         console.log(customerId, paymentMethod, tip);
         axios.post(CLOSE_ORDER, { customerId, paymentMethod, tip })
             .then((res) => {
                 console.log(res);
-                window.location = "/payment"
+                localStorage.setItem('totalProduct', res.data.value);
             })
     },
 

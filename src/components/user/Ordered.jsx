@@ -17,7 +17,8 @@ function Ordered() {
     }, [])
 
     function onClickCloseOrder() {
-        userService.postCloserOrder();
+        window.location = "/payment";
+        // userService.postCloserOrder();
     };
 
     return (
