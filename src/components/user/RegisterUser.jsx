@@ -68,12 +68,12 @@ export default class RegisterUser extends React.Component {
                         </div>
                         <div className="form-group">
                             <label for="cpf-register">CPF:</label>
-                            <InputMask mask="999.999.999-99" type="text" className="form-control cpf-mask" id="cpf-register" placeholder="000.000.000-00"
+                            <InputMask mask="999.999.999-99" type="tel" maskChar={null} className="form-control cpf-mask" id="cpf-register" placeholder="000.000.000-00"
                             name="cpf" value={cpf} onChange={this.onChange} required></InputMask>
                         </div>
                         <div className="form-group">
                             <label for="phone-number-register">Digite seu celular:</label>
-                            <InputMask mask="(99) 99999-9999" type="text" className="form-control" id="phone-number-register" placeholder="(00) 0000-0000"
+                            <InputMask mask="(99) 99999-9999" type="tel" maskChar={null} className="form-control" id="phone-number-register" placeholder="(00) 0000-0000"
                             name="phoneNumber" value={phoneNumber} onChange={this.onChange} required></InputMask>
                         </div>
                         <button type="submit" className="btn btn-outline-danger">CADASTRAR</button>

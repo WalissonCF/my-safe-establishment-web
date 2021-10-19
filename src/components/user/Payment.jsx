@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import Cards from 'react-credit-cards';
-import 'react-credit-cards/es/styles-compiled.css';
 import InputMask from 'react-input-mask';
+import userService from '../../services/UserService';
 
 import '../../styles/payment.css'
 
 export default class PaymentForm extends React.Component {
     constructor() {
         super();
-        
+
         this.onValueChange = this.onValueChange.bind(this);
         this.formSubmit = this.formSubmit.bind(this);
     }
@@ -19,6 +18,7 @@ export default class PaymentForm extends React.Component {
         focus: '',
         name: '',
         number: '',
+        tip: '',
     };
 
     handleInputFocus = (e) => {
@@ -37,15 +37,20 @@ export default class PaymentForm extends React.Component {
         });
     }
 
+    onChange = (e) => {
+        this.setState({ [e.target.name]: e.target.value });
+        console.log({ [e.target.name]: e.target.value })
+    }
+
     formSubmit(event) {
         event.preventDefault();
+        const { tip } = this.state;
         if (this.state.selectedOption === 'credito' || this.state.selectedOption === 'debito') {
-            if (document.getElementById('PaymentForm').offsetParent === null) {
-                document.getElementById('select-type-payment').hidden="true";
-                document.getElementById('PaymentForm').removeAttribute('hidden');
-            }
+            const paymentMethod = 'Cartao de Credito';
+            userService.postCloserOrder(paymentMethod, tip);
+        } else {
+            document.getElementById('alert').removeAttribute('hidden');
         }
-        console.log(this.state.selectedOption)
     }
 
     render() {
@@ -61,89 +66,32 @@ export default class PaymentForm extends React.Component {
                         <form onSubmit={this.formSubmit}>
                             <div className="form-group">
                                 <label htmlFor="">Gorjeta:</label>
-                                <InputMask className="form-control" />
+                                <InputMask type="tel" name="tip" maskChar={null} mask="R$999.999.999.999" className="form-control"
+                                    onChange={this.onChange} />
                             </div>
                             <div className="form-check">
                                 <label className="form-check-label" for="gridRadios1">Débito <br /></label>
-                                <input className="form-check-input" type="radio" name="gridRadios" 
-                                value="debito" checked={this.state.selectedOption === "debito"}
-                                onChange={this.onValueChange} />
+                                <input className="form-check-input" type="radio" name="gridRadios"
+                                    value="debito" checked={this.state.selectedOption === "debito"}
+                                    onChange={this.onValueChange} />
                             </div>
                             <div class="form-check">
                                 <label className="form-check-label" for="gridRadios2">Crédito</label>
-                                <input className="form-check-input" type="radio" name="gridRadios" 
-                                value="credito" checked={this.state.selectedOption === "credito"}
-                                onChange={this.onValueChange} />
+                                <input className="form-check-input" type="radio" name="gridRadios"
+                                    value="credito" checked={this.state.selectedOption === "credito"}
+                                    onChange={this.onValueChange} />
                             </div>
                             <div class="form-check">
                                 <label className="form-check-label" for="gridRadios3">Dinheiro</label>
-                                <input className="form-check-input" type="radio" name="gridRadios" 
-                                value="dinheiro" checked={this.state.selectedOption === "dinheiro"}
-                                onChange={this.onValueChange} disabled />
+                                <input className="form-check-input" type="radio" name="gridRadios"
+                                    value="dinheiro" checked={this.state.selectedOption === "dinheiro"}
+                                    onChange={this.onValueChange} disabled />
                             </div>
-                            <div className="form-group">
-                                <h3 className="total-products">Total:</h3>
+                            <div>
+                                <p id="alert" hidden>*Por favor selecione um método de pagamento</p>
                             </div>
-                            <button className="btn btn-outline-danger" type="submit">Continuar</button>
+                            <button className="btn btn-outline-danger" type="submit">CONTINUAR</button>
                         </form>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-12">
-                        <div id="PaymentForm" hidden>
-                            <Cards
-                                cvc={this.state.cvc}
-                                expiry={this.state.expiry}
-                                focused={this.state.focus}
-                                name={this.state.name}
-                                number={this.state.number}
-                            />
-                            <form id="form-credit-card">
-                                <div className="form-group">
-                                    <InputMask
-                                        mask="9999 9999 9999 9999"
-                                        type="tel"
-                                        name="number"
-                                        placeholder="Número do cartão"
-                                        onChange={this.handleInputChange}
-                                        onFocus={this.handleInputFocus}
-                                        className="form-control"
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <InputMask
-                                        type="text"
-                                        name="name"
-                                        placeholder="Nome no cartão"
-                                        onChange={this.handleInputChange}
-                                        onFocus={this.handleInputFocus}
-                                        className="form-control"
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <InputMask
-                                        mask="99/99"
-                                        type="tel"
-                                        name="expiry"
-                                        placeholder="expiry"
-                                        onChange={this.handleInputChange}
-                                        onFocus={this.handleInputFocus}
-                                        className="form-control"
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <InputMask
-                                        mask="999"
-                                        type="tel"
-                                        name="cvc"
-                                        placeholder="cvc"
-                                        onChange={this.handleInputChange}
-                                        onFocus={this.handleInputFocus}
-                                        className="form-control"
-                                    />
-                                </div>
-                            </form>
-                        </div>
                     </div>
                 </div>
             </div>
