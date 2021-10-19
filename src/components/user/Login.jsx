@@ -40,7 +40,7 @@ export default class LoginUser extends React.Component {
                                     <h1>Bem-vindo ao</h1>
                                     <h2>My safe establishment web</h2>
                                     <p>
-                                    Cadastre-se agora para conseguir seu acento seguro <br />
+                                        Cadastre-se agora para conseguir seu acento seguro <br />
                                     Essa aplicação é destinada a segurança <br />
                                     do ambiente, também para que possa <br />
                                     realizar seus pedidos sem a necessidade <br />
@@ -59,29 +59,32 @@ export default class LoginUser extends React.Component {
                         <div className="form-group">
                             <label for="cpf">CPF:</label>
                             <InputMask mask="999.999.999-99" maskChar={null}
-                            type="tel"
-                            className="form-control"
-                            id="cpf-login"
-                            placeholder="000.000.000-00"
-                            name="cpf"
-                            value={cpf}
-                            onChange={this.onChange}
-                            required
-                            autoComplete="off"
+                                type="tel"
+                                className="form-control"
+                                id="cpf-login"
+                                placeholder="000.000.000-00"
+                                name="cpf"
+                                value={cpf}
+                                onChange={this.onChange}
+                                required
+                                autoComplete="off"
                             ></InputMask>
                         </div>
                         <div className="form-group">
                             <label for="phone-number-login">Digite seu celular:</label>
                             <InputMask mask="(99) 99999-9999" maskChar={null}
-                            type="tel" 
-                            className="form-control" 
-                            id="phone-number-login" 
-                            placeholder="(00) 0000-0000" 
-                            name="phoneNumber" 
-                            value={phoneNumber} 
-                            onChange={this.onChange}
-                            required
+                                type="tel"
+                                className="form-control"
+                                id="phone-number-login"
+                                placeholder="(00) 0000-0000"
+                                name="phoneNumber"
+                                value={phoneNumber}
+                                onChange={this.onChange}
+                                required
                             ></InputMask>
+                        </div>
+                        <div>
+                            <p id="alert-login" hidden>*CPF ou Celular incorretos</p>
                         </div>
                         <button type="submit" class="btn btn-outline-danger">ENTRAR</button>
                         <h6>Cadastre-se sua <Link to={linkRegisterEstablishment}>empresa</Link>!</h6>

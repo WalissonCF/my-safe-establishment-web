@@ -42,10 +42,18 @@ const customerUtils = {
         return phoneNumber?.replace(/[^0-9]/g, '');
     },
 
+    unFormatNumber(number) {
+        return number?.replace(/[^0-9.,]+/, '');
+    },
+
     removeItem(item) {
         item.map((itens) => {
             localStorage.removeItem(itens);
         })
+    },
+
+    removeHidden(id) {
+        document.getElementById(id).removeAttribute('hidden');
     }
 }
 
