@@ -81,25 +81,25 @@ const userService = {
     },
 
     postCloserOrder(paymentMethod, tips) {
-        const tip = customerUtils.unFormatNumber(tips);
+        const tip = parseFloat(customerUtils.unFormatNumber(tips));
+        window.location = "/payment-method";
+
         console.log(customerId, paymentMethod, tip);
-        axios.post(CLOSE_ORDER, { customerId, paymentMethod, tip })
-            .then((res) => {
-                console.log(res);
-                if (res.status === 200) {
-                    localStorage.setItem('totalProduct', res.data.value);
-                    window.location = "/payment-method";
-                }
-            })
+        // axios.post(CLOSE_ORDER, { customerId, paymentMethod, tip })
+        //     .then((res) => {
+        //         console.log(res);
+        //         if (res.status === 200) {
+        //             localStorage.setItem('totalProduct', res.data.value);
+        //             window.location = "/payment-method";
+        //         }
+        //     })
     },
 
     postPaymentOrdenPad() {
-        debugger
         const valuePayment = customerUtils.getTotalValueProduct();
         axios.post(PAYMENT_ORDER_PAD, { customerId, valuePayment })
             .then((res) => {
                 console.log(res);
-                debugger
             });
     },
 
