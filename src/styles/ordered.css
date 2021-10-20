@@ -17,6 +17,14 @@
     padding: 0;
 }
 
+.ordered {
+    margin-top: 10px
+}
+
+#form-product-list {
+    margin-block-end: 80%
+}
+
 .product-list {
     align-items: center;
     justify-content: center;
