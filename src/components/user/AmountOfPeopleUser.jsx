@@ -24,20 +24,25 @@ export default class AmountOfPeopleUser extends React.Component {
     }
 
     onClickProceed() {
-        const quantityCustomer = document.getElementById('quantity-customer');
-        if (quantityCustomer.value) {
-            localStorage.setItem("quantityCustomer", quantityCustomer.value);
-            window.location = '/tables';   
+        const quantityCustomer = document.getElementById('qtde-customer');
+        if (quantityCustomer.innerText) {
+            localStorage.setItem("quantityCustomer", quantityCustomer.innerText);
+            window.location = '/tables';
         }
     }
 
-    onClickCheckTable(e) {
-        e.preventDefault();
-        const value = e.target.innerText;
-        const table = value?.replace(/[^0-9]/g, '');
-        localStorage.setItem('table', table);
-        const tableSelected = localStorage.getItem('table');
-        document.getElementById('table-selected').innerHTML = `Mesa: ${tableSelected}`;
+    onClickSubtraction() {
+        const qtdeProduct = document.getElementById('qtde-customer').innerText;
+        if (parseInt(qtdeProduct) > 1) {
+            const qtdeTotalProduct = parseInt(qtdeProduct) - 1;
+            document.getElementById('qtde-customer').innerText = `${qtdeTotalProduct.toString()}`;
+        }
+    }
+
+    onClickSum() {
+        const qtdeProduct = document.getElementById('qtde-customer').innerText;
+        const qtdeTotalProduct = parseInt(qtdeProduct) + 1;
+        document.getElementById('qtde-customer').innerText = `${qtdeTotalProduct.toString()}`;
     }
 
     render() {
@@ -58,16 +63,13 @@ export default class AmountOfPeopleUser extends React.Component {
                             <div class="form-group">
                                 <h3>Bem vindo, <br /> {customerUtils.getCustomerName()}</h3>
                                 <label for="quantity-customer" class="quantity-customer">Mesa para quantos? <br />Não esqueça de incluir você!</label>
-                                <input type="text" 
-                                class="form-control"
-                                id="quantity-customer"
-                                name="quantityCustomer"
-                                value={quantityCustomer}
-                                onChange={this.onChange}
-                                required
-                                pattern="\d*" />
+                                <div className="info-customer">
+                                    <i className="material-icons" onClick={this.onClickSubtraction}>remove_circle_outline </i>
+                                    <label id="qtde-customer">1</label>
+                                    <i className="material-icons" onClick={this.onClickSum}>add_circle_outline</i>
+                                </div>
                             </div>
-                            <button class="btn btn-outline-danger btn-quantity-customer" onClick={this.onClickProceed}>CONTINUAR</button>                     
+                            <button class="btn btn-outline-danger btn-quantity-customer" onClick={this.onClickProceed}>CONTINUAR</button>
                         </div>
                     </form>
                 </div>

@@ -7,7 +7,7 @@
 }
 
 #registration-of-the-number-of-people {
-    margin-top: 10%;
+    margin-top: 170px;
 }
 
 #registration-of-the-number-of-people h3 {
@@ -91,4 +91,15 @@
 .table-title {
     text-align: center;
     color: black;
+}
+
+#qtde-customer {
+    margin-left: 0;
+}
+
+.info-customer {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

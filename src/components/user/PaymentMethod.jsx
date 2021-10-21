@@ -40,13 +40,15 @@ export default class PaymentMethod extends React.Component {
             <div className="row">
                 <div className="col-12">
                     <div id="PaymentForm">
-                        <Cards
-                            cvc={this.state.cvc}
-                            expiry={this.state.expiry}
-                            focused={this.state.focus}
-                            name={this.state.name}
-                            number={this.state.number}
-                        />
+                        <div id="card">
+                            <Cards
+                                cvc={this.state.cvc}
+                                expiry={this.state.expiry}
+                                focused={this.state.focus}
+                                name={this.state.name}
+                                number={this.state.number}
+                            />
+                        </div>
                         <form id="form-credit-card">
                             <div className="form-group">
                                 <InputMask
