@@ -76,7 +76,7 @@ export default class PaymentMethod extends React.Component {
                                     mask="99/99" maskChar={null}
                                     type="tel"
                                     name="expiry"
-                                    placeholder="expiry"
+                                    placeholder="Expiry"
                                     onChange={this.handleInputChange}
                                     onFocus={this.handleInputFocus}
                                     className="form-control"
@@ -87,7 +87,7 @@ export default class PaymentMethod extends React.Component {
                                     mask="999" maskChar={null}
                                     type="tel"
                                     name="cvc"
-                                    placeholder="cvc"
+                                    placeholder="CVV"
                                     onChange={this.handleInputChange}
                                     onFocus={this.handleInputFocus}
                                     className="form-control"

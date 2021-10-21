@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import userService from '../../services/UserService';
 
 import '../../styles/ordered.css';
-import { Link } from 'react-router-dom';
 import customerUtils from '../../utils/customerUtils';
 
 function Ordered() {
@@ -80,9 +79,6 @@ function Ordered() {
                 </div>
                 <div className="product-list">
                     <button onClick={onClickCloseOrder} class="btn btn-outline-danger">FORMA DE PAGAMENTO</button>
-                    <Link to="/product-list">
-                        <button className="btn btn-outline-danger">VOLTAR</button>
-                    </Link>
                 </div>
             </div>
         </div>

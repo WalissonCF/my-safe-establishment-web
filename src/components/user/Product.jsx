@@ -50,10 +50,6 @@ function Product() {
         userService.postOrder();
     }
 
-    function onClickBack() {
-        customerUtils.removeItem(['index', 'src', 'quantityProduct', 'valueProduct', 'name']);
-    }
-
     return (
         <div className="container-fluid">
             <div className="row">
@@ -123,9 +119,6 @@ function Product() {
                             })
                         }
                         <button onClick={onClickQuantityProduct} className="btn btn-outline-danger">CONFIRMAR</button>
-                        <Link to="/product-list">
-                            <button onClick={onClickBack} className="btn btn-outline-danger">VOLTAR</button>
-                        </Link>
                     </div>
                 </div>
             </div>
