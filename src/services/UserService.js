@@ -82,24 +82,26 @@ const userService = {
 
     postCloserOrder(paymentMethod, tips) {
         const tip = parseFloat(customerUtils.unFormatNumber(tips));
-        window.location = "/payment-method";
-
         console.log(customerId, paymentMethod, tip);
-        // axios.post(CLOSE_ORDER, { customerId, paymentMethod, tip })
-        //     .then((res) => {
-        //         console.log(res);
-        //         if (res.status === 200) {
-        //             localStorage.setItem('totalProduct', res.data.value);
-        //             window.location = "/payment-method";
-        //         }
-        //     })
+        axios.post(CLOSE_ORDER, { customerId, paymentMethod, tip })
+            .then((res) => {
+                if (res.status === 200) {
+                    localStorage.setItem('totalProduct', res.data.orderPad.value);
+                    window.location = "/payment-method";
+                }
+            })
     },
 
     postPaymentOrdenPad() {
-        const valuePayment = customerUtils.getTotalValueProduct();
+        const valuePayment = parseFloat(customerUtils.getTotalValueProduct());
+        console.log(customerId, valuePayment);
         axios.post(PAYMENT_ORDER_PAD, { customerId, valuePayment })
             .then((res) => {
                 console.log(res);
+                localStorage.setItem("orderPad", JSON.stringify(res));
+            })
+            .catch((res) => {
+                console.log("erro", res);
             });
     },
 
