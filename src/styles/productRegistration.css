@@ -71,3 +71,12 @@
     margin-left: 10%;
     height: 200px;
 }
+
+#register-product {
+    color: black;
+    text-align: center;
+}
+
+#form-register-product {
+    margin-block-end: 85%;
+}

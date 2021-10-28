@@ -2,9 +2,7 @@ import { Route } from 'react-router-dom';
 
 const authService = {
 
-    // Função para salvar o usuário logado no local storage
-    setLoggedUser(data, name, token, customerId) {
-        console.log("teste", data.name)
+    setLoggedUser(data) {
         let user = [
             {
                 name: data.name,
@@ -12,14 +10,7 @@ const authService = {
             }
         ];
         localStorage.setItem('user', JSON.stringify(user));
-        localStorage.setItem('userName', name);
-        localStorage.setItem("token", token);
-        localStorage.setItem("customerId", customerId);
-
-        const userr = localStorage.getItem('user');
-        console.log('user', JSON.parse(userr));
-        // localStorage.removeItem('user');
-        // console.log(userr);
+        localStorage.setItem('token', data.token);
     },
 
     isAuthenticated(){

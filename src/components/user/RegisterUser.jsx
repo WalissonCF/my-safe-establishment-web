@@ -5,6 +5,7 @@ import '../../styles/register.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import userService from '../../services/UserService';
+import InputMask from 'react-input-mask';
 
 const USER_REGISTER_URL = 'https://my-safe-establishment-company.herokuapp.com/public/customer/register';
 export default class RegisterUser extends React.Component {
@@ -20,35 +21,13 @@ export default class RegisterUser extends React.Component {
 
     onChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
-        console.log({ [e.target.name]: e.target.value });
     }
 
     onSubmit = (e) => {
         e.preventDefault();
         const { name, phoneNumber, cpf } = this.state;
-        userService.requestRegister(USER_REGISTER_URL, name, phoneNumber, cpf);
-    }
-
-    onKeyPressCPF() {
-        var cpf = document.getElementById('cpf-register');
-        var valueCpf = cpf.value?.length;
-        if (valueCpf === 3 || valueCpf === 7) {
-            cpf.value += ".";
-        } else if (valueCpf === 11) {
-            cpf.value += "-";
-        }
-    }
-
-    onKeyPressPhone() {
-        var phoneNumber = document.getElementById('phone-number-register');
-        var valuePhoneNumber = phoneNumber.value?.length;
-        if (valuePhoneNumber === 0) {
-            phoneNumber.value += "(";
-        } else if (valuePhoneNumber === 3) {
-            phoneNumber.value += ")";
-        } else if (valuePhoneNumber === 9) {
-            phoneNumber.value += "-";
-        }
+        console.log(name, phoneNumber, cpf);
+        userService.requestRegister(name, phoneNumber, cpf);
     }
 
     render() {
@@ -82,26 +61,25 @@ export default class RegisterUser extends React.Component {
                         </div>
                     </div>
                     <form onSubmit={this.onSubmit} >
-                        <div class="form-group">
+                        <div className="form-group">
                             <label for="name">Nome:</label>
-                            <input type="text" class="form-control" id="name-register" placeholder="Seu nome"
+                            <input type="text" className="form-control" id="name-register" placeholder="Seu nome"
                             name="name" value={name} onChange={this.onChange} required />
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label for="cpf-register">CPF:</label>
-                            <input type="text" class="form-control cpf-mask" id="cpf-register" placeholder="000.000.000-00"
-                            name="cpf" value={cpf} onChange={this.onChange} onKeyPress={this.onKeyPressCPF} maxlength="14" required />
+                            <InputMask mask="999.999.999-99" type="tel" maskChar={null} className="form-control cpf-mask" id="cpf-register" placeholder="000.000.000-00"
+                            name="cpf" value={cpf} onChange={this.onChange} required></InputMask>
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label for="phone-number-register">Digite seu celular:</label>
-                            <input type="text" class="form-control" id="phone-number-register" placeholder="(00) 0000-0000"
-                            name="phoneNumber" value={phoneNumber} onChange={this.onChange} maxlength="14" 
-                            onKeyPress={this.onKeyPressPhone} required />
+                            <InputMask mask="(99) 99999-9999" type="tel" maskChar={null} className="form-control" id="phone-number-register" placeholder="(00) 0000-0000"
+                            name="phoneNumber" value={phoneNumber} onChange={this.onChange} required></InputMask>
                         </div>
-                        <button type="submit" class="btn btn-outline-danger">CADASTRAR</button>
+                        <button type="submit" className="btn btn-outline-danger">CADASTRAR</button>
                     </form>
                     <hr />
-                    <h6 class="responsible">Desenvolvido por alunos da Universidade Paulista(UNIP) - 2021</h6>
+                    <h6 className="responsible">Desenvolvido por alunos da Universidade Paulista(UNIP) - 2021</h6>
                 </div>
             </React.Fragment>
         )

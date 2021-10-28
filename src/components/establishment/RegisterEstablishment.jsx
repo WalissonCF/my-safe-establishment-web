@@ -2,6 +2,8 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import establishmentService from '../../services/EstablishmentService';
+import InputMask from 'react-input-mask';
 
 const ESTABLISHMENT_REGISTER_URL = 'https://my-safe-establishment.herokuapp.com/public/owner/register';
 export default class LoginEstablishment extends React.Component {
@@ -36,11 +38,36 @@ export default class LoginEstablishment extends React.Component {
         const { companyName, tradingName, cnpj, typeEstablishment, phoneNumber, 
             publicPlace, number, district, city, name, cpf, email, password } = this.state;
 
-        axios.post(ESTABLISHMENT_REGISTER_URL, { companyName, tradingName, cnpj, typeEstablishment,
-            phoneNumber, publicPlace, number, district, city, name, cpf, email, password })
-            .then((res) => {
-                console.log(res);
-            });
+        let owner = [
+            {
+                name: name,
+                cpf: cpf,
+                establishemntId: 0,
+                phoneNumber: phoneNumber,
+                email: email,
+                password: password,
+            }
+        ];
+        let establishment = [
+            {
+                companyName: companyName,
+                tradingName: tradingName,
+                cnpj: cnpj,
+                typeEstablishment: typeEstablishment,
+                phoneNumber: phoneNumber,
+                address: address,
+            }
+        ];
+        let address = [
+            {
+                publicPlace: publicPlace,
+                number: number,
+                district: district,
+                city: city,
+            }
+        ];
+        establishmentService.postRegister(owner, establishment, address);
+        console.log(owner, establishment, address);
     }
 
     onBlurCNPJ(e) {
@@ -73,40 +100,6 @@ export default class LoginEstablishment extends React.Component {
             document.getElementById('first-register').removeAttribute('hidden');
             document.getElementById('next-register').hidden="true";
             document.getElementById('register-establishment').hidden="true";
-        }
-    }
-
-    onKeyPressCPF() {
-        var cpf = document.getElementById('cpf-register-establishment');
-        var valueCpf = cpf.value?.length;
-        if (valueCpf === 3 || valueCpf === 7) {
-            cpf.value += ".";
-        } else if (valueCpf === 11) {
-            cpf.value += "-";
-        }
-    }
-
-    onKeyPressCNPJ() {
-        var cnpj = document.getElementById('cpnj');
-        var valueCnpj = cnpj.value?.length;
-        if (valueCnpj === 2 || valueCnpj === 6) {
-            cnpj.value += ".";
-        } else if (valueCnpj === 10) {
-            cnpj.value += "/";
-        } else if (valueCnpj === 15) {
-            cnpj.value += "-";
-        }
-    }
-
-    onKeyPressPhone() {
-        var phoneNumber = document.getElementById('phone-number-register-establishment-2');
-        var valuePhoneNumber = phoneNumber.value?.length;
-        if (valuePhoneNumber === 0) {
-            phoneNumber.value += "(";
-        } else if (valuePhoneNumber === 3) {
-            phoneNumber.value += ")";
-        } else if (valuePhoneNumber === 9) {
-            phoneNumber.value += "-";
         }
     }
 
@@ -143,9 +136,13 @@ export default class LoginEstablishment extends React.Component {
                         <div className="form-group" id="first-register">
                             <div className="form-group">
                                 <label for="cpnj">CNPJ:</label>
-                                <input type="text" className="form-control" id="cpnj" placeholder="00.000.000/0000-00"
+                                {/* <input type="text" className="form-control" id="cpnj" placeholder="00.000.000/0000-00"
                                 name="cnpj" value={cnpj} onBlur={this.onBlurCNPJ} onChange={this.onChange} onInput={this.onInputCNPJ} 
-                                onKeyPress={this.onKeyPressCNPJ} maxlength="18" required pattern="\d*" />
+                                onKeyPress={this.onKeyPressCNPJ} maxlength="18" required pattern="\d*" /> */}
+                                <InputMask mask="99.999.999/9999-99" maskChar={null}
+                                type="tel" className="form-control" id="cpnj" placeholder="00.000.000/0000-00"
+                                name="cnpj" value={cnpj} onChange={this.onChange} onBlur={this.onBlurCNPJ} required
+                                ></InputMask>
                             </div>
                             <div className="form-group">
                                 <label for="corporate-name">Razão social:</label>
@@ -203,9 +200,15 @@ export default class LoginEstablishment extends React.Component {
                             </div>
                             <div className="form-group">
                                 <label for="cpf-register-establishment">CPF:</label>
-                                <input type="text" className="form-control" id="cpf-register-establishment"
+                                {/* <input type="text" className="form-control" id="cpf-register-establishment"
                                 name="cpf" value={cpf} value={this.state.value} onChange={this.onChange} maxlength="11"
-                                placeholder="000.000.000-00" onKeyPress={this.onKeyPressCPF} maxLength="14" required />
+                                placeholder="000.000.000-00" onKeyPress={this.onKeyPressCPF} maxLength="14" required /> */}
+                                <InputMask mask="999.999.999-99" maskChar={null}
+                                type="tel" className="form-control" id="cpf-register-establishment"
+                                name="cpf" value={cpf} value={this.state.value} onChange={this.onChange}
+                                placeholder="000.000.000-00" required
+                                >
+                                </InputMask>
                             </div>
                             <div className="form-group">
                                 <label for="phone-number-register-establishment-2">Número de telefone:</label>

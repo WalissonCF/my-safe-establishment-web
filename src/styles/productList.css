@@ -49,8 +49,9 @@
     font-weight: lighter;
 }
 
-.ordered {
-    width: 100%;
+.my-products {
+    margin-top: 15px;
+    font-size: 15px;
 }
 
 @media screen and (max-width: 1030px) {

@@ -1,0 +1,54 @@
+#select-type-payment {
+    margin-top: 150px;
+}
+
+#card {
+    
+}
+
+.form-check {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    align-content: center;
+}
+
+.form-check .form-check-input {
+    margin-left: auto;
+}
+
+.form-check label {
+    margin-left: -25px;
+    margin-top: 10px;
+}
+
+.title-payment {
+    color: black;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+#PaymentForm {
+    margin-top: 70px;
+}
+
+#form-credit-card .form-group {
+    padding: 10px;
+}
+
+#alert, #alert-login {
+    color: var(--main-color);
+    font-size: 12px;
+}
+
+#alert-login {
+    margin-top: 10px;
+}
+
+.total-products {
+    text-align: center;
+    font-weight: 200;
+}
