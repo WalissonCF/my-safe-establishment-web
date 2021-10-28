@@ -1,0 +1,24 @@
+.animation {
+    display: initial;
+    margin-top: 220px;
+}
+
+.animation-info {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.warning {
+    margin-top: 50px;
+    display: flex;
+    color: var(--main-color);
+    font-size: 15px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+

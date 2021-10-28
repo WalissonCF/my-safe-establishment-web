@@ -18,21 +18,21 @@ export default class ProductRegistration extends React.Component {
     }
 
     onSubmit = (e) => {
-       
+
     }
 
     imageHandler = (e) => {
         const reader = new FileReader();
         reader.onload = () => {
             if (reader.readyState === 2) {
-                this.setState({profileImg: reader.result})
+                this.setState({ profileImg: reader.result })
             }
         }
         reader.readAsDataURL(e.target.files[0])
     }
 
     render() {
-        const {profileImg} = this.state;
+        const { profileImg } = this.state;
 
         return (
             <React.Fragment>
@@ -49,39 +49,45 @@ export default class ProductRegistration extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <form onSubmit={this.onSubmit}>
+                    <form onSubmit={this.onSubmit} id="form-register-product">
                         <div className="form-group">
                             <div className="canvas">
                                 <h4>Cadastre seu produto:</h4>
                                 <img src={profileImg} alt="" className="preview-image" />
                                 <input type="file" id="upload-image"
-                                className="form-control-file"
-                                onChange={this.imageHandler}
-                                accept="image/*" />
+                                    className="form-control-file"
+                                    onChange={this.imageHandler}
+                                    accept="image/*" />
                                 <label className="label-help">Clique no botão abaixo para <br /> adicionar uma imagem</label>
                                 <label className="upload-image" htmlFor="upload-image" >
                                     {/* https://materializecss.com/icons.html */}
                                     <i id="image" className="material-icons">add_box</i>
                                 </label>
                             </div>
-                            <div class="form-group"> 
+                            <div class="form-group">
                                 <label for="corporate-name">Nome do produto:</label>
                                 <input type="text" className="form-control" id="corporate-name" />
                             </div>
-                            <div class="form-group"> 
+                            <div class="form-group">
                                 <label for="corporate-name">Valor:</label>
-                                <input type="text" className="form-control" id="corporate-name" 
-                                placeholder="R$" />
+                                <input type="text" className="form-control" id="corporate-name"
+                                    placeholder="R$" />
                             </div>
-                            <div class="form-group"> 
+                            <div class="form-group">
                                 <label for="corporate-name">Ingredientes:</label>
                                 <textarea className="form-control" id="ingredients"></textarea>
                             </div>
-                            <div className="form-group"> 
+                            <div className="form-group">
                                 <label for="corporate-name">Descrição:</label>
                                 <textarea className="form-control" id="ingredients"></textarea>
                             </div>
                         </div>
+                        <div className="confirm">
+                        <p id="register-product">Cadastre seu produto clicando no botão abaixo</p>
+                        {/* <Link to={productList}> */}
+                            <button  class="btn btn-outline-danger btn-quantity-customer btn-select-table">CADASTRAR</button>
+                        {/* </Link> */}
+                    </div>
                     </form>
                 </div>
             </React.Fragment>

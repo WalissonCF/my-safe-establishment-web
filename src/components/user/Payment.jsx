@@ -48,6 +48,8 @@ export default class PaymentForm extends React.Component {
         if (this.state.selectedOption === 'credito' || this.state.selectedOption === 'debito') {
             const paymentMethod = 'Cartao de Credito';
             userService.postCloserOrder(paymentMethod, tip);
+        } else if (this.state.selectedOption === 'dinheiro') {
+            window.location = '/calling-attendant';
         } else {
             document.getElementById('alert').removeAttribute('hidden');
         }
@@ -85,7 +87,7 @@ export default class PaymentForm extends React.Component {
                                 <label className="form-check-label" for="gridRadios3">Dinheiro</label>
                                 <input className="form-check-input" type="radio" name="gridRadios"
                                     value="dinheiro" checked={this.state.selectedOption === "dinheiro"}
-                                    onChange={this.onValueChange} disabled />
+                                    onChange={this.onValueChange} />
                             </div>
                             <div>
                                 <p id="alert" hidden>*Por favor selecione um método de pagamento</p>

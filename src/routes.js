@@ -9,6 +9,7 @@ import Product from './components/user/Product';
 import Ordered from './components/user/Ordered';
 import Payment from './components/user/Payment';
 import PaymentMethod from './components/user/PaymentMethod'; 
+import CallingAttendant from './components/user/CallingAttendant';
 
 import LoginEstablishment from './components/establishment/LoginEstablishment';
 import RegisterEstablishment from './components/establishment/RegisterEstablishment';
@@ -30,6 +31,8 @@ export default function MainRoutes() {
             {Auth.privateRoutes("/ordered", <Ordered />)}
             {Auth.privateRoutes("/payment", <Payment />)}
             {Auth.privateRoutes("/payment-method", <PaymentMethod />)}
+            <Route path="/calling-attendant" element={ <CallingAttendant /> } />
+
 
             <Route path="/login-establishment" element={ <LoginEstablishment /> } />
             <Route path="/register-establishment" element={ <RegisterEstablishment />} />

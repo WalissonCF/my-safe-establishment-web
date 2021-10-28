@@ -1,6 +1,5 @@
 import React from 'react';
 
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import authService from '../../auth';
 import establishmentService from '../../services/EstablishmentService';
@@ -64,7 +63,7 @@ export default class LoginEstablishment extends React.Component {
                         <h6>Cadastre-se sua <Link to={linkRegisterEstablishment}>empresa</Link>!</h6>
                     </form>
                     <hr />
-                    <h6 classN="responsible">Desenvolvido por alunos da Universidade Paulista(UNIP) - 2021</h6>
+                    <h6 className="responsible">Desenvolvido por alunos da Universidade Paulista(UNIP) - 2021</h6>
                 </div>
             </React.Fragment>
         )
