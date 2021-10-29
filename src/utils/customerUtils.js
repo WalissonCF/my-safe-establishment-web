@@ -54,6 +54,10 @@ const customerUtils = {
 
     removeHidden(id) {
         document.getElementById(id).removeAttribute('hidden');
+    },
+
+    title() {
+        return "My safe establishment web";
     }
 }
 

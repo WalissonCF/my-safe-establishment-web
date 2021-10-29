@@ -3,6 +3,7 @@ import React from 'react';
 import Lottie from 'react-lottie';
 import animationData from '../../assets/walking-man.json';
 import '../../styles/callingAttendant.css';
+import customerUtils from '../../utils/customerUtils';
 
 export default class CallingAttendant extends React.Component {
     constructor(props) {
@@ -22,6 +23,13 @@ export default class CallingAttendant extends React.Component {
         return (
             <React.Fragment>
                 <div class="container-fluid">
+                    <div className="row">
+                        <div className="col-12">
+                            <div class="content-in-text">
+                                <h3>{customerUtils.title()}</h3>
+                            </div>
+                        </div>
+                    </div>
                     <div className="row">
                         <div className="col-12 animation-info">
                             <div className="animation">
