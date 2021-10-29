@@ -18,7 +18,6 @@ export default class PaymentMethod extends React.Component {
         focus: '',
         name: '',
         number: '',
-        tip: '',
     };
 
     handleInputFocus = (e) => {
@@ -27,8 +26,13 @@ export default class PaymentMethod extends React.Component {
 
     handleInputChange = (e) => {
         const { name, value } = e.target;
-
         this.setState({ [name]: value });
+    }
+
+    onSubmit = (e) => {
+        e.preventDefault();
+        const { number, name, expiry, cvc } = this.state;
+        console.log(number, name, expiry, cvc);
     }
 
     onClickPaymentOrderPad() {
@@ -49,7 +53,7 @@ export default class PaymentMethod extends React.Component {
                                 number={this.state.number}
                             />
                         </div>
-                        <form id="form-credit-card">
+                        <form id="form-credit-card" onSubmit={this.onSubmit}>
                             <div className="form-group">
                                 <InputMask
                                     mask="9999 9999 9999 9999" maskChar={null}
@@ -99,8 +103,9 @@ export default class PaymentMethod extends React.Component {
                             <div>
                                 <p id="alert">*Em caso de dúvida procurar um atendente</p>
                             </div>
+                            <button className="btn btn-outline-danger" type="submit">PAGAR</button>
                         </form>
-                        <button className="btn btn-outline-danger" onClick={this.onClickPaymentOrderPad}>PAGAR</button>
+                        {/* <button className="btn btn-outline-danger" onClick={this.onClickPaymentOrderPad}>PAGAR</button> */}
                     </div>
                 </div>
             </div>

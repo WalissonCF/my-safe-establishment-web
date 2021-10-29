@@ -33,7 +33,6 @@ export default function MainRoutes() {
             {Auth.privateRoutes("/payment-method", <PaymentMethod />)}
             <Route path="/calling-attendant" element={ <CallingAttendant /> } />
 
-
             <Route path="/login-establishment" element={ <LoginEstablishment /> } />
             <Route path="/register-establishment" element={ <RegisterEstablishment />} />
             <Route path="/product-registration" element={ <ProductRegistration /> } />
