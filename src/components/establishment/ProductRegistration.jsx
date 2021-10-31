@@ -1,6 +1,7 @@
 import React from 'react';
 
 import '../../styles/productRegistration.css';
+import { Link } from 'react-router-dom';
 
 export default class ProductRegistration extends React.Component {
     constructor() {
@@ -33,6 +34,7 @@ export default class ProductRegistration extends React.Component {
 
     render() {
         const { profileImg } = this.state;
+        const linkDemand = "/customer-demand";
 
         return (
             <React.Fragment>
@@ -45,6 +47,9 @@ export default class ProductRegistration extends React.Component {
                                     <h2>nomeUser</h2>
                                     <h1>CNPJ:</h1>
                                     <h2>00.000.000/0000-00</h2>
+                                    <Link to={linkDemand}>
+                                        <button className="btn btn-outline-danger btn-login">PEDIDOS</button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

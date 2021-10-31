@@ -14,6 +14,7 @@ import CallingAttendant from './components/user/CallingAttendant';
 import LoginEstablishment from './components/establishment/LoginEstablishment';
 import RegisterEstablishment from './components/establishment/RegisterEstablishment';
 import ProductRegistration from './components/establishment/ProductRegistration';
+import Demand from './components/establishment/Demand';
 
 import Auth from './auth';
 
@@ -36,6 +37,7 @@ export default function MainRoutes() {
             <Route path="/login-establishment" element={ <LoginEstablishment /> } />
             <Route path="/register-establishment" element={ <RegisterEstablishment />} />
             <Route path="/product-registration" element={ <ProductRegistration /> } />
+            <Route path="/customer-demand" element={ <Demand /> } />
         </Routes>
     );
 }
