@@ -7,18 +7,19 @@ const REGISTER_PRODUCTS = 'https://my-safe-establishment-company.herokuapp.com/p
 
 const establishmentService = {
     postLogin(email, senha) {
-        axios.post(LOGIN, { email, senha })
-            .then((res) => {
-                if (res.status === 200) {
-                    authService.setLoggedUser(res.data, res.data.name,
-                        res.data.token, res.data.customerId);
-                    window.location = "/amount-of-people-user";
-                    console.log(res);
-                } else {
-                    window.location = "/";
-                }
-                console.log(res);
-            })
+        // axios.post(LOGIN, { email, senha })
+        //     .then((res) => {
+        //         if (res.status === 200) {
+        //             authService.setLoggedUser(res.data, res.data.name,
+        //                 res.data.token, res.data.customerId);
+        //             window.location = "/amount-of-people-user";
+        //             console.log(res);
+        //         } else {
+        //             window.location = "/";
+        //         }
+        //         console.log(res);
+        //     })
+        window.location = "/product-registration";
     },
 
     postRegister(owner, establishment, address) {

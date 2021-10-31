@@ -27,11 +27,11 @@ function ProductList() {
     }
 
     return (
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="content-menu-register">
-                        <div class="content-in-text">
+        <div className="container-fluid">
+            <div className="row">
+                <div className="col-12">
+                    <div className="content-menu-register">
+                        <div className="content-in-text">
                             <h1>Bem vindo,</h1>
                             <h2>{customerUtils.getCustomerName()}</h2>
                         </div>

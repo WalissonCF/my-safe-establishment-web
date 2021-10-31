@@ -42,7 +42,7 @@ export default class LoginEstablishment extends React.Component {
             {
                 name: name,
                 cpf: cpf,
-                establishemntId: 0,
+                // establishemntId: 0,
                 phoneNumber: phoneNumber,
                 email: email,
                 password: password,
@@ -55,7 +55,7 @@ export default class LoginEstablishment extends React.Component {
                 cnpj: cnpj,
                 typeEstablishment: typeEstablishment,
                 phoneNumber: phoneNumber,
-                address: address,
+                address: publicPlace,
             }
         ];
         let address = [

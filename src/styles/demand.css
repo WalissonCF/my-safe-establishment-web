@@ -1,0 +1,72 @@
+.content-card .pedidos, .product, .note {
+    color: black;
+}
+
+.card-row {
+    position: relative;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 30px;
+}
+
+.card-row .card {
+    position: relative;
+    max-width: 300px;
+    height: 215px;
+    background: #e9ecef;
+    margin: 30px 10px;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 5px 202px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease-in-out;
+}
+
+.card-row .card:hover {
+    height: auto;
+}
+
+.card-row .card .imgBx {
+    position: relative;
+    /* width: 260px; */
+    height: 200px;
+    top: -60px;
+    /* left: 5px; */
+    z-index: 1;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+}
+
+.imgBx h2 {
+    top: 5px;
+    text-align: center;
+    font-weight: lighter;
+    color: black;
+}
+
+.card-row .card .imgBx img {
+    max-width: 100%;
+    height: 200px;
+    border-radius: 20px;
+}
+
+.card-row .card .content-card {
+    position: relative;
+    margin-top: -140px;
+    padding: 10px 15px;
+    text-align: center;
+    color: #111;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s ease-in-out;
+}
+
+.card-row .card:hover .content-card {
+    visibility: visible;
+    opacity: 1;
+    margin-top: -30px;
+    transition-delay: 0.3s;
+}
