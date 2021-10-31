@@ -26,7 +26,7 @@
 }
 
 .card-row .card:hover {
-    height: auto;
+    height: 420px;
 }
 
 .card-row .card .imgBx {
@@ -69,4 +69,5 @@
     opacity: 1;
     margin-top: -30px;
     transition-delay: 0.3s;
+    overflow: auto;
 }

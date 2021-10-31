@@ -47,7 +47,7 @@ function Demand() {
                         <h2 className="pedidos">Pedidos:</h2>
                         <p className="product">Frango - Quantidade: </p>
                         <p className="note">Observações:
-                            Quero um frango sem frango somente o osso, sem prato mas com os talheres, obrigado
+                            Quero um frango sem frango somente o osso, sem prato mas com os talheres, com maionese em cima do alho fitro, obrigado
                         </p>
                     </div>
                 </div>
