@@ -2,6 +2,7 @@ import React from 'react';
 
 import '../../styles/productRegistration.css';
 import { Link } from 'react-router-dom';
+import InputMask from 'react-input-mask';
 
 export default class ProductRegistration extends React.Component {
     constructor() {
@@ -75,8 +76,9 @@ export default class ProductRegistration extends React.Component {
                             </div>
                             <div class="form-group">
                                 <label for="corporate-name">Valor:</label>
-                                <input type="text" className="form-control" id="corporate-name"
-                                    placeholder="R$" />
+                                <InputMask mask="R$999,999,999" maskChar={null}
+                                    type="tel" className="form-control" id="corporate-name"
+                                    placeholder="R$"></InputMask>
                             </div>
                             <div class="form-group">
                                 <label for="corporate-name">Ingredientes:</label>
@@ -88,11 +90,11 @@ export default class ProductRegistration extends React.Component {
                             </div>
                         </div>
                         <div className="confirm">
-                        <p id="register-product">Cadastre seu produto clicando no botão abaixo</p>
-                        {/* <Link to={productList}> */}
-                            <button  class="btn btn-outline-danger btn-quantity-customer btn-select-table">CADASTRAR</button>
-                        {/* </Link> */}
-                    </div>
+                            <p id="register-product">Cadastre seu produto clicando no botão abaixo</p>
+                            {/* <Link to={productList}> */}
+                            <button class="btn btn-outline-danger btn-quantity-customer btn-select-table">CADASTRAR</button>
+                            {/* </Link> */}
+                        </div>
                     </form>
                 </div>
             </React.Fragment>
