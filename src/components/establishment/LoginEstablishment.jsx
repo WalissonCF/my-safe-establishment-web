@@ -51,12 +51,12 @@ export default class LoginEstablishment extends React.Component {
                         <div className="form-group">
                             <label for="email">E-mail:</label>
                             <input type="email" className="form-control" id="email-login-register-establishment"
-                            name="email" value={email} onChange={this.onChange} required />
+                            name="email" value={email} onChange={this.onChange} placeholder="exemplo@email.com" required />
                         </div>
                         <div className="form-group">
                             <label for="password-register-establishment">Senha:</label>
                             <input type="password" className="form-control" id="password-register-establishment"
-                            name="password" value={password} onChange={this.onChange} 
+                            name="password" value={password} onChange={this.onChange} placeholder="********"
                             required />
                         </div>
                         <button type="submit" className="btn btn-outline-danger">ENTRAR</button>
