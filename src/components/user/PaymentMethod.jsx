@@ -103,9 +103,9 @@ export default class PaymentMethod extends React.Component {
                             <div>
                                 <p id="alert">*Em caso de dúvida procurar um atendente</p>
                             </div>
-                            <button className="btn btn-outline-danger" type="submit">PAGAR</button>
+                            {/* <button className="btn btn-outline-danger" type="submit">PAGAR</button> */}
                         </form>
-                        {/* <button className="btn btn-outline-danger" onClick={this.onClickPaymentOrderPad}>PAGAR</button> */}
+                        <button className="btn btn-outline-danger" onClick={this.onClickPaymentOrderPad}>PAGAR</button>
                     </div>
                 </div>
             </div>

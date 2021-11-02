@@ -68,3 +68,11 @@
 #product-item a {
     width: 100%;
 }
+
+#note-customer {
+    height: 150px;
+}
+
+.note-customer-label {
+    margin-left: 0;
+}

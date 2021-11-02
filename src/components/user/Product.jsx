@@ -118,6 +118,8 @@ function Product() {
                                 })
                             })
                         }
+                        <label className="note-customer-label">Observações:</label>
+                        <textarea id="note-customer" className="form-control"></textarea>
                         <button onClick={onClickQuantityProduct} className="btn btn-outline-danger">CONFIRMAR</button>
                     </div>
                 </div>
