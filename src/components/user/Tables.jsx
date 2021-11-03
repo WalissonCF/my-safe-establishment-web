@@ -3,6 +3,7 @@ import '../../styles/amountOfPeopleUser.css';
 import '../../styles/tables.css';
 import userService from '../../services/UserService';
 import table from '../../assets/table.png';
+import AnimationTable from '../animations/Tables';
 
 import { Link } from 'react-router-dom';
 
@@ -77,7 +78,8 @@ function Table() {
                     }
                 </div>
                 <div className="confirm">
-                    <img src={table} alt="" />
+                    <AnimationTable></AnimationTable>
+                    {/* <img src={table} alt="" /> */}
                     <h2>Mesa selecionada:
                         <p id="table-selected"></p>
                     </h2>
@@ -87,7 +89,7 @@ function Table() {
                 </div>
             </form>
         </div>
-        
+
     )
 }
 
