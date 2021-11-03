@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import '../../styles/amountOfPeopleUser.css';
 import '../../styles/tables.css';
 import userService from '../../services/UserService';
-import table from '../../assets/table.png';
 import AnimationTable from '../animations/Tables';
 
 import { Link } from 'react-router-dom';
@@ -79,9 +78,7 @@ function Table() {
                 </div>
                 <div className="confirm">
                     <AnimationTable></AnimationTable>
-                    {/* <img src={table} alt="" /> */}
-                    <h2>Mesa selecionada:
-                        <p id="table-selected"></p>
+                    <h2>Mesa:<p id="table-selected"></p>
                     </h2>
                     <Link to={productList}>
                         <button onClick={onClickPostOrderPad} class="btn btn-outline-danger btn-quantity-customer btn-select-table">CONTINUAR</button>
