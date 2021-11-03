@@ -1,11 +1,19 @@
 .all-tables {
     display: grid;
     grid-template-columns: 0fr 0fr 0fr 0fr 0fr;
-    margin-block-end: 40%;
+    margin-block-end: 55%;
 }
 
 .tables-form-group {
     padding: 8px;
+}
+
+.table-animation {
+    display: inline-block;
+    /* margin-left: 320px; */
+    margin-top: -50px;
+    width: 160px;
+    height: 70px;
 }
 
 @media screen and (max-width: 720px) {
