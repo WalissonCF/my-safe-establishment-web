@@ -1,10 +1,10 @@
 import React from 'react';
 
 import Lottie from 'react-lottie';
-import animationData from '../../assets/tables.json';
+import animationData from '../../assets/product.json';
 import '../../styles/tables.css';
 
-function AnimationTable() {
+function AnimationProducts() {
     const defaultOptions = {
         loop: true,
         autoplay: true,
@@ -16,9 +16,9 @@ function AnimationTable() {
 
     return (
         <div className="table-animation">
-            <Lottie options={defaultOptions} />
+            <Lottie options={defaultOptions} width={90} height={90} />
         </div>
     )
 }
 
-export default AnimationTable;
+export default AnimationProducts;

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import userService from '../../services/UserService';
 import customerUtils from '../../utils/customerUtils';
 import product from '../../assets/product.png';
-
+import AnimationProducts from '../animations/Products';
 
 function ProductList() {
     const [posts, setPosts] = useState([]);
@@ -85,7 +85,8 @@ function ProductList() {
                     }
                 </div>
                 <div className="confirm">
-                    <img src={product} alt="" />
+                    <AnimationProducts></AnimationProducts>
+                    {/* <img src={product} alt="" /> */}
                     <h2 class="my-products">Para verificar seus pedidos <br /> clique no botão abaixo</h2>
                     <Link to="/ordered">
                         <button class="btn btn-outline-danger ordered">MEUS PEDIDOS</button>
