@@ -106,6 +106,9 @@ const userService = {
             .then((res) => {
                 console.log(res);
                 localStorage.setItem("orderPad", JSON.stringify(res));
+                if (res.status === 200 || res.status === 201) {
+                    customerUtils.removeHidden('alert-success-payment');
+                }
             })
             .catch((res) => {
                 console.log("erro", res);

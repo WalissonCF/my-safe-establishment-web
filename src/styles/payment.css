@@ -52,3 +52,19 @@
     text-align: center;
     font-weight: 200;
 }
+
+.payment-method {
+    margin-left: 10%;
+}
+
+#alert-success-payment {
+    margin-top: 25px;
+    margin-block-end: -50px;
+}
+
+#alert-success-payment-text {
+    text-align: center;
+    font-size: 14px;
+    color: #38b000;
+    margin-top: -17px;
+}
