@@ -35,17 +35,15 @@ const userService = {
     requestRegister(name, phone, document) {
         const cpf = customerUtils.unFormatCpf(document);
         const phoneNumber = customerUtils.unFormatPhoneNumber(phone);
-        console.log(cpf, phoneNumber);
         axios.post(USER_REGISTER_URL, { name, phoneNumber, cpf })
             .then((res) => {
-                if (res.status === 201) {
+                if (res.status === 201 || res.status === 200) {
                     authService.setLoggedUser(res.data);
                     window.location = "/";
-                } else {
-
                 }
             })
             .catch((res) => {
+                console.log(res);
                 customerUtils.removeHidden('failed-register');
             });
     },
