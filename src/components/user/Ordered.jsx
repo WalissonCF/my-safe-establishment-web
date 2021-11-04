@@ -3,6 +3,7 @@ import userService from '../../services/UserService';
 
 import '../../styles/ordered.css';
 import customerUtils from '../../utils/customerUtils';
+import AnimationPayment from '../animations/Payment';
 
 function Ordered() {
     const [posts, setPosts] = useState([]);
@@ -77,9 +78,13 @@ function Ordered() {
                         })
                     }
                 </div>
-                <div className="product-list">
+                <div className="confirm">
+                    <AnimationPayment></AnimationPayment>
                     <button onClick={onClickCloseOrder} class="btn btn-outline-danger">FORMA DE PAGAMENTO</button>
                 </div>
+                {/* <div className="product-list">
+                    <button onClick={onClickCloseOrder} class="btn btn-outline-danger">FORMA DE PAGAMENTO</button>
+                </div> */}
             </div>
         </div>
     )
