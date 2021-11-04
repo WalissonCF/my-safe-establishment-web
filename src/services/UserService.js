@@ -41,7 +41,12 @@ const userService = {
                 if (res.status === 200) {
                     authService.setLoggedUser(res.data);
                     window.location = "/";
+                } else {
+
                 }
+            })
+            .catch((res) => {
+                customerUtils.removeHidden('failed-register');
             });
     },
 

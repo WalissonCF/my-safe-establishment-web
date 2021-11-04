@@ -1,13 +1,12 @@
 import React from 'react'
 
 import '../../styles/register.css';
-//import UserService from '../services/UserService'
-import axios from 'axios';
+import '../../styles/failed.css';
 import { Link } from 'react-router-dom';
 import userService from '../../services/UserService';
 import InputMask from 'react-input-mask';
+import AnimationFailed from '../animations/Failed';
 
-const USER_REGISTER_URL = 'https://my-safe-establishment-company.herokuapp.com/public/customer/register';
 export default class RegisterUser extends React.Component {
     constructor() {
         super();
@@ -45,7 +44,7 @@ export default class RegisterUser extends React.Component {
                                     <h1>Bem-vindo ao</h1>
                                     <h2>My safe establishment web</h2>
                                     <p>
-                                    Cadastre-se agora para conseguir seu acento seguro <br />
+                                        Cadastre-se agora para conseguir seu acento seguro <br />
                                     Essa aplicação é destinada a segurança <br />
                                     do ambiente, também para que possa <br />
                                     realizar seus pedidos sem a necessidade <br />
@@ -64,17 +63,21 @@ export default class RegisterUser extends React.Component {
                         <div className="form-group">
                             <label for="name">Nome:</label>
                             <input type="text" className="form-control" id="name-register" placeholder="Seu nome"
-                            name="name" value={name} onChange={this.onChange} required />
+                                name="name" value={name} onChange={this.onChange} required />
                         </div>
                         <div className="form-group">
                             <label for="cpf-register">CPF:</label>
                             <InputMask mask="999.999.999-99" type="tel" maskChar={null} className="form-control cpf-mask" id="cpf-register" placeholder="000.000.000-00"
-                            name="cpf" value={cpf} onChange={this.onChange} required></InputMask>
+                                name="cpf" value={cpf} onChange={this.onChange} required></InputMask>
                         </div>
                         <div className="form-group">
                             <label for="phone-number-register">Digite seu celular:</label>
                             <InputMask mask="(99) 99999-9999" type="tel" maskChar={null} className="form-control" id="phone-number-register" placeholder="(00) 0000-0000"
-                            name="phoneNumber" value={phoneNumber} onChange={this.onChange} required></InputMask>
+                                name="phoneNumber" value={phoneNumber} onChange={this.onChange} required></InputMask>
+                        </div>
+                        <div id="failed-register" hidden>
+                            <AnimationFailed></AnimationFailed>
+                            <p id="alert-register">*Falha no registro</p>
                         </div>
                         <button type="submit" className="btn btn-outline-danger">CADASTRAR</button>
                     </form>
