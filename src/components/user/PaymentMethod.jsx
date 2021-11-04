@@ -6,6 +6,7 @@ import userService from '../../services/UserService';
 
 import '../../styles/payment.css'
 import customerUtils from '../../utils/customerUtils';
+import AnimationSuccess from '../animations/Success';
 
 export default class PaymentMethod extends React.Component {
     constructor() {
@@ -104,8 +105,12 @@ export default class PaymentMethod extends React.Component {
                                 <p id="alert">*Em caso de dúvida procurar um atendente</p>
                             </div>
                             {/* <button className="btn btn-outline-danger" type="submit">PAGAR</button> */}
+                            <div id="alert-success-payment" hidden>
+                                <AnimationSuccess></AnimationSuccess>
+                                <p id="alert-success-payment-text">*Pago*</p>
+                            </div>
                         </form>
-                        <button className="btn btn-outline-danger" onClick={this.onClickPaymentOrderPad}>PAGAR</button>
+                        <button className="btn btn-outline-danger payment-method" onClick={this.onClickPaymentOrderPad}>PAGAR</button>
                     </div>
                 </div>
             </div>
