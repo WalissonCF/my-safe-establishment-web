@@ -38,7 +38,7 @@ const userService = {
         console.log(cpf, phoneNumber);
         axios.post(USER_REGISTER_URL, { name, phoneNumber, cpf })
             .then((res) => {
-                if (res.status === 200) {
+                if (res.status === 201) {
                     authService.setLoggedUser(res.data);
                     window.location = "/";
                 } else {
