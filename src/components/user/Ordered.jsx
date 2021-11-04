@@ -82,9 +82,6 @@ function Ordered() {
                     <AnimationPayment></AnimationPayment>
                     <button onClick={onClickCloseOrder} class="btn btn-outline-danger">FORMA DE PAGAMENTO</button>
                 </div>
-                {/* <div className="product-list">
-                    <button onClick={onClickCloseOrder} class="btn btn-outline-danger">FORMA DE PAGAMENTO</button>
-                </div> */}
             </div>
         </div>
     )
