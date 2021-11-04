@@ -86,7 +86,6 @@ function ProductList() {
                 </div>
                 <div className="confirm">
                     <AnimationProducts></AnimationProducts>
-                    {/* <img src={product} alt="" /> */}
                     <h2 class="my-products">Para verificar seus pedidos <br /> clique no botão abaixo</h2>
                     <Link to="/ordered">
                         <button class="btn btn-outline-danger ordered">MEUS PEDIDOS</button>
