@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import InputMask from 'react-input-mask';
 import userService from '../../services/UserService';
+import AnimationPaymentApp from '../animations/PaymentApp';
+import AnimationPaymentMoney from '../animations/PaymentMoney';
 
 import '../../styles/payment.css'
+import customerUtils from '../../utils/customerUtils';
 
 export default class PaymentForm extends React.Component {
     constructor() {
@@ -55,6 +58,20 @@ export default class PaymentForm extends React.Component {
         }
     }
 
+    onClickPaymentApp() {
+        if (document.getElementById("select-type-payment").offsetParent === null) {
+            document.getElementById("payments-methods").hidden = "true";
+            customerUtils.removeHidden("select-type-payment");
+        } else {
+            customerUtils.removeHidden("payments-methods");
+            document.getElementById("select-type-payment").hidden = "true";
+        }
+    }
+
+    onClickPaymentMoney() {
+        window.location = "/calling-attendant";
+    }
+
     render() {
         return (
             <div className="container-fluid">
@@ -63,7 +80,24 @@ export default class PaymentForm extends React.Component {
                         <h3 class="title-payment">Pagamento</h3>
                     </div>
                 </div>
-                <div className="row" id="select-type-payment">
+                <div id="payments-methods">
+                    <div id="payment-app" onClick={this.onClickPaymentApp}>
+                        <AnimationPaymentApp></AnimationPaymentApp>
+                        <div className="warn-box">
+                            <p>Pagar pelo App</p>
+                        </div>
+                    </div>
+                    <div id="payment" onClick={this.onClickPaymentMoney}>
+                        <AnimationPaymentMoney></AnimationPaymentMoney>
+                        <div className="warn-box">
+                            <p>Chamar atendente</p>
+                        </div>
+                    </div>
+                </div>
+                {/* <div className="selected-payment-form">
+                    <button className="btn btn-outline-danger payment-form">CONTINUAR</button>
+                </div> */}
+                <div className="row" id="select-type-payment" hidden>
                     <div className="col-12">
                         <form onSubmit={this.formSubmit}>
                             <div className="form-group">
@@ -83,12 +117,12 @@ export default class PaymentForm extends React.Component {
                                     value="credito" checked={this.state.selectedOption === "credito"}
                                     onChange={this.onValueChange} />
                             </div>
-                            <div class="form-check">
+                            {/* <div class="form-check">
                                 <label className="form-check-label" for="gridRadios3">Dinheiro</label>
                                 <input className="form-check-input" type="radio" name="gridRadios"
                                     value="dinheiro" checked={this.state.selectedOption === "dinheiro"}
                                     onChange={this.onValueChange} />
-                            </div>
+                            </div> */}
                             <div>
                                 <p id="alert" hidden>*Por favor selecione um método de pagamento</p>
                             </div>
