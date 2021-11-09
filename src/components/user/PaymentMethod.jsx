@@ -33,11 +33,29 @@ export default class PaymentMethod extends React.Component {
     onSubmit = (e) => {
         e.preventDefault();
         const { number, name, expiry, cvc } = this.state;
-        console.log(number, name, expiry, cvc);
+        const typeCard = localStorage.getItem('paymentMethod');
+        const value = document.getElementById('valuePayment').value;
+        let valuePayment = null;
+        if (!value) {
+            valuePayment = parseFloat(customerUtils.getTotalValueProduct());
+        } else {
+            valuePayment = parseFloat(customerUtils.unFormatNumber(value));            
+        }
+        console.log(valuePayment)
+
+        let card = {
+            cardNumber: number,
+            dateExpiry: expiry,
+            cvv: cvc,
+            nameCard: name,
+            flagCard: 'MasterCard'
+        }
+        console.log(card)
+        // userService.postPaymentOrderByCard(typeCard, valuePayment, card);
     }
 
     onClickPaymentOrderPad() {
-        userService.postPaymentOrdenPad();
+        // userService.postPaymentOrdenPad();
     }
 
     render() {
@@ -101,16 +119,21 @@ export default class PaymentMethod extends React.Component {
                             <div className="form-group">
                                 <h3 className="total-products">Total: R${customerUtils.getTotalValueProduct()}</h3>
                             </div>
+                            <div className="form-group">
+                                <label>Quanto deseja pagar com esse cartão?</label>
+                                <InputMask mask="R$999,999,999" maskChar={null} id="valuePayment" type="tel"
+                                    className="form-control" placeholder={`R$${customerUtils.getTotalValueProduct()}`}></InputMask>
+                            </div>
                             <div>
                                 <p id="alert">*Em caso de dúvida procurar um atendente</p>
                             </div>
-                            {/* <button className="btn btn-outline-danger" type="submit">PAGAR</button> */}
+                            <button className="btn btn-outline-danger" onClick={this.onClickPaymentOrderPad} type="submit">PAGAR</button>
                             <div id="alert-success-payment" hidden>
                                 <AnimationSuccess></AnimationSuccess>
                                 <p id="alert-success-payment-text">*Pago*</p>
                             </div>
                         </form>
-                        <button className="btn btn-outline-danger payment-method" onClick={this.onClickPaymentOrderPad}>PAGAR</button>
+                        {/* <button className="btn btn-outline-danger payment-method" onClick={this.onClickPaymentOrderPad}>PAGAR</button> */}
                     </div>
                 </div>
             </div>

@@ -80,7 +80,7 @@ function Ordered() {
                 </div>
                 <div className="confirm">
                     <AnimationPayment></AnimationPayment>
-                    <button onClick={onClickCloseOrder} class="btn btn-outline-danger">FORMA DE PAGAMENTO</button>
+                    <button onClick={onClickCloseOrder} class="btn btn-outline-danger">FECHAR A CONTA</button>
                 </div>
             </div>
         </div>

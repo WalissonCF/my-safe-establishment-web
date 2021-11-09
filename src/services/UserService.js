@@ -14,6 +14,7 @@ const CREATE_ORDER_PAD = `${URL}private/orderpad/create`;
 const LIST_ORDER = `${URL}private/order/${customerId}`;
 const CLOSE_ORDER = `${URL}private/orderpad/close`;
 const PAYMENT_ORDER_PAD = `${URL}private/orderpad/payment`;
+const PAYMENT_ORDER_PAD_BY_CARD = `${URL}private/orderpad/card/payment`;
 
 const userService = {
     requestLogin(document, phone) {
@@ -43,7 +44,7 @@ const userService = {
                 }
             })
             .catch((res) => {
-                console.log(res);
+                console.log(res.data);
                 customerUtils.removeHidden('failed-register');
             });
     },
@@ -54,7 +55,7 @@ const userService = {
         console.log(customerId, quantityCustomer, tableId);
         console.log(CREATE_ORDER_PAD);
         axios.post(CREATE_ORDER_PAD, { customerId, quantityCustomer, tableId },
-            { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` }})
+            { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) => {
                 if (res.status === 200) {
                     console.log(res);
@@ -68,18 +69,19 @@ const userService = {
         const product = parseInt(productIds)
         const quantityProduct = localStorage.getItem("quantityProduct");
         const quantitys = parseInt(quantityProduct);
+        const note = localStorage.getItem('note');
         let orders = [
             {
                 productId: product,
                 quantity: quantitys,
             }
         ];
-        axios.post(ORDER, { customerId, orders }, 
-            { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` }})
+        axios.post(ORDER, { customerId, orders, note },
+            { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) => {
                 console.log(res.status);
                 if (res.status === 200) {
-                    customerUtils.removeItem(['index', 'src', 'quantityProduct', 'valueProduct', 'name'])
+                    customerUtils.removeItem(['index', 'src', 'quantityProduct', 'valueProduct', 'name', 'note'])
                     window.location = "/product-list";
                 }
             });
@@ -89,10 +91,13 @@ const userService = {
         const tip = parseFloat(customerUtils.unFormatNumber(tips));
         console.log(customerId, paymentMethod, tip);
         axios.post(CLOSE_ORDER, { customerId, paymentMethod, tip },
-            { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` }})
+            { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) => {
+                console.log("postCloserOrder: ", res);
+                debugger
                 if (res.status === 200) {
-                    localStorage.setItem('totalProduct', res.data.orderPad.value);
+                    localStorage.setItem('totalProduct', res.data.orderPad.paybleValue);
+                    localStorage.setItem('status', res.data.orderPad.status);
                     window.location = "/payment-method";
                 }
             })
@@ -100,9 +105,8 @@ const userService = {
 
     postPaymentOrdenPad() {
         const valuePayment = parseFloat(customerUtils.getTotalValueProduct());
-        console.log(customerId, valuePayment);
-        axios.post(PAYMENT_ORDER_PAD, { customerId, valuePayment }, 
-            { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` }})
+        axios.post(PAYMENT_ORDER_PAD, { customerId, valuePayment },
+            { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) => {
                 console.log(res);
                 localStorage.setItem("orderPad", JSON.stringify(res));
@@ -111,30 +115,42 @@ const userService = {
                 }
             })
             .catch((res) => {
-                console.log("erro", res);
             });
     },
 
+    postPaymentOrderByCard(typeCard, valuePayment, card) {
+        axios.post(PAYMENT_ORDER_PAD_BY_CARD, { customerId, typeCard, valuePayment, card },
+            { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
+            .then((res) => {
+                console.log("postPaymentOrderByCard", res);
+                debugger;
+                if (res.status === 200 || res.status === 201) {
+                    customerUtils.removeHidden('alert-success-payment');
+                }
+            })
+            .catch((res) => {});
+    },
+
     async getTables() {
-        console.log(`Bearer ${customerUtils.getCustomerToken()}`);
-        return axios.get(TABLE, { 
-            headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` }})
+        return axios.get(TABLE, {
+            headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` }
+        })
             .then((res) =>
                 res.data
             );
     },
 
     async getProducts() {
-        return axios.get(PRODUCTS, 
-            { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` }})
+        return axios.get(PRODUCTS,
+            { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) =>
                 res.data
             );
     },
 
     async getListOrder() {
-        return axios.get(LIST_ORDER, 
-            { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` }})
+        return axios.get(LIST_ORDER,
+            { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) =>
                 res.data
             );

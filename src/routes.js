@@ -30,7 +30,9 @@ export default function MainRoutes() {
             {Auth.privateRoutes("/product-list", <ProductList />)}
             {Auth.privateRoutes("/product", <Product />)}
             {Auth.privateRoutes("/ordered", <Ordered />)}
-            {Auth.privateRoutes("/payment", <Payment />)}
+            {/* {Auth.privateRoutes("/payment", <Payment />)} */}
+            <Route path="/payment" element={ <Payment /> } />
+
             {Auth.privateRoutes("/payment-method", <PaymentMethod />)}
             <Route path="/calling-attendant" element={ <CallingAttendant /> } />
 
