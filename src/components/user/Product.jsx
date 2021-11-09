@@ -46,6 +46,9 @@ function Product() {
 
     function onClickQuantityProduct() {
         const quantityProduct = parseInt(document.getElementById('qtde-product').innerText);
+        const note = document.getElementById('note-customer').value;
+        console.log(note)
+        localStorage.setItem('note', note);
         localStorage.setItem('quantityProduct', quantityProduct);
         userService.postOrder();
     }

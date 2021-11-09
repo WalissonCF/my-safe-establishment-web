@@ -48,11 +48,14 @@ export default class PaymentForm extends React.Component {
     formSubmit(event) {
         event.preventDefault();
         const { tip } = this.state;
-        if (this.state.selectedOption === 'credito' || this.state.selectedOption === 'debito') {
-            const paymentMethod = 'Cartao de Credito';
+        if (this.state.selectedOption === 'credito') {
+            const paymentMethod = 'Credito';
+            localStorage.setItem("paymentMethod", paymentMethod);
             userService.postCloserOrder(paymentMethod, tip);
-        } else if (this.state.selectedOption === 'dinheiro') {
-            window.location = '/calling-attendant';
+        } else if (this.state.selectedOption === 'debito') {
+            const paymentMethod = 'Debito';
+            localStorage.setItem("paymentMethod", paymentMethod);
+            userService.postCloserOrder(paymentMethod, tip);
         } else {
             document.getElementById('alert').removeAttribute('hidden');
         }
@@ -94,9 +97,6 @@ export default class PaymentForm extends React.Component {
                         </div>
                     </div>
                 </div>
-                {/* <div className="selected-payment-form">
-                    <button className="btn btn-outline-danger payment-form">CONTINUAR</button>
-                </div> */}
                 <div className="row" id="select-type-payment" hidden>
                     <div className="col-12">
                         <form onSubmit={this.formSubmit}>
@@ -117,12 +117,6 @@ export default class PaymentForm extends React.Component {
                                     value="credito" checked={this.state.selectedOption === "credito"}
                                     onChange={this.onValueChange} />
                             </div>
-                            {/* <div class="form-check">
-                                <label className="form-check-label" for="gridRadios3">Dinheiro</label>
-                                <input className="form-check-input" type="radio" name="gridRadios"
-                                    value="dinheiro" checked={this.state.selectedOption === "dinheiro"}
-                                    onChange={this.onValueChange} />
-                            </div> */}
                             <div>
                                 <p id="alert" hidden>*Por favor selecione um método de pagamento</p>
                             </div>
