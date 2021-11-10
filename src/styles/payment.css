@@ -161,7 +161,15 @@
 }
 
 #button-payment {
-    margin-block-end: 10%;
+    margin-top: -40px;
+}
+
+#failed-value-payment {
+    margin-top: 51px;
+}
+
+#failed-value-payment p {
+    margin-top: -15px;
 }
 
 @media screen and (min-width: 780px) {

@@ -7,6 +7,7 @@ import userService from '../../services/UserService';
 import '../../styles/payment.css'
 import customerUtils from '../../utils/customerUtils';
 import AnimationSuccess from '../animations/Success';
+import AnimationFailed from '../animations/Failed';
 
 export default class PaymentMethod extends React.Component {
     constructor() {
@@ -53,15 +54,21 @@ export default class PaymentMethod extends React.Component {
         const valuePayment = parseFloat(customerUtils.unFormatNumber(document.getElementById('valuePayment').value))
         console.log('value', value, 'valuePayment', valuePayment);
         if (valuePayment > value) {
-            customerUtils.removeHidden('alert-payment');
+            customerUtils.removeHidden('failed-value-payment');
             document.getElementById('button-payment').hidden = "true";
+            console.log("if")
         } else {
-            document.getElementById('alert-payment').hidden = "true";
+            document.getElementById('failed-value-payment').hidden = "true";
             customerUtils.removeHidden('button-payment');
+            console.log("else")
         }
     }
 
     onClickPaymentOrderPad(e) {
+
+    }
+
+    onSubmit = (e) => {
         e.preventDefault();
         const { number, name, expiry, cvc } = this.state;
         const typeCard = localStorage.getItem('paymentMethod');
@@ -83,6 +90,16 @@ export default class PaymentMethod extends React.Component {
         }
         console.log('ta enviando')
         console.log(card)
+
+        if (valuePayment > parseFloat(customerUtils.unFormatNumber(value))) {
+            customerUtils.removeHidden('failed-value-payment');
+            document.getElementById('button-payment').hidden = "true";
+        } else {
+            document.getElementById('failed-value-payment').hidden = "true";
+            customerUtils.removeHidden('button-payment');
+            console.log("valuePayment", valuePayment)
+            console.log("chamando método de pagamento")
+        }
     }
 
     render() {
@@ -99,7 +116,7 @@ export default class PaymentMethod extends React.Component {
                                 number={this.state.number}
                             />
                         </div>
-                        <form id="form-credit-card">
+                        <form id="form-credit-card" onSubmit={this.onSubmit}>
                             <div className="form-group">
                                 <InputMask
                                     mask="9999 9999 9999 9999" maskChar={null}
@@ -109,6 +126,7 @@ export default class PaymentMethod extends React.Component {
                                     onChange={this.handleInputChange}
                                     onFocus={this.handleInputFocus}
                                     className="form-control"
+                                    required
                                 />
                             </div>
                             <div className="form-group">
@@ -119,6 +137,7 @@ export default class PaymentMethod extends React.Component {
                                     onChange={this.handleInputChange}
                                     onFocus={this.handleInputFocus}
                                     className="form-control"
+                                    required
                                 />
                             </div>
                             <div className="form-group">
@@ -130,6 +149,7 @@ export default class PaymentMethod extends React.Component {
                                     onChange={this.handleInputChange}
                                     onFocus={this.handleInputFocus}
                                     className="form-control"
+                                    required
                                 />
                             </div>
                             <div className="form-group">
@@ -141,10 +161,14 @@ export default class PaymentMethod extends React.Component {
                                     onChange={this.handleInputChange}
                                     onFocus={this.handleInputFocus}
                                     className="form-control"
+                                    required
                                 />
                             </div>
                             <div className="form-group">
                                 <h3 className="total-products">Total: R${customerUtils.getTotalValueProduct()}</h3>
+                            </div>
+                            <div className="form-group" id="button-payment" hidden>
+                                <button className="btn btn-outline-danger payment-method" type="submit">PAGAR</button>
                             </div>
                         </form>
                         <div className="payment">
@@ -161,10 +185,13 @@ export default class PaymentMethod extends React.Component {
                             </div>
                             <div className="form-group" id="separate-card-payment" hidden>
                                 <label>Quanto deseja pagar com esse cartão?</label>
-                                <InputMask mask="R$999,999,999" maskChar={null} id="valuePayment" type="tel"
+                                <InputMask mask="R$999999999" maskChar={null} id="valuePayment" type="tel"
                                     className="form-control" placeholder={`R$${customerUtils.getTotalValueProduct()}`}
                                     onBlur={this.onBlurValidateValuePayment}></InputMask>
-                                <p id="alert-payment" hidden>*Valor superior ao valor total do pedido</p>
+                                <div id="failed-value-payment" hidden>
+                                    <AnimationFailed></AnimationFailed>
+                                    <p id="alert-payment">*Valor superior ao valor total do pedido</p>
+                                </div>
                             </div>
                             <div>
                                 <p id="alert">*Em caso de dúvida procurar um atendente</p>
@@ -173,9 +200,6 @@ export default class PaymentMethod extends React.Component {
                                 <AnimationSuccess></AnimationSuccess>
                                 <p id="alert-success-payment-text">*Pago*</p>
                             </div>
-                        </div>
-                        <div id="button-payment" hidden>
-                            <button className="btn btn-outline-danger payment-method" type="submit">PAGAR</button>
                         </div>
                     </div>
                 </div>
