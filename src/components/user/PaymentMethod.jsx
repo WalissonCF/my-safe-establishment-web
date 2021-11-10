@@ -81,8 +81,10 @@ export default class PaymentMethod extends React.Component {
         }
         console.log(valuePayment)
 
+        console.log(customerUtils.unFormatCardCreditNumber(number))
+
         let card = {
-            cardNumber: number,
+            cardNumber: customerUtils.unFormatCardCreditNumber(number),
             dateExpiry: expiry,
             cvv: cvc,
             nameCard: name,
@@ -97,8 +99,9 @@ export default class PaymentMethod extends React.Component {
         } else {
             document.getElementById('failed-value-payment').hidden = "true";
             customerUtils.removeHidden('button-payment');
-            console.log("valuePayment", valuePayment)
+            console.log(typeCard, valuePayment, card)
             console.log("chamando método de pagamento")
+            userService.postPaymentOrderByCard(typeCard, valuePayment, card);
         }
     }
 
@@ -198,7 +201,7 @@ export default class PaymentMethod extends React.Component {
                             </div>
                             <div id="alert-success-payment" hidden>
                                 <AnimationSuccess></AnimationSuccess>
-                                <p id="alert-success-payment-text">*Pago*</p>
+                                <p id="alert-success-payment-text">*Pago totalmente*</p>
                             </div>
                         </div>
                     </div>
