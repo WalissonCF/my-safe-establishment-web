@@ -93,11 +93,8 @@ const userService = {
         axios.post(CLOSE_ORDER, { customerId, paymentMethod, tip },
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) => {
-                console.log("postCloserOrder: ", res);
-                debugger
                 if (res.status === 200) {
                     localStorage.setItem('totalProduct', res.data.orderPad.paybleValue);
-                    localStorage.setItem('status', res.data.orderPad.status);
                     window.location = "/payment-method";
                 }
             })
@@ -123,7 +120,6 @@ const userService = {
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) => {
                 console.log("postPaymentOrderByCard", res);
-                debugger;
                 if (res.status === 200 || res.status === 201) {
                     localStorage.setItem('status', res.data.status);
                     var status = localStorage.getItem('status');
