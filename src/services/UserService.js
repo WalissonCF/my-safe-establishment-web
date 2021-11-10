@@ -125,7 +125,15 @@ const userService = {
                 console.log("postPaymentOrderByCard", res);
                 debugger;
                 if (res.status === 200 || res.status === 201) {
-                    customerUtils.removeHidden('alert-success-payment');
+                    localStorage.setItem('status', res.data.status);
+                    var status = localStorage.getItem('status');
+                    if (status === "1") {
+                        localStorage.setItem('totalProduct', res.data.paybleValue);
+                        window.location = "/payment-method"
+                    } else if (status !== "1") {
+                        localStorage.setItem('totalProduct', res.data.paybleValue);
+                        customerUtils.removeHidden('alert-success-payment');
+                    }
                 }
             })
             .catch((res) => {});

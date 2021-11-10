@@ -46,6 +46,10 @@ const customerUtils = {
         return number?.replace(/[^0-9.,]+/, '');
     },
 
+    unFormatCardCreditNumber(number) {
+        return number?.replace(/( )+/g, '');
+    },
+
     removeItem(item) {
         item.map((itens) => {
             localStorage.removeItem(itens);
