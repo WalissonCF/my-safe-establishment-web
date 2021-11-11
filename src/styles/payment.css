@@ -172,6 +172,17 @@
     margin-top: -15px;
 }
 
+.success {
+    color: rgb(18, 173, 26);
+    font-size: 13px;
+    text-align: center;
+}
+
+.payment-success {
+    display: initial;
+    margin-top: 200px;
+}
+
 @media screen and (min-width: 780px) {
     #payments-methods {
         display: flex;

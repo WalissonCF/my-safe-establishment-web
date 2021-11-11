@@ -6,9 +6,9 @@
 }
 
 #img-selected {
-    width: 300px;
+    width: 150px;
     padding: 10px;
-    height: 180px;
+    height: 165px;
     border-radius: 25px;
 }
 
@@ -32,12 +32,25 @@
     margin-block-end: 80px;
 }
 
-@media screen and (max-width: 610px) {
+.info-product-order {
+    margin-top: 0px;
+}
+
+.delete {
+    margin-left: 45px;
+}
+
+.name-product-selected {
+    font-weight: bold;
+}
+
+@media screen and (max-width: 1200px) {
     #products-selecteds {
         grid-template-columns: 0fr;
     }
 
     #img-selected {
-        width: 230px;
+        width: 120px;
+        height: 135px;
     }
 }

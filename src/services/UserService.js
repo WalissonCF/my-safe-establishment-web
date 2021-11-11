@@ -128,6 +128,7 @@ const userService = {
                         window.location = "/payment-method"
                     } else if (status !== "1") {
                         localStorage.setItem('totalProduct', res.data.paybleValue);
+                        window.location = "/payment-success";
                         customerUtils.removeHidden('alert-success-payment');
                     }
                 }

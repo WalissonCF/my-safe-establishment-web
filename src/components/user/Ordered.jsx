@@ -66,9 +66,22 @@ function Ordered() {
                                             return (
                                                 <div id="products-confirmed">
                                                     <img id="img-selected" src={src} alt="" />
-                                                    <label className="product-selected">{[namesProducts[i]]}</label>
-                                                    <label className="product-selected">Quantidade: {[quatityProducts[i]]}</label>
-                                                    <label className="product-selected">R${value.toFixed(2)}</label>
+                                                    <div>
+                                                        <label className="product-selected name-product-selected">{[namesProducts[i]]}</label>
+                                                        <div>
+                                                            <label className="product-selected">R${value.toFixed(2)}</label>
+                                                        </div>
+                                                        <div className="info-product info-product-order">
+                                                            <i className="material-icons"
+                                                            // onClick={onClickSubtraction}
+                                                            >remove_circle_outline </i>
+                                                            <label id="qtde-product">{[quatityProducts[i]]}</label>
+                                                            <i className="material-icons"
+                                                            // onClick={onClickSum}
+                                                            >add_circle_outline</i>
+                                                            <i className="material-icons delete">delete</i>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             )
                                         })
