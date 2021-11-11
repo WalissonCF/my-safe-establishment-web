@@ -40,6 +40,10 @@
     margin-left: 45px;
 }
 
+.products {
+    padding: 6px;
+}
+
 .name-product-selected {
     font-weight: bold;
 }
