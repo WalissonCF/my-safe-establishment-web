@@ -60,7 +60,7 @@ function Ordered() {
                                 });
                                 console.log(namesProducts, quatityProducts, amounts);
                                 return (
-                                    <div>{
+                                    <div className="products">{
                                         itens.src.map((src, i) => {
                                             const value = parseFloat([amounts[i]]);
                                             return (
@@ -68,7 +68,7 @@ function Ordered() {
                                                     <img id="img-selected" src={src} alt="" />
                                                     <div>
                                                         <label className="product-selected name-product-selected">{[namesProducts[i]]}</label>
-                                                        <div>
+                                                        <div >
                                                             <label className="product-selected">R${value.toFixed(2)}</label>
                                                         </div>
                                                         <div className="info-product info-product-order">
