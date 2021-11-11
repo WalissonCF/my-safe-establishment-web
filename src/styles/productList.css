@@ -23,10 +23,17 @@
 
 #products-confirmed {
     display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    background: var(--main-color-canvas);
+    width: 280px;
+    border-radius: 20px;
+    /* display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
 }
 
 .menu, .menu-1, .menu-2 {

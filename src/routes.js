@@ -9,12 +9,14 @@ import Product from './components/user/Product';
 import Ordered from './components/user/Ordered';
 import Payment from './components/user/Payment';
 import PaymentMethod from './components/user/PaymentMethod'; 
-import CallingAttendant from './components/user/CallingAttendant';
 
 import LoginEstablishment from './components/establishment/LoginEstablishment';
 import RegisterEstablishment from './components/establishment/RegisterEstablishment';
 import ProductRegistration from './components/establishment/ProductRegistration';
 import Demand from './components/establishment/Demand';
+
+import CallingAttendant from './components/user/CallingAttendant';
+import AnimationPaymentSuccess from './components/animations/PaymentSuccess';
 
 import Auth from './auth';
 
@@ -30,16 +32,16 @@ export default function MainRoutes() {
             {Auth.privateRoutes("/product-list", <ProductList />)}
             {Auth.privateRoutes("/product", <Product />)}
             {Auth.privateRoutes("/ordered", <Ordered />)}
-            {/* {Auth.privateRoutes("/payment", <Payment />)} */}
-            <Route path="/payment" element={ <Payment /> } />
-
+            {Auth.privateRoutes("/payment", <Payment />)}
             {Auth.privateRoutes("/payment-method", <PaymentMethod />)}
-            <Route path="/calling-attendant" element={ <CallingAttendant /> } />
 
             <Route path="/login-establishment" element={ <LoginEstablishment /> } />
             <Route path="/register-establishment" element={ <RegisterEstablishment />} />
             <Route path="/product-registration" element={ <ProductRegistration /> } />
             <Route path="/customer-demand" element={ <Demand /> } />
+
+            <Route path="/calling-attendant" element={ <CallingAttendant /> } />
+            <Route path="/payment-success" element={ <AnimationPaymentSuccess /> } />
         </Routes>
     );
 }
