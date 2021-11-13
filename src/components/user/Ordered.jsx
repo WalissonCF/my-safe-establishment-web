@@ -20,6 +20,20 @@ function Ordered() {
         window.location = "/payment";
     };
 
+    function onClickSum() {
+        const qtdeProducts = document.getElementById('qtde-product').innerText;
+        const sum = parseInt(qtdeProducts) + 1;
+        document.getElementById('qtde-product').innerText = sum;
+    };
+
+    function onClickSubtraction() {
+        const qtdeProducts = document.getElementById('qtde-product').innerText;
+        const subtraction = parseInt(qtdeProducts) - 1;
+        if (qtdeProducts > 0) {
+            document.getElementById('qtde-product').innerText = subtraction;            
+        }
+    }
+
     return (
         <div className="container-fluid">
             <div className="row">
@@ -73,11 +87,11 @@ function Ordered() {
                                                         </div>
                                                         <div className="info-product info-product-order">
                                                             <i className="material-icons"
-                                                            // onClick={onClickSubtraction}
+                                                            onClick={onClickSubtraction}
                                                             >remove_circle_outline </i>
                                                             <label id="qtde-product">{[quatityProducts[i]]}</label>
                                                             <i className="material-icons"
-                                                            // onClick={onClickSum}
+                                                            onClick={onClickSum}
                                                             >add_circle_outline</i>
                                                             <i className="material-icons delete">delete</i>
                                                         </div>
