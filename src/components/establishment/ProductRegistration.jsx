@@ -29,13 +29,6 @@ export default class ProductRegistration extends React.Component {
     onSubmit = (e) => {
         e.preventDefault();
         const { name, typeProduct, description, ingredients, value, profileImg } = this.state;
-        // const name = document.getElementById('name').value;
-        // const typeProduct = document.getElementById('typeProduct').value;
-        // const description = document.getElementById('description').value;
-        // const ingredients = document.getElementById('ingredients').value;
-        // const value = parseFloat(customerUtils.unFormatNumber(document.getElementById('value').value));
-        // const imageEncoded = document.getElementById('img-product').src;
-        console.log(name, typeProduct, description, ingredients, value, profileImg);
         establishmentService.postRegisterProducts(name, typeProduct, description, ingredients, value, profileImg);
     }
 
@@ -51,7 +44,6 @@ export default class ProductRegistration extends React.Component {
 
     render() {
         const { name, typeProduct, description, ingredients, value, profileImg } = this.state;
-        // const { profileImg } = this.state;
         const linkDemand = "/customer-demand";
 
         return (
