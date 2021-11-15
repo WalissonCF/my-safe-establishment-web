@@ -108,7 +108,8 @@ function Ordered() {
                 </div>
                 <div className="confirm">
                     <AnimationPayment></AnimationPayment>
-                    <button onClick={onClickCloseOrder} class="btn btn-outline-danger">FECHAR A CONTA</button>
+                    <h2 class="my-products">Para fechar a conta <br /> clique no botão abaixo</h2>
+                    <button onClick={onClickCloseOrder} class="btn btn-outline-danger close-order">FECHAR A CONTA</button>
                 </div>
             </div>
         </div>
