@@ -67,7 +67,7 @@
     color: #2DB3FF;
 }
 
-#ingredients {
+#ingredients, #description {
     margin-left: 10%;
     height: 200px;
 }

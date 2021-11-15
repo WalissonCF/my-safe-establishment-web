@@ -1,9 +1,12 @@
 import axios from 'axios';
 import authService from '../auth';
+import customerUtils from '../utils/customerUtils';
 
-const LOGIN = 'https://my-safe-establishment-company.herokuapp.com/public/customer/login';
-const REGISTER = 'https://my-safe-establishment-company.herokuapp.com/public/owner/register';
-const REGISTER_PRODUCTS = 'https://my-safe-establishment-company.herokuapp.com/private/owner/product/register';
+const URL = 'https://my-safe-establishment-company.herokuapp.com/';
+
+const LOGIN = 'public/customer/login';
+const REGISTER = 'public/owner/register';
+const REGISTER_PRODUCTS = `${URL}private/product/register`;
 
 const establishmentService = {
     postLogin(email, senha) {
@@ -29,8 +32,20 @@ const establishmentService = {
             })
     },
 
-    postRegisterProducts(name, typeProduct, description, ingredients, value) {
-        axios.post(REGISTER_PRODUCTS, { name, typeProduct, description, ingredients, value })
+    postRegisterProducts(name, typeProduct, description, ingredients, valueProduct, dataBase) {
+        const value = parseFloat(customerUtils.unFormatNumber(valueProduct));
+        var imageEncoded = dataBase.replace(/^data:image\/[a-z]+;base64,/, "");
+        let product = 
+            {
+                name,
+                typeProduct,
+                description,
+                ingredients,
+                value
+            };
+        console.log(product);
+        console.log(imageEncoded);
+        axios.post(REGISTER_PRODUCTS, { product, imageEncoded })
             .then((res) => {
                 console.log(res);
             });

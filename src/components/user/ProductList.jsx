@@ -46,7 +46,7 @@ function ProductList() {
                     {
                         posts.map((item) => {
                             const ids = [item.id];
-                            const srcs = ["https://static.clubedaanamariabraga.com.br/wp-content/uploads/2021/04/frango-assado-em-pe.jpg"];
+                            const srcs = [item.productDetails.urlImage];
                             const names = [item.name];
                             const values = [item.value];
                             const ingredient = [item.ingredients];
