@@ -62,7 +62,11 @@ const customerUtils = {
 
     title() {
         return "My safe establishment web";
-    }
+    },
+
+    unformatDataBase(dataBase) {
+        return dataBase.replace(/^data:image\/[a-z]+;base64,/, "");
+    },
 }
 
 export default customerUtils;

@@ -27,7 +27,7 @@ function ProductList() {
     }
 
     return (
-        <div className="container-fluid">
+        <div className="'c'">
             <div className="row">
                 <div className="col-12">
                     <div className="content-menu-register">
