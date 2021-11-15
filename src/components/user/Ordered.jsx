@@ -24,6 +24,7 @@ function Ordered() {
         const qtdeProducts = document.getElementById('qtde-product').innerText;
         const sum = parseInt(qtdeProducts) + 1;
         document.getElementById('qtde-product').innerText = sum;
+        console.log();
     };
 
     function onClickSubtraction() {
@@ -83,7 +84,7 @@ function Ordered() {
                                                     <div>
                                                         <label className="product-selected name-product-selected">{[namesProducts[i]]}</label>
                                                         <div >
-                                                            <label className="product-selected">R${value.toFixed(2)}</label>
+                                                            <label id={`value-product-${[i]}`} className="product-selected">R${value.toFixed(2)}</label>
                                                         </div>
                                                         <div className="info-product info-product-order">
                                                             <i className="material-icons"
