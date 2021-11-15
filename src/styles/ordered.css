@@ -3,6 +3,7 @@
     display: grid;
     grid-template-columns: 0fr 0fr;
     justify-content: center;
+    margin-block-end: 90%;
 }
 
 #img-selected {
@@ -46,6 +47,10 @@
 
 .name-product-selected {
     font-weight: bold;
+}
+
+.close-order {
+    margin-top: 0px;
 }
 
 @media screen and (max-width: 1200px) {
