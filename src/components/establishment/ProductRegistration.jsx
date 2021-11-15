@@ -3,14 +3,21 @@ import React from 'react';
 import '../../styles/productRegistration.css';
 import { Link } from 'react-router-dom';
 import InputMask from 'react-input-mask';
+import establishmentService from '../../services/EstablishmentService';
+import customerUtils from '../../utils/customerUtils';
 
 export default class ProductRegistration extends React.Component {
     constructor() {
         super();
 
         this.state = {
+            name: '',
+            typeProduct: '',
+            description: '',
+            ingredients: '',
+            value: '',
             test: '',
-            profileImg: 'https://blogs.opovo.com.br/bancadoanime/wp-content/uploads/sites/59/2020/04/Shokugeki-no-Souma-5.jpg',
+            profileImg: '',
         }
     }
 
@@ -20,7 +27,16 @@ export default class ProductRegistration extends React.Component {
     }
 
     onSubmit = (e) => {
-
+        e.preventDefault();
+        const { name, typeProduct, description, ingredients, value, profileImg } = this.state;
+        // const name = document.getElementById('name').value;
+        // const typeProduct = document.getElementById('typeProduct').value;
+        // const description = document.getElementById('description').value;
+        // const ingredients = document.getElementById('ingredients').value;
+        // const value = parseFloat(customerUtils.unFormatNumber(document.getElementById('value').value));
+        // const imageEncoded = document.getElementById('img-product').src;
+        console.log(name, typeProduct, description, ingredients, value, profileImg);
+        establishmentService.postRegisterProducts(name, typeProduct, description, ingredients, value, profileImg);
     }
 
     imageHandler = (e) => {
@@ -34,7 +50,8 @@ export default class ProductRegistration extends React.Component {
     }
 
     render() {
-        const { profileImg } = this.state;
+        const { name, typeProduct, description, ingredients, value, profileImg } = this.state;
+        // const { profileImg } = this.state;
         const linkDemand = "/customer-demand";
 
         return (
@@ -59,7 +76,7 @@ export default class ProductRegistration extends React.Component {
                         <div className="form-group">
                             <div className="canvas">
                                 <h4>Cadastre seu produto:</h4>
-                                <img src={profileImg} alt="" className="preview-image" />
+                                <img src={profileImg} alt="" className="preview-image" id="img-product" />
                                 <input type="file" id="upload-image"
                                     className="form-control-file"
                                     onChange={this.imageHandler}
@@ -71,22 +88,26 @@ export default class ProductRegistration extends React.Component {
                                 </label>
                             </div>
                             <div class="form-group">
-                                <label for="corporate-name">Nome do produto:</label>
-                                <input type="text" className="form-control" id="corporate-name" />
+                                <label>Nome do produto:</label>
+                                <input type="text" className="form-control" id="name" name="name" value={name} onChange={this.onChange} />
                             </div>
                             <div class="form-group">
-                                <label for="corporate-name">Valor:</label>
+                                <label>Valor:</label>
                                 <InputMask mask="R$999,999,999" maskChar={null}
-                                    type="tel" className="form-control" id="corporate-name"
+                                    type="tel" className="form-control" id="value" name="value" value={value} onChange={this.onChange}
                                     placeholder="R$"></InputMask>
                             </div>
                             <div class="form-group">
-                                <label for="corporate-name">Ingredientes:</label>
-                                <textarea className="form-control" id="ingredients"></textarea>
+                                <label>Tipo do produto:</label>
+                                <input type="text" className="form-control" id="typeProduct" name="typeProduct" value={typeProduct} onChange={this.onChange} />
+                            </div>
+                            <div class="form-group">
+                                <label>Ingredientes:</label>
+                                <textarea className="form-control" id="ingredients" name="ingredients" value={ingredients} onChange={this.onChange}></textarea>
                             </div>
                             <div className="form-group">
-                                <label for="corporate-name">Descrição:</label>
-                                <textarea className="form-control" id="ingredients"></textarea>
+                                <label>Descrição:</label>
+                                <textarea className="form-control" id="description" name="description" value={description} onChange={this.onChange}></textarea>
                             </div>
                         </div>
                         <div className="confirm">

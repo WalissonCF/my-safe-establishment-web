@@ -128,7 +128,7 @@ const userService = {
                         window.location = "/payment-method"
                     } else if (status !== "1") {
                         localStorage.setItem('totalProduct', res.data.paybleValue);
-                        window.location = "/payment-success";
+                         window.location = "/payment-success";
                         customerUtils.removeHidden('alert-success-payment');
                     }
                 }
@@ -148,7 +148,7 @@ const userService = {
     async getProducts() {
         return axios.get(PRODUCTS,
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
-            .then((res) =>
+            .then((res) => 
                 res.data
             );
     },
