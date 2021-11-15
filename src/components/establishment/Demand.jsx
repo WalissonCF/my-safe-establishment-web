@@ -26,29 +26,35 @@ function Demand() {
                     </div>
                 </div>
             </div>
-            <div className="card-row">
-                <div className="card">
-                    <div className="imgBx">
-                        <img src="https://img.itdg.com.br/tdg/images/recipes/000/002/462/332854/332854_original.jpg" alt="" />
-                        <h2>Mesa:</h2>
+            <div className="all-demands">
+                <div id="demands">
+                    <div className="form-group demands-group">
+                        <div className="demand">
+                            <label>Comanda:</label>
+                            <label>Mesa:</label>
+                            <label>Status:</label>
+                        </div>
                     </div>
-                    <div className="content-card">
-                        <h2 className="pedidos">Pedidos:</h2>
-                        <p className="product">Frango - Quantidade: </p>
-                        <p className="note">Observações:</p>
+                    <div className="form-group demands-group">
+                        <div className="demand">
+                            <label>Comanda:</label>
+                            <label>Mesa:</label>
+                            <label>Status:</label>
+                        </div>
                     </div>
-                </div>
-                <div className="card">
-                    <div className="imgBx">
-                        <img src="https://img.itdg.com.br/tdg/images/recipes/000/002/462/332854/332854_original.jpg" alt="" />
-                        <h2>Mesa:</h2>
+                    <div className="form-group demands-group">
+                        <div className="demand">
+                            <label>Comanda:</label>
+                            <label>Mesa:</label>
+                            <label>Status:</label>
+                        </div>
                     </div>
-                    <div className="content-card">
-                        <h2 className="pedidos">Pedidos:</h2>
-                        <p className="product">Frango - Quantidade: </p>
-                        <p className="note">Observações:
-                            Quero um frango sem frango somente o osso, sem prato mas com os talheres, com maionese em cima do alho fitro, obrigado
-                        </p>
+                    <div className="form-group demands-group">
+                        <div className="demand">
+                            <label>Comanda:</label>
+                            <label>Mesa:</label>
+                            <label>Status:</label>
+                        </div>
                     </div>
                 </div>
             </div>
