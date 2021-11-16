@@ -3,7 +3,7 @@ import authService from '../auth';
 import customerUtils from '../utils/customerUtils';
 
 const customerId = parseInt(customerUtils.getCustomerId());
-const URL = 'https://my-safe-establishment-company.herokuapp.com/';
+const URL = 'https://my-safe-establishment.herokuapp.com/';
 
 const USER_LOGIN_URL = `${URL}public/login`;
 const USER_REGISTER_URL = `${URL}public/register`;
