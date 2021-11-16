@@ -1,8 +1,9 @@
 import React from 'react';
-
-import '../../styles/productRegistration.css';
 import { Link } from 'react-router-dom';
 import InputMask from 'react-input-mask';
+import NumberFormat from 'react-number-format';
+
+import '../../styles/productRegistration.css';
 import establishmentService from '../../services/EstablishmentService';
 import customerUtils from '../../utils/customerUtils';
 
@@ -85,9 +86,8 @@ export default class ProductRegistration extends React.Component {
                             </div>
                             <div class="form-group">
                                 <label>Valor:</label>
-                                <InputMask mask="R$999,999,999" maskChar={null}
-                                    type="tel" className="form-control" id="value" name="value" value={value} onChange={this.onChange}
-                                    placeholder="R$"></InputMask>
+                                <NumberFormat thousandSeparator={true} prefix={'R$'} type="tel" className="form-control" name="value" value={value} onChange={this.onChange}
+                                    placeholder="R$" autoComplete="off"/>
                             </div>
                             <div class="form-group">
                                 <label>Tipo do produto:</label>
