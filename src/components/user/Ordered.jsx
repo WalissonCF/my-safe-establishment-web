@@ -17,7 +17,8 @@ function Ordered() {
     }, [])
 
     function onClickCloseOrder() {
-        window.location = "/payment";
+        // window.location = "/payment";
+        window.location = "/order-summary";
     };
 
     function onClickSum() {

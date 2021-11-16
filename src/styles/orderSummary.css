@@ -1,0 +1,53 @@
+#summary {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3%;
+    justify-items: center;
+    margin-block-end: 6%;
+    align-items: center;
+}
+
+#summary h2 {
+    color: black;
+    font-size: 27px;
+    font-weight: bold;
+}
+
+#summary p {
+    color: black;
+}
+
+#summary hr {
+    height: 2px;
+    width: 70vw;
+}
+
+.products-summary {
+    margin-top: 70px;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.products-summary .products {
+    margin-right: 20vw;
+}
+
+.summary {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.summary .total-summary {
+    margin-right: 23vw;
+    padding: 6px;
+}
+
+.confirm-summary {
+    width: 100%;
+}

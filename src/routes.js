@@ -7,6 +7,7 @@ import Tables from './components/user/Tables';
 import ProductList from './components/user/ProductList';
 import Product from './components/user/Product';
 import Ordered from './components/user/Ordered';
+import OrderSummary from './components/user/OrderSummary';
 import Payment from './components/user/Payment';
 import PaymentMethod from './components/user/PaymentMethod'; 
 
@@ -33,6 +34,8 @@ export default function MainRoutes() {
             {Auth.privateRoutes("/product-list", <ProductList />)}
             {Auth.privateRoutes("/product", <Product />)}
             {Auth.privateRoutes("/ordered", <Ordered />)}
+            {Auth.privateRoutes("/order-summary", <OrderSummary />)}
+            {/* <Route path="/order-summary" element={ <OrderSummary /> } /> */}
             {Auth.privateRoutes("/payment", <Payment />)}
             {Auth.privateRoutes("/payment-method", <PaymentMethod />)}
 
