@@ -12,6 +12,10 @@ function Demand() {
         fetchPosts()
     }, [])
 
+    function onClickDemand() {
+        window.location = "/customer-demand"
+    }
+
     return (
         <div className="container-fluid">
             <div className="row">
@@ -29,28 +33,28 @@ function Demand() {
             <div className="all-demands">
                 <div id="demands">
                     <div className="form-group demands-group">
-                        <div className="demand">
+                        <div className="demand" onClick={onClickDemand}>
+                            <label>Comanda:</label>
+                            <label>Mesa:</label>
+                            <label>Status:</label>
+                        </div>
+                    </div>
+                    <div className="form-group demands-group" >
+                        <div className="demand" onClick={onClickDemand}>
                             <label>Comanda:</label>
                             <label>Mesa:</label>
                             <label>Status:</label>
                         </div>
                     </div>
                     <div className="form-group demands-group">
-                        <div className="demand">
+                        <div className="demand" onClick={onClickDemand}>
                             <label>Comanda:</label>
                             <label>Mesa:</label>
                             <label>Status:</label>
                         </div>
                     </div>
                     <div className="form-group demands-group">
-                        <div className="demand">
-                            <label>Comanda:</label>
-                            <label>Mesa:</label>
-                            <label>Status:</label>
-                        </div>
-                    </div>
-                    <div className="form-group demands-group">
-                        <div className="demand">
+                        <div className="demand" onClick={onClickDemand}>
                             <label>Comanda:</label>
                             <label>Mesa:</label>
                             <label>Status:</label>
