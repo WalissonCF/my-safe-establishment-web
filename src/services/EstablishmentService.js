@@ -48,6 +48,9 @@ const establishmentService = {
         axios.post(REGISTER_PRODUCTS, { product, imageEncoded })
             .then((res) => {
                 console.log(res);
+                if (res.data === 201) {
+                    window.location = "/products-establishment";
+                }
             });
     },
 

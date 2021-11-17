@@ -1,0 +1,79 @@
+#all-products {
+    margin-block-end: 25%;
+}
+
+#products-establishment {
+    margin-top: 20px;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 5%;
+}
+
+.img-product-establishment img {
+    width: 180px;
+    height: 180px;
+    border-radius: 20px;
+}
+
+.product-name-value {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+}
+
+.product-name-value h2 {
+    font-size: 25px;
+    font-weight: bolder;
+}
+
+#products-establishment p, .h2-product {
+    color: black;
+    margin-left: 15px;
+}
+
+.ingredients-description {
+    margin-top: 20px;
+}
+
+.button-delete {
+    color: var(--main-color);
+    border-color: var(--main-color);
+}
+
+.button-delete:hover {
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+}
+
+.button-delete, .button-edit {
+    border-radius: 20px;
+    width: 130px;
+}
+
+.edit {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    align-content: center;
+    margin-right: 5%;
+}
+
+.button-edit {
+    margin-right: 10px;
+}
+
+.new-product {
+    text-align: center;
+    height: 100px;
+}
+
+.new-product button {
+    width: 80%;
+}
+
+#products-establishment hr {
+    width: 95%;
+}

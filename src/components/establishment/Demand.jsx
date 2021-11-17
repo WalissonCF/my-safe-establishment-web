@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import '../../styles/demand.css';
 
 function Demand() {
@@ -24,8 +26,9 @@ function Demand() {
                         <div className="content-in-text">
                             <h1>Bem vindo,</h1>
                             <h2>nomeUser</h2>
-                            <h1>CNPJ:</h1>
-                            <h2>00.000.000/0000-00</h2>
+                            <Link to="/menu">
+                                <button className="btn btn-outline-danger btn-login">MENU</button>
+                            </Link>
                         </div>
                     </div>
                 </div>
