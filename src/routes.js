@@ -13,6 +13,7 @@ import PaymentMethod from './components/user/PaymentMethod';
 
 import LoginEstablishment from './components/establishment/LoginEstablishment';
 import RegisterEstablishment from './components/establishment/RegisterEstablishment';
+import MenuEstablishment from './components/establishment/MenuEstablishment';
 import ProductRegistration from './components/establishment/ProductRegistration';
 import Demand from './components/establishment/Demand';
 import CustomerDemand from './components/establishment/CustomerDemands';
@@ -41,6 +42,7 @@ export default function MainRoutes() {
 
             <Route path="/login-establishment" element={ <LoginEstablishment /> } />
             <Route path="/register-establishment" element={ <RegisterEstablishment />} />
+            <Route path="/menu" element={ <MenuEstablishment />} />
             <Route path="/product-registration" element={ <ProductRegistration /> } />
             <Route path="/demands" element={ <Demand /> } />
             <Route path="/customer-demand" element={ <CustomerDemand /> } />

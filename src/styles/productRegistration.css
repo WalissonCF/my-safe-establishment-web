@@ -70,7 +70,7 @@
 #ingredients, #description {
     margin-left: 10%;
     height: 200px;
-}
+} 
 
 #register-product {
     color: black;
@@ -78,5 +78,14 @@
 }
 
 #form-register-product {
-    margin-block-end: 85%;
+    margin-block-end: 25%;
+}
+
+
+#register-product p {
+    color: black;
+}
+
+.btn-quantity-customer {
+    margin-top: 55px;
 }
