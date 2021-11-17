@@ -103,10 +103,7 @@ export default class ProductRegistration extends React.Component {
                             </div>
                         </div>
                         <div className="confirm">
-                            <p id="register-product">Cadastre seu produto clicando no botão abaixo</p>
-                            {/* <Link to={productList}> */}
                             <button class="btn btn-outline-danger btn-quantity-customer btn-select-table">CADASTRAR</button>
-                            {/* </Link> */}
                         </div>
                     </form>
                 </div>
