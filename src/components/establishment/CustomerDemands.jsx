@@ -79,7 +79,7 @@ function CustomerDemand() {
                     </div>
                 </div>
                 <div className="total">
-                    <div>
+                    <div className="total-and-values">
                         <p>Taxa</p>
                         <p>Gorjeta</p>
                         <p>Forma de pagamento</p>
