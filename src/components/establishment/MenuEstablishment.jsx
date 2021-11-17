@@ -1,5 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
+import '../../styles/menuEstablishment.css';
+import AnimationManager from '../animations/Manager';
 
 export default class MenuEstablishment extends React.Component {
 
@@ -17,17 +20,35 @@ export default class MenuEstablishment extends React.Component {
                                 <div className="content-in-text">
                                     <h1>Bem vindo,</h1>
                                     <h2>nomeUser</h2>
-                                    <h1>CNPJ:</h1>
-                                    <h2>00.000.000/0000-00</h2>
-                                    {/* <Link to={linkDemand}> */}
-                                        <button className="btn btn-outline-danger btn-login">PEDIDOS</button>
-                                    {/* </Link> */}
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div id="menu-establishment">
-
+                        <div className="menu-itens">
+                            <Link to="/demands">
+                                <div className="form-group">
+                                    <div className="menu-establishment">
+                                        <label>Gerenciamento</label>
+                                    </div>
+                                </div>
+                            </Link>
+                            <div className="form-group">
+                                <div className="menu-establishment">
+                                    <label>Produtos</label>
+                                </div>
+                            </div>
+                            <div className="form-group">
+                                <div className="menu-establishment">
+                                    <label>Mesas</label>
+                                </div>
+                            </div>
+                            <div className="form-group">
+                                <div className="menu-establishment">
+                                    <label>Pagamentos</label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </React.Fragment>
