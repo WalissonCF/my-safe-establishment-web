@@ -22,7 +22,7 @@ const establishmentService = {
                 }
                 console.log(res);
             })
-        window.location = "/product-registration";
+        window.location = "/menu";
     },
 
     postRegister(owner, establishment, address) {
