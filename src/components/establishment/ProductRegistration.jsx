@@ -45,7 +45,7 @@ export default class ProductRegistration extends React.Component {
 
     render() {
         const { name, typeProduct, description, ingredients, value, profileImg } = this.state;
-        const linkDemand = "/customer-demand";
+        const linkDemand = "/demands";
 
         return (
             <React.Fragment>
