@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import '../../styles/menuEstablishment.css';
-import AnimationManager from '../animations/Manager';
 
 export default class MenuEstablishment extends React.Component {
 
@@ -33,11 +32,13 @@ export default class MenuEstablishment extends React.Component {
                                     </div>
                                 </div>
                             </Link>
-                            <div className="form-group">
-                                <div className="menu-establishment">
-                                    <label>Produtos</label>
+                            <Link to="/products-establishment">
+                                <div className="form-group">
+                                    <div className="menu-establishment">
+                                        <label>Produtos</label>
+                                    </div>
                                 </div>
-                            </div>
+                            </Link>
                             <div className="form-group">
                                 <div className="menu-establishment">
                                     <label>Mesas</label>
