@@ -15,6 +15,29 @@
     height: 70px;
 }
 
+.all-tables .button-delete {
+    width: 80px;
+    height: 30px;
+    font-size: 12px;
+}
+
+.tables-form-group .button-delete {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-left: 18.5px;
+}
+
+.tables-establishment {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3%;
+    justify-items: center;
+    margin-block-end: 6%;
+    align-items: center;
+}
+
 @media screen and (max-width: 720px) {
     .all-tables {
         grid-template-columns: 0fr 0fr 0fr 0fr;

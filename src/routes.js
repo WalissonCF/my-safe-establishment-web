@@ -19,6 +19,8 @@ import Demand from './components/establishment/Demand';
 import CustomerDemand from './components/establishment/CustomerDemands';
 import ProductEstablishment from './components/establishment/Products';
 import EditProduct from './components/establishment/EditProduct';
+import TablesEstablishment from './components/establishment/TablesEstablichment';
+import RegisterTables from './components/establishment/RegisterTables';
 
 import CallingAttendant from './components/user/CallingAttendant';
 import AnimationPaymentSuccess from './components/animations/PaymentSuccess';
@@ -38,7 +40,6 @@ export default function MainRoutes() {
             {Auth.privateRoutes("/product", <Product />)}
             {Auth.privateRoutes("/ordered", <Ordered />)}
             {Auth.privateRoutes("/order-summary", <OrderSummary />)}
-            {/* <Route path="/order-summary" element={ <OrderSummary /> } /> */}
             {Auth.privateRoutes("/payment", <Payment />)}
             {Auth.privateRoutes("/payment-method", <PaymentMethod />)}
 
@@ -50,6 +51,8 @@ export default function MainRoutes() {
             <Route path="/customer-demand" element={ <CustomerDemand /> } />
             <Route path="/products-establishment" element={ <ProductEstablishment /> } />
             <Route path="/edit-product" element={ <EditProduct /> } />
+            <Route path="/tables-establishment" element={ <TablesEstablishment /> } />
+            <Route path="/register-tables" element={ <RegisterTables /> } />
 
             <Route path="/calling-attendant" element={ <CallingAttendant /> } />
             <Route path="/payment-success" element={ <AnimationPaymentSuccess /> } />

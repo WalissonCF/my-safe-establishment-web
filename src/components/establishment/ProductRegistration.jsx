@@ -84,7 +84,7 @@ export default class ProductRegistration extends React.Component {
                             <div class="form-group">
                                 <label>Valor:</label>
                                 <NumberFormat thousandSeparator={true} prefix={'R$'} type="tel" className="form-control" name="value" value={value} onChange={this.onChange}
-                                    placeholder="R$" autoComplete="off"/>
+                                    placeholder="R$" autoComplete="off" />
                             </div>
                             <div class="form-group">
                                 <label>Tipo do produto:</label>
@@ -99,9 +99,36 @@ export default class ProductRegistration extends React.Component {
                                 <textarea className="form-control" id="description" name="description" value={description} onChange={this.onChange}></textarea>
                             </div>
                         </div>
+
                         <div className="confirm">
                             <button class="btn btn-outline-danger btn-quantity-customer btn-select-table">CADASTRAR</button>
                         </div>
+
+                        {/* <div className="product-name-value">
+                            <div className="img-product-establishment">
+                                <img src="https://img.cybercook.com.br/imagens/receitas/619/massa-de-pizza-para-microondas-2.jpeg" alt="" />
+                            </div>
+                            <div className="content-product edit-content">
+                                <h2 className="h2-product edit-h2-product">Nome do produto:</h2>
+                                <input type="text" className="form-control edit-input" placeholder="Nome do produto" />
+                                <h2 className="h2-product edit-h2-product edit-value">Valor:</h2>
+                                <p>Valor:</p>
+                                <input type="text" className="form-control edit-input" placeholder="R$0.00" />
+                            </div>
+                        </div>
+                        <div className="ingredients-description">
+                            <div className="ingredients-product">
+                                <h2 className="h2-product">Ingredientes:</h2>
+                                <textarea className="form-control edit-textarea"></textarea>
+                            </div>
+                            <div className="description-product">
+                                <h2 className="h2-product">Descrição:</h2>
+                                <textarea className="form-control edit-textarea"></textarea>
+                            </div>
+                        </div>
+                        
+                         */}
+
                     </form>
                 </div>
             </React.Fragment>
