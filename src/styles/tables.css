@@ -38,6 +38,51 @@
     align-items: center;
 }
 
+.c-2 {
+    height: 100px !important;
+}
+
+.register-tables-establishment {
+    display: flex;
+    flex-direction: column;
+    margin-top: 8%;
+    justify-items: center;
+    margin-block-end: 6%;
+    align-items: center;
+}
+
+.register-tables-establishment .h2-tables-establishment {
+    font-size: 20px;
+    color: black;
+}
+
+.label-tables-establishment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.l1 {
+    margin-left: 0;
+}
+
+.status-tables-1, .status-tables-2 {
+    margin-left: 59%;
+    width: 80%;
+}
+
+.status-tables-1 {
+    margin-top: 10px;
+}
+
+.status-tables-2 {
+    margin-top: 10px;
+}
+
+.qtde-chairs {
+    margin-top: -10px !important;
+}
+
 @media screen and (max-width: 720px) {
     .all-tables {
         grid-template-columns: 0fr 0fr 0fr 0fr;

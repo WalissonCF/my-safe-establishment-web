@@ -50,10 +50,10 @@ export default class AmountOfPeopleUser extends React.Component {
 
         return (
             <React.Fragment>
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="content-in-text">
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-12">
+                            <div className="content-in-text">
                                 <h3>My safe establishment web</h3>
                             </div>
                         </div>
