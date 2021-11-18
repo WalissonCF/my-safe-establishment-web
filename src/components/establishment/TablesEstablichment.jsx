@@ -56,6 +56,11 @@ function TablesEstablishment() {
                     </div>
                 </div>
             </div>
+            <div className="confirm c-2">
+                <Link to="/register-tables">
+                    <button className="btn btn-outline-danger">CADASTRAR NOVA MESA</button>
+                </Link>
+            </div>
         </div>
     )
 }
