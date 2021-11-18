@@ -1,0 +1,11 @@
+.comand {
+    font-size: 13px;
+}
+
+.all-payments a {
+    text-decoration: none;
+}
+
+.payment-demands {
+    margin-block-end: 20% !important;
+}
