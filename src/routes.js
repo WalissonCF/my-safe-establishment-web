@@ -18,6 +18,7 @@ import ProductRegistration from './components/establishment/ProductRegistration'
 import Demand from './components/establishment/Demand';
 import CustomerDemand from './components/establishment/CustomerDemands';
 import ProductEstablishment from './components/establishment/Products';
+import EditProduct from './components/establishment/EditProduct';
 
 import CallingAttendant from './components/user/CallingAttendant';
 import AnimationPaymentSuccess from './components/animations/PaymentSuccess';
@@ -48,6 +49,7 @@ export default function MainRoutes() {
             <Route path="/demands" element={ <Demand /> } />
             <Route path="/customer-demand" element={ <CustomerDemand /> } />
             <Route path="/products-establishment" element={ <ProductEstablishment /> } />
+            <Route path="/edit-product" element={ <EditProduct /> } />
 
             <Route path="/calling-attendant" element={ <CallingAttendant /> } />
             <Route path="/payment-success" element={ <AnimationPaymentSuccess /> } />
