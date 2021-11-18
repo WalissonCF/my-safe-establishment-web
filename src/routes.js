@@ -21,6 +21,8 @@ import ProductEstablishment from './components/establishment/Products';
 import EditProduct from './components/establishment/EditProduct';
 import TablesEstablishment from './components/establishment/TablesEstablichment';
 import RegisterTables from './components/establishment/RegisterTables';
+import PaymentEstablishment from './components/establishment/PaymentEstablishment';
+import PaymentEstablishmentEdit from './components/establishment/PaymentEstablishmentEdit';
 
 import CallingAttendant from './components/user/CallingAttendant';
 import AnimationPaymentSuccess from './components/animations/PaymentSuccess';
@@ -53,6 +55,8 @@ export default function MainRoutes() {
             <Route path="/edit-product" element={ <EditProduct /> } />
             <Route path="/tables-establishment" element={ <TablesEstablishment /> } />
             <Route path="/register-tables" element={ <RegisterTables /> } />
+            <Route path="/payment-establishment" element={ <PaymentEstablishment /> } />
+            <Route path="/payment-establishment-edit" element={ <PaymentEstablishmentEdit /> } />
 
             <Route path="/calling-attendant" element={ <CallingAttendant /> } />
             <Route path="/payment-success" element={ <AnimationPaymentSuccess /> } />
