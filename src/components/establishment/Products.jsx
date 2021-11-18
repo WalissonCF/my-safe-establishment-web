@@ -51,7 +51,9 @@ function Products() {
                     </div>
                 </div>
                 <div className="edit">
-                    <button type="button" class="btn btn-outline-primary button-edit">ALTERAR</button>
+                    <Link to="/edit-product">
+                        <button type="button" class="btn btn-outline-primary button-edit">ALTERAR</button>
+                    </Link>
                     <button type="button" class="btn btn-outline-primary button-delete">DELETAR</button>
                 </div>
                 <hr />
@@ -133,13 +135,14 @@ function Products() {
                         </div>
                     </div>
                     <div className="edit">
-                        <button type="button" class="btn btn-outline-primary button-edit">ALTERAR</button>
+                        <Link to="/edit-product">
+                            <button type="button" class="btn btn-outline-primary button-edit">ALTERAR</button>
+                        </Link>
                         <button type="button" class="btn btn-outline-primary button-delete">DELETAR</button>
                     </div>
                     <hr />
                 </div>
             </div>
-
             <div className="confirm new-product">
                 <Link to="/product-registration">
                     <button className="btn btn-outline-danger">NOVO PRODUTO</button>

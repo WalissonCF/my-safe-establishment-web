@@ -1,0 +1,24 @@
+#products-establishment .edit-input {
+    height: 45px;
+    margin-left: 10px;
+}
+
+.edit-product-establishment {
+    margin-block-end: 20%;
+}
+
+#products-establishment textarea {
+    height: 200px;
+}
+
+.edit-content .edit-h2-product {
+    font-size: 20px;
+}
+
+.edit-value {
+    margin-top: 15px;
+}
+
+.description-product {
+    margin-top: 10px;
+}
