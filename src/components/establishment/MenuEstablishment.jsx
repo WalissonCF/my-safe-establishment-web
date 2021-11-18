@@ -39,11 +39,13 @@ export default class MenuEstablishment extends React.Component {
                                     </div>
                                 </div>
                             </Link>
-                            <div className="form-group">
-                                <div className="menu-establishment">
-                                    <label>Mesas</label>
+                            <Link to="/tables-establishment">
+                                <div className="form-group">
+                                    <div className="menu-establishment">
+                                        <label>Mesas</label>
+                                    </div>
                                 </div>
-                            </div>
+                            </Link>
                             <div className="form-group">
                                 <div className="menu-establishment">
                                     <label>Pagamentos</label>
