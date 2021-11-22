@@ -31,12 +31,14 @@ export default class LoginEstablishment extends React.Component {
         console.log({ [e.target.name]: e.target.value });
     }
 
-    onSubmit = () => {
+    onSubmit = (e) => {
+        e.preventDefault();
         const cnpj = document.getElementById('cpnj').value;
         const companyName = document.getElementById('corporate-name').value;
         const tradingName = document.getElementById('fantasy-name').value;
         const typeEstablishment = document.getElementById('type-of-establishment').value;
         const phoneNumber = document.getElementById('phone-number-register-establishment').value;
+        const phoneNumberTwo = document.getElementById('phone-number-register-establishment-2').value;
         const addresss = document.getElementById('public-place').value;
         const name = document.getElementById('name-register-establishment').value;
         const cpf = document.getElementById('cpf-register-establishment').value;
@@ -46,36 +48,41 @@ export default class LoginEstablishment extends React.Component {
         const number = document.getElementById('number').value;
         const district = document.getElementById('district').value;
         const city = document.getElementById('city').value;
+
+        // const { cnpj, companyName, tradingName, typeEstablishment, phoneNumber,
+        //     addresss, name, cpf, email, password, publicPlace, number, district,
+        //     city } = this.state;
+
+        // console.log(cnpj, companyName, tradingName, typeEstablishment, phoneNumber,
+        //     addresss, name, cpf, email, password, publicPlace, number, district,
+        //     city);   
+
         console.log(companyName);
-        let owner = [
-            {
-                name: name,
-                cpf: cpf,
-                phoneNumber: phoneNumber,
-                email: email,
-                password: password,
-            }
-        ];
-        let establishment = [
-            {
-                companyName: companyName,
-                tradingName: tradingName,
-                cnpj: cnpj,
-                typeEstablishmentm: typeEstablishment,
-                phoneNumber: phoneNumber,
-                address: addresss,
-            }
-        ];
-        let address = [
-            {
-                publicPlace: publicPlace,
-                number: number,
-                district: district,
-                city: city,
-            }
-        ];
+        let owner =
+        {
+            name: name,
+            cpf: cpf,
+            phoneNumber: phoneNumberTwo,
+            email: email,
+            password: password,
+        };
+        let establishment = 
+        {
+            companyName: companyName,
+            tradingName: tradingName,
+            cnpj: cnpj,
+            typeEstablishmentm: typeEstablishment,
+            phoneNumber: phoneNumber,
+        };
+        let address = 
+        {
+            publicPlace: publicPlace,
+            number: number,
+            district: district,
+            city: city,
+        };
         console.log(owner, establishment, address);
-        debugger
+        establishmentService.postRegister(owner, establishment, address);
     }
 
     onBlurCNPJ(e) {
@@ -214,9 +221,10 @@ export default class LoginEstablishment extends React.Component {
                             </div>
                             <div className="form-group">
                                 <label for="phone-number-register-establishment-2">Número de telefone:</label>
-                                <input type="text" className="form-control" id="phone-number-register-establishment-2" placeholder="(00) 00000-0000"
+                                <InputMask mask="(99) 99999-9999" maskChar={null} type="tel" className="form-control" id="phone-number-register-establishment-2" placeholder="(00) 00000-0000"
                                     name="phoneNumber" value={phoneNumber} value={this.state.value} onChange={this.onChange}
-                                    onKeyPress={this.onKeyPressPhone} maxlength="14" required />
+                                    onKeyPress={this.onKeyPressPhone} required
+                                ></InputMask>
                             </div>
                             <div className="form-group">
                                 <label for="email">E-mail:</label>
