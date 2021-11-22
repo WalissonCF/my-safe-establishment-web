@@ -71,7 +71,7 @@ export default class LoginEstablishment extends React.Component {
             companyName: companyName,
             tradingName: tradingName,
             cnpj: cnpj,
-            typeEstablishmentm: typeEstablishment,
+            typeEstablishment: typeEstablishment,
             phoneNumber: phoneNumber,
         };
         let address = 
