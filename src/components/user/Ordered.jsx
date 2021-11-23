@@ -21,11 +21,23 @@ function Ordered() {
         window.location = "/order-summary";
     };
 
-    function onClickSum() {
-        const qtdeProducts = document.getElementById('qtde-product').innerText;
-        const sum = parseInt(qtdeProducts) + 1;
-        document.getElementById('qtde-product').innerText = sum;
-        console.log();
+    function onClickSum(e) {
+        const id = parseInt(e.target.id);
+        // console.log("id", id);
+        const product = posts.find(p => p.id === id);
+        // console.log("product", product.quantity);
+        const updateQuality = product.quantity += 1;
+        // console.log("updateQuality", updateQuality);
+        const updateProduct = {...product, quantity: updateQuality};
+        // console.log("updateProduct", updateProduct);
+        const allProducts = posts.map((item) => {
+            return item;
+        });
+        // console.log("allProducts", allProducts);
+        const updateListProduct = allProducts.filter(p => p === id ? {...updateProduct} : product);
+        // console.log("updateListProduct", updateListProduct);
+        setPosts([...updateListProduct]);
+     
     };
 
     function onClickSubtraction() {
@@ -52,12 +64,14 @@ function Ordered() {
                 <div id="products-selecteds">
                     {
                         posts.map((item) => {
+                            const ids = [item.id];
                             const srcs = ["https://static.clubedaanamariabraga.com.br/wp-content/uploads/2021/04/frango-assado-em-pe.jpg"];
                             const names = [item.productName];
                             const quantityProduct = [item.quantity];
                             const values = [item.value];
                             let product = [
                                 {
+                                    id: ids,
                                     src: srcs,
                                     name: names,
                                     quantity: quantityProduct,
@@ -74,7 +88,10 @@ function Ordered() {
                                 const amounts = itens.value.map((value) => {
                                     return value;
                                 });
-                                console.log(namesProducts, quatityProducts, amounts);
+                                const idsProducts = itens.id.map((id) => {
+                                    return id;
+                                })
+                                // console.log(idsProducts);
                                 return (
                                     <div className="products">{
                                         itens.src.map((src, i) => {
@@ -83,7 +100,7 @@ function Ordered() {
                                                 <div id="products-confirmed">
                                                     <img id="img-selected" src={src} alt="" />
                                                     <div>
-                                                        <label className="product-selected name-product-selected">{[namesProducts[i]]}</label>
+                                                        <label className="product-selected name-product-selected">#{[idsProducts[i]]} {[namesProducts[i]]}</label>
                                                         <div >
                                                             <label id={`value-product-${[i]}`} className="product-selected">R${value.toFixed(2)}</label>
                                                         </div>
@@ -92,7 +109,7 @@ function Ordered() {
                                                             onClick={onClickSubtraction}
                                                             >remove_circle_outline </i>
                                                             <label id="qtde-product">{[quatityProducts[i]]}</label>
-                                                            <i className="material-icons"
+                                                            <i id={[idsProducts[i]]} className="material-icons"
                                                             onClick={onClickSum}
                                                             >add_circle_outline</i>
                                                             <i className="material-icons delete">delete</i>
