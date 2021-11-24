@@ -61,6 +61,7 @@ function ProductList() {
                                     description: descriptions,
                                 }
                             ];
+                            localStorage.setItem(`${ids}`, srcs);
                             return product.map((itens, i) => {
                                 const names = itens.name.map((name) => {
                                     return name;

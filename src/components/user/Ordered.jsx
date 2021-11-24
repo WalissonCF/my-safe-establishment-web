@@ -24,7 +24,8 @@ function Ordered() {
         const id = parseInt(e.target.id);
         const product = posts.find(p => p.id === id);
         const updateQuality = product.quantity += 1;
-        const updateProduct = { ...product, quantity: updateQuality };
+        const updateValue = product.value += product.value;
+        const updateProduct = { ...product, quantity: updateQuality, value: updateValue };
         const allProducts = posts.map((item) => {
             return item;
         });
@@ -77,7 +78,6 @@ function Ordered() {
                                 const productIds = itens.productId.map((productId) => {
                                     return productId;
                                 })
-                                userService.getProductToId(productIds);
                                 const namesProducts = itens.name.map((name) => {
                                     return name;
                                 });
