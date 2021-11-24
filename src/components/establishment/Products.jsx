@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
+
 import userService from '../../services/UserService';
+import establishmentService from '../../services/EstablishmentService';
+
 import { Link } from 'react-router-dom';
 
 import '../../styles/productsEstablishment.css';
@@ -14,6 +17,12 @@ function Products() {
     useEffect(() => {
         fetchPosts()
     }, [])
+
+    function deleteProduct(e) {
+        const id = parseInt(e.target.id);
+        console.log("id", id);
+        establishmentService.deleteProducts(id);
+    }
 
     return (
         <div className="customer-demand">
@@ -94,7 +103,7 @@ function Products() {
                                                 </div>
                                                 <div className="edit">
                                                     <button type="button" class="btn btn-outline-primary button-edit">ALTERAR</button>
-                                                    <button type="button" class="btn btn-outline-primary button-delete">DELETAR</button>
+                                                    <button id={ids} onClick={deleteProduct} type="button" class="btn btn-outline-primary button-delete">DELETAR</button>
                                                 </div>
                                                 <hr />
                                             </div>
@@ -106,120 +115,6 @@ function Products() {
                     })
                 }
             </div>
-            {/* <div id="products-establishment">
-                <div className="product-name-value">
-                    <div className="img-product-establishment">
-                        <img src="https://img.cybercook.com.br/imagens/receitas/619/massa-de-pizza-para-microondas-2.jpeg" alt="" />
-                    </div>
-                    <div className="content-product">
-                        <h2 className="h2-product">Nome do produto:</h2>
-                        <p>Pizza de calabresa</p>
-                        <h2 className="h2-product">R$50.00</h2>
-                    </div>
-                </div>
-                <div className="ingredients-description">
-                    <div className="ingredients-product">
-                        <h2 className="h2-product">Ingredientes:</h2>
-                        <p>Calabresa</p>
-                    </div>
-                    <div className="description-product">
-                        <h2 className="h2-product">Descrição:</h2>
-                        <p>Uma pizza bem regada e com muita calabresa é uma delícia.</p>
-                    </div>
-                </div>
-                <div className="edit">
-                    <Link to="/edit-product">
-                        <button type="button" class="btn btn-outline-primary button-edit">ALTERAR</button>
-                    </Link>
-                    <button type="button" class="btn btn-outline-primary button-delete">DELETAR</button>
-                </div>
-                <hr />
-            </div> */}
-            {/* <div id="all-products">
-                <div id="products-establishment">
-                    <div className="product-name-value">
-                        <div className="img-product-establishment">
-                            <img src="https://img.cybercook.com.br/imagens/receitas/619/massa-de-pizza-para-microondas-2.jpeg" alt="" />
-                        </div>
-                        <div className="content-product">
-                            <h2 className="h2-product">Nome do produto:</h2>
-                            <p>Pizza de calabresa</p>
-                            <h2 className="h2-product">R$50.00</h2>
-                        </div>
-                    </div>
-                    <div className="ingredients-description">
-                        <div className="ingredients-product">
-                            <h2 className="h2-product">Ingredientes:</h2>
-                            <p>Calabresa</p>
-                        </div>
-                        <div className="description-product">
-                            <h2 className="h2-product">Descrição:</h2>
-                            <p>Uma pizza bem regada e com muita calabresa é uma delícia.</p>
-                        </div>
-                    </div>
-                    <div className="edit">
-                        <button type="button" class="btn btn-outline-primary button-edit">ALTERAR</button>
-                        <button type="button" class="btn btn-outline-primary button-delete">DELETAR</button>
-                    </div>
-                    <hr />
-                </div>
-                <div id="products-establishment">
-                    <div className="product-name-value">
-                        <div className="img-product-establishment">
-                            <img src="https://img.cybercook.com.br/imagens/receitas/619/massa-de-pizza-para-microondas-2.jpeg" alt="" />
-                        </div>
-                        <div className="content-product">
-                            <h2 className="h2-product">Nome do produto:</h2>
-                            <p>Pizza de calabresa</p>
-                            <h2 className="h2-product">R$50.00</h2>
-                        </div>
-                    </div>
-                    <div className="ingredients-description">
-                        <div className="ingredients-product">
-                            <h2 className="h2-product">Ingredientes:</h2>
-                            <p>Calabresa</p>
-                        </div>
-                        <div className="description-product">
-                            <h2 className="h2-product">Descrição:</h2>
-                            <p>Uma pizza bem regada e com muita calabresa é uma delícia.</p>
-                        </div>
-                    </div>
-                    <div className="edit">
-                        <button type="button" class="btn btn-outline-primary button-edit">ALTERAR</button>
-                        <button type="button" class="btn btn-outline-primary button-delete">DELETAR</button>
-                    </div>
-                    <hr />
-                </div>
-                <div id="products-establishment">
-                    <div className="product-name-value">
-                        <div className="img-product-establishment">
-                            <img src="https://img.cybercook.com.br/imagens/receitas/619/massa-de-pizza-para-microondas-2.jpeg" alt="" />
-                        </div>
-                        <div className="content-product">
-                            <h2 className="h2-product">Nome do produto:</h2>
-                            <p>Pizza de calabresa</p>
-                            <h2 className="h2-product">R$50.00</h2>
-                        </div>
-                    </div>
-                    <div className="ingredients-description">
-                        <div className="ingredients-product">
-                            <h2 className="h2-product">Ingredientes:</h2>
-                            <p>Calabresa</p>
-                        </div>
-                        <div className="description-product">
-                            <h2 className="h2-product">Descrição:</h2>
-                            <p>Uma pizza bem regada e com muita calabresa é uma delícia.</p>
-                        </div>
-                    </div>
-                    <div className="edit">
-                        <Link to="/edit-product">
-                            <button type="button" class="btn btn-outline-primary button-edit">ALTERAR</button>
-                        </Link>
-                        <button type="button" class="btn btn-outline-primary button-delete">DELETAR</button>
-                    </div>
-                    <hr />
-                </div>
-            </div> */}
             <div className="confirm new-product">
                 <Link to="/product-registration">
                     <button className="btn btn-outline-danger">NOVO PRODUTO</button>

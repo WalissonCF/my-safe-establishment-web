@@ -59,7 +59,14 @@ const establishmentService = {
     },
 
     deleteProducts(id) {
+        console.log(id);
+        debugger;
 
+        axios.post(`https://my-safe-establishment.herokuapp.com/private/product/delete/${id}`, 
+        { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
+        .then((res) => {
+            console.log(res);
+        })
     },
 
     async getDemand() {
