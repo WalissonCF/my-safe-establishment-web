@@ -128,12 +128,12 @@ const userService = {
                         window.location = "/payment-method"
                     } else if (status !== "1") {
                         localStorage.setItem('totalProduct', res.data.paybleValue);
-                         window.location = "/payment-success";
+                        window.location = "/payment-success";
                         customerUtils.removeHidden('alert-success-payment');
                     }
                 }
             })
-            .catch((res) => {});
+            .catch((res) => { });
     },
 
     async getTables() {
@@ -148,7 +148,7 @@ const userService = {
     async getProducts() {
         return axios.get(PRODUCTS,
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
-            .then((res) => 
+            .then((res) =>
                 res.data
             );
     },
@@ -156,9 +156,19 @@ const userService = {
     async getListOrder() {
         return axios.get(LIST_ORDER,
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
-            .then((res) =>
-                res.data
+            .then((res) => {
+                console.log(res.data)
+                return res.data
+            }
             );
+    },
+
+    async getProductToId(id) {
+        return axios.get(`https://my-safe-establishment.herokuapp.com/private/product/${id}`,
+            { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
+            .then((res) => {
+                localStorage.setItem(`${id}`, res.data.productDetails.urlImage)
+            })
     },
 }
 
