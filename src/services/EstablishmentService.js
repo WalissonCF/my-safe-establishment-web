@@ -59,13 +59,18 @@ const establishmentService = {
     },
 
     deleteProducts(id) {
-        console.log(id);
-        debugger;
-
         axios.delete(`https://my-safe-establishment.herokuapp.com/private/product/delete/${id}`, 
         { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
         .then((res) => {
-            console.log(res);
+            window.location = "/products-establishment";
+        })
+    },
+
+    deleteTables(id) {
+        axios.delete(`https://my-safe-establishment.herokuapp.com/private/table/delete/${id}`, 
+        { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
+        .then((res) => {
+            window.location = "/tables-establishment";
         })
     },
 

@@ -17,34 +17,26 @@ function Ordered() {
     }, [])
 
     function onClickCloseOrder() {
-        // window.location = "/payment";
         window.location = "/order-summary";
     };
 
     function onClickSum(e) {
         const id = parseInt(e.target.id);
-        // console.log("id", id);
         const product = posts.find(p => p.id === id);
-        // console.log("product", product.quantity);
         const updateQuality = product.quantity += 1;
-        // console.log("updateQuality", updateQuality);
-        const updateProduct = {...product, quantity: updateQuality};
-        // console.log("updateProduct", updateProduct);
+        const updateProduct = { ...product, quantity: updateQuality };
         const allProducts = posts.map((item) => {
             return item;
         });
-        // console.log("allProducts", allProducts);
-        const updateListProduct = allProducts.filter(p => p === id ? {...updateProduct} : product);
-        // console.log("updateListProduct", updateListProduct);
+        const updateListProduct = allProducts.filter(p => p === id ? { ...updateProduct } : product);
         setPosts([...updateListProduct]);
-     
     };
 
     function onClickSubtraction() {
         const qtdeProducts = document.getElementById('qtde-product').innerText;
         const subtraction = parseInt(qtdeProducts) - 1;
         if (qtdeProducts > 0) {
-            document.getElementById('qtde-product').innerText = subtraction;            
+            document.getElementById('qtde-product').innerText = subtraction;
         }
     }
 
@@ -69,6 +61,7 @@ function Ordered() {
                             const names = [item.productName];
                             const quantityProduct = [item.quantity];
                             const values = [item.value];
+                            const productId = [item.productId];
                             let product = [
                                 {
                                     id: ids,
@@ -76,9 +69,15 @@ function Ordered() {
                                     name: names,
                                     quantity: quantityProduct,
                                     value: values,
+                                    productId: productId,
                                 }
                             ];
+
                             return product.map((itens) => {
+                                const productIds = itens.productId.map((productId) => {
+                                    return productId;
+                                })
+                                userService.getProductToId(productIds);
                                 const namesProducts = itens.name.map((name) => {
                                     return name;
                                 });
@@ -90,27 +89,27 @@ function Ordered() {
                                 });
                                 const idsProducts = itens.id.map((id) => {
                                     return id;
-                                })
-                                // console.log(idsProducts);
+                                });
                                 return (
                                     <div className="products">{
                                         itens.src.map((src, i) => {
                                             const value = parseFloat([amounts[i]]);
+                                            var srcs = localStorage.getItem(`${productIds}`);
                                             return (
                                                 <div id="products-confirmed">
-                                                    <img id="img-selected" src={src} alt="" />
+                                                    <img id="img-selected" src={srcs} alt="" />
                                                     <div>
-                                                        <label className="product-selected name-product-selected">#{[idsProducts[i]]} {[namesProducts[i]]}</label>
+                                                        <label className="product-selected name-product-selected">{[namesProducts[i]]}</label>
                                                         <div >
                                                             <label id={`value-product-${[i]}`} className="product-selected">R${value.toFixed(2)}</label>
                                                         </div>
                                                         <div className="info-product info-product-order">
                                                             <i className="material-icons"
-                                                            onClick={onClickSubtraction}
+                                                                onClick={onClickSubtraction}
                                                             >remove_circle_outline </i>
                                                             <label id="qtde-product">{[quatityProducts[i]]}</label>
                                                             <i id={[idsProducts[i]]} className="material-icons"
-                                                            onClick={onClickSum}
+                                                                onClick={onClickSum}
                                                             >add_circle_outline</i>
                                                             <i className="material-icons delete">delete</i>
                                                         </div>

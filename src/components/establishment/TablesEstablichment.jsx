@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { Link } from 'react-router-dom';
 import userService from '../../services/UserService';
+import establishmentService from '../../services/EstablishmentService';
 
 function TablesEstablishment() {
     const [posts, setPosts] = useState([]);
@@ -13,6 +14,12 @@ function TablesEstablishment() {
     useEffect(() => {
         fetchPosts()
     }, [])
+
+    function deleteTable(e) {
+        const id = parseInt(e.target.id);
+        console.log("id", id);
+        establishmentService.deleteTables(id);
+    }
 
     return (
         <div className="customer-demand">
@@ -58,7 +65,7 @@ function TablesEstablishment() {
                                                  >
                                                     <p className="number-table">Mesa {t}</p>
                                                 </div>
-                                                <button type="button" class="btn btn-outline-primary button-delete">DELETAR</button>
+                                                <button id={ids} onClick={deleteTable} type="button" class="btn btn-outline-primary button-delete">DELETAR</button>
                                             </div>)
                                     } else {
                                         return (
@@ -66,7 +73,7 @@ function TablesEstablishment() {
                                                 <div key={index} class={[status[index]]}>
                                                     <p className="number-table">Mesa {t}</p>
                                                 </div>
-                                                <button type="button" class="btn btn-outline-primary button-delete">DELETAR</button>
+                                                <button id={ids} type="button" class="btn btn-outline-primary button-delete" disabled>DELETAR</button>
                                             </div>
                                         )
                                     }
