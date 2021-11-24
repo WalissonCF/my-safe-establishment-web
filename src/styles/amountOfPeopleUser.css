@@ -103,3 +103,7 @@
     align-items: center;
     justify-content: center;
 }
+
+.material-icons {
+    cursor: pointer;
+}
