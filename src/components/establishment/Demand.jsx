@@ -63,7 +63,7 @@ function Demand() {
                                     return t
                                 });
                                 return (
-                                    <div className="form-group demands-group">
+                                    <div className="form-group demands-group" key={i}>
                                         <div className="demand">
                                             <label>Comanda:</label>
                                             <label>Mesa: {table}</label>
