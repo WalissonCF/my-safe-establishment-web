@@ -33,12 +33,25 @@ function Ordered() {
         setPosts([...updateListProduct]);
     };
 
-    function onClickSubtraction() {
-        const qtdeProducts = document.getElementById('qtde-product').innerText;
-        const subtraction = parseInt(qtdeProducts) - 1;
+    function onClickSubtraction(e) {
+        const id = parseInt(e.target.id);
+        const product = posts.find(p => p.id === id);
+        const qtdeProducts = product.quantity;
         if (qtdeProducts > 0) {
-            document.getElementById('qtde-product').innerText = subtraction;
+            const updateQuality = product.quantity -= 1;
+            const updateValue = product.value += product.value;
+            const updateProduct = { ...product, quantity: updateQuality, value: updateValue };
+            const allProducts = posts.map((item) => {
+                return item;
+            });
+            const updateListProduct = allProducts.filter(p => p === id ? { ...updateProduct } : product);
+            setPosts([...updateListProduct]);
         }
+    }
+
+    function onClickDeleteProduct(e) {
+        const id = e.target.id;
+        console.log(id);
     }
 
     return (
@@ -104,14 +117,14 @@ function Ordered() {
                                                             <label id={`value-product-${[i]}`} className="product-selected">R${value.toFixed(2)}</label>
                                                         </div>
                                                         <div className="info-product info-product-order">
-                                                            <i className="material-icons"
+                                                            <i className="material-icons" id={[idsProducts[i]]}
                                                                 onClick={onClickSubtraction}
                                                             >remove_circle_outline </i>
-                                                            <label id="qtde-product">{[quatityProducts[i]]}</label>
+                                                            <label id="qtde-product" className={`qtde-product-${[idsProducts[i]]}`}>{[quatityProducts[i]]}</label>
                                                             <i id={[idsProducts[i]]} className="material-icons"
                                                                 onClick={onClickSum}
                                                             >add_circle_outline</i>
-                                                            <i className="material-icons delete">delete</i>
+                                                            <i id={[idsProducts[i]]} className="material-icons delete" onClick={onClickDeleteProduct}>delete</i>
                                                         </div>
                                                     </div>
                                                 </div>

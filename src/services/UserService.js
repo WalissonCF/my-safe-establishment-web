@@ -170,6 +170,13 @@ const userService = {
                 localStorage.setItem(`${id}`, res.data.productDetails.urlImage)
             })
     },
+
+    async deleteProductCustomer(id) {
+        return axios.delete(`https://my-safe-establishment.herokuapp.com/private/product/delete/${id}`)
+        .then((res) => {
+
+        })
+    },
 }
 
 export default userService;
