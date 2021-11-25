@@ -35,12 +35,47 @@ function Demand() {
                 </div>
             </div>
             <div className="all-demands">
-                {
-                    posts.map((item) => {
-                        console.log(item)
-                    })
-                }
                 <div id="demands">
+                    {
+                        posts.map((item) => {
+                            const ids = [item.id];
+                            const statusDemand = [item.status];
+                            const customersIds = [item.customerId];
+                            const customersNames = [item.customerName];
+                            const tablesIds = [item.tableId];
+                            const quantityCustomers = [item.quantityCustomer];
+                            let demand = [
+                                {
+                                    id: ids,
+                                    status: statusDemand,
+                                    customerId: customersIds,
+                                    customerName: customersNames,
+                                    tableId: tablesIds,
+                                    quantityCustomer: quantityCustomers,
+                                }
+                            ]
+                            console.log(item);
+                            return demand.map((itens, i) => {
+                                const status = itens.status.map((s) => {
+                                    return s;
+                                });
+                                const table = itens.tableId.map((t) => {
+                                    return t
+                                });
+                                return (
+                                    <div className="form-group demands-group">
+                                        <div className="demand">
+                                            <label>Comanda:</label>
+                                            <label>Mesa: {table}</label>
+                                            <label>Staus: {status}</label>
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        })
+                    }
+                </div>
+                {/* <div id="demands">
                     <div className="form-group demands-group">
                         <div className="demand" onClick={establishmentService.getOrderpadToId}>
                             <label>Comanda:</label>
@@ -69,7 +104,7 @@ function Demand() {
                             <label>Status:</label>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     )
