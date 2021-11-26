@@ -81,7 +81,6 @@ const userService = {
             .then((res) => {
                 console.log(res.status);
                 if (res.status === 200) {
-                    customerUtils.removeItem(['index', 'src', 'quantityProduct', 'valueProduct', 'name', 'note'])
                     window.location = "/product-list";
                 }
             });
@@ -128,6 +127,7 @@ const userService = {
                         window.location = "/payment-method"
                     } else if (status !== "1") {
                         localStorage.setItem('totalProduct', res.data.paybleValue);
+                        customerUtils.removeItem(['index', 'src', 'quantityProduct', 'valueProduct', 'name', 'note']);
                         window.location = "/payment-success";
                         customerUtils.removeHidden('alert-success-payment');
                     }
@@ -173,9 +173,9 @@ const userService = {
 
     async deleteProductCustomer(id) {
         return axios.delete(`https://my-safe-establishment.herokuapp.com/private/product/delete/${id}`)
-        .then((res) => {
-
-        })
+            .then((res) => {
+                window.location = "/ordered";
+            })
     },
 }
 
