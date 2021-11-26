@@ -12,6 +12,7 @@ const REGISTER_PRODUCTS = `${URL}private/product/register`;
 const ORDER_PADS = `${URL_COMPANY}private/management/orderpads`;
 const ORDER_PADS_TO_ID = `${URL_COMPANY}private/management/orderpad?id=1`;
 const ORDERS_TO_ID = `${URL_COMPANY}private/management/orders?orderpad=1`;
+const REGISTER_TABLE = `${URL}private/table/register`;
 
 const establishmentService = {
     postLogin(email, password) {
@@ -60,6 +61,15 @@ const establishmentService = {
                     window.location = "/products-establishment";
                 }
             });
+    },
+
+    postRegisterTable(locationArea, statusTable) {
+        console.log(locationArea, statusTable);
+        // axios.post(REGISTER_TABLE, {locationArea, statusTable},
+        //     { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
+        //     .then((res) => {
+        //         customerUtils.removeItem(['locationTable', 'statusTable']);
+        //     });
     },
 
     deleteProducts(id) {
