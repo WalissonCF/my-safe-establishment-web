@@ -79,7 +79,7 @@ const userService = {
         axios.post(ORDER, { customerId, orders, note },
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) => {
-                console.log(res.status);
+                // console.log(res.status);
                 if (res.status === 200) {
                     window.location = "/product-list";
                 }
@@ -157,7 +157,7 @@ const userService = {
         return axios.get(LIST_ORDER,
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) => {
-                console.log(res.data)
+                // console.log(res.data)
                 return res.data
             }
             );
