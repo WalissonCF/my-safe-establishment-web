@@ -1,3 +1,4 @@
+import { prettyDOM } from '@testing-library/dom';
 import React, { useEffect, useState } from 'react';
 import userService from '../../services/UserService';
 
@@ -50,8 +51,17 @@ function Ordered() {
     }
 
     function onClickDeleteProduct(e) {
-        const id = e.target.id;
+        const id = parseInt(e.target.id);
         console.log(id);
+        const product = posts.find(p => p.id !== id);
+        const updateProduct = {...product};
+        console.log(updateProduct);
+        const allProducts = posts.map((item) => {
+            return item;
+        });
+        const updateListProduct = allProducts.filter(p => p.id !== id);
+        console.log(updateListProduct);
+        setPosts([...updateListProduct]);
     }
 
     return (
