@@ -24,6 +24,11 @@ function Products() {
         establishmentService.deleteProducts(id);
     }
 
+    function updateProduct(id) {
+        localStorage.setItem('updateProductId', id);
+        window.location = '/edit-product';
+    }
+
     return (
         <div className="customer-demand">
             <div className="row">
@@ -76,7 +81,7 @@ function Products() {
                                 return description;
                             });
                             return (
-                                <div id="products">{
+                                <div id="products" key={i}>{
                                     itens.src.map((srcs, index) => {
                                         return (
                                             <div id="products-establishment">
@@ -102,7 +107,7 @@ function Products() {
                                                     </div>
                                                 </div>
                                                 <div className="edit">
-                                                    <button type="button" class="btn btn-outline-primary button-edit">ALTERAR</button>
+                                                    <button type="button" class="btn btn-outline-primary button-edit" onClick={() => updateProduct(ids)}>ALTERAR</button>
                                                     <button id={ids} onClick={deleteProduct} type="button" class="btn btn-outline-primary button-delete">DELETAR</button>
                                                 </div>
                                                 <hr />

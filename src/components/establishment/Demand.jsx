@@ -15,8 +15,11 @@ function Demand() {
         fetchPosts()
     }, [])
 
-    function onClickDemand() {
-        window.location = "/customer-demand"
+    function onClickDemand(ids) {
+        const id = parseInt(ids);
+        console.log(id);
+        localStorage.setItem('demandId', id);
+        // window.location = "/customer-demand";
     }
 
     return (
@@ -62,9 +65,12 @@ function Demand() {
                                 const table = itens.tableId.map((t) => {
                                     return t
                                 });
+                                const id = itens.id.map((itens) => {
+                                    return itens;
+                                })
                                 return (
                                     <div className="form-group demands-group" key={i}>
-                                        <div className="demand">
+                                        <div className="demand" onClick={() => onClickDemand(id)}>
                                             <label>Comanda:</label>
                                             <label>Mesa: {table}</label>
                                             <label>Staus: {status}</label>
