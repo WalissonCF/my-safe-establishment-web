@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import NumberFormat from 'react-number-format';
 
 import '../../styles/editProduct.css';
+import userService from '../../services/UserService';
 
 function EditProduct() {
     const [posts, setPosts] = useState([]);
 
     async function fetchPosts() {
-
+        await userService.getProductToId().then(setPosts);
     }
 
     useEffect(() => {
@@ -33,24 +34,27 @@ function EditProduct() {
             <div id="products-establishment" className="edit-product-establishment">
                 <div className="product-name-value">
                     <div className="img-product-establishment">
-                        <img src="https://img.cybercook.com.br/imagens/receitas/619/massa-de-pizza-para-microondas-2.jpeg" alt="" />
+                        <img src={localStorage.getItem(`imageProductId${posts.id}`)} alt="" />
                     </div>
                     <div className="content-product edit-content">
                         <h2 className="h2-product edit-h2-product">Nome do produto:</h2>
-                        <input type="text" className="form-control edit-input" placeholder="Nome do produto" />
+                        <input type="text" className="form-control edit-input" placeholder={posts.name} />
                         <h2 className="h2-product edit-h2-product edit-value">Valor:</h2>
                         {/* <p>Valor:</p> */}
-                        <input type="text" className="form-control edit-input" placeholder="R$0.00" />
+                        {/* <input type="text" className="form-control edit-input" placeholder={`R$${posts.value}`} /> */}
+                        <NumberFormat className="form-control edit-input" thousandSeparator={true} prefix={'R$'} type="tel" className="form-control" name="value"
+                                    placeholder="R$" autoComplete="off" placeholder={`R$${posts.value}`} />
                     </div>
                 </div>
                 <div className="ingredients-description">
                     <div className="ingredients-product">
                         <h2 className="h2-product">Ingredientes:</h2>
-                        <textarea className="form-control edit-textarea"></textarea>
+                        <textarea className="form-control edit-textarea"
+                        placeholder={posts.ingredients}></textarea>
                     </div>
                     <div className="description-product">
                         <h2 className="h2-product">Descrição:</h2>
-                        <textarea className="form-control edit-textarea"></textarea>
+                        <textarea className="form-control edit-textarea" placeholder={posts.description}></textarea>
                     </div>
                 </div>
             </div>

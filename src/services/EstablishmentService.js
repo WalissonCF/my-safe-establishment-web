@@ -116,7 +116,7 @@ const establishmentService = {
         return axios.get(ORDERS_TO_ID,
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) => {
-                console.log(res.data);
+                console.log("getOrders", res.data);
                 return res.data
             }
             );

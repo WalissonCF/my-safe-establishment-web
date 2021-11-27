@@ -163,11 +163,13 @@ const userService = {
             );
     },
 
-    async getProductToId(id) {
+    async getProductToId() {
+        const id = localStorage.getItem('updateProductId');
         return axios.get(`https://my-safe-establishment.herokuapp.com/private/product/${id}`,
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) => {
-                localStorage.setItem(`${id}`, res.data.productDetails.urlImage)
+                localStorage.setItem(`imageProductId${id}`, res.data.productDetails.urlImage)
+                return res.data;
             })
     },
 
