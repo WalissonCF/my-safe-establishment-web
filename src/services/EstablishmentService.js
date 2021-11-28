@@ -36,7 +36,6 @@ const establishmentService = {
                 if (res.status === 200 || res.status === 201) {
                     console.log(res);
                 }
-                debugger
             })
     },
 
@@ -69,8 +68,7 @@ const establishmentService = {
         axios.post(REGISTER_TABLE, {statusTable, locationArea, numberSeats},
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) => {
-                console.log(res)
-                customerUtils.removeItem(['locationTable', 'statusTable']);
+                // customerUtils.removeItem(['locationTable', 'statusTable']);
             });
     },
 
@@ -103,7 +101,6 @@ const establishmentService = {
         return axios.get(ORDER_PADS,
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) => {
-                // console.log(res.data);
                 return res.data
             }
             );

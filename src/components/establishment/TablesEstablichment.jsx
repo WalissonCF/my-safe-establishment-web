@@ -48,9 +48,10 @@ function TablesEstablishment() {
                                     statusTable: statusTables,
                                 }
                             ];
+                            console.log(item);
                             return tables.map((itens) => {
                                 const status = itens.statusTable.map((situations) => {
-                                    if (situations === '0') {
+                                    if (situations === '0' || situations === 'Disponivel') {
                                         return "tables";
                                     } else {
                                         return "tables-1";
@@ -60,9 +61,7 @@ function TablesEstablishment() {
                                     if ([status[index]].toString() === "tables") {
                                         return (
                                             <div className="form-group tables-form-group">
-                                                <div key={index} className={[status[index]]}
-                                                //  onClick={onClickCheckTable}
-                                                 >
+                                                <div key={index} className={[status[index]]}>
                                                     <p className="number-table">Mesa {t}</p>
                                                 </div>
                                                 <button id={ids} onClick={deleteTable} type="button" class="btn btn-outline-primary button-delete">DELETAR</button>
@@ -82,32 +81,6 @@ function TablesEstablishment() {
                         })
                     }
                 </div>
-                {/* <div className="all-tables">
-                    <div className="form-group tables-form-group">
-                        <div className="tables">
-                            <p className="number-table">Mesa 1</p>
-                        </div>
-                        <button type="button" class="btn btn-outline-primary button-delete">DELETAR</button>
-                    </div>
-                    <div className="form-group tables-form-group">
-                        <div className="tables">
-                            <p className="number-table">Mesa 2</p>
-                        </div>
-                        <button type="button" class="btn btn-outline-primary button-delete">DELETAR</button>
-                    </div>
-                    <div className="form-group tables-form-group">
-                        <div className="tables">
-                            <p className="number-table">Mesa 3</p>
-                        </div>
-                        <button type="button" class="btn btn-outline-primary button-delete">DELETAR</button>
-                    </div>
-                    <div className="form-group tables-form-group">
-                        <div className="tables">
-                            <p className="number-table">Mesa 4</p>
-                        </div>
-                        <button type="button" class="btn btn-outline-primary button-delete">DELETAR</button>
-                    </div>
-                </div> */}
             </div>
             <div className="confirm c-2">
                 <Link to="/register-tables">

@@ -12,7 +12,8 @@ function RegisterTables() {
     }
 
     function onClickRegisterTable() {
-        // const qtdeSeats = document.getElementById('').innerText;
+        const qtdeProduct = document.getElementById('qtde-customer').innerText;
+        localStorage.setItem('numberSeats', parseInt(qtdeProduct));
         const locationArea = localStorage.getItem('locationTable');
         const statusTable = localStorage.getItem('statusTable');
         console.log(locationArea, statusTable);

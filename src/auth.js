@@ -36,7 +36,7 @@ const authService = {
            return <Route path={path} element={elementTest} />;
         } else {
            return <Route path={path} element={ 
-           <div class="container-fluid">
+           <div className="container-fluid">
                <img style={{
                    width: '100%',
                    height: '100%'
