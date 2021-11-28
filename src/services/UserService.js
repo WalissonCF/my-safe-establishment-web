@@ -162,8 +162,10 @@ const userService = {
     async getProducts() {
         return axios.get(PRODUCTS,
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
-            .then((res) =>
-                res.data
+            .then((res) => {
+                console.log(res.data);
+                return res.data
+            }
             );
     },
 

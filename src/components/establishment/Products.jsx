@@ -24,7 +24,17 @@ function Products() {
         establishmentService.deleteProducts(id);
     }
 
-    function updateProduct(id) {
+    function updateProduct(id, name, typeProduct, ingredients, description, value) {
+        let product = {
+            id: id,
+            name: name,
+            typeProduct: typeProduct,
+            ingredients: ingredients,
+            description: description,
+            value: value,
+        };
+        console.log(product);
+        localStorage.setItem('editProduct', JSON.stringify(product));
         localStorage.setItem('updateProductId', id);
         window.location = '/edit-product';
     }
@@ -54,6 +64,7 @@ function Products() {
                         const values = [item.value];
                         const ingredient = [item.ingredients];
                         const descriptions = [item.description];
+                        const typeProduct = [item.typeProduct];
                         let product = [
                             {
                                 id: ids,
@@ -62,6 +73,7 @@ function Products() {
                                 value: values,
                                 ingredients: ingredient,
                                 description: descriptions,
+                                typeProduct: typeProduct,
                             }
                         ];
                         return product.map((itens, i) => {
@@ -80,6 +92,9 @@ function Products() {
                             const desc = itens.description.map((description) => {
                                 return description;
                             });
+                            const type = itens.typeProduct.map((typeProduct) => {
+                                return typeProduct;
+                            })
                             return (
                                 <div id="products" key={i}>{
                                     itens.src.map((srcs, index) => {
@@ -87,7 +102,7 @@ function Products() {
                                             <div id="products-establishment">
                                                 <div className="product-name-value">
                                                     <div className="img-product-establishment">
-                                                        <img key={index} class={ids} name={[names[index]]} src={srcs} />
+                                                        <img key={index} className={ids} name={[names[index]]} src={srcs} />
                                                     </div>
                                                     <div className="content-product">
                                                         <p id="id-product">#{ids}</p>
@@ -107,7 +122,7 @@ function Products() {
                                                     </div>
                                                 </div>
                                                 <div className="edit">
-                                                    <button type="button" class="btn btn-outline-primary button-edit" onClick={() => updateProduct(ids)}>ALTERAR</button>
+                                                    <button type="button" class="btn btn-outline-primary button-edit" onClick={() => updateProduct(ids, names, type, ingre, desc, amounts)}>ALTERAR</button>
                                                     <button id={ids} onClick={deleteProduct} type="button" class="btn btn-outline-primary button-delete">DELETAR</button>
                                                 </div>
                                                 <hr />

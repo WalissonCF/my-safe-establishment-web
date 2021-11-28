@@ -23,6 +23,7 @@ function ProductList() {
         localStorage.setItem('src', e.target.src);
         localStorage.setItem('name', e.target.name);
         localStorage.setItem('index', e.target.className);
+        
         window.location = '/product';
     }
 
