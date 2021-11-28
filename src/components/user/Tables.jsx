@@ -48,7 +48,7 @@ function Table() {
                             ];
                             return tables.map((itens) => {
                                 const status = itens.statusTable.map((situations) => {
-                                    if (situations === '0') {
+                                    if (situations === '0' || situations === 'Disponivel') {
                                         return "tables";
                                     } else {
                                         return "tables-1";

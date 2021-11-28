@@ -63,14 +63,14 @@ function PaymentEstablishmentEdit() {
                 </div>
                 <div className="order-status">
                     <p className="order-item">Forma de pagamento</p>
-                    <select class="form-select" name="" id="" >
+                    <select className="form-select" name="" id="" >
                         <option value="1">Cartão de crédito</option>
                         <option value="2" selected>Cartão de débito</option>
                         <option value="2" selected>Dinheiro</option>
                     </select>
                 </div>
                 <hr className="hr" />
-                <div class="order-value-total">
+                <div className="order-value-total">
                     <div className="value-total">
                         <h2>Total R$220.00</h2>
                     </div>

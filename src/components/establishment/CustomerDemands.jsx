@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 import '../../styles/customerDemand.css';
 
-
 function CustomerDemand() {
     const [posts, setPosts] = useState([]);
 
@@ -80,7 +79,7 @@ function CustomerDemand() {
                                 <div className="order-status">
                                     <p className="order-item">Quantidade: {quantity} - {productName}</p>
                                     <p className="order-value">R${value}</p>
-                                    <select class="form-select">
+                                    <select className="form-select">
                                         <option value=""></option>
                                         <option value="1">Em progresso</option>
                                         <option value="2">Entregue</option>

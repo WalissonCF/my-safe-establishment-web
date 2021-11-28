@@ -21,7 +21,7 @@ export default class PaymentSuccess extends React.Component {
         };
         return (
             <React.Fragment>
-                <div class="container-fluid">
+                <div className="container-fluid">
                     <div className="row">
                         <div className="col-12 animation-info">
                             <div className="payment-success">
