@@ -17,7 +17,14 @@ function RegisterTables() {
         const locationArea = localStorage.getItem('locationTable');
         const statusTable = localStorage.getItem('statusTable');
         console.log(locationArea, statusTable);
-        establishmentService.postRegisterTable(locationArea, statusTable);
+        var statusTableOrigin;
+        if (statusTable === 'Disponivel') {
+            statusTableOrigin = `0`;
+        } else {
+            statusTableOrigin = '1'
+        }
+        console.log('statusTableOrigin', statusTableOrigin);
+        establishmentService.postRegisterTable(locationArea, statusTableOrigin);
     }
 
     function onClickSubtraction() {

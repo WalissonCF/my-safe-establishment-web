@@ -4,7 +4,7 @@ import NumberFormat from 'react-number-format';
 
 import '../../styles/editProduct.css';
 import userService from '../../services/UserService';
-import customerUtils from '../../utils/customerUtils';
+import establishmentService from '../../services/EstablishmentService';
 
 function EditProduct() {
     const [posts, setPosts] = useState([]);
@@ -21,23 +21,40 @@ function EditProduct() {
         const product = JSON.parse(localStorage.getItem('editProduct'));
         console.log(product);
 
+        const id = localStorage.setItem('editProductId', product.id);
         const name = document.getElementById('edit-name-product').value;
         const value = document.getElementById('edit-value').value;
         const ingredients = document.getElementById('edit-ingredient').value;
         const description = document.getElementById('edit-description').value;
+        const typeProduct = document.getElementById('edit-type-product').value;
 
+        const updateId = parseInt(localStorage.getItem('editProductId'));
         const updateName = isValidateName(name, product.name);
         const updateValue = isValidateValue(value, product.value);
         const updateIngredient = isValidateIngredient(ingredients, product.ingredients)
         const updateDescription = isValidateDescription(description, product.description);
+        const updateTypeProduct = isValidateTypeProduct(typeProduct, product.typeProduct);
 
         let productUpdate = {
+            id: updateId,
             name: updateName,
             value: updateValue,
             ingredients: updateIngredient,
             description: updateDescription,
+            typeProduct: updateTypeProduct,
         };
+        establishmentService.updateProdut(updateId, updateName, updateTypeProduct, updateDescription, updateIngredient, updateValue);
         console.log(productUpdate);
+    }
+
+    function isValidateTypeProduct(typeProduct, typeProductOrigin) {
+        var updateTypeProduct;
+        localStorage.setItem('editTypeProduct', typeProductOrigin);
+        if (typeProduct === '') {
+            return updateTypeProduct = localStorage.getItem('editTypeProduct');;
+        } else {
+            return updateTypeProduct = typeProduct;
+        }
     }
 
     function isValidateDescription(description, descriptionOrigin) {
@@ -107,14 +124,19 @@ function EditProduct() {
                         {/* <p>Valor:</p> */}
                         {/* <input type="text" className="form-control edit-input" placeholder={`R$${posts.value}`} /> */}
                         <NumberFormat id="edit-value" className="form-control edit-input" thousandSeparator={true} prefix={'R$'} type="tel" className="form-control" name="value"
-                                    placeholder="R$" autoComplete="off" placeholder={`R$${posts.value}`} />
+                            placeholder="R$" autoComplete="off" placeholder={`R$${posts.value}`} />
                     </div>
                 </div>
                 <div className="ingredients-description">
+                    <div className="edit-type-product">
+                        <h2 className="h2-product">Tipo do produto:</h2>
+                        <textarea id="edit-type-product" className="form-control edit-textarea"
+                            placeholder={posts.typeProduct}></textarea>
+                    </div>
                     <div className="ingredients-product">
                         <h2 className="h2-product">Ingredientes:</h2>
                         <textarea id="edit-ingredient" className="form-control edit-textarea"
-                        placeholder={posts.ingredients}></textarea>
+                            placeholder={posts.ingredients}></textarea>
                     </div>
                     <div className="description-product">
                         <h2 className="h2-product">Descrição:</h2>
@@ -123,9 +145,7 @@ function EditProduct() {
                 </div>
             </div>
             <div className="confirm new-product">
-                {/* <Link to="/product-registration"> */}
-                    <button className="btn btn-outline-danger" onClick={updateProduct}>SALVAR</button>
-                {/* </Link> */}
+                <button className="btn btn-outline-danger" onClick={updateProduct}>SALVAR</button>
             </div>
         </div>
     )
