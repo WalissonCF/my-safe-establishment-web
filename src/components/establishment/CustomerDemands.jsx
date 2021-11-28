@@ -9,7 +9,8 @@ function CustomerDemand() {
     const [posts, setPosts] = useState([]);
 
     async function fetchPosts() {
-        await establishmentService.getDemand().then(setPosts);
+        const id = localStorage.getItem('demandId');
+        await establishmentService.getOrders(id).then(setPosts);
     }
 
     useEffect(() => {
@@ -32,6 +33,11 @@ function CustomerDemand() {
                 </div>
             </div>
             <div id="customer-demand">
+                {
+                    posts.map((item) => {
+                        console.log(item)
+                    })
+                }
                 <div className="demand-and-status">
                     <h2>Comanda: 5</h2>
                     <h2>Mesa: 3</h2>
@@ -69,7 +75,7 @@ function CustomerDemand() {
                         <option value="2" selected>Entregue</option>
                     </select>
                 </div>
-                <div className="total">
+                {/* <div className="total">
                     <div className="total-and-values">
                         <p>Taxa</p>
                         <p>Gorjeta</p>
@@ -81,12 +87,12 @@ function CustomerDemand() {
                         <p>Cartão de crédito</p>
                     </div>
                 </div>
-                <hr className="hr" />
-                <div class="order-value-total">
+                <hr className="hr" /> */}
+                {/* <div class="order-value-total">
                     <div className="value-total">
                         <h2>Total R$220.00</h2>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     )

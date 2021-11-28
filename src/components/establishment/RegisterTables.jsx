@@ -15,7 +15,24 @@ function RegisterTables() {
         // const qtdeSeats = document.getElementById('').innerText;
         const locationArea = localStorage.getItem('locationTable');
         const statusTable = localStorage.getItem('statusTable');
+        console.log(locationArea, statusTable);
         establishmentService.postRegisterTable(locationArea, statusTable);
+    }
+
+    function onClickSubtraction() {
+        const qtdeProduct = document.getElementById('qtde-customer').innerText;
+        if (parseInt(qtdeProduct) > 1) {
+            const qtdeTotalProduct = parseInt(qtdeProduct) - 1;
+            document.getElementById('qtde-customer').innerText = `${qtdeTotalProduct.toString()}`
+            localStorage.setItem('numberSeats', parseInt(qtdeProduct) - 1);
+        }
+    }
+
+    function onClickSum() {
+        const qtdeProduct = document.getElementById('qtde-customer').innerText;
+        const qtdeTotalProduct = parseInt(qtdeProduct) + 1;
+        document.getElementById('qtde-customer').innerText = `${qtdeTotalProduct.toString()}`
+        localStorage.setItem('numberSeats', parseInt(qtdeProduct) + 1);
     }
 
     return (
@@ -62,11 +79,11 @@ function RegisterTables() {
                             </div>
                             <div className="info-customer qtde-chairs">
                                 <i className="material-icons" 
-                                // onClick={this.onClickSubtraction}
+                                onClick={onClickSubtraction}
                                 >remove_circle_outline </i>
                                 <label id="qtde-customer">1</label>
                                 <i className="material-icons" 
-                                // onClick={this.onClickSum}
+                                onClick={onClickSum}
                                 >add_circle_outline</i>
                             </div>
                         </div>

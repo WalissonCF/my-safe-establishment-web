@@ -22,7 +22,8 @@ const userService = {
         const phoneNumber = customerUtils.unFormatPhoneNumber(phone);
         axios.post(USER_LOGIN_URL, { cpf, phoneNumber })
             .then((res) => {
-                console.log(res)
+                console.log(res.data)
+                debugger;
                 if (res.status === 200) {
                     authService.setLoggedUser(res.data);
                     window.location = "/amount-of-people-user";
@@ -157,7 +158,7 @@ const userService = {
         return axios.get(LIST_ORDER,
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) => {
-                // console.log(res.data)
+                console.log(res.data)
                 return res.data
             }
             );

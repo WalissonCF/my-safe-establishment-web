@@ -11,8 +11,9 @@ const REGISTER = `${URL}public/owner/register`;
 const REGISTER_PRODUCTS = `${URL}private/product/register`;
 const ORDER_PADS = `${URL_COMPANY}private/management/orderpads`;
 const ORDER_PADS_TO_ID = `${URL_COMPANY}private/management/orderpad?id=1`;
-const ORDERS_TO_ID = `${URL_COMPANY}private/management/orders?orderpad=1`;
-const REGISTER_TABLE = `${URL}private/table/register`;
+const ORDERS_TO_ID = `${URL_COMPANY}private/management/orders?orderpad=`;
+const REGISTER_TABLE = `${URL_COMPANY}private/table/register`;
+const UPDATE_PRODUCT = `${URL}private/product/update`;
 
 const establishmentService = {
     postLogin(email, password) {
@@ -64,12 +65,14 @@ const establishmentService = {
     },
 
     postRegisterTable(locationArea, statusTable) {
-        console.log(locationArea, statusTable);
-        // axios.post(REGISTER_TABLE, {locationArea, statusTable},
-        //     { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
-        //     .then((res) => {
-        //         customerUtils.removeItem(['locationTable', 'statusTable']);
-        //     });
+        const numberSeats = parseInt(localStorage.getItem('numberSeats'));
+        console.log(statusTable, locationArea, numberSeats);
+        axios.post(REGISTER_TABLE, {statusTable, locationArea, numberSeats},
+            { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
+            .then((res) => {
+                console.log(res)
+                customerUtils.removeItem(['locationTable', 'statusTable']);
+            });
     },
 
     deleteProducts(id) {
@@ -88,10 +91,15 @@ const establishmentService = {
             })
     },
 
-    async getDemand() {
-
+    updateProdut(id, name, typeProduct, description, ingredients, value) {
+        axios.put(UPDATE_PRODUCT, { id, name, typeProduct, description, ingredients, value }, 
+            { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
+            .then((res) => {
+                console.log(res)
+            })
     },
 
+    //retorna todas as demandas
     async getOrderpads() {
         return axios.get(ORDER_PADS,
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
@@ -102,6 +110,7 @@ const establishmentService = {
             );
     },
 
+    //
     async getOrderpadToId() {
         return axios.get(ORDER_PADS_TO_ID,
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
@@ -112,8 +121,11 @@ const establishmentService = {
             );
     },
 
-    async getOrders() {
-        return axios.get(ORDERS_TO_ID,
+    //gerencimento quando clicar na demanda
+    //orderpadId
+    async getOrders(id) {
+        console.log(`${ORDERS_TO_ID}${id}`);
+        return axios.get(`${ORDERS_TO_ID}${id}` ,
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) => {
                 console.log("getOrders", res.data);
