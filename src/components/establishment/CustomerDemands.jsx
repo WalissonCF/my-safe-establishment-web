@@ -33,66 +33,63 @@ function CustomerDemand() {
                 </div>
             </div>
             <div id="customer-demand">
+                <div className="demand-and-status">
+                    <h2>Comanda: {localStorage.getItem('demandId')}</h2>
+                    <h2>Mesa: {localStorage.getItem('tableDemandId')}</h2>
+                    <h2>Status: {localStorage.getItem('statusDemandId')}</h2>
+                </div>
                 {
                     posts.map((item) => {
-                        console.log(item)
+                        const id = [item.id];
+                        const orderPadId = [item.orderPadId];
+                        const note = [item.note];
+                        const productId = [item.productId];
+                        const productName = [item.productName];
+                        const quantity = [item.quantity];
+                        const status = [item.status];
+                        const value = [item.value];
+                        let order = [
+                            {
+                                id: id,
+                                orderPadId: orderPadId,
+                                note: note,
+                                productId: productId,
+                                productName: productName,
+                                quantity: quantity,
+                                status: status,
+                                value: value,
+                            }
+                        ];
+                        return order.map((itens) => {
+                            const id = itens.id.map((i) => {
+                                return i;
+                            });
+                            const quantity = itens.quantity.map((q) => {
+                                return q;
+                            });
+                            const productName = itens.productName.map((p) => {
+                                return p;
+                            })
+                            const status = itens.status.map((s) => {
+                                return s;
+                            })
+                            const value = itens.value.map((v) => {
+                                return v;
+                            })
+                            return (
+                                <div className="order-status">
+                                    <p className="order-item">Quantidade: {quantity} - {productName}</p>
+                                    <p className="order-value">R${value}</p>
+                                    <select class="form-select">
+                                        <option value=""></option>
+                                        <option value="1">Em progresso</option>
+                                        <option value="2">Entregue</option>
+                                    </select>
+                                </div>
+                            )
+                        })
                     })
                 }
-                <div className="demand-and-status">
-                    <h2>Comanda: 5</h2>
-                    <h2>Mesa: 3</h2>
-                    <h2>Status: Aguardando pagamento</h2>
-                </div>
-                <div className="order-status">
-                    <p className="order-item">5 - Frango Grelhado</p>
-                    <p className="order-value">R$50.00</p>
-                    <select class="form-select" name="" id="" disabled>
-                        <option value="1">Em progresso</option>
-                        <option value="2" selected>Entregue</option>
-                    </select>
-                </div>
-                <div className="order-status">
-                    <p className="order-item">5 - Frango Grelhado</p>
-                    <p className="order-value">R$50.00</p>
-                    <select class="form-select" name="" id="" disabled>
-                        <option value="1">Em progresso</option>
-                        <option value="2" selected>Entregue</option>
-                    </select>
-                </div>
-                <div className="order-status">
-                    <p className="order-item">5 - Frango Grelhado</p>
-                    <p className="order-value">R$50.00</p>
-                    <select class="form-select" name="" id="" disabled>
-                        <option value="1">Em progresso</option>
-                        <option value="2" selected>Entregue</option>
-                    </select>
-                </div>
-                <div className="order-status">
-                    <p className="order-item">5 - Frango Grelhado</p>
-                    <p className="order-value">R$50.00</p>
-                    <select class="form-select" name="" id="">
-                        <option value="1">Em progresso</option>
-                        <option value="2" selected>Entregue</option>
-                    </select>
-                </div>
-                {/* <div className="total">
-                    <div className="total-and-values">
-                        <p>Taxa</p>
-                        <p>Gorjeta</p>
-                        <p>Forma de pagamento</p>
-                    </div>
-                    <div className="value">
-                        <p>R$20.00</p>
-                        <p>R$0.00</p>
-                        <p>Cartão de crédito</p>
-                    </div>
-                </div>
-                <hr className="hr" /> */}
-                {/* <div class="order-value-total">
-                    <div className="value-total">
-                        <h2>Total R$220.00</h2>
-                    </div>
-                </div> */}
             </div>
         </div>
     )
