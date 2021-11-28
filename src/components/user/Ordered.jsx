@@ -7,9 +7,14 @@ import AnimationPayment from '../animations/Payment';
 
 function Ordered() {
     const [posts, setPosts] = useState([]);
+    const [updateValueProduct, setValueProduct] = useState([]);
 
     async function fetchPosts() {
         await userService.getListOrder().then(setPosts);
+    }
+
+    async function valueProduct(id, orderPadId, updateQuality) {
+        await userService.postUpdateQuatityProduct(id, orderPadId, updateQuality).then(setValueProduct);
     }
 
     useEffect(() => {
@@ -24,16 +29,16 @@ function Ordered() {
         const id = parseInt(e.target.id);
         const product = posts.find(p => p.id === id);
         const updateQuality = product.quantity += 1;
-        const updateValue = product.value += product.value;
         const orderPadId = product.orderPadId;
+        valueProduct(id, orderPadId, updateQuality);
+        const updateNewValue = localStorage.getItem('valueUpdateQuatityProduct');
+        const updateValue = product.value = updateNewValue;
         const updateProduct = { ...product, quantity: updateQuality, value: updateValue };
         const allProducts = posts.map((item) => {
             return item;
         });
         const updateListProduct = allProducts.filter(p => p === id ? { ...updateProduct } : product);
         setPosts([...updateListProduct]);
-        console.log(id, orderPadId, updateQuality);
-        userService.postUpdateQuatityProduct(id, orderPadId, updateQuality);
     };
 
     function onClickSubtraction(e) {
@@ -43,30 +48,33 @@ function Ordered() {
         const orderPadId = product.orderPadId;
         if (qtdeProducts > 0) {
             const updateQuality = product.quantity -= 1;
-            const updateValue = product.value += product.value;
+            valueProduct(id, orderPadId, updateQuality);
+            const updateNewValue = localStorage.getItem('valueUpdateQuatityProduct');
+            const updateValue = product.value = updateNewValue;
             const updateProduct = { ...product, quantity: updateQuality, value: updateValue };
             const allProducts = posts.map((item) => {
                 return item;
             });
             const updateListProduct = allProducts.filter(p => p === id ? { ...updateProduct } : product);
             setPosts([...updateListProduct]);
-            console.log(id, orderPadId, updateQuality);
-            userService.postUpdateQuatityProduct(id, orderPadId, updateQuality);
         }
     }
 
     function onClickDeleteProduct(e) {
         const id = parseInt(e.target.id);
         console.log(id);
-        const product = posts.find(p => p.id !== id);
-        const updateProduct = { ...product };
-        console.log(updateProduct);
-        const allProducts = posts.map((item) => {
-            return item;
-        });
-        const updateListProduct = allProducts.filter(p => p.id !== id);
-        console.log(updateListProduct);
-        setPosts([...updateListProduct]);
+        // const product = posts.find(p => p.id !== id);
+        // const updateProduct = { ...product };
+        // console.log(updateProduct);
+        // const allProducts = posts.map((item) => {
+        //     return item;
+        // });
+        // const updateListProduct = allProducts.filter(p => p.id !== id);
+        // console.log(updateListProduct);
+        // setPosts([...updateListProduct]);
+        const productDelete = posts.find(p => p.id === id);
+        // console.log(productDelete);
+        userService.deleteProductOrder(productDelete);
     }
 
     return (
@@ -83,6 +91,9 @@ function Ordered() {
             </div>
             <div className="row">
                 <div id="products-selecteds">
+                    {
+                        updateValueProduct
+                    }
                     {
                         posts.map((item) => {
                             const ids = [item.id];
@@ -129,7 +140,7 @@ function Ordered() {
                                                     <div>
                                                         <label className="product-selected name-product-selected">{[namesProducts[i]]}</label>
                                                         <div >
-                                                            <label id={`value-product-${[i]}`} className="product-selected">R${value.toFixed(2)}</label>
+                                                            <label id={`value-product-${[idsProducts]}`} className="product-selected">R${value.toFixed(2)}</label>
                                                         </div>
                                                         <div className="info-product info-product-order">
                                                             <i className="material-icons" id={[idsProducts[i]]}

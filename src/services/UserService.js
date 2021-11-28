@@ -141,10 +141,12 @@ const userService = {
     },
 
     //order/update/{orderId}/{orderpadId}/{quantity} -> Trocar quantidade de itens do produto usuário -> post
-    postUpdateQuatityProduct(orderId, orderpadId, quantity) {
+    async postUpdateQuatityProduct(orderId, orderpadId, quantity) {
         axios.post(`${UPDATE_PRODUCT_QUANTITY}${orderId}/${orderpadId}/${quantity}`)
         .then((res) => {
-            console.log(res);
+            localStorage.setItem('valueUpdateQuatityProduct', res.data.value);
+            console.log("postUpdateQuatityProduct", res.data);
+            return res.data.value;
         });
     },
 
@@ -186,9 +188,10 @@ const userService = {
     },
 
     deleteProductOrder(order) {
+        console.log("deleteProductOrder", order)
         axios.delete(`https://my-safe-establishment.herokuapp.com/private/order/delete`, { order })
         .then((res) => {
-
+            console.log(res);
         })
     },
 
@@ -197,10 +200,7 @@ const userService = {
             .then((res) => {
                 window.location = "/ordered";
             })
-    },
-
-    
-    
+    },    
 }
 
 export default userService;

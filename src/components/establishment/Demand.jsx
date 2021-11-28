@@ -15,10 +15,12 @@ function Demand() {
         fetchPosts()
     }, [])
 
-    function onClickDemand(ids) {
+    function onClickDemand(ids, table, status) {
         const id = parseInt(ids);
         console.log(id);
         localStorage.setItem('demandId', id);
+        localStorage.setItem('tableDemandId', table);
+        localStorage.setItem('statusDemandId', status);
         window.location = "/customer-demand";
     }
 
@@ -70,7 +72,7 @@ function Demand() {
                                 })
                                 return (
                                     <div className="form-group demands-group" key={i}>
-                                        <div className="demand" onClick={() => onClickDemand(id)}>
+                                        <div className="demand" onClick={() => onClickDemand(id, table, status)}>
                                             <label>Comanda: {id}</label>
                                             <label>Mesa: {table}</label>
                                             <label>Staus: {status}</label>
@@ -81,36 +83,6 @@ function Demand() {
                         })
                     }
                 </div>
-                {/* <div id="demands">
-                    <div className="form-group demands-group">
-                        <div className="demand" onClick={establishmentService.getOrderpadToId}>
-                            <label>Comanda:</label>
-                            <label>Mesa:</label>
-                            <label>Status:</label>
-                        </div>
-                    </div>
-                    <div className="form-group demands-group" >
-                        <div className="demand" onClick={establishmentService.getOrders}>
-                            <label>Comanda:</label>
-                            <label>Mesa:</label>
-                            <label>Status:</label>
-                        </div>
-                    </div>
-                    <div className="form-group demands-group">
-                        <div className="demand" onClick={onClickDemand}>
-                            <label>Comanda:</label>
-                            <label>Mesa:</label>
-                            <label>Status:</label>
-                        </div>
-                    </div>
-                    <div className="form-group demands-group">
-                        <div className="demand" onClick={onClickDemand}>
-                            <label>Comanda:</label>
-                            <label>Mesa:</label>
-                            <label>Status:</label>
-                        </div>
-                    </div>
-                </div> */}
             </div>
         </div>
     )

@@ -5,7 +5,6 @@ import customerUtils from '../utils/customerUtils';
 const URL = 'https://my-safe-establishment.herokuapp.com/';
 const URL_COMPANY = 'https://my-safe-establishment-company.herokuapp.com/';
 
-
 const LOGIN = `${URL}public/owner/login`;
 const REGISTER = `${URL}public/owner/register`;
 const REGISTER_PRODUCTS = `${URL}private/product/register`;

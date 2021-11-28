@@ -28,11 +28,10 @@
 .order-status {
     display: flex;
     flex-direction: row;
-    align-content: center;
     align-items: center;
-    width: 60%;
+    /* width: 60%; */
     align-content: space-between;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .order-status p {
@@ -75,4 +74,8 @@
 
 .hr {
     width: 50%;
+}
+
+.d-c {
+
 }
