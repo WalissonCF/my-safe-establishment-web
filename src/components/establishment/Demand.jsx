@@ -19,7 +19,7 @@ function Demand() {
         const id = parseInt(ids);
         console.log(id);
         localStorage.setItem('demandId', id);
-        // window.location = "/customer-demand";
+        window.location = "/customer-demand";
     }
 
     return (
@@ -71,7 +71,7 @@ function Demand() {
                                 return (
                                     <div className="form-group demands-group" key={i}>
                                         <div className="demand" onClick={() => onClickDemand(id)}>
-                                            <label>Comanda:</label>
+                                            <label>Comanda: {id}</label>
                                             <label>Mesa: {table}</label>
                                             <label>Staus: {status}</label>
                                         </div>
