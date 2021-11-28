@@ -4,6 +4,7 @@ import customerUtils from '../utils/customerUtils';
 
 const customerId = parseInt(customerUtils.getCustomerId());
 const URL = 'https://my-safe-establishment.herokuapp.com/';
+const URL_COMPANY = 'https://my-safe-establishment-company.herokuapp.com/';
 
 const USER_LOGIN_URL = `${URL}public/login`;
 const USER_REGISTER_URL = `${URL}public/register`;
@@ -15,6 +16,7 @@ const LIST_ORDER = `${URL}private/order/${customerId}`;
 const CLOSE_ORDER = `${URL}private/orderpad/close`;
 const PAYMENT_ORDER_PAD = `${URL}private/orderpad/payment`;
 const PAYMENT_ORDER_PAD_BY_CARD = `${URL}private/orderpad/card/payment`;
+const UPDATE_PRODUCT_QUANTITY = `${URL_COMPANY}private/order/update/`;
 
 const userService = {
     requestLogin(document, phone) {
@@ -70,14 +72,15 @@ const userService = {
         const product = parseInt(productIds)
         const quantityProduct = localStorage.getItem("quantityProduct");
         const quantitys = parseInt(quantityProduct);
-        const note = localStorage.getItem('note');
+        const notes = localStorage.getItem('note');
         let orders = [
             {
                 productId: product,
                 quantity: quantitys,
+                note: notes,
             }
         ];
-        axios.post(ORDER, { customerId, orders, note },
+        axios.post(ORDER, { customerId, orders },
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) => {
                 // console.log(res.status);
@@ -137,6 +140,14 @@ const userService = {
             .catch((res) => { });
     },
 
+    //order/update/{orderId}/{orderpadId}/{quantity} -> Trocar quantidade de itens do produto usuário -> post
+    postUpdateQuatityProduct(orderId, orderpadId, quantity) {
+        axios.post(`${UPDATE_PRODUCT_QUANTITY}${orderId}/${orderpadId}/${quantity}`)
+        .then((res) => {
+            console.log(res);
+        });
+    },
+
     async getTables() {
         return axios.get(TABLE, {
             headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` }
@@ -174,12 +185,22 @@ const userService = {
             })
     },
 
+    deleteProductOrder(order) {
+        axios.delete(`https://my-safe-establishment.herokuapp.com/private/order/delete`, { order })
+        .then((res) => {
+
+        })
+    },
+
     async deleteProductCustomer(id) {
         return axios.delete(`https://my-safe-establishment.herokuapp.com/private/product/delete/${id}`)
             .then((res) => {
                 window.location = "/ordered";
             })
     },
+
+    
+    
 }
 
 export default userService;

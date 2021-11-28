@@ -1,4 +1,3 @@
-import { prettyDOM } from '@testing-library/dom';
 import React, { useEffect, useState } from 'react';
 import userService from '../../services/UserService';
 
@@ -26,18 +25,22 @@ function Ordered() {
         const product = posts.find(p => p.id === id);
         const updateQuality = product.quantity += 1;
         const updateValue = product.value += product.value;
+        const orderPadId = product.orderPadId;
         const updateProduct = { ...product, quantity: updateQuality, value: updateValue };
         const allProducts = posts.map((item) => {
             return item;
         });
         const updateListProduct = allProducts.filter(p => p === id ? { ...updateProduct } : product);
         setPosts([...updateListProduct]);
+        console.log(id, orderPadId, updateQuality);
+        userService.postUpdateQuatityProduct(id, orderPadId, updateQuality);
     };
 
     function onClickSubtraction(e) {
         const id = parseInt(e.target.id);
         const product = posts.find(p => p.id === id);
         const qtdeProducts = product.quantity;
+        const orderPadId = product.orderPadId;
         if (qtdeProducts > 0) {
             const updateQuality = product.quantity -= 1;
             const updateValue = product.value += product.value;
@@ -47,6 +50,8 @@ function Ordered() {
             });
             const updateListProduct = allProducts.filter(p => p === id ? { ...updateProduct } : product);
             setPosts([...updateListProduct]);
+            console.log(id, orderPadId, updateQuality);
+            userService.postUpdateQuatityProduct(id, orderPadId, updateQuality);
         }
     }
 
@@ -54,7 +59,7 @@ function Ordered() {
         const id = parseInt(e.target.id);
         console.log(id);
         const product = posts.find(p => p.id !== id);
-        const updateProduct = {...product};
+        const updateProduct = { ...product };
         console.log(updateProduct);
         const allProducts = posts.map((item) => {
             return item;
