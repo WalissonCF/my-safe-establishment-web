@@ -23,7 +23,7 @@ function ProductList() {
         localStorage.setItem('src', e.target.src);
         localStorage.setItem('name', e.target.name);
         localStorage.setItem('index', e.target.className);
-        
+
         window.location = '/product';
     }
 
@@ -47,7 +47,13 @@ function ProductList() {
                     {
                         posts.map((item) => {
                             const ids = [item.id];
-                            const srcs = [item.productDetails.urlImage];
+                            // const srcs = [item.productDetails.urlImage];
+                            var src;
+                            if (item.productDetails === null) {
+                                src = ['https://www2.camara.leg.br/atividade-legislativa/comissoes/comissoes-permanentes/cindra/imagens/sem.jpg.gif/image'];
+                            } else {
+                                src = [item.productDetails.urlImage];
+                            }
                             const names = [item.name];
                             const values = [item.value];
                             const ingredient = [item.ingredients];
@@ -55,14 +61,14 @@ function ProductList() {
                             let product = [
                                 {
                                     id: ids,
-                                    src: srcs,
+                                    src: src,
                                     name: names,
                                     value: values,
                                     ingredients: ingredient,
                                     description: descriptions,
                                 }
                             ];
-                            localStorage.setItem(`${ids}`, srcs);
+                            localStorage.setItem(`${ids}`, src);
                             return product.map((itens, i) => {
                                 const names = itens.name.map((name) => {
                                     return name;
@@ -70,12 +76,15 @@ function ProductList() {
                                 const ids = itens.id.map((id) => {
                                     return id;
                                 });
+                                const src = itens.src.map((s) => {
+                                    return s;
+                                });
                                 return (
                                     <div id="products">{
-                                        itens.src.map((srcs, index) => {
+                                        itens.id.map((srcs, index) => {
                                             return (
                                                 <div class="form-group" id="products">
-                                                    <img class={ids} name={[names[index]]} id="img" key={index} src={srcs} alt="" onClick={onClickCheckImg} />
+                                                    <img class={ids} name={[names[index]]} id="img" key={index} src={src} alt="" onClick={onClickCheckImg} />
                                                     <label id="product-name" key={index}>{[names[index]]}</label>
                                                 </div>
                                             )
