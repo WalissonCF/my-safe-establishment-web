@@ -59,7 +59,13 @@ function Products() {
                 {
                     posts.map((item) => {
                         const ids = [item.id];
-                        const srcs = [item.productDetails.urlImage];
+                        // const srcs = [item.productDetails.urlImage];
+                        var src;
+                        if (item.productDetails === null) {
+                            src = ['https://www2.camara.leg.br/atividade-legislativa/comissoes/comissoes-permanentes/cindra/imagens/sem.jpg.gif/image'];
+                        } else {
+                            src = [item.productDetails.urlImage];
+                        }
                         const names = [item.name];
                         const values = [item.value];
                         const ingredient = [item.ingredients];
@@ -68,7 +74,7 @@ function Products() {
                         let product = [
                             {
                                 id: ids,
-                                src: srcs,
+                                src: src,
                                 name: names,
                                 value: values,
                                 ingredients: ingredient,
@@ -95,14 +101,17 @@ function Products() {
                             const type = itens.typeProduct.map((typeProduct) => {
                                 return typeProduct;
                             })
+                            const src = itens.src.map((s) => {
+                                return s;
+                            })
                             return (
                                 <div id="products" key={i}>{
-                                    itens.src.map((srcs, index) => {
+                                    itens.id.map((srcs, index) => {
                                         return (
                                             <div id="products-establishment">
                                                 <div className="product-name-value">
                                                     <div className="img-product-establishment">
-                                                        <img key={index} className={ids} name={[names[index]]} src={srcs} />
+                                                        <img key={index} className={ids} name={[names[index]]} src={src} />
                                                     </div>
                                                     <div className="content-product">
                                                         <p id="id-product">#{ids}</p>
