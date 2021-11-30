@@ -7,7 +7,7 @@ import userService from '../../services/UserService';
 import establishmentService from '../../services/EstablishmentService';
 
 function EditProduct() {
-    const [posts, setPosts] = useState([]);
+    const [posts, setPosts] = useState("");
 
     async function fetchPosts() {
         await userService.getProductToId().then(setPosts);
@@ -145,6 +145,7 @@ function EditProduct() {
                 </div>
             </div>
             <div className="confirm new-product">
+                
                 <button className="btn btn-outline-danger" onClick={updateProduct}>SALVAR</button>
             </div>
         </div>

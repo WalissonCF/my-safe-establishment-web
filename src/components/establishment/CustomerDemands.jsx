@@ -6,6 +6,7 @@ import '../../styles/customerDemand.css';
 
 function CustomerDemand() {
     const [posts, setPosts] = useState([]);
+    const [selects, setSelects] = useState([]);
 
     async function fetchPosts() {
         const id = localStorage.getItem('demandId');
@@ -15,6 +16,37 @@ function CustomerDemand() {
     useEffect(() => {
         fetchPosts()
     }, [])
+
+    function replaceStatus() {
+        const status = localStorage.getItem('statusDemandId');
+        switch(status) {
+            case '0':
+                return 'Aberto';
+            case '1':
+                return 'Aceito';
+            case '2':
+                return 'Em entrega';
+            case '3':
+                return 'Entregue';
+        }
+    }
+
+    function changeStatusOrder(ids, value) {
+        setSelects(value);
+        const customerId =  parseInt(localStorage.getItem('customerIdDemand'));
+        const id = parseInt(ids);
+        const product = posts.find(p => p.id === id);
+        const updateStatus = product.status = value;
+        const updateProduct = {...product, status: updateStatus};
+        const allProducts = posts.map((item) => {
+            return item;
+        });
+        const updateListProduct = allProducts.filter(p => p === id ? { ...updateProduct } : product);
+        setPosts([...updateListProduct]);
+        console.log("updateListProduct", updateListProduct);
+        console.log(id, value, customerId);
+        establishmentService.updateOrderStatus(id, value, customerId);
+    }
 
     return (
         <div className="customer-demand">
@@ -35,10 +67,11 @@ function CustomerDemand() {
                 <div className="demand-and-status">
                     <h2>Comanda: {localStorage.getItem('demandId')}</h2>
                     <h2>Mesa: {localStorage.getItem('tableDemandId')}</h2>
-                    <h2>Status: {localStorage.getItem('statusDemandId')}</h2>
+                    <h2>Status: {replaceStatus()}</h2>
                 </div>
                 {
                     posts.map((item) => {
+                        // console.log(item);
                         const id = [item.id];
                         const orderPadId = [item.orderPadId];
                         const note = [item.note];
@@ -76,13 +109,19 @@ function CustomerDemand() {
                                 return v;
                             })
                             return (
-                                <div className="order-status">
+                                <div className="order-status" key={id}>
                                     <p className="order-item">Quantidade: {quantity} - {productName}</p>
                                     <p className="order-value">R${value}</p>
-                                    <select className="form-select">
+                                    {localStorage.setItem('statusOrder', selects)}
+                                    <select id={id} value={status} className="form-select" 
+                                    // onChange={e => setSelects(e.target.value)}
+                                    onChange={e => changeStatusOrder(e.target.id, e.target.value)}
+                                    >
                                         <option value=""></option>
-                                        <option value="1">Em progresso</option>
-                                        <option value="2">Entregue</option>
+                                        <option value="0">Em progresso</option>
+                                        <option value="1">Aceito</option>
+                                        <option value="2">Em entrega</option>
+                                        <option value="3">Entregue</option>
                                     </select>
                                 </div>
                             )
