@@ -13,6 +13,7 @@ const ORDER_PADS_TO_ID = `${URL_COMPANY}private/management/orderpad?id=1`;
 const ORDERS_TO_ID = `${URL_COMPANY}private/management/orders?orderpad=`;
 const REGISTER_TABLE = `${URL_COMPANY}private/table/register`;
 const UPDATE_PRODUCT = `${URL}private/product/update`;
+const UPDATE_ORDER_STATUS = `${URL_COMPANY}/private/management/change/order?id=10&status=3&customerId=6`;
 
 const establishmentService = {
     postLogin(email, password) {
@@ -96,6 +97,13 @@ const establishmentService = {
             })
     },
 
+    updateOrderStatus(orderId, status, customerId) {
+        axios.post(`https://my-safe-establishment-company.herokuapp.com/private/management/change/order?id=${orderId}&status=${status}&customerId=${customerId}`)
+        .then((res) => {
+            console.log(res);
+        })
+    },
+    
     //retorna todas as demandas
     async getOrderpads() {
         return axios.get(ORDER_PADS,

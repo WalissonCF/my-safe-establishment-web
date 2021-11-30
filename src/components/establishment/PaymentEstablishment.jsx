@@ -3,12 +3,13 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import '../../styles/paymenteEstablishment.css';
+import establishmentService from '../../services/EstablishmentService';
 
 function PaymentEstablishment() {
     const [posts, setPosts] = useState([]);
 
     async function fetchPosts() {
-
+        await establishmentService.getOrderpads().then(setPosts);
     }
 
     useEffect(() => {
@@ -32,7 +33,29 @@ function PaymentEstablishment() {
             </div>
             <div className="tables-establishment">
                 <div className="all-tables all-payments">
-                    <Link to="/payment-establishment-edit">
+                    {
+                        posts.map((item) => {
+                            const id = [item.id];
+                            let demand = [
+                                {
+                                    id: id,
+                                }
+                            ]
+                            return demand.map((itens) => {
+                                const id = itens.id.map((i) => {
+                                    return i;
+                                });
+                                return (
+                                    <div className="form-group tables-form-group">
+                                        <div className="tables">
+                                            <p className="number-table comand">Comanda: {id}</p>
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        })
+                    }
+                    {/* <Link to="/payment-establishment-edit">
                         <div className="form-group tables-form-group">
                             <div className="tables">
                                 <p className="number-table comand">Comanda 1</p>
@@ -66,7 +89,7 @@ function PaymentEstablishment() {
                                 <p className="number-table comand">Comanda 4</p>
                             </div>
                         </div>
-                    </Link>
+                    </Link> */}
                 </div>
             </div>
         </div>
