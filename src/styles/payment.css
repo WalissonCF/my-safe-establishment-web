@@ -36,7 +36,7 @@
     padding: 10px;
 }
 
-#alert, #alert-login, #alert-payment {
+#alert, #alert-login, #alert-payment, #alert-payment-error {
     color: var(--main-color);
     font-size: 12px;
 }

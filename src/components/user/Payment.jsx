@@ -119,6 +119,7 @@ export default class PaymentForm extends React.Component {
                             </div>
                             <div>
                                 <p id="alert" hidden>*Por favor selecione um método de pagamento</p>
+                                <p id="alert-payment-error" hidden></p>
                             </div>
                             <button className="btn btn-outline-danger" type="submit">CONTINUAR</button>
                         </form>
