@@ -101,6 +101,11 @@ const userService = {
                     window.location = "/payment-method";
                 }
             })
+            .catch(function (error) {
+                document.getElementById('alert-payment-error').innerText = error.response.data.message;
+                customerUtils.removeHidden('alert-payment-error');
+                console.log(error.response.data.message)
+            })
     },
 
     postPaymentOrdenPad() {
