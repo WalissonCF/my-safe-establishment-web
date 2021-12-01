@@ -25,7 +25,6 @@ const userService = {
         axios.post(USER_LOGIN_URL, { cpf, phoneNumber })
             .then((res) => {
                 console.log(res.data)
-                debugger;
                 if (res.status === 200) {
                     authService.setLoggedUser(res.data);
                     window.location = "/amount-of-people-user";
@@ -63,7 +62,13 @@ const userService = {
                 if (res.status === 200) {
                     console.log(res);
                     customerUtils.removeItem(['quantityCustomer']);
+                    window.location = '/product-list';
                 }
+            })
+            .catch(function(error) {
+                // document.getElementById('alert-payment-error').innerText = error.response.data.message;
+                // customerUtils.removeHidden('alert-payment-error');
+                console.log(error.response.data.message)
             });
     },
 
@@ -83,10 +88,14 @@ const userService = {
         axios.post(ORDER, { customerId, orders },
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) => {
-                // console.log(res.status);
                 if (res.status === 200) {
                     window.location = "/product-list";
                 }
+            })
+            .catch(function(error) {
+                document.getElementById('alert-product-select').innerText = error.response.data.message;
+                customerUtils.removeHidden('alert-product-select');
+                console.log(error.response.data.message)
             });
     },
 
