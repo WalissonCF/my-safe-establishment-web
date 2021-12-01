@@ -123,6 +123,7 @@ function Product() {
                         }
                         <label className="note-customer-label">Observações:</label>
                         <textarea id="note-customer" className="form-control"></textarea>
+                        <p id="alert-product-select" hidden></p>
                         <button onClick={onClickQuantityProduct} className="btn btn-outline-danger">CONFIRMAR</button>
                     </div>
                 </div>

@@ -81,6 +81,7 @@ export default class LoginUser extends React.Component {
                                 value={phoneNumber}
                                 onChange={this.onChange}
                                 required
+                                autoComplete="off"
                             ></InputMask>
                         </div>
                         <div>

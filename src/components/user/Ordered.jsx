@@ -63,17 +63,17 @@ function Ordered() {
     function onClickDeleteProduct(e) {
         const id = parseInt(e.target.id);
         console.log(id);
-        // const product = posts.find(p => p.id !== id);
-        // const updateProduct = { ...product };
-        // console.log(updateProduct);
-        // const allProducts = posts.map((item) => {
-        //     return item;
-        // });
-        // const updateListProduct = allProducts.filter(p => p.id !== id);
-        // console.log(updateListProduct);
-        // setPosts([...updateListProduct]);
+        const product = posts.find(p => p.id !== id);
+        const updateProduct = { ...product };
+        console.log(updateProduct);
+        const allProducts = posts.map((item) => {
+            return item;
+        });
+        const updateListProduct = allProducts.filter(p => p.id !== id);
+        console.log(updateListProduct);
+        setPosts([...updateListProduct]);
         const productDelete = posts.find(p => p.id === id);
-        // console.log(productDelete);
+        console.log(productDelete);
         userService.deleteProductOrder(productDelete);
     }
 
