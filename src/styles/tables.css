@@ -83,10 +83,6 @@
     margin-top: -10px !important;
 }
 
-.btn-select-table {
-    margin-top: 10px;
-}
-
 @media screen and (max-width: 720px) {
     .all-tables {
         grid-template-columns: 0fr 0fr 0fr 0fr;

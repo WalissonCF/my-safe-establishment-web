@@ -123,6 +123,9 @@ function CustomerDemand() {
                                         <option value="2">Em entrega</option>
                                         <option value="3">Entregue</option>
                                     </select>
+                                    <div id={`alert-customer-${id}`}>
+                                        <p id={`alert-customer-demand-${id}`} className="alert-customer-demand"></p>
+                                    </div>
                                 </div>
                             )
                         })
