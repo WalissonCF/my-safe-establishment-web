@@ -102,6 +102,11 @@ const establishmentService = {
         .then((res) => {
             console.log(res);
         })
+        .catch(function(error) {
+            const className = `alert-customer-demand-${orderId}`;
+            document.getElementById(className).innerText = error.response.data.message;
+            customerUtils.removeHidden(`alert-customer-${orderId}`);
+        })
     },
     
     //retorna todas as demandas

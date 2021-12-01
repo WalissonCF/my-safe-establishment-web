@@ -41,6 +41,11 @@
     font-size: 12px;
 }
 
+.alert-customer-demand {
+    color: var(--main-color)!important;
+    font-size: 12px;
+}
+
 #alert {
     margin-top: 10px;
 }
