@@ -63,6 +63,7 @@ const establishmentService = {
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) => {
                 // customerUtils.removeItem(['locationTable', 'statusTable']);
+                customerUtils.removeHidden('alert-success-register-table');
             });
     },
 

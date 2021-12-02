@@ -78,6 +78,14 @@
     margin-block-end: -50px;
 }
 
+#alert-success-register-table {
+    text-align: center;
+    font-size: 14px;
+    color: #38b000;
+    margin-top: 5px;
+    margin-block-end: 3px;
+}
+
 #alert-success-payment-text {
     text-align: center;
     font-size: 14px;
