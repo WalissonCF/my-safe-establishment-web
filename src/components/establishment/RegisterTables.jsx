@@ -8,7 +8,6 @@ function RegisterTables() {
     const [selectsStatus, setSelectsStatus] = useState();
 
     function onChange(e) {
-        console.log(selects);
     }
 
     function onClickRegisterTable() {
@@ -16,7 +15,6 @@ function RegisterTables() {
         localStorage.setItem('numberSeats', parseInt(qtdeProduct));
         const locationArea = localStorage.getItem('locationTable');
         const statusTable = localStorage.getItem('statusTable');
-        console.log(locationArea, statusTable);
         var statusTableOrigin;
         if (statusTable === 'Disponivel') {
             statusTableOrigin = `0`;

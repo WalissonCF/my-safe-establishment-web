@@ -28,7 +28,6 @@ export default class LoginEstablishment extends React.Component {
 
     onChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
-        console.log({ [e.target.name]: e.target.value });
     }
 
     onSubmit = (e) => {
@@ -53,11 +52,6 @@ export default class LoginEstablishment extends React.Component {
         //     addresss, name, cpf, email, password, publicPlace, number, district,
         //     city } = this.state;
 
-        // console.log(cnpj, companyName, tradingName, typeEstablishment, phoneNumber,
-        //     addresss, name, cpf, email, password, publicPlace, number, district,
-        //     city);   
-
-        console.log(companyName);
         let owner =
         {
             name: name,
@@ -81,7 +75,6 @@ export default class LoginEstablishment extends React.Component {
             district: district,
             city: city,
         };
-        console.log(owner, establishment, address);
         establishmentService.postRegister(owner, establishment, address);
     }
 

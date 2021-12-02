@@ -43,8 +43,6 @@ function CustomerDemand() {
         });
         const updateListProduct = allProducts.filter(p => p === id ? { ...updateProduct } : product);
         setPosts([...updateListProduct]);
-        console.log("updateListProduct", updateListProduct);
-        console.log(id, value, customerId);
         establishmentService.updateOrderStatus(id, value, customerId);
     }
 
@@ -72,7 +70,6 @@ function CustomerDemand() {
                 <div id="all-demand-customer">
                     {
                         posts.map((item) => {
-                            // console.log(item);
                             const id = [item.id];
                             const orderPadId = [item.orderPadId];
                             const note = [item.note];
@@ -134,7 +131,16 @@ function CustomerDemand() {
                                         <div id={`alert-customer-${id}`}>
                                             <p id={`alert-customer-demand-${id}`} className="alert-customer-demand"></p>
                                         </div>
-
+                                        {
+                                            status.map((n) => {
+                                                console.log(n)
+                                                if (n === '3') {
+                                                    setTimeout(function () {
+                                                        document.getElementById(`${id}`).disabled = "true";
+                                                    }, 900) 
+                                                }
+                                            })
+                                        }
                                     </div>
                                 )
                             })

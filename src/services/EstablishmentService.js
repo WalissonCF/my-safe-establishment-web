@@ -23,9 +23,7 @@ const establishmentService = {
                     authService.setLoggedUser(res.data, res.data.name,
                         res.data.token, res.data.customerId);
                     window.location = "/menu";
-                    console.log(res);
                 }
-                console.log(res);
             })
     },
 
@@ -35,7 +33,6 @@ const establishmentService = {
         axios.post(REGISTER, { owner, establishment, address })
             .then((res) => {
                 if (res.status === 200 || res.status === 201) {
-                    console.log(res);
                 }
             })
     },
@@ -51,12 +48,9 @@ const establishmentService = {
             ingredients,
             value
         };
-        console.log(product);
-        console.log(imageEncoded);
         axios.post(REGISTER_PRODUCTS, { product, imageEncoded },
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) => {
-                console.log(res);
                 if (res.data === 201) {
                     window.location = "/products-establishment";
                 }
@@ -65,7 +59,6 @@ const establishmentService = {
 
     postRegisterTable(locationArea, statusTable) {
         const numberSeats = parseInt(localStorage.getItem('numberSeats'));
-        console.log(statusTable, locationArea, numberSeats);
         axios.post(REGISTER_TABLE, {statusTable, locationArea, numberSeats},
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) => {
@@ -93,14 +86,12 @@ const establishmentService = {
         axios.put(UPDATE_PRODUCT, { id, name, typeProduct, description, ingredients, value }, 
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) => {
-                console.log(res)
             })
     },
 
     updateOrderStatus(orderId, status, customerId) {
         axios.post(`https://my-safe-establishment-company.herokuapp.com/private/management/change/order?id=${orderId}&status=${status}&customerId=${customerId}`)
         .then((res) => {
-            console.log(res);
         })
         .catch(function(error) {
             const className = `alert-customer-demand-${orderId}`;
@@ -124,7 +115,6 @@ const establishmentService = {
         return axios.get(ORDER_PADS_TO_ID,
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) => {
-                console.log(res.data);
                 return res.data
             }
             );
@@ -133,11 +123,9 @@ const establishmentService = {
     //gerencimento quando clicar na demanda
     //orderpadId
     async getOrders(id) {
-        console.log(`${ORDERS_TO_ID}${id}`);
         return axios.get(`${ORDERS_TO_ID}${id}` ,
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) => {
-                console.log("getOrders", res.data);
                 return res.data
             }
             );

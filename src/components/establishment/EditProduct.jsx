@@ -19,7 +19,6 @@ function EditProduct() {
 
     function updateProduct() {
         const product = JSON.parse(localStorage.getItem('editProduct'));
-        console.log(product);
 
         const id = localStorage.setItem('editProductId', product.id);
         const name = document.getElementById('edit-name-product').value;
@@ -44,7 +43,6 @@ function EditProduct() {
             typeProduct: updateTypeProduct,
         };
         establishmentService.updateProdut(updateId, updateName, updateTypeProduct, updateDescription, updateIngredient, updateValue);
-        console.log(productUpdate);
     }
 
     function isValidateTypeProduct(typeProduct, typeProductOrigin) {

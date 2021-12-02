@@ -25,7 +25,6 @@ export default class RegisterUser extends React.Component {
     onSubmit = (e) => {
         e.preventDefault();
         const { name, phoneNumber, cpf } = this.state;
-        console.log(name, phoneNumber, cpf);
         userService.requestRegister(name, phoneNumber, cpf);
     }
 
