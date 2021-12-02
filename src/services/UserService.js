@@ -150,6 +150,11 @@ const userService = {
         .then((res) => {
             localStorage.setItem('valueUpdateQuatityProduct', res.data.value);
             return res.data.value;
+        })
+        .catch(function(error) {
+            document.getElementById(`alert-ordered-customer${orderId}`).innerText = error.response.data.message;
+            customerUtils.removeHidden(`alert-ordered-${orderId}`);
+            console.log(error.response.data.message)
         });
     },
 

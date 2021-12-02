@@ -41,9 +41,10 @@
     font-size: 12px;
 }
 
-#alert-ordered {
+.alert-ordered-customer {
     color: var(--main-color);
-    font-size: 15px;
+    font-size: 12px;
+    margin-block-end: -2px
 }
 
 .alert-customer-demand {
