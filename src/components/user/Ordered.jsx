@@ -137,7 +137,9 @@ function Ordered() {
                                                         <label className="product-selected name-product-selected">{[namesProducts[i]]}</label>
                                                         <div>
                                                             <label id={`value-product-${[idsProducts]}`} className="product-selected">R${value.toFixed(2)}</label>
-                                                            <p id="alert-ordered">Erro</p>
+                                                            <div id={`alert-ordered-${idsProducts}`} hidden>
+                                                                <p id={`alert-ordered-customer${idsProducts}`} className="alert-ordered-customer"></p>
+                                                            </div>
                                                         </div>
                                                         <div className="info-product info-product-order">
                                                             <i className="material-icons" id={[idsProducts[i]]}
