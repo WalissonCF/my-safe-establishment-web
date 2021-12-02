@@ -17,7 +17,6 @@ function Demand() {
 
     function onClickDemand(ids, table, status, customerId) {
         const id = parseInt(ids);
-        console.log(id);
         localStorage.setItem('demandId', id);
         localStorage.setItem('tableDemandId', table);
         localStorage.setItem('statusDemandId', status);
@@ -60,7 +59,6 @@ function Demand() {
                                     quantityCustomer: quantityCustomers,
                                 }
                             ]
-                            console.log(item);
                             return demand.map((itens, i) => {
                                 const status = itens.status.map((s) => {
                                     return s;

@@ -17,7 +17,6 @@ function TablesEstablishment() {
 
     function deleteTable(e) {
         const id = parseInt(e.target.id);
-        console.log("id", id);
         establishmentService.deleteTables(id);
     }
 
@@ -48,7 +47,6 @@ function TablesEstablishment() {
                                     statusTable: statusTables,
                                 }
                             ];
-                            console.log(item);
                             return tables.map((itens) => {
                                 const status = itens.statusTable.map((situations) => {
                                     if (situations === '0' || situations === 'Disponivel') {

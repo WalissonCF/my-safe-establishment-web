@@ -20,7 +20,6 @@ function Products() {
 
     function deleteProduct(e) {
         const id = parseInt(e.target.id);
-        console.log("id", id);
         establishmentService.deleteProducts(id);
     }
 
@@ -33,7 +32,6 @@ function Products() {
             description: description,
             value: value,
         };
-        console.log(product);
         localStorage.setItem('editProduct', JSON.stringify(product));
         localStorage.setItem('updateProductId', id);
         window.location = '/edit-product';

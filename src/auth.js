@@ -15,10 +15,8 @@ const authService = {
 
     isAuthenticated(){
         let token = localStorage.getItem("token");
-        console.log("token: ", token);
         try {
             if (token === null) {
-                console.log(token);
                 return false;
             } else {
                 return true;
@@ -30,9 +28,7 @@ const authService = {
 
     privateRoutes(path, elementTest) {
         const isLoggedIn = this.isAuthenticated();
-        console.log("logado?", isLoggedIn);
         if (isLoggedIn === true) {
-            console.log("to aqui", isLoggedIn);
            return <Route path={path} element={elementTest} />;
         } else {
            return <Route path={path} element={ 

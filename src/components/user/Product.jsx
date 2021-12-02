@@ -22,8 +22,6 @@ function Product() {
         const product = localStorage.getItem('valueProduct');
         const valueProduct = parseFloat(product);
         const productItem = document.getElementById('product').innerText;
-        console.log("productItem:", productItem);
-        console.log("valueProduct", valueProduct)
         if (parseFloat(productItem?.replace(/[^0-9.,]+/, '')) > valueProduct) {
             const total = parseFloat(productItem?.replace(/[^0-9.,]+/, '')) - valueProduct;
             document.getElementById('product').innerText = `R$${total.toFixed(2).toString()}`;
@@ -47,7 +45,6 @@ function Product() {
     function onClickQuantityProduct() {
         const quantityProduct = parseInt(document.getElementById('qtde-product').innerText);
         const note = document.getElementById('note-customer').value;
-        console.log(note)
         localStorage.setItem('note', note);
         localStorage.setItem('quantityProduct', quantityProduct);
         userService.postOrder();

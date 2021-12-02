@@ -52,15 +52,12 @@ export default class PaymentMethod extends React.Component {
     onBlurValidateValuePayment() {
         const value = parseFloat(customerUtils.getTotalValueProduct());
         const valuePayment = parseFloat(customerUtils.unFormatNumber(document.getElementById('valuePayment').value))
-        console.log('value', value, 'valuePayment', valuePayment);
         if (valuePayment > value) {
             customerUtils.removeHidden('failed-value-payment');
             document.getElementById('button-payment').hidden = "true";
-            console.log("if")
         } else {
             document.getElementById('failed-value-payment').hidden = "true";
             customerUtils.removeHidden('button-payment');
-            console.log("else")
         }
     }
 
@@ -79,9 +76,6 @@ export default class PaymentMethod extends React.Component {
         } else {
             valuePayment = parseFloat(customerUtils.unFormatNumber(value));
         }
-        console.log(valuePayment)
-
-        console.log(customerUtils.unFormatCardCreditNumber(number))
 
         let card = {
             cardNumber: customerUtils.unFormatCardCreditNumber(number),
@@ -90,8 +84,6 @@ export default class PaymentMethod extends React.Component {
             nameCard: name,
             flagCard: 'MasterCard'
         }
-        console.log('ta enviando')
-        console.log(card)
 
         if (valuePayment > parseFloat(customerUtils.unFormatNumber(value))) {
             customerUtils.removeHidden('failed-value-payment');
@@ -99,8 +91,6 @@ export default class PaymentMethod extends React.Component {
         } else {
             document.getElementById('failed-value-payment').hidden = "true";
             customerUtils.removeHidden('button-payment');
-            console.log(typeCard, valuePayment, card)
-            console.log("chamando método de pagamento")
             userService.postPaymentOrderByCard(typeCard, valuePayment, card);
         }
     }

@@ -62,18 +62,14 @@ function Ordered() {
 
     function onClickDeleteProduct(e) {
         const id = parseInt(e.target.id);
-        console.log(id);
         const product = posts.find(p => p.id !== id);
         const updateProduct = { ...product };
-        console.log(updateProduct);
         const allProducts = posts.map((item) => {
             return item;
         });
         const updateListProduct = allProducts.filter(p => p.id !== id);
-        console.log(updateListProduct);
         setPosts([...updateListProduct]);
         const productDelete = posts.find(p => p.id === id);
-        console.log(productDelete);
         userService.deleteProductOrder(productDelete);
     }
 
@@ -139,8 +135,9 @@ function Ordered() {
                                                     <img id="img-selected" src={srcs} alt="" />
                                                     <div>
                                                         <label className="product-selected name-product-selected">{[namesProducts[i]]}</label>
-                                                        <div >
+                                                        <div>
                                                             <label id={`value-product-${[idsProducts]}`} className="product-selected">R${value.toFixed(2)}</label>
+                                                            <p id="alert-ordered">Erro</p>
                                                         </div>
                                                         <div className="info-product info-product-order">
                                                             <i className="material-icons" id={[idsProducts[i]]}
