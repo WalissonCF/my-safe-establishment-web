@@ -53,7 +53,7 @@ export default class AmountOfPeopleUser extends React.Component {
                     <div className="row">
                         <div className="col-12">
                             <div className="content-in-text">
-                                <h3>My safe establishment web</h3>
+                                <h3>My Establishment</h3>
                             </div>
                         </div>
                     </div>

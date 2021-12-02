@@ -124,7 +124,7 @@ export default class LoginEstablishment extends React.Component {
                             <div className="content-menu-register">
                                 <div className="content-in-text">
                                     <h1>Bem-vindo ao</h1>
-                                    <h2>My safe establishment web</h2>
+                                    <h2>My Establishment</h2>
                                     <p>
                                         Cadastre-se agora seu estabelecimento <br /> <br />
                                     Todos os campos são obrigatório o <br />

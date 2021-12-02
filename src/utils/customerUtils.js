@@ -61,7 +61,7 @@ const customerUtils = {
     },
 
     title() {
-        return "My safe establishment web";
+        return "My Establishment";
     },
 
     unformatDataBase(dataBase) {

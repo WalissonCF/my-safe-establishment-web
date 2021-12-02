@@ -41,7 +41,7 @@ export default class RegisterUser extends React.Component {
                             <div class="content-menu-register">
                                 <div class="content-in-text">
                                     <h1>Bem-vindo ao</h1>
-                                    <h2>My safe establishment web</h2>
+                                    <h2>My Establishment</h2>
                                     <p>
                                         Cadastre-se agora para conseguir seu acento seguro <br />
                                     Essa aplicação é destinada a segurança <br />
