@@ -94,6 +94,7 @@ function RegisterTables() {
                             </div>
                         </div>
                         <div className="confirm c-2">
+                            <p id="alert-success-register-table" hidden>Mesa cadastrada com sucesso</p>
                             <button className="btn btn-outline-danger" onClick={onClickRegisterTable}>CADASTRAR MESA</button>
                         </div>
                     </div>
