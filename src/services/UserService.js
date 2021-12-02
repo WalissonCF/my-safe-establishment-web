@@ -41,7 +41,7 @@ const userService = {
             .then((res) => {
                 if (res.status === 201 || res.status === 200) {
                     authService.setLoggedUser(res.data);
-                    window.location = "/";
+                    window.location = "/amount-of-people-user";
                 }
             })
             .catch((res) => {
