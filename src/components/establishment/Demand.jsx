@@ -24,6 +24,19 @@ function Demand() {
         window.location = "/customer-demand";
     }
 
+    function replaceStatus(status) {
+        switch (status) {
+            case '0':
+                return 'Aberto';
+            case '1':
+                return 'Aceito';
+            case '2':
+                return 'Em entrega';
+            case '3':
+                return 'Entregue';
+        }
+    }
+
     return (
         <div className="container-fluid">
             <div className="row">
@@ -72,12 +85,13 @@ function Demand() {
                                 const customerId = itens.customerId.map((itens) => {
                                     return itens;
                                 });
+                                console.log(status)
                                 return (
                                     <div className="form-group demands-group" key={i}>
                                         <div className="demand" onClick={() => onClickDemand(id, table, status, customerId)}>
                                             <label>Comanda: {id}</label>
                                             <label>Mesa: {table}</label>
-                                            <label>Staus: {status}</label>
+                                            <label>Status: {replaceStatus(status)}</label>
                                         </div>
                                     </div>
                                 )
