@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import userService from '../../services/UserService';
 
 import '../../styles/ordered.css';
@@ -6,71 +6,65 @@ import customerUtils from '../../utils/customerUtils';
 import AnimationPayment from '../animations/Payment';
 
 function Ordered() {
-    const [posts, setPosts] = useState([]);
-    const [updateValueProduct, setValueProduct] = useState([]);
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(false);
 
-    async function fetchPosts() {
-        await userService.getListOrder().then(setPosts);
+    async function getProducts() {
+        const { data: productsList } = await userService.getListOrder();
+        setProducts(productsList)
     }
 
-    async function valueProduct(id, orderPadId, updateQuality) {
-        await userService.postUpdateQuatityProduct(id, orderPadId, updateQuality).then(setValueProduct);
+    async function updateValueProduct({ id, orderPadId, quantity }) {
+        try {
+            setLoading(true)
+            
+            const { data: product } = await userService.updateQuantityProduct(id, orderPadId, quantity)
+            const updatedProducts = products.map(p => p.productId === product.productId ? { ...product } : p);
+            
+            setProducts(updatedProducts);
+        } catch (error) {
+            console.log(error)
+        } finally {
+            setLoading(false)
+        }
     }
 
-    useEffect(() => {
-        fetchPosts()
-    }, [])
+    useEffect(() => getProducts(), [])
+
+    useCallback(() => getProducts(), [products])
 
     function onClickCloseOrder() {
         window.location = "/order-summary";
     };
 
-    function onClickSum(e) {
-        const id = parseInt(e.target.id);
-        const product = posts.find(p => p.id === id);
-        const updateQuality = product.quantity += 1;
-        const orderPadId = product.orderPadId;
-        valueProduct(id, orderPadId, updateQuality);
-        const updateNewValue = localStorage.getItem('valueUpdateQuatityProduct');
-        const updateValue = product.value = updateNewValue;
-        const updateProduct = { ...product, quantity: updateQuality, value: updateValue };
-        const allProducts = posts.map((item) => {
-            return item;
-        });
-        const updateListProduct = allProducts.filter(p => p === id ? { ...updateProduct } : product);
-        setPosts([...updateListProduct]);
+    function incrementQuantity(productId) {
+        let product = products.find(p => p.productId === productId);
+        
+        const quantity = product.quantity += 1;
+
+        product = { ...product, quantity }
+
+        updateValueProduct(product);
     };
 
-    function onClickSubtraction(e) {
-        const id = parseInt(e.target.id);
-        const product = posts.find(p => p.id === id);
-        const qtdeProducts = product.quantity;
-        const orderPadId = product.orderPadId;
-        if (qtdeProducts > 0) {
-            const updateQuality = product.quantity -= 1;
-            valueProduct(id, orderPadId, updateQuality);
-            const updateNewValue = localStorage.getItem('valueUpdateQuatityProduct');
-            const updateValue = product.value = updateNewValue;
-            const updateProduct = { ...product, quantity: updateQuality, value: updateValue };
-            const allProducts = posts.map((item) => {
-                return item;
-            });
-            const updateListProduct = allProducts.filter(p => p === id ? { ...updateProduct } : product);
-            setPosts([...updateListProduct]);
-        }
+    function decrementQuantity(productId) {
+        let product = products.find(p => p.productId === productId);
+        
+        const quantity = product.quantity -= 1;
+
+        if(quantity <= 0) return
+
+        product = { ...product, quantity }
+
+        updateValueProduct(product);
     }
 
-    function onClickDeleteProduct(e) {
-        const id = parseInt(e.target.id);
-        const product = posts.find(p => p.id !== id);
-        const updateProduct = { ...product };
-        const allProducts = posts.map((item) => {
-            return item;
-        });
-        const updateListProduct = allProducts.filter(p => p.id !== id);
-        setPosts([...updateListProduct]);
-        const productDelete = posts.find(p => p.id === id);
-        userService.deleteProductOrder(productDelete);
+    async function removeProduct(productId) {
+        const productsUpdated = products.filter(p => p.productId !== productId);
+        
+        setProducts(productsUpdated);
+        
+        await userService.deleteProductOrder(productId);
     }
 
     return (
@@ -87,79 +81,26 @@ function Ordered() {
             </div>
             <div className="row">
                 <div id="products-selecteds">
-                    {
-                        updateValueProduct
-                    }
-                    {
-                        posts.map((item) => {
-                            const ids = [item.id];
-                            const srcs = ["https://static.clubedaanamariabraga.com.br/wp-content/uploads/2021/04/frango-assado-em-pe.jpg"];
-                            const names = [item.productName];
-                            const quantityProduct = [item.quantity];
-                            const values = [item.value];
-                            const productId = [item.productId];
-                            let product = [
-                                {
-                                    id: ids,
-                                    src: srcs,
-                                    name: names,
-                                    quantity: quantityProduct,
-                                    value: values,
-                                    productId: productId,
-                                }
-                            ];
-
-                            return product.map((itens) => {
-                                const productIds = itens.productId.map((productId) => {
-                                    return productId;
-                                })
-                                const namesProducts = itens.name.map((name) => {
-                                    return name;
-                                });
-                                const quatityProducts = itens.quantity.map((quantity) => {
-                                    return quantity;
-                                });
-                                const amounts = itens.value.map((value) => {
-                                    return value;
-                                });
-                                const idsProducts = itens.id.map((id) => {
-                                    return id;
-                                });
-                                return (
-                                    <div className="products">{
-                                        itens.src.map((src, i) => {
-                                            const value = parseFloat([amounts[i]]);
-                                            var srcs = localStorage.getItem(`${productIds}`);
-                                            return (
-                                                <div id="products-confirmed">
-                                                    <img id="img-selected" src={srcs} alt="" />
-                                                    <div>
-                                                        <label className="product-selected name-product-selected">{[namesProducts[i]]}</label>
-                                                        <div>
-                                                            <label id={`value-product-${[idsProducts]}`} className="product-selected">R${value.toFixed(2)}</label>
-                                                            <div id={`alert-ordered-${idsProducts}`} hidden>
-                                                                <p id={`alert-ordered-customer${idsProducts}`} className="alert-ordered-customer"></p>
-                                                            </div>
-                                                        </div>
-                                                        <div className="info-product info-product-order">
-                                                            <i className="material-icons" id={[idsProducts[i]]}
-                                                                onClick={onClickSubtraction}
-                                                            >remove_circle_outline </i>
-                                                            <label id="qtde-product" className={`qtde-product-${[idsProducts[i]]}`}>{[quatityProducts[i]]}</label>
-                                                            <i id={[idsProducts[i]]} className="material-icons"
-                                                                onClick={onClickSum}
-                                                            >add_circle_outline</i>
-                                                            <i id={[idsProducts[i]]} className="material-icons delete" onClick={onClickDeleteProduct}>delete</i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            )
-                                        })
-                                    }</div>
-                                )
-                            })
-                        })
-                    }
+                    {!loading && products.map(product => (
+                        <div id="products-confirmed" key={String(product.id)}>
+                            <img id="img-selected" src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80" alt="" />
+                            <div>
+                                <label className="product-selected name-product-selected">{product.name}</label>
+                                <div>
+                                    <label id={`value-product-${product.id}`} className="product-selected">R${product.value.toFixed(2)}</label>
+                                    <div id={`alert-ordered-${product.id}`} hidden>
+                                        <p id={`alert-ordered-customer${product.id}`} className="alert-ordered-customer"></p>
+                                    </div>
+                                </div>
+                                <div className="info-product info-product-order">
+                                    <i className="material-icons" onClick={() => decrementQuantity(product.productId)}>remove_circle_outline</i>
+                                    <label id="qtde-product" className={`qtde-product-${product.id}`}>{product.quantity}</label>
+                                    <i id={product.id} className="material-icons" onClick={() => incrementQuantity(product.productId)} >add_circle_outline</i>
+                                    <i id={product.id} className="material-icons delete" onClick={() => removeProduct(product.productId)}>delete</i>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
                 </div>
                 <div className="confirm">
                     <AnimationPayment></AnimationPayment>

@@ -145,17 +145,8 @@ const userService = {
     },
 
     //order/update/{orderId}/{orderpadId}/{quantity} -> Trocar quantidade de itens do produto usuário -> post
-    async postUpdateQuatityProduct(orderId, orderpadId, quantity) {
-        axios.post(`${UPDATE_PRODUCT_QUANTITY}${orderId}/${orderpadId}/${quantity}`)
-        .then((res) => {
-            localStorage.setItem('valueUpdateQuatityProduct', res.data.value);
-            return res.data.value;
-        })
-        .catch(function(error) {
-            document.getElementById(`alert-ordered-customer${orderId}`).innerText = error.response.data.message;
-            customerUtils.removeHidden(`alert-ordered-${orderId}`);
-            console.log(error.response.data.message)
-        });
+    async updateQuantityProduct(orderId, orderpadId, quantity) {
+        return await axios.post(`${UPDATE_PRODUCT_QUANTITY}${orderId}/${orderpadId}/${quantity}`)
     },
 
     async getTables() {
@@ -177,12 +168,7 @@ const userService = {
     },
 
     async getListOrder() {
-        return axios.get(LIST_ORDER,
-            { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
-            .then((res) => {
-                return res.data
-            }
-            );
+        return await axios.get(LIST_ORDER, { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
     },
 
     async getProductToId() {
@@ -195,10 +181,8 @@ const userService = {
             })
     },
 
-    deleteProductOrder(order) {
-        axios.delete(`https://my-safe-establishment.herokuapp.com/private/order/delete`, { order })
-        .then((res) => {
-        })
+    async deleteProductOrder(order) {
+        return await axios.delete(`https://my-safe-establishment.herokuapp.com/private/order/delete`, { order })
     },
 
     async deleteProductCustomer(id) {
