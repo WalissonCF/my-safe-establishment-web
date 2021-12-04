@@ -19,8 +19,9 @@ function PaymentEstablishmentEdit() {
     function onClickPayment() {
         const paymentMethod = localStorage.getItem('formOfPayment');
         const customerId = parseInt(localStorage.getItem('customerIdPayment'));
+        const paybleValue = parseFloat(localStorage.getItem('paybleValuePayment'));
         console.log(customerId, paymentMethod)
-        establishmentService.postPaymentManual(customerId, paymentMethod)
+        establishmentService.postPaymentManual(customerId, paymentMethod, paybleValue)
     }
 
     function replaceStatus() {
@@ -83,7 +84,7 @@ function PaymentEstablishmentEdit() {
                 <hr className="hr" />
                 <div className="order-value-total">
                     <div className="value-total">
-                        <h2>Total R$</h2>
+                        <h2>Total R${localStorage.getItem('paybleValuePayment')}</h2>
                     </div>
                 </div>
             </div>
