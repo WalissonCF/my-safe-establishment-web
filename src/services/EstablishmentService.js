@@ -14,6 +14,7 @@ const ORDERS_TO_ID = `${URL_COMPANY}private/management/orders?orderpad=`;
 const REGISTER_TABLE = `${URL_COMPANY}private/table/register`;
 const UPDATE_PRODUCT = `${URL}private/product/update`;
 const UPDATE_ORDER_STATUS = `${URL_COMPANY}/private/management/change/order?id=10&status=3&customerId=6`;
+const PAYMENT_MANUAL = `${URL}private/management/manual/payment/orderpad`;
 
 const establishmentService = {
     postLogin(email, password) {
@@ -100,6 +101,14 @@ const establishmentService = {
             customerUtils.removeHidden(`alert-customer-${orderId}`);
         })
     },
+
+    postPaymentManual(customerId, paymentMethod, valuePayment) {
+        axios.post(PAYMENT_MANUAL, {customerId, paymentMethod, valuePayment},
+            { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
+            .then((res) => {
+
+            })
+    },
     
     //retorna todas as demandas
     async getOrderpads() {
@@ -131,9 +140,6 @@ const establishmentService = {
             }
             );
     },
-
-
-
 }
 
 export default establishmentService;
