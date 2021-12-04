@@ -83,9 +83,9 @@ function Ordered() {
                 <div id="products-selecteds">
                     {!loading && products.map(product => (
                         <div id="products-confirmed" key={String(product.id)}>
-                            <img id="img-selected" src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80" alt="" />
+                            <img id="img-selected" src={localStorage.getItem(`${product.productId}`)} alt="" />
                             <div>
-                                <label className="product-selected name-product-selected">{product.name}</label>
+                                <label className="product-selected name-product-selected">{product.productName}</label>
                                 <div>
                                     <label id={`value-product-${product.id}`} className="product-selected">R${product.value.toFixed(2)}</label>
                                     <div id={`alert-ordered-${product.id}`} hidden>
