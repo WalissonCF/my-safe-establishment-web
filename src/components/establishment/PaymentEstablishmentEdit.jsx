@@ -18,8 +18,9 @@ function PaymentEstablishmentEdit() {
 
     function onClickPayment() {
         const paymentMethod = localStorage.getItem('formOfPayment');
-        console.log(paymentMethod)
-        establishmentService.postPaymentManual(paymentMethod)
+        const customerId = parseInt(localStorage.getItem('customerIdPayment'));
+        console.log(customerId, paymentMethod)
+        establishmentService.postPaymentManual(customerId, paymentMethod)
     }
 
     function replaceStatus() {
