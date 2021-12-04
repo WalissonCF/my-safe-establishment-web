@@ -19,7 +19,7 @@ function PaymentEstablishmentEdit() {
     function onClickPayment() {
         const paymentMethod = localStorage.getItem('formOfPayment');
         const customerId = parseInt(localStorage.getItem('customerIdPayment'));
-        const paybleValue = parseFloat(localStorage.getItem('paybleValuePayment'));
+        const paybleValue = parseFloat(localStorage.getItem('paybleValuePayment')).toFixed(2);
         console.log(customerId, paymentMethod)
         establishmentService.postPaymentManual(customerId, paymentMethod, paybleValue)
     }
@@ -99,6 +99,7 @@ function PaymentEstablishmentEdit() {
                 </div>
             </div>
             <div className="confirm c-2">
+                <p id="alert-payment-success-establishment" hidden></p>
                 <button className="btn btn-outline-danger" onClick={onClickPayment}>EFETUAR PAGAMENTO</button>
             </div>
         </div>

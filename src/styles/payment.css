@@ -86,6 +86,14 @@
     margin-block-end: 3px;
 }
 
+#alert-payment-success-establishment {
+    text-align: center;
+    font-size: 14px;
+    color: #20b0f3;
+    margin-top: 5px;
+    margin-block-end: -15px;
+}
+
 #alert-success-payment-text {
     text-align: center;
     font-size: 14px;

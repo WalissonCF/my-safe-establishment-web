@@ -106,7 +106,12 @@ const establishmentService = {
         axios.post(PAYMENT_MANUAL, {customerId, paymentMethod, valuePayment},
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) => {
-
+                document.getElementById('alert-payment-success-establishment').innerText = "Pagamento realizado com sucesso!";
+                customerUtils.removeHidden(`alert-payment-success-establishment`);
+                
+            }).catch(function(error) {
+                document.getElementById('alert-payment-success-establishment').innerText = error.response.data.message;
+                customerUtils.removeHidden(`alert-payment-success-establishment`); 
             })
     },
     
