@@ -33,7 +33,7 @@ function Ordered() {
     useCallback(() => getProducts(), [products])
 
     function onClickCloseOrder() {
-        window.location = "/order-summary";
+        window.location = "/payment";
     };
 
     function incrementQuantity(productId) {
@@ -61,7 +61,7 @@ function Ordered() {
 
     async function removeProduct(productId) {
         const productsUpdated = products.filter(p => p.id !== productId);
-        
+
         setProducts(productsUpdated);
         const deleteProduct = products.find(p => p.id === productId)
 
