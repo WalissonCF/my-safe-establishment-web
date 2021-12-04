@@ -29,6 +29,7 @@
     background: var(--main-color-canvas);
     width: 300px;
     border-radius: 20px;
+    margin-block-end: 15px;
     /* display: flex;
     flex-direction: column;
     flex-wrap: wrap;
