@@ -16,10 +16,13 @@ function PaymentEstablishment() {
         fetchPosts()
     }, [])
 
-    function onClickComand(id, customerId, paybleValue) {
+    function onClickComand(id, customerId, paybleValue, tip, rate) {
         localStorage.setItem('demaindIdPayment', id);
         localStorage.setItem('customerIdPayment', customerId);
         localStorage.setItem('paybleValuePayment', paybleValue)
+        localStorage.setItem('tipPayment', tip)
+        localStorage.setItem('ratePayment', rate)
+
         window.location = "/payment-establishment-edit";
     }
 
@@ -55,7 +58,7 @@ function PaymentEstablishment() {
                                     return i;
                                 });
                                 return (
-                                    <div className="form-group tables-form-group" key={String(id)} onClick={() => onClickComand(id, item.customerId, item.paybleValue)}>
+                                    <div className="form-group tables-form-group" key={String(id)} onClick={() => onClickComand(id, item.customerId, item.paybleValue, item.tip, item.rate)}>
                                         <div className="tables">
                                             <p className="number-table comand">Comanda: {id}</p>
                                         </div>
