@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 
 import { Link } from 'react-router-dom';
+import establishmentService from '../../services/EstablishmentService';
 
 function PaymentEstablishmentEdit() {
     const [posts, setPosts] = useState([]);
+    const [selects, setSelects] = useState([]);
 
     async function fetchPosts() {
-
+        const id = localStorage.getItem('demaindIdPayment');
+        await establishmentService.getOrders(id).then(setPosts);
     }
 
     useEffect(() => {
@@ -30,56 +33,41 @@ function PaymentEstablishmentEdit() {
             </div>
             <div id="customer-demand" className="payment-demands">
                 <div className="demand-and-status">
-                    <h2>Comanda: 5</h2>
+                    <h2>Comanda: {localStorage.getItem('demaindIdPayment')}</h2>
                     <h2>Mesa: 3</h2>
                     <h2>Status: Aguardando pagamento</h2>
                 </div>
-                <div className="order-status">
-                    <p className="order-item">5 - Frango Grelhado</p>
-                    <p className="order-value">R$50.00</p>
-                </div>
-                <div className="order-status">
-                    <p className="order-item">5 - Frango Grelhado</p>
-                    <p className="order-value">R$50.00</p>
-                </div>
-                <div className="order-status">
-                    <p className="order-item">5 - Frango Grelhado</p>
-                    <p className="order-value">R$50.00</p>
-                </div>
-                <div className="order-status">
-                    <p className="order-item">5 - Frango Grelhado</p>
-                    <p className="order-value">R$50.00</p>
-                </div>
-                <div className="total">
-                    <div className="total-and-values">
-                        <p>Taxa</p>
-                        <p>Gorjeta</p>
-                        <p>Forma de pagamento</p>
-                    </div>
-                    <div className="value">
-                        <p>R$20.00</p>
-                        <p>R$0.00</p>
-                    </div>
-                </div>
+                {
+                    posts.map(itens => (
+                        <div>
+                            <div className="order-status">
+                                {console.log(itens)}
+                                <p className="order-item">{itens.quantity} - {itens.productName}</p>
+                                <p className="order-value">R$50.00</p>
+                            </div>
+
+                        </div>
+                    ))
+                }
                 <div className="order-status">
                     <p className="order-item">Forma de pagamento</p>
-                    <select className="form-select" name="" id="" >
-                        <option value="1">Cartão de crédito</option>
-                        <option value="2" selected>Cartão de débito</option>
-                        <option value="2" selected>Dinheiro</option>
+                    {localStorage.setItem('formOfPayment', selects)}
+                    <select className="form-select" value={selects} onChange={e => setSelects(e.target.value)} >
+                        <option value=""></option>
+                        <option value="CREDITO">Cartão de crédito</option>
+                        <option value="DEBITO" selected>Cartão de débito</option>
+                        <option value="DINHEIRO" selected>Dinheiro</option>
                     </select>
                 </div>
                 <hr className="hr" />
                 <div className="order-value-total">
                     <div className="value-total">
-                        <h2>Total R$220.00</h2>
+                        <h2>Total R$</h2>
                     </div>
                 </div>
             </div>
             <div className="confirm c-2">
-                <Link to="">
-                    <button className="btn btn-outline-danger">EFETUAR PAGAMENTO</button>
-                </Link>
+                <button className="btn btn-outline-danger">EFETUAR PAGAMENTO</button>
             </div>
         </div>
     )
