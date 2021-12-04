@@ -16,6 +16,26 @@ function PaymentEstablishmentEdit() {
         fetchPosts()
     }, [])
 
+    function onClickPayment() {
+        const paymentMethod = localStorage.getItem('formOfPayment');
+        console.log(paymentMethod)
+        establishmentService.postPaymentManual(paymentMethod)
+    }
+
+    function replaceStatus() {
+        const status = localStorage.getItem('statusDemandPayment');
+        switch (status) {
+            case '0':
+                return 'Aberto';
+            case '1':
+                return 'Aceito';
+            case '2':
+                return 'Em entrega';
+            case '3':
+                return 'Entregue';
+        }
+    }
+
     return (
         <div className="customer-demand">
             <div className="row">
@@ -34,12 +54,12 @@ function PaymentEstablishmentEdit() {
             <div id="customer-demand" className="payment-demands">
                 <div className="demand-and-status">
                     <h2>Comanda: {localStorage.getItem('demaindIdPayment')}</h2>
-                    <h2>Mesa: 3</h2>
-                    <h2>Status: Aguardando pagamento</h2>
+                    <h2>Mesa: {localStorage.getItem('tablePayment')}</h2>
+                    <h2>Status: {replaceStatus()}</h2>
                 </div>
                 {
                     posts.map(itens => (
-                        <div>
+                        <div key={String(itens.id)}>
                             <div className="order-status">
                                 {console.log(itens)}
                                 <p className="order-item">{itens.quantity} - {itens.productName}</p>
@@ -67,7 +87,7 @@ function PaymentEstablishmentEdit() {
                 </div>
             </div>
             <div className="confirm c-2">
-                <button className="btn btn-outline-danger">EFETUAR PAGAMENTO</button>
+                <button className="btn btn-outline-danger" onClick={onClickPayment}>EFETUAR PAGAMENTO</button>
             </div>
         </div>
     )

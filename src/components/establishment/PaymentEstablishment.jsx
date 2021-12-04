@@ -16,8 +16,9 @@ function PaymentEstablishment() {
         fetchPosts()
     }, [])
 
-    function onClickComand(id) {
+    function onClickComand(id, customerId) {
         localStorage.setItem('demaindIdPayment', id);
+        localStorage.setItem('customerIdPayment', customerId);
         window.location = "/payment-establishment-edit";
     }
 
@@ -41,6 +42,8 @@ function PaymentEstablishment() {
                     {
                         posts.map((item) => {
                             const id = [item.id];
+                            localStorage.setItem('tablePayment', item.tableId);
+                            localStorage.setItem('statusDemandPayment', item.status);
                             let demand = [
                                 {
                                     id: id,
@@ -51,7 +54,7 @@ function PaymentEstablishment() {
                                     return i;
                                 });
                                 return (
-                                    <div className="form-group tables-form-group" onClick={() => onClickComand(id)}>
+                                    <div className="form-group tables-form-group" key={String(id)} onClick={() => onClickComand(id, item.customerId)}>
                                         <div className="tables">
                                             <p className="number-table comand">Comanda: {id}</p>
                                         </div>
