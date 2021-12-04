@@ -7,9 +7,6 @@ function RegisterTables() {
     const [selects, setSelects] = useState();
     const [selectsStatus, setSelectsStatus] = useState();
 
-    function onChange(e) {
-    }
-
     function onClickRegisterTable() {
         const qtdeProduct = document.getElementById('qtde-customer').innerText;
         localStorage.setItem('numberSeats', parseInt(qtdeProduct));

@@ -146,7 +146,8 @@ const userService = {
 
     //order/update/{orderId}/{orderpadId}/{quantity} -> Trocar quantidade de itens do produto usuário -> post
     async updateQuantityProduct(orderId, orderpadId, quantity) {
-        return await axios.post(`${UPDATE_PRODUCT_QUANTITY}${orderId}/${orderpadId}/${quantity}`)
+        return await axios.post(`${UPDATE_PRODUCT_QUANTITY}${orderId}/${orderpadId}/${quantity}`,
+        { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
     },
 
     async getTables() {

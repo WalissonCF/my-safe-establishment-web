@@ -17,10 +17,9 @@ function Ordered() {
     async function updateValueProduct({ id, orderPadId, quantity }) {
         try {
             setLoading(true)
-            
+
             const { data: product } = await userService.updateQuantityProduct(id, orderPadId, quantity)
-            const updatedProducts = products.map(p => p.productId === product.productId ? { ...product } : p);
-            
+            const updatedProducts = products.map(p => p.id === product.id ? { ...product } : p);
             setProducts(updatedProducts);
         } catch (error) {
             console.log(error)
@@ -38,8 +37,8 @@ function Ordered() {
     };
 
     function incrementQuantity(productId) {
-        let product = products.find(p => p.productId === productId);
-        
+        let product = products.find(p => p.id === productId);
+
         const quantity = product.quantity += 1;
 
         product = { ...product, quantity }
@@ -48,11 +47,12 @@ function Ordered() {
     };
 
     function decrementQuantity(productId) {
-        let product = products.find(p => p.productId === productId);
-        
+        let product = products.find(p => p.id === productId);
+        console.log("product", product)
+
         const quantity = product.quantity -= 1;
 
-        if(quantity <= 0) return
+        if (quantity <= 0) return
 
         product = { ...product, quantity }
 
@@ -60,10 +60,10 @@ function Ordered() {
     }
 
     async function removeProduct(productId) {
-        const productsUpdated = products.filter(p => p.productId !== productId);
+        const productsUpdated = products.filter(p => p.id !== productId);
         
         setProducts(productsUpdated);
-        const deleteProduct = products.find(p => p.productId === productId)
+        const deleteProduct = products.find(p => p.id === productId)
 
         await userService.deleteProductOrder(deleteProduct);
     }
@@ -94,10 +94,10 @@ function Ordered() {
                                     </div>
                                 </div>
                                 <div className="info-product info-product-order">
-                                    <i className="material-icons" onClick={() => decrementQuantity(product.productId)}>remove_circle_outline</i>
+                                    <i className="material-icons" onClick={() => decrementQuantity(product.id)}>remove_circle_outline</i>
                                     <label id="qtde-product" className={`qtde-product-${product.id}`}>{product.quantity}</label>
-                                    <i id={product.id} className="material-icons" onClick={() => incrementQuantity(product.productId)} >add_circle_outline</i>
-                                    <i id={product.id} className="material-icons delete" onClick={() => removeProduct(product.productId)}>delete</i>
+                                    <i id={product.id} className="material-icons" onClick={() => incrementQuantity(product.id)} >add_circle_outline</i>
+                                    <i id={product.id} className="material-icons delete" onClick={() => removeProduct(product.id)}>delete</i>
                                 </div>
                             </div>
                         </div>
