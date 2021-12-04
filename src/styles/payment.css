@@ -83,7 +83,7 @@
     font-size: 14px;
     color: #38b000;
     margin-top: 5px;
-    margin-block-end: 3px;
+    margin-block-end: -20px;
 }
 
 #alert-payment-success-establishment {
