@@ -20,7 +20,6 @@ function PaymentEstablishmentEdit() {
         const paymentMethod = localStorage.getItem('formOfPayment');
         const customerId = parseInt(localStorage.getItem('customerIdPayment'));
         const paybleValue = parseFloat(localStorage.getItem('paybleValuePayment')).toFixed(2);
-        console.log(customerId, paymentMethod)
         establishmentService.postPaymentManual(customerId, paymentMethod, paybleValue)
     }
 
@@ -63,7 +62,6 @@ function PaymentEstablishmentEdit() {
                     posts.map(itens => (
                         <div key={String(itens.id)}>
                             <div className="order-status">
-                                {console.log(itens)}
                                 <p className="order-item">{itens.quantity} - {itens.productName}</p>
                                 <p className="order-value">R$50.00</p>
                             </div>

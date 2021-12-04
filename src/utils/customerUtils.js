@@ -50,6 +50,14 @@ const customerUtils = {
         return number?.replace(/( )+/g, '');
     },
 
+    replaceVirgulaToPonto(number) {
+        return number?.replace(/,/g, '.');
+    },
+
+    unFormarValue(number) {
+        return number?.replace("R$", "")
+    },
+
     removeItem(item) {
         item.map((itens) => {
             localStorage.removeItem(itens);

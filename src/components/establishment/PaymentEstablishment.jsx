@@ -67,41 +67,6 @@ function PaymentEstablishment() {
                             })
                         })
                     }
-                    {/* <Link to="/payment-establishment-edit">
-                        <div className="form-group tables-form-group">
-                            <div className="tables">
-                                <p className="number-table comand">Comanda 1</p>
-                            </div>
-                        </div>
-                    </Link>
-                    <Link to="/payment-establishment-edit">
-                        <div className="form-group tables-form-group">
-                            <div className="tables">
-                                <p className="number-table comand">Comanda 2</p>
-                            </div>
-                        </div>
-                    </Link>
-                    <Link to="/payment-establishment-edit">
-                        <div className="form-group tables-form-group">
-                            <div className="tables">
-                                <p className="number-table comand">Comanda 3</p>
-                            </div>
-                        </div>
-                    </Link>
-                    <Link to="/payment-establishment-edit">
-                        <div className="form-group tables-form-group">
-                            <div className="tables">
-                                <p className="number-table comand">Comanda 3</p>
-                            </div>
-                        </div>
-                    </Link>
-                    <Link to="/payment-establishment-edit">
-                        <div className="form-group tables-form-group">
-                            <div className="tables">
-                                <p className="number-table comand">Comanda 4</p>
-                            </div>
-                        </div>
-                    </Link> */}
                 </div>
             </div>
         </div>

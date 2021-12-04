@@ -5,6 +5,7 @@ import NumberFormat from 'react-number-format';
 import '../../styles/editProduct.css';
 import userService from '../../services/UserService';
 import establishmentService from '../../services/EstablishmentService';
+import customerUtils from '../../utils/customerUtils';
 
 function EditProduct() {
     const [posts, setPosts] = useState("");
@@ -34,6 +35,8 @@ function EditProduct() {
         const updateDescription = isValidateDescription(description, product.description);
         const updateTypeProduct = isValidateTypeProduct(typeProduct, product.typeProduct);
 
+        console.log(parseFloat(customerUtils.replaceVirgulaToPonto(customerUtils.unFormarValue(updateValue))));
+
         let productUpdate = {
             id: updateId,
             name: updateName,
@@ -42,7 +45,7 @@ function EditProduct() {
             description: updateDescription,
             typeProduct: updateTypeProduct,
         };
-        establishmentService.updateProdut(updateId, updateName, updateTypeProduct, updateDescription, updateIngredient, updateValue);
+        establishmentService.updateProdut(updateId, updateName, updateTypeProduct, updateDescription, updateIngredient, parseFloat(customerUtils.replaceVirgulaToPonto(customerUtils.unFormarValue(updateValue))));
     }
 
     function isValidateTypeProduct(typeProduct, typeProductOrigin) {
@@ -89,7 +92,7 @@ function EditProduct() {
         var updateValue;
         localStorage.setItem('editValue', valueOrigin);
         if (value === '') {
-            return updateValue = localStorage.getItem('editValue');;
+            return updateValue = parseFloat(localStorage.getItem('editValue')).toFixed(2);
         } else {
             return updateValue = value;
         }
@@ -119,8 +122,6 @@ function EditProduct() {
                         <h2 className="h2-product edit-h2-product">Nome do produto:</h2>
                         <input id="edit-name-product" type="text" className="form-control edit-input" placeholder={posts.name} />
                         <h2 className="h2-product edit-h2-product edit-value">Valor:</h2>
-                        {/* <p>Valor:</p> */}
-                        {/* <input type="text" className="form-control edit-input" placeholder={`R$${posts.value}`} /> */}
                         <NumberFormat id="edit-value" className="form-control edit-input" thousandSeparator={true} prefix={'R$'} type="tel" className="form-control" name="value"
                             placeholder="R$" autoComplete="off" placeholder={`R$${posts.value}`} />
                     </div>
