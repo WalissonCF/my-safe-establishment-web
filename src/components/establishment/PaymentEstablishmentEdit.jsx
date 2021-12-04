@@ -71,6 +71,16 @@ function PaymentEstablishmentEdit() {
                         </div>
                     ))
                 }
+                <div className="total">
+                    <div className="total-and-values">
+                        <p>Taxa</p>
+                        <p>Gorjeta</p>
+                    </div>
+                    <div className="value">
+                        <p>R${localStorage.getItem('ratePayment')}</p>
+                        <p>R${localStorage.getItem('tip')}</p>
+                    </div>
+                </div>
                 <div className="order-status">
                     <p className="order-item">Forma de pagamento</p>
                     {localStorage.setItem('formOfPayment', selects)}
