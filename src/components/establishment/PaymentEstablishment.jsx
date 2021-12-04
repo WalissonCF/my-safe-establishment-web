@@ -16,6 +16,11 @@ function PaymentEstablishment() {
         fetchPosts()
     }, [])
 
+    function onClickComand(id) {
+        localStorage.setItem('demaindIdPayment', id);
+        window.location = "/payment-establishment-edit";
+    }
+
     return (
         <div className="customer-demand">
             <div className="row">
@@ -46,7 +51,7 @@ function PaymentEstablishment() {
                                     return i;
                                 });
                                 return (
-                                    <div className="form-group tables-form-group">
+                                    <div className="form-group tables-form-group" onClick={() => onClickComand(id)}>
                                         <div className="tables">
                                             <p className="number-table comand">Comanda: {id}</p>
                                         </div>
