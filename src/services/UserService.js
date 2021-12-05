@@ -16,7 +16,7 @@ const LIST_ORDER = `${URL}private/order/${customerId}`;
 const CLOSE_ORDER = `${URL}private/orderpad/close`;
 const PAYMENT_ORDER_PAD = `${URL}private/orderpad/payment`;
 const PAYMENT_ORDER_PAD_BY_CARD = `${URL}private/orderpad/card/payment`;
-const UPDATE_PRODUCT_QUANTITY = `${URL_COMPANY}private/order/update/`;
+const UPDATE_PRODUCT_QUANTITY = `${URL}private/order/update/`;
 
 const userService = {
     requestLogin(document, phone) {

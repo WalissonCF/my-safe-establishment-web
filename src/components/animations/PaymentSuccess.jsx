@@ -3,6 +3,8 @@ import React from 'react';
 import Lottie from 'react-lottie';
 import animationData from '../../assets/success.json';
 import customerUtils from '../../utils/customerUtils';
+import { Link } from 'react-router-dom';
+
 
 export default class PaymentSuccess extends React.Component {
     constructor(props) {
@@ -34,6 +36,9 @@ export default class PaymentSuccess extends React.Component {
                         </div>
                     </div>
                     <p className="success">Pagamento realizado com sucesso Sr(a). {customerUtils.getCustomerName()}</p>
+                    <Link to="/menu">
+                        <button className="btn btn-outline-danger logoff">SAIR</button>
+                    </Link>
                 </div>
             </React.Fragment>
         )
