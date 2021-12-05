@@ -34,6 +34,9 @@ const establishmentService = {
         axios.post(REGISTER, { owner, establishment, address })
             .then((res) => {
                 if (res.status === 200 || res.status === 201) {
+                    authService.setLoggedUser(res.data, res.data.name,
+                        res.data.token, res.data.customerId);
+                        window.location = "/menu";
                 }
             })
     },

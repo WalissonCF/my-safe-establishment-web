@@ -65,7 +65,8 @@ function Ordered() {
         setProducts(productsUpdated);
         const deleteProduct = products.find(p => p.id === productId)
 
-        await userService.deleteProductOrder(deleteProduct);
+        console.log(deleteProduct.id, deleteProduct.orderPadId);
+        await userService.deleteProductOrder(deleteProduct.id, deleteProduct.orderPadId);
     }
 
     return (
