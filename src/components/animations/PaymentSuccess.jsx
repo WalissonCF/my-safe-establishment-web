@@ -36,7 +36,7 @@ export default class PaymentSuccess extends React.Component {
                         </div>
                     </div>
                     <p className="success">Pagamento realizado com sucesso Sr(a). {customerUtils.getCustomerName()}</p>
-                    <Link to="/menu">
+                    <Link to="/">
                         <button className="btn btn-outline-danger logoff">SAIR</button>
                     </Link>
                 </div>

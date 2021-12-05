@@ -16,7 +16,8 @@ const LIST_ORDER = `${URL}private/order/${customerId}`;
 const CLOSE_ORDER = `${URL}private/orderpad/close`;
 const PAYMENT_ORDER_PAD = `${URL}private/orderpad/payment`;
 const PAYMENT_ORDER_PAD_BY_CARD = `${URL}private/orderpad/card/payment`;
-const UPDATE_PRODUCT_QUANTITY = `${URL}private/order/update/`;
+const UPDATE_PRODUCT_QUANTITY = `${URL_COMPANY}private/order/update/`;
+const PAYMENT_MANUAL = `${URL}private/orderpad/manual/payment/ORDEPADID/CUSTUMERID`;
 
 const userService = {
     requestLogin(document, phone) {
@@ -142,6 +143,11 @@ const userService = {
                 }
             })
             .catch((res) => { });
+    },
+
+    // private/orderpad/manual/payment/ORDEPADID/CUSTUMERID
+    postPaymentManual() {
+        axios.post()
     },
 
     //order/update/{orderId}/{orderpadId}/{quantity} -> Trocar quantidade de itens do produto usuário -> post

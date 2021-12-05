@@ -20,7 +20,8 @@ function PaymentEstablishmentEdit() {
         const paymentMethod = localStorage.getItem('formOfPayment');
         const customerId = parseInt(localStorage.getItem('customerIdPayment'));
         const paybleValue = parseFloat(localStorage.getItem('paybleValuePayment')).toFixed(2);
-        establishmentService.postPaymentManual(customerId, paymentMethod, paybleValue)
+        console.log(customerId, paymentMethod, paybleValue);
+        establishmentService.postPaymentManual(customerId, paymentMethod, parseFloat(paybleValue))
     }
 
     function replaceStatus() {
@@ -29,11 +30,11 @@ function PaymentEstablishmentEdit() {
             case '0':
                 return 'Aberto';
             case '1':
-                return 'Aceito';
+                return 'Aguardando pagamento';
             case '2':
-                return 'Em entrega';
+                return 'Pago';
             case '3':
-                return 'Entregue';
+                return 'Aguardando pagamento manual';
         }
     }
 
@@ -63,7 +64,7 @@ function PaymentEstablishmentEdit() {
                         <div key={String(itens.id)}>
                             <div className="order-status">
                                 <p className="order-item">{itens.quantity} - {itens.productName}</p>
-                                <p className="order-value">R$50.00</p>
+                                <p className="order-value">R${itens.value}</p>
                             </div>
 
                         </div>
@@ -76,7 +77,7 @@ function PaymentEstablishmentEdit() {
                     </div>
                     <div className="value">
                         <p>R${localStorage.getItem('ratePayment')}</p>
-                        <p>R${localStorage.getItem('tip')}</p>
+                        <p>R${localStorage.getItem('tipPayment')}</p>
                     </div>
                 </div>
                 <div className="order-status">
