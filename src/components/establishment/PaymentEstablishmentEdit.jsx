@@ -62,6 +62,7 @@ function PaymentEstablishmentEdit() {
                 {
                     posts.map(itens => (
                         <div key={String(itens.id)}>
+                            {console.log(itens)}
                             <div className="order-status">
                                 <p className="order-item">{itens.quantity} - {itens.productName}</p>
                                 <p className="order-value">R${itens.value}</p>

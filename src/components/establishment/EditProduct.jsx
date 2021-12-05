@@ -105,7 +105,7 @@ function EditProduct() {
                     <div className="content-menu-register">
                         <div className="content-in-text">
                             <h1>Bem vindo,</h1>
-                            <h2>nomeUser</h2>
+                            <h2>{customerUtils.getCustomerName()}</h2>
                             <Link to="/products-establishment">
                                 <button className="btn btn-outline-danger btn-login">PRODUTOS</button>
                             </Link>

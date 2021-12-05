@@ -17,7 +17,7 @@ const CLOSE_ORDER = `${URL}private/orderpad/close`;
 const PAYMENT_ORDER_PAD = `${URL}private/orderpad/payment`;
 const PAYMENT_ORDER_PAD_BY_CARD = `${URL}private/orderpad/card/payment`;
 const UPDATE_PRODUCT_QUANTITY = `${URL_COMPANY}private/order/update/`;
-const PAYMENT_MANUAL = `${URL}private/orderpad/manual/payment/ORDEPADID/CUSTUMERID`;
+const PAYMENT_MANUAL = `${URL_COMPANY}private/orderpad/manual/payment/`;
 
 const userService = {
     requestLogin(document, phone) {
@@ -146,8 +146,13 @@ const userService = {
     },
 
     // private/orderpad/manual/payment/ORDEPADID/CUSTUMERID
-    postPaymentManual() {
-        axios.post()
+    postPaymentManual(orderPadId) {
+        axios.post(`${PAYMENT_MANUAL}${orderPadId}/${customerId}`,
+            { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
+            .then((res) => {
+                console.log(res)
+                window.location = "/calling-attendant";
+            })
     },
 
     //order/update/{orderId}/{orderpadId}/{quantity} -> Trocar quantidade de itens do produto usuário -> post

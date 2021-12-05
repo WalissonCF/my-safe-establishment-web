@@ -6,6 +6,7 @@ import AnimationPaymentMoney from '../animations/PaymentMoney';
 
 import '../../styles/payment.css'
 import customerUtils from '../../utils/customerUtils';
+import establishmentService from '../../services/EstablishmentService';
 
 export default class PaymentForm extends React.Component {
     constructor() {
@@ -71,7 +72,9 @@ export default class PaymentForm extends React.Component {
     }
 
     onClickPaymentMoney() {
-        window.location = "/calling-attendant";
+        const orderPadId = localStorage.getItem('orderPadIdUser')
+        userService.postPaymentManual(orderPadId);
+        // window.location = "/calling-attendant";
     }
 
     render() {

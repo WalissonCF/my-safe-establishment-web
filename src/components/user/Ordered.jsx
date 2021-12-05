@@ -85,6 +85,7 @@ function Ordered() {
                 <div id="products-selecteds">
                     {!loading && products.map(product => (
                         <div id="products-confirmed" key={String(product.id)}>
+                            {localStorage.setItem('orderPadIdUser', product.orderPadId)}
                             <img id="img-selected" src={localStorage.getItem(`${product.productId}`)} alt="" />
                             <div>
                                 <label className="product-selected name-product-selected">{product.productName}</label>
