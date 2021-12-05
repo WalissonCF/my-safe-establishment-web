@@ -125,6 +125,7 @@ const establishmentService = {
             );
     },
 
+    //Pagamento
     async getOrderpadToId() {
         return axios.get(ORDER_PADS_TO_ID,
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })

@@ -40,7 +40,7 @@ function PaymentEstablishment() {
                             </Link>
                         </div>
                     </div>
-                </div>
+                </div>  
             </div>
             <div className="tables-establishment">
                 <div className="all-tables all-payments">
@@ -49,6 +49,7 @@ function PaymentEstablishment() {
                             const id = [item.id];
                             localStorage.setItem('tablePayment', item.tableId);
                             localStorage.setItem('statusDemandPayment', item.status);
+                            console.log(item)
                             let demand = [
                                 {
                                     id: id,

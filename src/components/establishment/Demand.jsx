@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import establishmentService from '../../services/EstablishmentService';
 
 import '../../styles/demand.css';
+import customerUtils from '../../utils/customerUtils';
 
 function Demand() {
     const [posts, setPosts] = useState([]);
@@ -25,7 +26,9 @@ function Demand() {
     }
 
     function replaceStatus(status) {
-        switch (status) {
+        localStorage.setItem('statusDemandIdCustomer', status);
+        const s = localStorage.getItem('statusDemandIdCustomer');
+        switch (s) {
             case '0':
                 return 'Aberto';
             case '1':
@@ -44,7 +47,7 @@ function Demand() {
                     <div className="content-menu-register">
                         <div className="content-in-text">
                             <h1>Bem vindo,</h1>
-                            <h2>nomeUser</h2>
+                            <h2>{customerUtils.getCustomerName()}</h2>
                             <Link to="/menu">
                                 <button className="btn btn-outline-danger btn-login">MENU</button>
                             </Link>
@@ -85,7 +88,6 @@ function Demand() {
                                 const customerId = itens.customerId.map((itens) => {
                                     return itens;
                                 });
-                                console.log(status)
                                 return (
                                     <div className="form-group demands-group" key={i}>
                                         <div className="demand" onClick={() => onClickDemand(id, table, status, customerId)}>
