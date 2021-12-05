@@ -64,7 +64,6 @@ const establishmentService = {
         axios.post(REGISTER_TABLE, {statusTable, locationArea, numberSeats},
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) => {
-                // customerUtils.removeItem(['locationTable', 'statusTable']);
                 customerUtils.removeHidden('alert-success-register-table');
             });
     },
@@ -125,7 +124,7 @@ const establishmentService = {
             );
     },
 
-    //Pagamento
+    //Pagamento -> paymentEdit
     async getOrderpadToId() {
         return axios.get(ORDER_PADS_TO_ID,
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })

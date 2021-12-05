@@ -4,6 +4,7 @@ import userService from '../../services/UserService';
 import establishmentService from '../../services/EstablishmentService';
 
 import { Link } from 'react-router-dom';
+import customerUtils from '../../utils/customerUtils';
 
 import '../../styles/productsEstablishment.css';
 
@@ -44,7 +45,7 @@ function Products() {
                     <div className="content-menu-register">
                         <div className="content-in-text">
                             <h1>Bem vindo,</h1>
-                            <h2>nomeUser</h2>
+                            <h2>{customerUtils.getCustomerName()}</h2>
                             <Link to="/menu">
                                 <button className="btn btn-outline-danger btn-login">Menu</button>
                             </Link>
