@@ -9,7 +9,7 @@ const LOGIN = `${URL}public/owner/login`;
 const REGISTER = `${URL}public/owner/register`;
 const REGISTER_PRODUCTS = `${URL}private/product/register`;
 const ORDER_PADS = `${URL}private/management/orderpads`;
-const ORDER_PADS_TO_ID = `${URL_COMPANY}private/management/orderpad?id=1`;
+const ORDER_PADS_TO_ID = `${URL_COMPANY}private/management/orderpad?id=`;
 const ORDERS_TO_ID = `${URL}private/management/orders?orderpad=`;
 const REGISTER_TABLE = `${URL}private/table/register`;
 const UPDATE_PRODUCT = `${URL}private/product/update`;
@@ -125,8 +125,8 @@ const establishmentService = {
     },
 
     //Pagamento -> paymentEdit
-    async getOrderpadToId() {
-        return axios.get(ORDER_PADS_TO_ID,
+    async getOrderpadToId(id) {
+        return axios.get(`${ORDER_PADS_TO_ID}${id}`,
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) => {
                 return res.data
