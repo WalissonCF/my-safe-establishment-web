@@ -182,8 +182,9 @@ const userService = {
             })
     },
 
-    async deleteProductOrder(order) {
-        return await axios.delete(`https://my-safe-establishment.herokuapp.com/private/order/delete`, { order },
+    async deleteProductOrder(orderId, orderPadId) {
+        return await axios.delete(
+            `https://my-safe-establishment.herokuapp.com/private/order/delete/order?id=${orderId}&orderpadId=${orderPadId}`,
         { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } });
     },
 

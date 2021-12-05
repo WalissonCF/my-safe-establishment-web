@@ -4,8 +4,6 @@ import '../../styles/tables.css';
 import userService from '../../services/UserService';
 import AnimationTable from '../animations/Tables';
 
-import { Link } from 'react-router-dom';
-
 function Table() {
     const [posts, setPosts] = useState([]);
     const productList = "/product-list";
