@@ -65,13 +65,11 @@ function PaymentEstablishmentEdit() {
                 </div>
             </div>
             <div id="customer-demand" className="payment-demands">
-                {localStorage.setItem('statusOrderPadPayment', statusOrderPad.orderPad.status)}
                 <div className="demand-and-status">
                     <h2>Comanda: {localStorage.getItem('demaindIdPayment')}</h2>
                     <h2>Mesa: {localStorage.getItem('tablePayment')}</h2>
                     <h2>Status: {replaceStatus()}</h2>
                 </div>
-
                 {
                     posts.map(itens => (
                         <div key={String(itens.id)}>

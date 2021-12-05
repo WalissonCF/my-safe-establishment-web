@@ -129,6 +129,7 @@ const establishmentService = {
         return axios.get(`${ORDER_PADS_TO_ID}${id}`,
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) => {
+                localStorage.setItem('statusOrderPadPayment', res.data.orderPad.status)
                 return res.data
             }
             );
