@@ -7,14 +7,24 @@ import customerUtils from '../../utils/customerUtils';
 function PaymentEstablishmentEdit() {
     const [posts, setPosts] = useState([]);
     const [selects, setSelects] = useState([]);
+    const [statusOrderPad, setStatus] = useState([]);
 
     async function fetchPosts() {
         const id = localStorage.getItem('demaindIdPayment');
         await establishmentService.getOrders(id).then(setPosts);
     }
 
+    async function getStatus() {
+        const id = localStorage.getItem('demaindIdPayment');
+        await establishmentService.getOrderpadToId(id).then(setStatus);
+    }
+
     useEffect(() => {
         fetchPosts()
+    }, [])
+
+    useEffect(() => {
+        getStatus()
     }, [])
 
     function onClickPayment() {
@@ -26,8 +36,8 @@ function PaymentEstablishmentEdit() {
     }
 
     function replaceStatus() {
-        const status = localStorage.getItem('statusDemandPayment');
-        switch (status) {
+        const s = localStorage.getItem('statusOrderPadPayment');
+        switch (s) {
             case '0':
                 return 'Aberto';
             case '1':
@@ -55,15 +65,16 @@ function PaymentEstablishmentEdit() {
                 </div>
             </div>
             <div id="customer-demand" className="payment-demands">
+                {localStorage.setItem('statusOrderPadPayment', statusOrderPad.orderPad.status)}
                 <div className="demand-and-status">
                     <h2>Comanda: {localStorage.getItem('demaindIdPayment')}</h2>
                     <h2>Mesa: {localStorage.getItem('tablePayment')}</h2>
                     <h2>Status: {replaceStatus()}</h2>
                 </div>
+
                 {
                     posts.map(itens => (
                         <div key={String(itens.id)}>
-                            {console.log(itens)}
                             <div className="order-status">
                                 <p className="order-item">{itens.quantity} - {itens.productName}</p>
                                 <p className="order-value">R${itens.value}</p>
