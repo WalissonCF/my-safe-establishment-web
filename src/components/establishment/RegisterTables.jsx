@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 import { Link } from 'react-router-dom';
 import establishmentService from '../../services/EstablishmentService';
+import customerUtils from '../../utils/customerUtils';
+
 
 function RegisterTables() {
     const [selects, setSelects] = useState();
@@ -45,7 +47,7 @@ function RegisterTables() {
                             <div className="content-menu-register">
                                 <div className="content-in-text">
                                     <h1>Bem vindo,</h1>
-                                    <h2>nomeUser</h2>
+                                    <h2>{customerUtils.getCustomerName()}</h2>
                                     <Link to="/tables-establishment">
                                         <button className="btn btn-outline-danger btn-login">MESAS</button>
                                     </Link>
