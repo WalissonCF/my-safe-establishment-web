@@ -20,6 +20,7 @@ function PaymentEstablishment() {
         localStorage.setItem('demaindIdPayment', id);
         localStorage.setItem('customerIdPayment', customerId);
         localStorage.setItem('paybleValuePayment', paybleValue)
+
         localStorage.setItem('tipPayment', tip)
         localStorage.setItem('ratePayment', rate)
 
@@ -57,6 +58,7 @@ function PaymentEstablishment() {
                                 const id = itens.id.map((i) => {
                                     return i;
                                 });
+                                console.log(item);
                                 return (
                                     <div className="form-group tables-form-group" key={String(id)} onClick={() => onClickComand(id, item.customerId, item.paybleValue, item.tip, item.rate)}>
                                         <div className="tables">

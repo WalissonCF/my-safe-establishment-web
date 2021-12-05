@@ -215,7 +215,13 @@
 }
 
 .logoff {
-    
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    margin-left: 10%;
 }
 
 @media screen and (min-width: 780px) {

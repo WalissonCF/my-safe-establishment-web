@@ -88,7 +88,6 @@ export default class LoginUser extends React.Component {
                             <p id="alert-login" hidden>*CPF ou Celular incorretos</p>
                         </div>
                         <button type="submit" class="btn btn-outline-danger">ENTRAR</button>
-                        <h6>Cadastre-se sua <Link to={linkRegisterEstablishment}>empresa</Link>!</h6>
                     </form>
                     <hr />
                     <h6 class="responsible">Desenvolvido por alunos da Universidade Paulista(UNIP) - 2021</h6>

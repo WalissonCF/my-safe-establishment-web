@@ -10,7 +10,7 @@ const REGISTER = `${URL}public/owner/register`;
 const REGISTER_PRODUCTS = `${URL}private/product/register`;
 const ORDER_PADS = `${URL}private/management/orderpads`;
 const ORDER_PADS_TO_ID = `${URL_COMPANY}private/management/orderpad?id=1`;
-const ORDERS_TO_ID = `${URL_COMPANY}private/management/orders?orderpad=`;
+const ORDERS_TO_ID = `${URL}private/management/orders?orderpad=`;
 const REGISTER_TABLE = `${URL}private/table/register`;
 const UPDATE_PRODUCT = `${URL}private/product/update`;
 const UPDATE_ORDER_STATUS = `${URL_COMPANY}/private/management/change/order?id=10&status=3&customerId=6`;
@@ -29,8 +29,6 @@ const establishmentService = {
     },
 
     postRegister(owner, establishment, address) {
-        debugger
-
         axios.post(REGISTER, { owner, establishment, address })
             .then((res) => {
                 if (res.status === 200 || res.status === 201) {
@@ -111,7 +109,6 @@ const establishmentService = {
             .then((res) => {
                 document.getElementById('alert-payment-success-establishment').innerText = "Pagamento realizado com sucesso!";
                 customerUtils.removeHidden(`alert-payment-success-establishment`);
-                
             }).catch(function(error) {
                 document.getElementById('alert-payment-success-establishment').innerText = error.response.data.message;
                 customerUtils.removeHidden(`alert-payment-success-establishment`); 
@@ -128,7 +125,6 @@ const establishmentService = {
             );
     },
 
-    //
     async getOrderpadToId() {
         return axios.get(ORDER_PADS_TO_ID,
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
