@@ -16,14 +16,17 @@ function Ordered() {
 
     async function updateValueProduct({ id, orderPadId, quantity }) {
         try {
-            setLoading(true)
-
             const { data: product } = await userService.updateQuantityProduct(id, orderPadId, quantity)
             const updatedProducts = products.map(p => p.id === product.id ? { ...product } : p);
             setProducts(updatedProducts);
-        } catch (error) {
-            console.log(error);
-
+            console.log('Aqui');
+            setLoading(true)
+        } catch (e) {
+            customerUtils.removeHidden('alert-delete-product-error');
+            document.getElementById('alert-delete-product-error').innerText = `${e.response.data.message}. A tela será atualizada em 5s`
+            setTimeout(function () {
+                window.location = '/ordered';
+            }, 5000)
         } finally {
             setLoading(false)
         }
@@ -62,13 +65,17 @@ function Ordered() {
     async function removeProduct(productId) {
         const productsUpdated = products.filter(p => p.id !== productId);
 
-        setProducts(productsUpdated);
         const deleteProduct = products.find(p => p.id === productId)
 
         try {
             await userService.deleteProductOrder(deleteProduct.id, deleteProduct.orderPadId);
-        } catch(e) {
-            console.log(e)
+            setProducts(productsUpdated);
+        } catch (e) {
+            customerUtils.removeHidden('alert-delete-product-error');
+            document.getElementById('alert-delete-product-error').innerText = `${e.response.data.message}. A tela será atualizada em 5s`
+            setTimeout(function () {
+                window.location = '/ordered';
+            }, 5000)
         }
     }
 
@@ -110,6 +117,7 @@ function Ordered() {
                 </div>
                 <div className="confirm">
                     <AnimationPayment></AnimationPayment>
+                    <p id="alert-delete-product-error" hidden></p>
                     <h2 class="my-products">Para fechar a conta <br /> clique no botão abaixo</h2>
                     <button onClick={onClickCloseOrder} class="btn btn-outline-danger close-order">FECHAR A CONTA</button>
                 </div>
