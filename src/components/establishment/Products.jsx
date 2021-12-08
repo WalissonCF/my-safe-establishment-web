@@ -144,6 +144,7 @@ function Products() {
                 }
             </div>
             <div className="confirm new-product">
+                <p id="alert-product-establishment-error" hidden></p>
                 <Link to="/product-registration">
                     <button className="btn btn-outline-danger">NOVO PRODUTO</button>
                 </Link>

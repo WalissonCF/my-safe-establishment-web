@@ -53,6 +53,18 @@
     margin-block-end: -2px
 }
 
+#alert-product-establishment-error {
+    color: var(--main-color);
+    font-size: 13px;
+    margin-block-end: -2px
+}
+
+#alert-error-edit-product-establishment {
+    color: var(--main-color);
+    font-size: 13px;
+    margin-block-end: -2px
+}
+
 #alert-login-failed-establishment {
     color: var(--main-color);
     font-size: 20px;
