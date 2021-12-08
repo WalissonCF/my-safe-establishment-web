@@ -66,6 +66,10 @@
     margin-left: 0;
 }
 
+#number-seats-establishment {
+    color: black;
+}
+
 .status-tables-1, .status-tables-2 {
     margin-left: 59%;
     width: 80%;

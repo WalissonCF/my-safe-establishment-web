@@ -22,7 +22,8 @@ function Ordered() {
             const updatedProducts = products.map(p => p.id === product.id ? { ...product } : p);
             setProducts(updatedProducts);
         } catch (error) {
-            console.log(error)
+            console.log(error);
+
         } finally {
             setLoading(false)
         }
@@ -48,7 +49,6 @@ function Ordered() {
 
     function decrementQuantity(productId) {
         let product = products.find(p => p.id === productId);
-        console.log("product", product)
 
         const quantity = product.quantity -= 1;
 
@@ -65,8 +65,11 @@ function Ordered() {
         setProducts(productsUpdated);
         const deleteProduct = products.find(p => p.id === productId)
 
-        console.log(deleteProduct.id, deleteProduct.orderPadId);
-        await userService.deleteProductOrder(deleteProduct.id, deleteProduct.orderPadId);
+        try {
+            await userService.deleteProductOrder(deleteProduct.id, deleteProduct.orderPadId);
+        } catch(e) {
+            console.log(e)
+        }
     }
 
     return (

@@ -20,7 +20,6 @@ function RegisterTables() {
         } else {
             statusTableOrigin = '1'
         }
-        console.log('statusTableOrigin', statusTableOrigin);
         establishmentService.postRegisterTable(locationArea, statusTableOrigin);
     }
 

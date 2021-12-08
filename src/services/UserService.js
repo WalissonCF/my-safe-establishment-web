@@ -8,7 +8,8 @@ const URL_COMPANY = 'https://my-safe-establishment-company.herokuapp.com/';
 
 const USER_LOGIN_URL = `${URL}public/login`;
 const USER_REGISTER_URL = `${URL}public/register`;
-const TABLE = `${URL}private/tables`;
+const TABLE = `${URL_COMPANY}private/tables`;
+const TABLE_STATUS = `${URL_COMPANY}private/table?numberSeats=`;
 const PRODUCTS = `${URL}private/products`;
 const ORDER = `${URL}private/order/register`;
 const CREATE_ORDER_PAD = `${URL}private/orderpad/create`;
@@ -64,7 +65,7 @@ const userService = {
             .catch(function(error) {
                 // document.getElementById('alert-payment-error').innerText = error.response.data.message;
                 // customerUtils.removeHidden('alert-payment-error');
-                console.log(error.response.data.message)
+                // console.log(error.response.data.message)
             });
     },
 
@@ -150,7 +151,6 @@ const userService = {
         axios.post(`${PAYMENT_MANUAL}${orderPadId}/${customerId}`,
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) => {
-                console.log(res)
                 window.location = "/calling-attendant";
             })
     },
@@ -161,12 +161,25 @@ const userService = {
         { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
     },
 
-    async getTables() {
-        return axios.get(TABLE, {
+    async getTablesStatus(quantityPeople) {
+        return axios.get(`${TABLE_STATUS}${quantityPeople}`, {
             headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` }
         })
             .then((res) =>
                 res.data
+            );
+    },
+
+    async getTables() {
+        return axios.get(`${TABLE}`, {
+            headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` }
+        })
+            .then((res) => {
+                console.log(res.data);
+                localStorage.setItem('numberUnavailableSeats', res.data.numberUnavailableSeats);
+                localStorage.setItem('numberTotalSeats', res.data.numberTotalSeats);
+                return res.data.tables
+            }
             );
     },
 
