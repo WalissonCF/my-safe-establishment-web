@@ -53,6 +53,12 @@
     margin-block-end: -2px
 }
 
+#alert-tables-customer {
+    color: var(--main-color);
+    font-size: 14px;
+    margin-block-end: -2px
+}
+
 .alert-customer-demand {
     color: var(--main-color)!important;
     font-size: 12px;

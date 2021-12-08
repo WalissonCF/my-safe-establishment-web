@@ -76,20 +76,20 @@ export default class ProductRegistration extends React.Component {
                                     <i id="image" className="material-icons">add_box</i>
                                 </label>
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label>Nome do produto:</label>
                                 <input type="text" className="form-control" id="name" name="name" value={name} onChange={this.onChange} />
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label>Valor:</label>
                                 <NumberFormat thousandSeparator={true} prefix={'R$'} type="tel" className="form-control" name="value" value={value} onChange={this.onChange}
                                     placeholder="R$" autoComplete="off" />
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label>Tipo do produto:</label>
                                 <input type="text" className="form-control" id="typeProduct" name="typeProduct" value={typeProduct} onChange={this.onChange} />
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label>Ingredientes:</label>
                                 <textarea className="form-control" id="ingredients" name="ingredients" value={ingredients} onChange={this.onChange}></textarea>
                             </div>
@@ -100,7 +100,7 @@ export default class ProductRegistration extends React.Component {
                         </div>
 
                         <div className="confirm">
-                            <button class="btn btn-outline-danger btn-quantity-customer btn-select-table">CADASTRAR</button>
+                            <button className="btn btn-outline-danger btn-quantity-customer btn-select-table">CADASTRAR</button>
                         </div>
 
                         {/* <div className="product-name-value">
