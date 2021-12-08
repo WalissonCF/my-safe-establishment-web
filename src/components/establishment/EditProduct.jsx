@@ -143,7 +143,7 @@ function EditProduct() {
                 </div>
             </div>
             <div className="confirm new-product">
-                
+                <p id="alert-error-edit-product-establishment"></p>
                 <button className="btn btn-outline-danger" onClick={updateProduct}>SALVAR</button>
             </div>
         </div>

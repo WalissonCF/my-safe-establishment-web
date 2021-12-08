@@ -79,6 +79,10 @@ const establishmentService = {
             .then((res) => {
                 window.location = "/products-establishment";
             })
+            .catch(function(error) {
+                customerUtils.removeHidden('alert-product-establishment-error');
+                document.getElementById('alert-product-establishment-error').innerText = error.response.data.message;
+            });
     },
 
     deleteTables(id) {
@@ -93,6 +97,10 @@ const establishmentService = {
         axios.put(UPDATE_PRODUCT, { id, name, typeProduct, description, ingredients, value },
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) => {
+            })
+            .catch(function(error) {
+                customerUtils.removeHidden('alert-error-edit-product-establishment');
+                document.getElementById('alert-error-edit-product-establishment').innerText = error.response.data.message;
             })
     },
 
