@@ -3,6 +3,7 @@ import '../../styles/amountOfPeopleUser.css';
 import '../../styles/tables.css';
 import userService from '../../services/UserService';
 import AnimationTable from '../animations/Tables';
+import customerUtils from '../../utils/customerUtils';
 
 function Table() {
     const [posts, setPosts] = useState([]);
@@ -10,8 +11,12 @@ function Table() {
 
     async function fetchPosts() {
         const peopleQuantity = localStorage.getItem('quantityCustomer');
-        console.log(peopleQuantity);
-        await userService.getTablesStatus(peopleQuantity).then(setPosts);
+        try {
+            await userService.getTablesStatus(peopleQuantity).then(setPosts);
+        } catch (e) {
+            customerUtils.removeHidden('alert-tables-customer');
+            document.getElementById('alert-tables-customer').innerText = e.response.data.message;
+        }
     }
 
     useEffect(() => {
@@ -35,54 +40,55 @@ function Table() {
         <div className="container-fluid">
             <div className="tables-establishment">
                 {/* <form> */}
-                    <h2 className="table-title">Por favor selecione <br /> uma mesa</h2>
-                    <div className="all-tables ">
-                        {
-                            posts.map((item) => {
-                                const ids = [item.id];
-                                const statusTables = [item.statusTable];
-                                let tables = [
-                                    {
-                                        id: ids,
-                                        statusTable: statusTables,
+                <h2 className="table-title">Por favor selecione <br /> uma mesa</h2>
+                <p id="alert-tables-customer" hidden></p>
+                <div className="all-tables ">
+                    {
+                        posts.map((item) => {
+                            const ids = [item.id];
+                            const statusTables = [item.statusTable];
+                            let tables = [
+                                {
+                                    id: ids,
+                                    statusTable: statusTables,
+                                }
+                            ];
+                            return tables.map((itens) => {
+                                const status = itens.statusTable.map((situations) => {
+                                    if (situations === '0' || situations === 'Disponivel') {
+                                        return "tables";
+                                    } else {
+                                        return "tables-1";
                                     }
-                                ];
-                                return tables.map((itens) => {
-                                    const status = itens.statusTable.map((situations) => {
-                                        if (situations === '0' || situations === 'Disponivel') {
-                                            return "tables";
-                                        } else {
-                                            return "tables-1";
-                                        }
-                                    })
-                                    return itens.id.map((t, index) => {
-                                        if ([status[index]].toString() === "tables") {
-                                            return (
-                                                <div key={index} className="form-group tables-form-group">
-                                                    <div className={[status[index]]} onClick={onClickCheckTable}>
-                                                        <p className="number-table">Mesa {t}</p>
-                                                    </div>
-                                                </div>)
-                                        } else {
-                                            return (
-                                                <div className="form-group tables-form-group">
-                                                    <div class={[status[index]]}>
-                                                        <p className="number-table">Mesa {t}</p>
-                                                    </div>
+                                })
+                                return itens.id.map((t, index) => {
+                                    if ([status[index]].toString() === "tables") {
+                                        return (
+                                            <div key={index} className="form-group tables-form-group">
+                                                <div className={[status[index]]} onClick={onClickCheckTable}>
+                                                    <p className="number-table">Mesa {t}</p>
                                                 </div>
-                                            )
-                                        }
-                                    })
+                                            </div>)
+                                    } else {
+                                        return (
+                                            <div className="form-group tables-form-group">
+                                                <div class={[status[index]]}>
+                                                    <p className="number-table">Mesa {t}</p>
+                                                </div>
+                                            </div>
+                                        )
+                                    }
                                 })
                             })
-                        }
-                    </div>
-                    <div className="confirm">
-                        <AnimationTable></AnimationTable>
-                        <h2>Mesa:<p id="table-selected"></p>
-                        </h2>
-                        <button onClick={onClickPostOrderPad} class="btn btn-outline-danger btn-quantity-customer btn-select-table">CONTINUAR</button>
-                    </div>
+                        })
+                    }
+                </div>
+                <div className="confirm">
+                    <AnimationTable></AnimationTable>
+                    <h2>Mesa:<p id="table-selected"></p>
+                    </h2>
+                    <button onClick={onClickPostOrderPad} class="btn btn-outline-danger btn-quantity-customer btn-select-table">CONTINUAR</button>
+                </div>
                 {/* </form> */}
             </div>
         </div>

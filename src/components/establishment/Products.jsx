@@ -130,8 +130,8 @@ function Products() {
                                                     </div>
                                                 </div>
                                                 <div className="edit">
-                                                    <button type="button" class="btn btn-outline-primary button-edit" onClick={() => updateProduct(ids, names, type, ingre, desc, amounts)}>ALTERAR</button>
-                                                    <button id={ids} onClick={deleteProduct} type="button" class="btn btn-outline-primary button-delete">DELETAR</button>
+                                                    <button type="button" className="btn btn-outline-primary button-edit" onClick={() => updateProduct(ids, names, type, ingre, desc, amounts)}>ALTERAR</button>
+                                                    <button id={ids} onClick={deleteProduct} type="button" className="btn btn-outline-primary button-delete">DELETAR</button>
                                                 </div>
                                                 <hr />
                                             </div>

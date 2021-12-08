@@ -162,7 +162,7 @@ const userService = {
     },
 
     async getTablesStatus(quantityPeople) {
-        return axios.get(`${TABLE_STATUS}${quantityPeople}`, {
+        return await axios.get(`${TABLE_STATUS}${quantityPeople}`, {
             headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` }
         })
             .then((res) =>
