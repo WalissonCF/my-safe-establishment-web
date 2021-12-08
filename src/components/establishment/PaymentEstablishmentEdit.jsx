@@ -31,7 +31,6 @@ function PaymentEstablishmentEdit() {
         const paymentMethod = localStorage.getItem('formOfPayment');
         const customerId = parseInt(localStorage.getItem('customerIdPayment'));
         const paybleValue = parseFloat(localStorage.getItem('paybleValuePayment')).toFixed(2);
-        console.log(customerId, paymentMethod, paybleValue);
         establishmentService.postPaymentManual(customerId, paymentMethod, parseFloat(paybleValue))
     }
 

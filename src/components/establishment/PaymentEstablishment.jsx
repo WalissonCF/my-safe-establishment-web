@@ -10,7 +10,7 @@ function PaymentEstablishment() {
     const [posts, setPosts] = useState([]);
 
     async function fetchPosts() {
-        await establishmentService.getOrderpads().then(setPosts);
+        await establishmentService.getOrderpadsStatus().then(setPosts);
     }
 
     useEffect(() => {
@@ -50,7 +50,6 @@ function PaymentEstablishment() {
                             const id = [item.id];
                             localStorage.setItem('tablePayment', item.tableId);
                             localStorage.setItem('statusDemandPayment', item.status);
-                            console.log(item)
                             let demand = [
                                 {
                                     id: id,
@@ -60,7 +59,6 @@ function PaymentEstablishment() {
                                 const id = itens.id.map((i) => {
                                     return i;
                                 });
-                                console.log(item);
                                 return (
                                     <div className="form-group tables-form-group" key={String(id)} onClick={() => onClickComand(id, item.customerId, item.paybleValue, item.tip, item.rate)}>
                                         <div className="tables">

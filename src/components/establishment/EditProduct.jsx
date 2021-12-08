@@ -35,8 +35,6 @@ function EditProduct() {
         const updateDescription = isValidateDescription(description, product.description);
         const updateTypeProduct = isValidateTypeProduct(typeProduct, product.typeProduct);
 
-        console.log(parseFloat(customerUtils.replaceVirgulaToPonto(customerUtils.unFormarValue(updateValue))));
-
         let productUpdate = {
             id: updateId,
             name: updateName,
@@ -45,6 +43,8 @@ function EditProduct() {
             description: updateDescription,
             typeProduct: updateTypeProduct,
         };
+
+        console.log(product);
         establishmentService.updateProdut(updateId, updateName, updateTypeProduct, updateDescription, updateIngredient, parseFloat(customerUtils.replaceVirgulaToPonto(customerUtils.unFormarValue(updateValue))));
     }
 

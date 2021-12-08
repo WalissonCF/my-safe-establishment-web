@@ -9,7 +9,9 @@ function Table() {
     const productList = "/product-list";
 
     async function fetchPosts() {
-        await userService.getTables().then(setPosts);
+        const peopleQuantity = localStorage.getItem('quantityCustomer');
+        console.log(peopleQuantity);
+        await userService.getTablesStatus(peopleQuantity).then(setPosts);
     }
 
     useEffect(() => {

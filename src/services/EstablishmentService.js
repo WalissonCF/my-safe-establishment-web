@@ -8,7 +8,8 @@ const URL_COMPANY = 'https://my-safe-establishment-company.herokuapp.com/';
 const LOGIN = `${URL}public/owner/login`;
 const REGISTER = `${URL}public/owner/register`;
 const REGISTER_PRODUCTS = `${URL}private/product/register`;
-const ORDER_PADS = `${URL}private/management/orderpads`;
+const ORDER_PADS = `${URL_COMPANY}private/management/orderpads?status=0`;
+const ORDER_PADS_STATUS = `${URL_COMPANY}private/management/orderpads?status=3`;
 const ORDER_PADS_TO_ID = `${URL_COMPANY}private/management/orderpad?id=`;
 const ORDERS_TO_ID = `${URL}private/management/orders?orderpad=`;
 const REGISTER_TABLE = `${URL}private/table/register`;
@@ -34,7 +35,7 @@ const establishmentService = {
                 if (res.status === 200 || res.status === 201) {
                     authService.setLoggedUser(res.data, res.data.name,
                         res.data.token, res.data.customerId);
-                        window.location = "/menu";
+                    window.location = "/menu";
                 }
             })
     },
@@ -53,15 +54,13 @@ const establishmentService = {
         axios.post(REGISTER_PRODUCTS, { product, imageEncoded },
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) => {
-                if (res.data === 201) {
-                    window.location = "/products-establishment";
-                }
+                window.location = "/products-establishment";
             });
     },
 
     postRegisterTable(locationArea, statusTable) {
         const numberSeats = parseInt(localStorage.getItem('numberSeats'));
-        axios.post(REGISTER_TABLE, {statusTable, locationArea, numberSeats},
+        axios.post(REGISTER_TABLE, { statusTable, locationArea, numberSeats },
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) => {
                 customerUtils.removeHidden('alert-success-register-table');
@@ -85,7 +84,7 @@ const establishmentService = {
     },
 
     updateProdut(id, name, typeProduct, description, ingredients, value) {
-        axios.put(UPDATE_PRODUCT, { id, name, typeProduct, description, ingredients, value }, 
+        axios.put(UPDATE_PRODUCT, { id, name, typeProduct, description, ingredients, value },
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) => {
             })
@@ -93,30 +92,39 @@ const establishmentService = {
 
     updateOrderStatus(orderId, status, customerId) {
         axios.post(`https://my-safe-establishment-company.herokuapp.com/private/management/change/order?id=${orderId}&status=${status}&customerId=${customerId}`)
-        .then((res) => {
-        })
-        .catch(function(error) {
-            const className = `alert-customer-demand-${orderId}`;
-            document.getElementById(className).innerText = error.response.data.message;
-            customerUtils.removeHidden(`alert-customer-${orderId}`);
-        })
+            .then((res) => {
+            })
+            .catch(function (error) {
+                const className = `alert-customer-demand-${orderId}`;
+                document.getElementById(className).innerText = error.response.data.message;
+                customerUtils.removeHidden(`alert-customer-${orderId}`);
+            })
     },
 
     postPaymentManual(customerId, paymentMethod, valuePayment) {
-        axios.post(PAYMENT_MANUAL, {customerId, paymentMethod, valuePayment},
+        axios.post(PAYMENT_MANUAL, { customerId, paymentMethod, valuePayment },
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) => {
                 document.getElementById('alert-payment-success-establishment').innerText = "Pagamento realizado com sucesso!";
                 customerUtils.removeHidden(`alert-payment-success-establishment`);
-            }).catch(function(error) {
+            }).catch(function (error) {
                 document.getElementById('alert-payment-success-establishment').innerText = error.response.data.message;
-                customerUtils.removeHidden(`alert-payment-success-establishment`); 
+                customerUtils.removeHidden(`alert-payment-success-establishment`);
             })
     },
-    
+
     //retorna todas as demandas
     async getOrderpads() {
         return axios.get(ORDER_PADS,
+            { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
+            .then((res) => {
+                return res.data
+            }
+            );
+    },
+
+    async getOrderpadsStatus() {
+        return axios.get(ORDER_PADS_STATUS,
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) => {
                 return res.data
@@ -138,7 +146,7 @@ const establishmentService = {
     //gerencimento quando clicar na demanda
     //orderpadId
     async getOrders(id) {
-        return axios.get(`${ORDERS_TO_ID}${id}` ,
+        return axios.get(`${ORDERS_TO_ID}${id}`,
             { headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` } })
             .then((res) => {
                 return res.data

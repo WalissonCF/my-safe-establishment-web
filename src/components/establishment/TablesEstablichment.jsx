@@ -37,6 +37,7 @@ function TablesEstablishment() {
                 </div>
             </div>
             <div className="tables-establishment">
+                <p id="number-seats-establishment">Assentos ocupados: {localStorage.getItem('numberUnavailableSeats')}/{localStorage.getItem('numberTotalSeats')}</p>
                 <div className="all-tables">
                     {
                         posts.map((item) => {
