@@ -72,7 +72,7 @@ function Table() {
                                     } else {
                                         return (
                                             <div className="form-group tables-form-group">
-                                                <div class={[status[index]]}>
+                                                <div className={[status[index]]}>
                                                     <p className="number-table">Mesa {t}</p>
                                                 </div>
                                             </div>
@@ -87,7 +87,7 @@ function Table() {
                     <AnimationTable></AnimationTable>
                     <h2>Mesa:<p id="table-selected"></p>
                     </h2>
-                    <button onClick={onClickPostOrderPad} class="btn btn-outline-danger btn-quantity-customer btn-select-table">CONTINUAR</button>
+                    <button onClick={onClickPostOrderPad} className="btn btn-outline-danger btn-quantity-customer btn-select-table">CONTINUAR</button>
                 </div>
                 {/* </form> */}
             </div>

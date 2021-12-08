@@ -82,7 +82,7 @@ export default class PaymentForm extends React.Component {
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-12">
-                        <h3 class="title-payment">Pagamento</h3>
+                        <h3 className="title-payment">Pagamento</h3>
                     </div>
                 </div>
                 <div id="payments-methods">
@@ -113,7 +113,7 @@ export default class PaymentForm extends React.Component {
                                     value="debito" checked={this.state.selectedOption === "debito"}
                                     onChange={this.onValueChange} />
                             </div>
-                            <div class="form-check">
+                            <div className="form-check">
                                 <label className="form-check-label" for="gridRadios2">Crédito</label>
                                 <input className="form-check-input" type="radio" name="gridRadios"
                                     value="credito" checked={this.state.selectedOption === "credito"}

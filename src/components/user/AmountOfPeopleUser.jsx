@@ -58,17 +58,17 @@ export default class AmountOfPeopleUser extends React.Component {
                         </div>
                     </div>
                     <form onSubmit={this.onSubmit}>
-                        <div class="form-group" id="registration-of-the-number-of-people">
-                            <div class="form-group">
+                        <div className="form-group" id="registration-of-the-number-of-people">
+                            <div className="form-group">
                                 <h3>Bem vindo, <br /> {customerUtils.getCustomerName()}</h3>
-                                <label for="quantity-customer" class="quantity-customer">Mesa para quantos? <br />Não esqueça de incluir você!</label>
+                                <label for="quantity-customer" className="quantity-customer">Mesa para quantos? <br />Não esqueça de incluir você!</label>
                                 <div className="info-customer">
                                     <i className="material-icons" onClick={this.onClickSubtraction}>remove_circle_outline </i>
                                     <label id="qtde-customer">1</label>
                                     <i className="material-icons" onClick={this.onClickSum}>add_circle_outline</i>
                                 </div>
                             </div>
-                            <button class="btn btn-outline-danger btn-quantity-customer" onClick={this.onClickProceed}>CONTINUAR</button>
+                            <button className="btn btn-outline-danger btn-quantity-customer" onClick={this.onClickProceed}>CONTINUAR</button>
                         </div>
                     </form>
                 </div>

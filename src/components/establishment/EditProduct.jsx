@@ -44,7 +44,6 @@ function EditProduct() {
             typeProduct: updateTypeProduct,
         };
 
-        console.log(product);
         establishmentService.updateProdut(updateId, updateName, updateTypeProduct, updateDescription, updateIngredient, parseFloat(customerUtils.replaceVirgulaToPonto(customerUtils.unFormarValue(updateValue))));
     }
 

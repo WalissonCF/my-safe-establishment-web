@@ -61,6 +61,7 @@ export default class LoginEstablishment extends React.Component {
                         </div>
                         <button type="submit" className="btn btn-outline-danger">ENTRAR</button>
                         <h6>Cadastre-se sua <Link to={linkRegisterEstablishment}>empresa</Link>!</h6>
+                        <p id="alert-login-failed-establishment" hidden></p>
                     </form>
                     <hr />
                     <h6 className="responsible">Desenvolvido por alunos da Universidade Paulista(UNIP) - 2021</h6>

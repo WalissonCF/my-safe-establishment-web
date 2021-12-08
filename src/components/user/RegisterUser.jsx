@@ -34,12 +34,12 @@ export default class RegisterUser extends React.Component {
 
         return (
             <React.Fragment>
-                <div class="container-fluid">
-                    {/* <div class="welcome"></div> */}
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="content-menu-register">
-                                <div class="content-in-text">
+                <div className="container-fluid">
+                    {/* <div className="welcome"></div> */}
+                    <div className="row">
+                        <div className="col-12">
+                            <div className="content-menu-register">
+                                <div className="content-in-text">
                                     <h1>Bem-vindo ao</h1>
                                     <h2>My Establishment</h2>
                                     <p>
@@ -52,7 +52,7 @@ export default class RegisterUser extends React.Component {
                                     clicando no botão abaixo
                                     </p>
                                     <Link to={linkLoginUser}>
-                                        <button class="btn btn-outline-danger btn-login">ENTRAR</button>
+                                        <button className="btn btn-outline-danger btn-login">ENTRAR</button>
                                     </Link>
                                 </div>
                             </div>

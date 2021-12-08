@@ -19,7 +19,6 @@ function Ordered() {
             const { data: product } = await userService.updateQuantityProduct(id, orderPadId, quantity)
             const updatedProducts = products.map(p => p.id === product.id ? { ...product } : p);
             setProducts(updatedProducts);
-            console.log('Aqui');
             setLoading(true)
         } catch (e) {
             customerUtils.removeHidden('alert-delete-product-error');
@@ -118,8 +117,8 @@ function Ordered() {
                 <div className="confirm">
                     <AnimationPayment></AnimationPayment>
                     <p id="alert-delete-product-error" hidden></p>
-                    <h2 class="my-products">Para fechar a conta <br /> clique no botão abaixo</h2>
-                    <button onClick={onClickCloseOrder} class="btn btn-outline-danger close-order">FECHAR A CONTA</button>
+                    <h2 className="my-products">Para fechar a conta <br /> clique no botão abaixo</h2>
+                    <button onClick={onClickCloseOrder} className="btn btn-outline-danger close-order">FECHAR A CONTA</button>
                 </div>
             </div>
         </div>

@@ -134,7 +134,6 @@ function CustomerDemand() {
                                         </div>
                                         {
                                             status.map((n) => {
-                                                console.log(n)
                                                 if (n === '3') {
                                                     setTimeout(function () {
                                                         document.getElementById(`${id}`).disabled = "true";

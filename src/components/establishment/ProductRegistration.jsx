@@ -18,7 +18,7 @@ export default class ProductRegistration extends React.Component {
             ingredients: '',
             value: '',
             test: '',
-            profileImg: '',
+            profileImg: 'https://as1.ftcdn.net/v2/jpg/01/07/98/26/1000_F_107982678_g1KFdUIMODTkQopd3tVc8SSWT75w4cva.jpg',
         }
     }
 

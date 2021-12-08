@@ -64,15 +64,15 @@ function TablesEstablishment() {
                                                 <div key={index} className={[status[index]]}>
                                                     <p className="number-table">Mesa {t}</p>
                                                 </div>
-                                                <button id={ids} onClick={deleteTable} type="button" class="btn btn-outline-primary button-delete">DELETAR</button>
+                                                <button id={ids} onClick={deleteTable} type="button" className="btn btn-outline-primary button-delete">DELETAR</button>
                                             </div>)
                                     } else {
                                         return (
                                             <div className="form-group tables-form-group">
-                                                <div key={index} class={[status[index]]}>
+                                                <div key={index} className={[status[index]]}>
                                                     <p className="number-table">Mesa {t}</p>
                                                 </div>
-                                                <button id={ids} type="button" class="btn btn-outline-primary button-delete" disabled>DELETAR</button>
+                                                <button id={ids} type="button" className="btn btn-outline-primary button-delete" disabled>DELETAR</button>
                                             </div>
                                         )
                                     }
