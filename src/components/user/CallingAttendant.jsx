@@ -22,10 +22,10 @@ export default class CallingAttendant extends React.Component {
         };
         return (
             <React.Fragment>
-                <div class="container-fluid">
+                <div className="container-fluid">
                     <div className="row">
                         <div className="col-12">
-                            <div class="content-in-text">
+                            <div className="content-in-text">
                                 <h3>{customerUtils.title()}</h3>
                             </div>
                         </div>

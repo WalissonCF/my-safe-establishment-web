@@ -26,7 +26,10 @@ const establishmentService = {
                         res.data.token, res.data.customerId);
                     window.location = "/menu";
                 }
-            })
+            }).catch(function(error) {
+                customerUtils.removeHidden('alert-login-failed-establishment');
+                document.getElementById('alert-login-failed-establishment').innerText = error.response.data.message;
+            });
     },
 
     postRegister(owner, establishment, address) {
@@ -37,7 +40,10 @@ const establishmentService = {
                         res.data.token, res.data.customerId);
                     window.location = "/menu";
                 }
-            })
+            }).catch(function(error) {
+                customerUtils.removeHidden('alert-register-failed-establishment');
+                document.getElementById('alert-register-failed-establishment').innerText = error.response.data.message;
+            });
     },
 
     postRegisterProducts(name, typeProduct, description, ingredients, valueProduct, dataBase) {

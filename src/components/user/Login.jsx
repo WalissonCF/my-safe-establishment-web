@@ -32,11 +32,11 @@ export default class LoginUser extends React.Component {
 
         return (
             <React.Fragment>
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="content-menu-register">
-                                <div class="content-in-text">
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-12">
+                            <div className="content-menu-register">
+                                <div className="content-in-text">
                                     <h1>Bem-vindo ao</h1>
                                     <h2>My Establishment</h2>
                                     <p>
@@ -49,7 +49,7 @@ export default class LoginUser extends React.Component {
                                     clicando no botão abaixo
                                     </p>
                                     <Link to="/register">
-                                        <button class="btn btn-outline-danger btn-login">CADASTRAR-SE</button>
+                                        <button className="btn btn-outline-danger btn-login">CADASTRAR-SE</button>
                                     </Link>
                                 </div>
                             </div>
@@ -87,10 +87,10 @@ export default class LoginUser extends React.Component {
                         <div>
                             <p id="alert-login" hidden>*CPF ou Celular incorretos</p>
                         </div>
-                        <button type="submit" class="btn btn-outline-danger">ENTRAR</button>
+                        <button type="submit" className="btn btn-outline-danger">ENTRAR</button>
                     </form>
                     <hr />
-                    <h6 class="responsible">Desenvolvido por alunos da Universidade Paulista(UNIP) - 2021</h6>
+                    <h6 className="responsible">Desenvolvido por alunos da Universidade Paulista(UNIP) - 2021</h6>
                 </div>
             </React.Fragment>
         )

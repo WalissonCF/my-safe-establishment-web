@@ -54,7 +54,7 @@ function OrderSummary() {
                     </div>
                 </div>
                 <Link to="/payment">
-                    <button class="btn btn-outline-danger confirm-summary">CONFIRMAR</button>
+                    <button className="btn btn-outline-danger confirm-summary">CONFIRMAR</button>
                 </Link>
             </div>
         </div>

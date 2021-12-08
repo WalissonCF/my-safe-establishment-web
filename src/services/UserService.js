@@ -65,7 +65,6 @@ const userService = {
             .catch(function(error) {
                 // document.getElementById('alert-payment-error').innerText = error.response.data.message;
                 // customerUtils.removeHidden('alert-payment-error');
-                // console.log(error.response.data.message)
             });
     },
 
@@ -175,7 +174,6 @@ const userService = {
             headers: { Authorization: `Bearer ${customerUtils.getCustomerToken()}` }
         })
             .then((res) => {
-                console.log(res.data);
                 localStorage.setItem('numberUnavailableSeats', res.data.numberUnavailableSeats);
                 localStorage.setItem('numberTotalSeats', res.data.numberTotalSeats);
                 return res.data.tables

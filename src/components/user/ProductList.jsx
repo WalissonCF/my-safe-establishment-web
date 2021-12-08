@@ -83,8 +83,8 @@ function ProductList() {
                                     <div id="products">{
                                         itens.id.map((srcs, index) => {
                                             return (
-                                                <div class="form-group" id="products">
-                                                    <img class={ids} name={[names[index]]} id="img" key={index} src={src} alt="" onClick={onClickCheckImg} />
+                                                <div className="form-group" id="products">
+                                                    <img className={ids} name={[names[index]]} id="img" key={index} src={src} alt="" onClick={onClickCheckImg} />
                                                     <label id="product-name" key={index}>{[names[index]]}</label>
                                                 </div>
                                             )
@@ -97,9 +97,9 @@ function ProductList() {
                 </div>
                 <div className="confirm">
                     <AnimationProducts></AnimationProducts>
-                    <h2 class="my-products">Para verificar seus pedidos <br /> clique no botão abaixo</h2>
+                    <h2 className="my-products">Para verificar seus pedidos <br /> clique no botão abaixo</h2>
                     <Link to="/ordered">
-                        <button class="btn btn-outline-danger ordered">MEUS PEDIDOS</button>
+                        <button className="btn btn-outline-danger ordered">MEUS PEDIDOS</button>
                     </Link>
                 </div>
             </form>

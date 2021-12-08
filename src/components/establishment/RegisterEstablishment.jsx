@@ -172,7 +172,7 @@ export default class LoginEstablishment extends React.Component {
                             </div>
                             <div className="form-group">
                                 <label for="cep">CEP:</label>
-                                <input type="text" class="form-control" id="cep" placeholder="00000-000"
+                                <input type="text" className="form-control" id="cep" placeholder="00000-000"
                                     maxlength="8" value={this.state.value} required disabled />
                             </div>
                             <div className="form-group">
@@ -231,6 +231,7 @@ export default class LoginEstablishment extends React.Component {
                             </div>
                             <button className="btn btn-outline-danger" id="back" onClick={this.onClickHidden}>VOLTAR</button>
                         </div>
+                        <p id="alert-register-failed-establishment"></p>
                         <button type="submit" className="btn btn-outline-danger" id="register-establishment" onClick={this.onClickNextOne} hidden >CADASTRAR</button>
                     </form>
                     <hr />
