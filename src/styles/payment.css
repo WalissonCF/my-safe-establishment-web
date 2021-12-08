@@ -47,6 +47,12 @@
     margin-block-end: -2px
 }
 
+#alert-delete-product-error {
+    color: var(--main-color);
+    font-size: 12px;
+    margin-block-end: -2px
+}
+
 .alert-customer-demand {
     color: var(--main-color)!important;
     font-size: 12px;

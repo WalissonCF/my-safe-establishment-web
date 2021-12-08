@@ -3,6 +3,7 @@ import establishmentService from '../../services/EstablishmentService';
 import { Link } from 'react-router-dom';
 
 import '../../styles/customerDemand.css';
+import customerUtils from '../../utils/customerUtils';
 
 function CustomerDemand() {
     const [posts, setPosts] = useState([]);
@@ -53,7 +54,7 @@ function CustomerDemand() {
                     <div className="content-menu-register">
                         <div className="content-in-text">
                             <h1>Bem vindo,</h1>
-                            <h2>nomeUser</h2>
+                            <h2>{customerUtils.getCustomerName()}</h2>
                             <Link to="/demands">
                                 <button className="btn btn-outline-danger btn-login">PEDIDOS</button>
                             </Link>
