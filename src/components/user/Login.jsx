@@ -40,7 +40,7 @@ export default class LoginUser extends React.Component {
                                     <h1>Bem-vindo ao</h1>
                                     <h2>My Establishment</h2>
                                     <p>
-                                        Cadastre-se agora para conseguir seu acento seguro <br />
+                                        Cadastre-se para escolher seu assento seguro. <br />
                                     Essa aplicação é destinada a segurança <br />
                                     do ambiente, também para que possa <br />
                                     realizar seus pedidos sem a necessidade <br />
