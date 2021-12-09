@@ -47,16 +47,28 @@ export default function MainRoutes() {
 
             <Route path="/login-establishment" element={ <LoginEstablishment /> } />
             <Route path="/register-establishment" element={ <RegisterEstablishment />} />
-            <Route path="/menu" element={ <MenuEstablishment />} />
-            <Route path="/product-registration" element={ <ProductRegistration /> } />
-            <Route path="/demands" element={ <Demand /> } />
-            <Route path="/customer-demand" element={ <CustomerDemand /> } />
-            <Route path="/products-establishment" element={ <ProductEstablishment /> } />
-            <Route path="/edit-product" element={ <EditProduct /> } />
-            <Route path="/tables-establishment" element={ <TablesEstablishment /> } />
-            <Route path="/register-tables" element={ <RegisterTables /> } />
-            <Route path="/payment-establishment" element={ <PaymentEstablishment /> } />
-            <Route path="/payment-establishment-edit" element={ <PaymentEstablishmentEdit /> } />
+            {Auth.privateRoutes("/menu", <MenuEstablishment />)}
+            {Auth.privateRoutes("/product-registration", <ProductRegistration />)}
+            {Auth.privateRoutes("/demands", <Demand />)}
+            {Auth.privateRoutes("/customer-demand", <CustomerDemand />)}
+            {Auth.privateRoutes("/products-establishment", <ProductEstablishment />)}
+            {Auth.privateRoutes("/edit-product", <EditProduct />)}
+            {Auth.privateRoutes("/tables-establishment", <TablesEstablishment />)}
+            {Auth.privateRoutes("/register-tables", <RegisterTables />)}
+            {Auth.privateRoutes("/payment-establishment", <PaymentEstablishment />)}
+            {Auth.privateRoutes("/payment-establishment-edit", <PaymentEstablishmentEdit />)}
+
+
+            {/* <Route path="/menu" element={ <MenuEstablishment />} /> */}
+            {/* <Route path="/product-registration" element={ <ProductRegistration /> } /> */}
+            {/* <Route path="/demands" element={ <Demand /> } /> */}
+            {/* <Route path="/customer-demand" element={ <CustomerDemand /> } /> */}
+            {/* <Route path="/products-establishment" element={ <ProductEstablishment /> } /> */}
+            {/* <Route path="/edit-product" element={ <EditProduct /> } /> */}
+            {/* <Route path="/tables-establishment" element={ <TablesEstablishment /> } /> */}
+            {/* <Route path="/register-tables" element={ <RegisterTables /> } /> */}
+            {/* <Route path="/payment-establishment" element={ <PaymentEstablishment /> } /> */}
+            {/* <Route path="/payment-establishment-edit" element={ <PaymentEstablishmentEdit /> } /> */}
 
             <Route path="/calling-attendant" element={ <CallingAttendant /> } />
             <Route path="/payment-success" element={ <AnimationPaymentSuccess /> } />

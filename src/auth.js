@@ -36,10 +36,10 @@ const authService = {
                <img style={{
                    width: '100%',
                    height: '100%'
-               }} alt="Deu-RUIM" src="https://c.tenor.com/MLj6KHoL_MQAAAAC/food-wars.gif"></img>
+               }} alt="Deu-RUIM" src="https://image.shutterstock.com/image-vector/realistic-yellow-triangle-warning-sign-600w-2020488875.jpg"></img>
                <h1 style={{
                    textAlign: 'center'
-               }}>Faz o login ai cara!</h1>
+               }}>Por favor realize o login</h1>
            </div>
             } />;
         }

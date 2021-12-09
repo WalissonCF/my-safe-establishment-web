@@ -60,7 +60,7 @@ function RegisterTables() {
                             <div className="form-group">
                                 {localStorage.setItem('locationTable', selects)}
                                 <select value={selects} className="form-select" onChange={e => setSelects(e.target.value)}>
-                                    <option value=""></option>
+                                    <option value="">Selecione o local</option>
                                     <option value="Interna">Interna</option>
                                     <option value="Externa">Externa</option>
                                 </select>
@@ -70,7 +70,7 @@ function RegisterTables() {
                             <div className="form-group">
                                 {localStorage.setItem('statusTable', selectsStatus)}
                                 <select value={selectsStatus} className="form-select" onChange={e => setSelectsStatus(e.target.value)}>
-                                    <option value=""></option>
+                                    <option value="Inativa">Selecione o status</option>
                                     <option value="Ocupada">Ocupada</option>
                                     <option value="Disponivel">Disponivel</option>
                                     <option value="Inativa">Inativa</option>
